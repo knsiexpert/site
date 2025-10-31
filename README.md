@@ -1,11 +1,15 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.0.0** | Modern 2025 Design
+**Wersja: 3.2.0** | Modern 2025 Design with Hero Patterns
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.0.0
+## ✨ Nowe w wersji 3.2.0
 
+- 🎨 **Hero Patterns** — subtelne wzory SVG w tle (kropki + geometria)
+- 🌈 **Layered backgrounds** — pattern + gradient dla głębi
+- ✨ **Ultra-subtle texture** — wzory ledwo widoczne, dodają depth
+- 🎯 **Typography redesign** — cute, pleasant headings z system fonts
 - 📊 **Sekcja statystyk** z interaktywnymi kartami (10+ lat, 50+ członków, 6 projektów, 5 nagród)
 - 🎯 **Sekcja "O nas"** z kluczowymi wartościami koła
 - 🎨 **Enhanced animations** — floating gradients, accent bars, transform effects

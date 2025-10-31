@@ -1,5 +1,65 @@
 # Changelog
 
+## [3.2.1] - 2024-10-31
+
+### 🎨 Pattern Adjustment — Clean Body, Textured Hero
+
+#### 🧹 Czysty Body
+- **Usunięty pattern** — Body z czystym tłem `var(--white)`
+- **Minimalistycznie** — Reszta strony bez textury
+- **Focus na content** — Nic nie rozprasza od treści
+
+#### ✨ Enhanced Hero Pattern
+- **Większy wzór** — Geometryczny pattern 304x304px
+- **Większa opacity** — 0.3 → 0.4 (bardziej widoczny)
+- **Kompleksowy design** — Linie, połączenia, geometria
+- **Dynamiczne tło** — Coś się dzieje, hero nie jest pusty!
+- **Zachowany gradient** — Orange radial gradient + floating animation
+
+#### 🎯 Philosophy
+- **Hero wyróżniony** — Tylko główna sekcja ma pattern
+- **Clean sections** — Pozostałe sekcje na czystym tle
+- **Visual hierarchy** — Hero przyciąga uwagę
+- **Better contrast** — Pattern tylko tam, gdzie potrzebny
+
+## [3.2.0] - 2024-10-31
+
+### 🎨 Hero Patterns — Subtelne tła SVG
+
+#### ✨ Wzory z Hero Patterns
+- **Pattern kropki** — Hero section z delikatnym wzorem kółek
+  - Fill: `#e8e8ed` (light-gray)
+  - Opacity: 0.3 (bardzo subtelne)
+  - SVG pattern embedded inline
+  
+- **Pattern geometryczny** — Body background z liniami
+  - Fill: `#d4d4d9` (subtle gray)
+  - Opacity: 0.15 (ultra-subtelne)
+  - Kompleksowy geometryczny wzór
+  
+- **Pattern dodatkowo** — Zmienne CSS z cross pattern
+  - `--pattern-light` dla przyszłych zastosowań
+  - Wzór krzyżyków jako opcja dla kart
+
+#### 🌈 Visual Effects
+- **Hero gradient** — Radial gradient z orange (rgba(255, 107, 0, 0.08))
+- **Floating animation** — Zachowana animacja tła (20s)
+- **Layered backgrounds** — Pattern + gradient overlay
+- **Texture depth** — Dodana głębia wizualna bez przytłaczania
+
+#### 🎯 Zastosowania
+- Hero section: Wzór kropki + orange gradient
+- Body: Geometryczny wzór globalnie
+- Zachowana czystość białych kart (surface)
+- Subtelność — wzory prawie niewidoczne, ale dodają teksturę
+
+#### 💡 Design Philosophy
+- **Ultra-subtle** — Patterns są ledwo widoczne
+- **Modern texture** — Depth bez noise
+- **Performance** — SVG inline (zero HTTP requests)
+- **Accessibility** — Nie przeszkadzają w czytaniu
+- **Virgil Abloh aesthetic** — Industrial texture, minimalistyczna elegancja
+
 ## [3.1.0] - 2024-10-31
 
 ### 🎨 Typography Redesign — Cute & Pleasant Headings
