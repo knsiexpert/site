@@ -1,5 +1,511 @@
 # Changelog
 
+## [3.7.1] - 2024-10-31
+
+### 🎨 Navigation Logo — Professional Gradient Text
+
+#### ✨ Animated Gradient Logo
+- **Multi-color gradient** na tekście nawigacji "KNSI E-XPERT"
+- **Smooth animation** — 10s loop z gradientShift
+- **Hover effects** — elevated drop-shadow & translateY
+- **Ultra-bold typography** — font-weight: 800, enhanced spacing
+
+```css
+.logo-text {
+    background: linear-gradient(135deg, 
+        #1c1b22 0%, #1c1b22 35%, 
+        #ff6b00 55%, #ff8c00 75%, #ffa500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: navGradientShift 10s ease-in-out infinite;
+}
+```
+
+## [3.7.0] - 2024-10-31
+
+### 🎨 Hero Title — Gradient Text & Premium Typography
+
+#### ✨ Profesjonalny Gradient
+- **Multi-color gradient** — czarny (40%) → pomarańczowy (60%) → złoty (100%)
+- **Background-clip: text** — gradient wypełnia tekst
+- **Animated gradient** — `gradientShift` animation, 8s loop
+- **Background-size: 200%** — gradient przesuwa się w czasie
+
+```css
+background: linear-gradient(135deg, 
+    #1c1b22 0%, #1c1b22 40%, 
+    #ff6b00 60%, #ff8c00 80%, #ffa500 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+```
+
+#### 🎯 Enhanced Typography
+- **Font-weight: 900** — ultra bold (było 700)
+- **Text-transform: uppercase** — ALL CAPS dla impact
+- **Letter-spacing: -0.03em** — tight kerning (było -0.02em)
+- **Line-height: 1.05** — kompaktowy (było 1.1)
+- **Font-family** — dodany 'Arial Black' jako fallback
+
+#### 💫 Drop-shadow Effects
+- **Dual drop-shadow** — pomarańczowy glow + czarny cień
+- **Filter instead of text-shadow** — działa z gradient text
+```css
+filter: drop-shadow(0 4px 12px rgba(255, 107, 0, 0.3))
+        drop-shadow(0 2px 4px rgba(28, 27, 34, 0.2));
+```
+
+#### 🌟 Animated Underline
+- **Szerszy** — 140px (było 120px), 6px height (było 5px)
+- **Orange gradient** — #ff6b00 → #ff8c00 → #ffa500
+- **Pulse animation** — subtleny efekt pulsowania (opacity + scaleX)
+- **Stronger glow** — dual box-shadow z większą intensywnością
+```css
+animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
+```
+
+#### 📱 Mobile Optimized
+- **Font-weight: 900** — również na mobile
+- **Underline 80px** — proporcjonalnie mniejszy (było 50px)
+- **Height 4px** — proporcjonalnie (było 2px)
+- **Gradient zachowany** — działa identycznie na mobile
+
+#### 🎬 Animacje
+**gradientShift** — 8s loop:
+```css
+0%, 100% { background-position: 0% center; }
+50% { background-position: 100% center; }
+```
+
+**pulse** — 2s loop:
+```css
+0%, 100% { opacity: 1; transform: scaleX(1); }
+50% { opacity: 0.8; transform: scaleX(0.95); }
+```
+
+#### 🚀 Rezultat
+- ✅ **Mega profesjonalny** — gradient + ultra bold + uppercase
+- ✅ **Dynamiczny** — animowany gradient + pulsujące podkreślenie
+- ✅ **Premium look** — czarno-pomarańczowo-złoty gradient
+- ✅ **Mocny impact** — weight 900 + tight spacing
+- ✅ **Perfect mobile** — wszystkie efekty zachowane
+- ✅ **Virgil Abloh vibes** — minimalistyczny ale z mocnym akcentem
+
+## [3.6.0] - 2024-10-31
+
+### 📦 Dynamic Footer — JSON-Based Configuration
+
+#### ✨ Nowy plik: `data/footer.json`
+Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
+
+#### 📐 Struktura JSON
+```json
+{
+  "brand": {
+    "name": "...",
+    "description": "...",
+    "year": "2025",
+    "established": "EST. 2015"
+  },
+  "navigation": {
+    "title": "Nawigacja",
+    "links": [...]
+  },
+  "contact": {
+    "title": "Kontakt",
+    "links": [...]
+  },
+  "social": {
+    "title": "Social Media",
+    "platforms": [...]
+  },
+  "bottom": {
+    "copyright": "...",
+    "credits": [...]
+  }
+}
+```
+
+#### 🔧 Implementacja
+- **Funkcja `renderFooter()`** — ładuje `footer.json` i renderuje HTML
+- **Dynamiczny HTML** — stopka budowana z template strings
+- **attr(data-est)** — CSS ::before używa atrybutu dla EST. label
+- **Wywołanie w `init()`** — renderFooter() dodane do inicjalizacji
+
+#### 📝 Zawartość JSON
+**Brand:**
+- Nazwa koła (3 linie z <br>)
+- Opis: "Od lat łączymy pasję..." (zmiana z "Od 2015 roku")
+- Rok: 2025
+- Established: EST. 2015
+
+**Navigation:**
+- 6 linków: Start, Projekty, Cele i misja, Zespół, Działalność, Statut
+
+**Contact:**
+- Email: knsi.expert@ug.edu.pl
+- Uniwersytet Gdański
+- Wydział WZR
+- Wydział MFI
+
+**Social Media:**
+- GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
+
+**Bottom:**
+- Copyright: "© 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
+- Credits: OPEN SOURCE, GITHUB PAGES
+
+#### 🚀 Korzyści
+- ✅ **Łatwa edycja** — wszystkie dane w jednym pliku JSON
+- ✅ **Separacja danych** — HTML/CSS/JS oddzielone od treści
+- ✅ **Konsystencja** — format zgodny z resztą projektu
+- ✅ **Dynamiczne renderowanie** — jak pozostałe sekcje
+- ✅ **Utrzymywalność** — zmiana roku/linków bez dotykania HTML
+
+#### 📦 Pliki zmienione
+- `data/footer.json` — **NOWY** plik z danymi stopki
+- `index.html` — funkcja `renderFooter()`, usunięte hardcoded dane
+- CSS: `footer::before` używa `attr(data-est)`
+
+## [3.5.1] - 2024-10-31
+
+### 📚 Footer Update — Wydział WZR
+
+#### ✨ Dodany link do Wydziału WZR
+- **Wydział WZR** — dodany przed Wydziałem MFI w sekcji Kontakt
+- **Link** — https://wzr.ug.edu.pl
+- **Kolejność** — Uniwersytet Gdański → Wydział WZR → Wydział MFI
+
+## [3.5.0] - 2024-10-31
+
+### 🎯 Professional Footer — 2025 Edition
+
+#### ✨ Virgil Abloh-Inspired Footer
+- **Black background** — `background: var(--black)`, `color: var(--white)`
+- **EST. 2015 label** — `position: absolute`, `font-size: 10px`, `letter-spacing: 0.2em`, `opacity: 0.4`
+- **4-column grid** — `grid-template-columns: 2fr 1fr 1fr 1fr` (desktop), 1fr (mobile)
+- **80px gaps** — spacing między kolumnami (desktop), 40px (mobile)
+
+#### 🎨 Footer Components
+**Brand Section:**
+- **Large title** — `font-size: 28px`, `font-weight: 700`, `letter-spacing: 0.05em`
+- **Description** — `font-size: 14px`, `opacity: 0.8`, max-width 400px
+- **2025 Year badge** — `padding: 15px 30px`, `border: 2px solid`, `font-size: 32px`
+- **Hover effect** — inverse colors + translateY(-2px)
+
+**Navigation Links:**
+- **All sections** — Start, Projekty, Cele, Zespół, Działalność, Statut
+- **Hover animation** — `transform: translateX(5px)`, `opacity: 1`
+
+**Contact Info:**
+- Email: knsi.expert@ug.edu.pl
+- Uniwersytet Gdański links
+- Wydział MFI link
+
+**Social Media:**
+- **4 platforms** — GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
+- **40x40px boxes** — `border: 2px solid`, centered text
+- **Hover effect** — inverse colors + lift
+
+#### 📱 Mobile Responsive
+- **Single column** — `grid-template-columns: 1fr`
+- **Reduced padding** — 60px 0 30px (było 100px/40px)
+- **Smaller year badge** — 24px font (było 32px)
+- **Vertical footer-bottom** — flex-direction: column
+- **Centered text** — text-align: center
+- **Smaller gaps** — 40px grid gap, 12px social gap
+
+#### 🎯 Footer Bottom
+- **Border-top** — `2px solid rgba(255, 255, 255, 0.2)`
+- **Copyright** — © 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
+- **Credits** — OPEN SOURCE + GITHUB PAGES links
+- **Opacity** — 0.6 dla subtelności
+
+#### 📐 Technical Details
+```css
+footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 0 40px;
+    margin-top: 150px;
+}
+.footer-year {
+    border: 2px solid var(--white);
+    font-size: 32px;
+    transition: all 0.3s ease;
+}
+.footer-year:hover {
+    background: var(--white);
+    color: var(--black);
+}
+```
+
+#### 🚀 Rezultat
+- ✅ **Profesjonalna stopka** — elegancka, minimalistyczna
+- ✅ **2025 prominent** — duży, wyróżniony rok w ramce
+- ✅ **Full navigation** — wszystkie sekcje w stopce
+- ✅ **Social media** — 4 platformy z hover effects
+- ✅ **Virgil Abloh style** — borders, gaps, typography, inverse hover
+- ✅ **Mobile perfect** — single column, kompaktowe
+
+## [3.4.2] - 2024-10-31
+
+### 🍔 Hamburger Menu Fix + Navigation Scroll
+
+#### 🔧 Problem
+- **Hamburger menu nie działało** — błędne nazwy klas (menu-toggle vs mobile-menu)
+- **Treść przykryta przez nav** — przy przełączaniu sekcji brak scroll to top
+- **Menu nie zamykało się** — po kliknięciu w link menu pozostawało otwarte
+
+#### ✅ Rozwiązanie
+- **Poprawione nazwy klas** — `.mobile-menu` konsekwentnie w całym CSS
+- **Naprawiona funkcja `toggleMenu()`** — teraz dodaje klasę `menu-open` do `<nav>`
+- **Scroll to top** — przy każdej zmianie sekcji: `window.scrollTo({ top: 0, behavior: 'smooth' })`
+- **Auto-close menu** — mobile menu zamyka się po kliknięciu w link
+
+#### 🎨 Animacja hamburgera
+- **Transform to X** — hamburger zmienia się w X gdy menu otwarte
+- **Smooth transition** — `transition: all 0.3s ease` na wszystkich elementach
+- **Desktop animation** — również działa na większych ekranach
+```css
+nav.menu-open .hamburger {
+    background: transparent;
+}
+nav.menu-open .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+nav.menu-open .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+```
+
+#### 📱 Mobile Navigation
+- **Max-height animation** — płynne rozwijanie menu (0 → 500px)
+- **Z-index: 999** — nav-links zawsze na wierzchu
+- **Border-bottom** — 1px solid gdy menu otwarte
+- **Flex-direction: column** — vertical stack linków
+
+#### 🎯 Rezultat
+- ✅ **Hamburger działa** — kliknięcie otwiera/zamyka menu
+- ✅ **Animacja X** — hamburger przekształca się w X
+- ✅ **Treść nie przykryta** — scroll to top przy zmianie sekcji
+- ✅ **UX perfect** — menu zamyka się po kliknięciu w link
+
+## [3.4.1] - 2024-10-31
+
+### 🔧 Mobile Fix — Unified Media Query
+
+#### 🐛 Problem
+- **6 rozproszonych media queries** — konflikty i nadpisywanie stylów
+- **Niekonsystentne wartości** — różne fonty/padding w różnych miejscach
+- **Overflow issues** — tekst wychodził poza ekran
+
+#### ✅ Rozwiązanie
+- **Jeden kompleksowy media query** — wszystko w jednym miejscu (945-1411 linia)
+- **Spójne wartości** — zgrane czcionki i spacing w całym mobile
+- **Max-width 100%** — container nie wychodzi poza ekran
+- **Overflow-x: hidden** — body nie scrolluje poziomo
+
+#### 📐 Unified Mobile Specs
+- **Body font** — 14px base
+- **Container padding** — 16px konsekwentnie
+- **Section padding** — 80px 0 50px
+- **Nav padding** — 14px 16px
+- **Logo** — 32px height, 12px font
+- **Hero h1** — clamp(24px, 9vw, 42px)
+- **H2** — clamp(26px, 7vw, 40px)
+- **Body text** — 13-14px
+- **Labels** — 9-11px
+- **Borders** — 2px (było 3px)
+- **Card padding** — 28-35px (było 40-50px)
+
+#### 🎯 Co zostało naprawione
+- ✅ **Zero overflow** — wszystko się mieści
+- ✅ **Spójne czcionki** — jedna hierarchia typograficzna
+- ✅ **Menu działa** — max-height animation
+- ✅ **Glassmorphism hero** — border-radius 2px
+- ✅ **Wszystkie sekcje** — nav, hero, stats, about, highlights, projects, timeline, team, constitution, activity, quotes
+- ✅ **2x2 stats grid** — poprawne borders
+- ✅ **Single column** — about, highlights, projects, team
+
+#### 🚀 Rezultat
+**Perfect mobile experience** — kompaktowy, czytelny, bez overflow!
+
+## [3.4.0] - 2024-10-31
+
+### 📱 Kompleksowa Optymalizacja Mobile
+
+#### ✨ Hero Section Mobile
+- **Padding zmniejszony** — 110px top (było 150px), 50px bottom
+- **H1 czcionka** — clamp(28px, 10vw, 48px) zamiast 36px/64px
+- **Subtitle** — 16px (było 18px), line-height 1.5
+- **CTA button** — padding 16px 40px, font-size 10px
+- **Nav wyżej** — padding 16px (było 30px)
+
+#### 📐 Zgranie czcionek
+- **H2 sections** — clamp(28px, 8vw, 48px)
+- **H3 about/highlights** — 14-16px
+- **Project name** — 22px (mobile)
+- **Timeline year** — 22px (mobile)
+- **Article title** — 17px (mobile)
+- **Body text** — 14px uniwersalnie
+- **Labels** — 8-10px
+
+#### 🎯 Zmniejszone spacing
+- **Section padding** — 100px 0 60px (było 150px/120px)
+- **Container padding** — 16px (było 20px)
+- **Card padding** — 30-40px (było 50-70px)
+- **Margins between** — 40-50px (było 60-90px)
+- **Grid gaps** — 2px zachowane
+
+#### 📦 Wszystkie sekcje
+- ✅ **Hero** — kompaktowy, h1 wyżej
+- ✅ **Stats** — 2x2 grid, mniejsze fonty
+- ✅ **About** — jednokol., padding 40px/25px
+- ✅ **Highlights** — 1 kolumna, 40px padding
+- ✅ **Projects** — Year 48px, name 22px, desc 14px
+- ✅ **Timeline** — 30px left padding, 2px line
+- ✅ **Team** — 1 kolumna, 12px/10px fonts
+- ✅ **Constitution** — Articles 30px padding
+- ✅ **Activity** — Lead 30px padding, items 30px
+
+#### 🔧 Technical Details
+- **Border weights** — 2px (było 3px) na mobile
+- **Logo** — 35px height (było 45px)
+- **Border-left hero** — 3px accent
+- **Responsive h1** — clamp z 10vw dla elastyczności
+
+#### 🎯 Rezultat
+- ✅ **Wszystko się mieści** — żaden tekst nie wychodzi
+- ✅ **Zgrane czcionki** — spójne proporcje
+- ✅ **Mniejsze spacing** — więcej treści na ekranie
+- ✅ **Hero wyżej** — nagłówek bliżej góry
+- ✅ **Czytelność** — 14px minimum dla body
+- ✅ **Profesjonalny** — kompaktowy, ale nie ciasny
+
+## [3.3.1] - 2024-10-31
+
+### 🎨 Hero Box Redesign — Glassmorphism + Text Glow
+
+#### ✨ Nowe podejście (bez dziwnych kształtów)
+- **Usunięty clip-path** — Prosty, elegancki design
+- **Glassmorphism** — Biały box z backdrop-filter blur(20px)
+- **Orange accent** — Border-left: 5px solid dla wyróżnienia
+- **Dual shadow** — Czarny + orange dla głębi
+
+#### 💫 Text Enhancement
+- **Mocny text-shadow** — Triple layer:
+  - 0 2px 4px white (bliski)
+  - 0 4px 12px white (średni)
+  - 0 0 40px white (glow)
+- **Subtitle shadow** — Delikatniejszy, double layer
+- **Większa opacity** — Subtitle 0.85 → 0.9
+
+#### 📐 Layout Details
+- **Background** — rgba(255, 255, 255, 0.85) z blur
+- **Border-radius** — 4px (subtelny)
+- **Padding** — 80px 70px (desktop), 50px 30px (mobile)
+- **Box-shadow** — Dual: dark + orange accent
+
+#### 🎯 Rezultat
+- ✅ **Tekst doskonale widoczny** na pattern
+- ✅ **Glassmorphism** — Modern, trendy
+- ✅ **Orange accent** — Virgil Abloh style
+- ✅ **Clean & professional** — Bez dziwnych kształtów
+- ✅ **Text glow** — Wyróżnia się perfekcyjnie
+
+## [3.3.0] - 2024-10-31
+
+### 🎨 Hero Content Box — Prostokąt ze ściętymi bokami
+
+#### ✨ Ciekawy kształt za tekstem
+- **Clip-path polygon** — Prostokąt ze ściętymi krawędziami (15% top-left, 0% top-right, 85% bottom-right, 100% bottom-left)
+- **Background** — Białe tło rgba(255, 255, 255, 0.9) z backdrop-filter blur
+- **Box shadow** — 0 20px 60px dla głębi
+- **Border** — 3px solid rgba(28, 27, 34, 0.1) dla subtelnego outline
+
+#### 🌈 Gradient overlay
+- **::after element** — Dodatkowa warstwa z orange gradient
+- **Linear gradient** — 135deg, rgba(255, 107, 0, 0.1) → transparent
+- **Layered effect** — Pattern + gradient + white box + content
+
+#### 📐 Layout
+- **Padding hero-content** — 80px 60px (desktop), 50px 30px (mobile)
+- **Negative margins** — left: -40px, right: -40px dla szerszego box
+- **Z-index layers** — ::after (-2), ::before (-1), content (1)
+
+#### 📱 Responsive
+- **Mobile adjustments** — Mniejszy padding i margins (-20px)
+- **Zachowany kształt** — Clip-path działa na wszystkich rozmiarach
+- **Czytelność** — Tekst dobrze się odcina od tła
+
+#### 🎯 Visual Impact
+- **Tekst się odcina** — Wyraźnie widoczny na tle pattern
+- **Industrial chic** — Skośne krawędzie w stylu Virgil Abloh
+- **Modern & dynamic** — Geometryczne formy dodają energii
+- **Professional** — Nie przytłacza, ale przyciąga uwagę
+
+## [3.2.1] - 2024-10-31
+
+### 🎨 Pattern Adjustment — Clean Body, Textured Hero
+
+#### 🧹 Czysty Body
+- **Usunięty pattern** — Body z czystym tłem `var(--white)`
+- **Minimalistycznie** — Reszta strony bez textury
+- **Focus na content** — Nic nie rozprasza od treści
+
+#### ✨ Enhanced Hero Pattern
+- **Większy wzór** — Geometryczny pattern 304x304px
+- **Większa opacity** — 0.3 → 0.4 (bardziej widoczny)
+- **Kompleksowy design** — Linie, połączenia, geometria
+- **Dynamiczne tło** — Coś się dzieje, hero nie jest pusty!
+- **Zachowany gradient** — Orange radial gradient + floating animation
+
+#### 🎯 Philosophy
+- **Hero wyróżniony** — Tylko główna sekcja ma pattern
+- **Clean sections** — Pozostałe sekcje na czystym tle
+- **Visual hierarchy** — Hero przyciąga uwagę
+- **Better contrast** — Pattern tylko tam, gdzie potrzebny
+
+## [3.2.0] - 2024-10-31
+
+### 🎨 Hero Patterns — Subtelne tła SVG
+
+#### ✨ Wzory z Hero Patterns
+- **Pattern kropki** — Hero section z delikatnym wzorem kółek
+  - Fill: `#e8e8ed` (light-gray)
+  - Opacity: 0.3 (bardzo subtelne)
+  - SVG pattern embedded inline
+  
+- **Pattern geometryczny** — Body background z liniami
+  - Fill: `#d4d4d9` (subtle gray)
+  - Opacity: 0.15 (ultra-subtelne)
+  - Kompleksowy geometryczny wzór
+  
+- **Pattern dodatkowo** — Zmienne CSS z cross pattern
+  - `--pattern-light` dla przyszłych zastosowań
+  - Wzór krzyżyków jako opcja dla kart
+
+#### 🌈 Visual Effects
+- **Hero gradient** — Radial gradient z orange (rgba(255, 107, 0, 0.08))
+- **Floating animation** — Zachowana animacja tła (20s)
+- **Layered backgrounds** — Pattern + gradient overlay
+- **Texture depth** — Dodana głębia wizualna bez przytłaczania
+
+#### 🎯 Zastosowania
+- Hero section: Wzór kropki + orange gradient
+- Body: Geometryczny wzór globalnie
+- Zachowana czystość białych kart (surface)
+- Subtelność — wzory prawie niewidoczne, ale dodają teksturę
+
+#### 💡 Design Philosophy
+- **Ultra-subtle** — Patterns są ledwo widoczne
+- **Modern texture** — Depth bez noise
+- **Performance** — SVG inline (zero HTTP requests)
+- **Accessibility** — Nie przeszkadzają w czytaniu
+- **Virgil Abloh aesthetic** — Industrial texture, minimalistyczna elegancja
+
 ## [3.1.0] - 2024-10-31
 
 ### 🎨 Typography Redesign — Cute & Pleasant Headings

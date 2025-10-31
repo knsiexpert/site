@@ -1,17 +1,26 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.0.0** | Modern 2025 Design
+**Wersja: 3.7.1** | Premium 2025 Design — Animated Gradient Navigation & Hero
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.0.0
+## ✨ Nowe w wersji 3.7.1
 
-- 📊 **Sekcja statystyk** z interaktywnymi kartami (10+ lat, 50+ członków, 6 projektów, 5 nagród)
-- 🎯 **Sekcja "O nas"** z kluczowymi wartościami koła
-- 🎨 **Enhanced animations** — floating gradients, accent bars, transform effects
-- 📐 **Improved projects** — większe fonty, accent colors, hover interactions
-- 📱 **Better mobile experience** — responsywne grids, lepsze spacing
-- 🎨 **2025 design language** — modern, clean, interactive
+- 🎨 **Gradient Navigation Logo** — animowany gradient na tekście "KNSI E-XPERT" w nawigacji
+- 🌟 **Smooth Animation** — 10s continuous gradient shift
+- 💫 **Hover Effects** — elevated drop-shadow & micro-animation
+- 💪 **Ultra-bold Typography** — font-weight: 800, refined spacing
+- ✅ **Professional Look** — jednolity styl z hero, mega profesjonalnie
+
+## 🔥 Wersja 3.7.0
+
+- 🎨 **Gradient Hero Title** — czarno-pomarańczowo-złoty gradient z animacją (8s loop)
+- 💪 **Ultra Bold Typography** — font-weight: 900, uppercase, tight spacing
+- 💫 **Drop-shadow Effects** — dual drop-shadow (orange glow + dark shadow)
+- 🌟 **Animated Underline** — 140px orange gradient z pulse animation
+- 🎬 **2 Animations** — gradientShift (background) + pulse (underline)
+- 📱 **Mobile Optimized** — wszystkie efekty zachowane, proporcjonalne rozmiary
+- ✅ **Premium Look** — profesjonalny, dynamiczny, Virgil Abloh style
 
 ## 📁 Struktura projektu
 
@@ -24,7 +33,9 @@ site/
 │   ├── goals.json     # Cele i osiągnięcia
 │   ├── team.json      # Zespół
 │   ├── activity.json  # Działalność
-│   └── constitution.json # Statut
+│   ├── constitution.json # Statut
+│   └── footer.json    # Stopka (brand, kontakt, social)
+├── package.json       # Konfiguracja npm
 └── README.md          # Ten plik
 ```
 
