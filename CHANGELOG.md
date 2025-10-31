@@ -1,5 +1,26 @@
 # Changelog
 
+## [3.7.1] - 2024-10-31
+
+### 🎨 Navigation Logo — Professional Gradient Text
+
+#### ✨ Animated Gradient Logo
+- **Multi-color gradient** na tekście nawigacji "KNSI E-XPERT"
+- **Smooth animation** — 10s loop z gradientShift
+- **Hover effects** — elevated drop-shadow & translateY
+- **Ultra-bold typography** — font-weight: 800, enhanced spacing
+
+```css
+.logo-text {
+    background: linear-gradient(135deg, 
+        #1c1b22 0%, #1c1b22 35%, 
+        #ff6b00 55%, #ff8c00 75%, #ffa500 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: navGradientShift 10s ease-in-out infinite;
+}
+```
+
 ## [3.7.0] - 2024-10-31
 
 ### 🎨 Hero Title — Gradient Text & Premium Typography

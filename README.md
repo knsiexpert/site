@@ -1,10 +1,18 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.7.0** | Premium 2025 Design — Gradient Hero & Fully Dynamic
+**Wersja: 3.7.1** | Premium 2025 Design — Animated Gradient Navigation & Hero
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.7.0
+## ✨ Nowe w wersji 3.7.1
+
+- 🎨 **Gradient Navigation Logo** — animowany gradient na tekście "KNSI E-XPERT" w nawigacji
+- 🌟 **Smooth Animation** — 10s continuous gradient shift
+- 💫 **Hover Effects** — elevated drop-shadow & micro-animation
+- 💪 **Ultra-bold Typography** — font-weight: 800, refined spacing
+- ✅ **Professional Look** — jednolity styl z hero, mega profesjonalnie
+
+## 🔥 Wersja 3.7.0
 
 - 🎨 **Gradient Hero Title** — czarno-pomarańczowo-złoty gradient z animacją (8s loop)
 - 💪 **Ultra Bold Typography** — font-weight: 900, uppercase, tight spacing
