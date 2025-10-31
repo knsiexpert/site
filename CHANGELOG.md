@@ -1,5 +1,204 @@
 # Changelog
 
+## [3.4.2] - 2024-10-31
+
+### 🍔 Hamburger Menu Fix + Navigation Scroll
+
+#### 🔧 Problem
+- **Hamburger menu nie działało** — błędne nazwy klas (menu-toggle vs mobile-menu)
+- **Treść przykryta przez nav** — przy przełączaniu sekcji brak scroll to top
+- **Menu nie zamykało się** — po kliknięciu w link menu pozostawało otwarte
+
+#### ✅ Rozwiązanie
+- **Poprawione nazwy klas** — `.mobile-menu` konsekwentnie w całym CSS
+- **Naprawiona funkcja `toggleMenu()`** — teraz dodaje klasę `menu-open` do `<nav>`
+- **Scroll to top** — przy każdej zmianie sekcji: `window.scrollTo({ top: 0, behavior: 'smooth' })`
+- **Auto-close menu** — mobile menu zamyka się po kliknięciu w link
+
+#### 🎨 Animacja hamburgera
+- **Transform to X** — hamburger zmienia się w X gdy menu otwarte
+- **Smooth transition** — `transition: all 0.3s ease` na wszystkich elementach
+- **Desktop animation** — również działa na większych ekranach
+```css
+nav.menu-open .hamburger {
+    background: transparent;
+}
+nav.menu-open .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+nav.menu-open .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+```
+
+#### 📱 Mobile Navigation
+- **Max-height animation** — płynne rozwijanie menu (0 → 500px)
+- **Z-index: 999** — nav-links zawsze na wierzchu
+- **Border-bottom** — 1px solid gdy menu otwarte
+- **Flex-direction: column** — vertical stack linków
+
+#### 🎯 Rezultat
+- ✅ **Hamburger działa** — kliknięcie otwiera/zamyka menu
+- ✅ **Animacja X** — hamburger przekształca się w X
+- ✅ **Treść nie przykryta** — scroll to top przy zmianie sekcji
+- ✅ **UX perfect** — menu zamyka się po kliknięciu w link
+
+## [3.4.1] - 2024-10-31
+
+### 🔧 Mobile Fix — Unified Media Query
+
+#### 🐛 Problem
+- **6 rozproszonych media queries** — konflikty i nadpisywanie stylów
+- **Niekonsystentne wartości** — różne fonty/padding w różnych miejscach
+- **Overflow issues** — tekst wychodził poza ekran
+
+#### ✅ Rozwiązanie
+- **Jeden kompleksowy media query** — wszystko w jednym miejscu (945-1411 linia)
+- **Spójne wartości** — zgrane czcionki i spacing w całym mobile
+- **Max-width 100%** — container nie wychodzi poza ekran
+- **Overflow-x: hidden** — body nie scrolluje poziomo
+
+#### 📐 Unified Mobile Specs
+- **Body font** — 14px base
+- **Container padding** — 16px konsekwentnie
+- **Section padding** — 80px 0 50px
+- **Nav padding** — 14px 16px
+- **Logo** — 32px height, 12px font
+- **Hero h1** — clamp(24px, 9vw, 42px)
+- **H2** — clamp(26px, 7vw, 40px)
+- **Body text** — 13-14px
+- **Labels** — 9-11px
+- **Borders** — 2px (było 3px)
+- **Card padding** — 28-35px (było 40-50px)
+
+#### 🎯 Co zostało naprawione
+- ✅ **Zero overflow** — wszystko się mieści
+- ✅ **Spójne czcionki** — jedna hierarchia typograficzna
+- ✅ **Menu działa** — max-height animation
+- ✅ **Glassmorphism hero** — border-radius 2px
+- ✅ **Wszystkie sekcje** — nav, hero, stats, about, highlights, projects, timeline, team, constitution, activity, quotes
+- ✅ **2x2 stats grid** — poprawne borders
+- ✅ **Single column** — about, highlights, projects, team
+
+#### 🚀 Rezultat
+**Perfect mobile experience** — kompaktowy, czytelny, bez overflow!
+
+## [3.4.0] - 2024-10-31
+
+### 📱 Kompleksowa Optymalizacja Mobile
+
+#### ✨ Hero Section Mobile
+- **Padding zmniejszony** — 110px top (było 150px), 50px bottom
+- **H1 czcionka** — clamp(28px, 10vw, 48px) zamiast 36px/64px
+- **Subtitle** — 16px (było 18px), line-height 1.5
+- **CTA button** — padding 16px 40px, font-size 10px
+- **Nav wyżej** — padding 16px (było 30px)
+
+#### 📐 Zgranie czcionek
+- **H2 sections** — clamp(28px, 8vw, 48px)
+- **H3 about/highlights** — 14-16px
+- **Project name** — 22px (mobile)
+- **Timeline year** — 22px (mobile)
+- **Article title** — 17px (mobile)
+- **Body text** — 14px uniwersalnie
+- **Labels** — 8-10px
+
+#### 🎯 Zmniejszone spacing
+- **Section padding** — 100px 0 60px (było 150px/120px)
+- **Container padding** — 16px (było 20px)
+- **Card padding** — 30-40px (było 50-70px)
+- **Margins between** — 40-50px (było 60-90px)
+- **Grid gaps** — 2px zachowane
+
+#### 📦 Wszystkie sekcje
+- ✅ **Hero** — kompaktowy, h1 wyżej
+- ✅ **Stats** — 2x2 grid, mniejsze fonty
+- ✅ **About** — jednokol., padding 40px/25px
+- ✅ **Highlights** — 1 kolumna, 40px padding
+- ✅ **Projects** — Year 48px, name 22px, desc 14px
+- ✅ **Timeline** — 30px left padding, 2px line
+- ✅ **Team** — 1 kolumna, 12px/10px fonts
+- ✅ **Constitution** — Articles 30px padding
+- ✅ **Activity** — Lead 30px padding, items 30px
+
+#### 🔧 Technical Details
+- **Border weights** — 2px (było 3px) na mobile
+- **Logo** — 35px height (było 45px)
+- **Border-left hero** — 3px accent
+- **Responsive h1** — clamp z 10vw dla elastyczności
+
+#### 🎯 Rezultat
+- ✅ **Wszystko się mieści** — żaden tekst nie wychodzi
+- ✅ **Zgrane czcionki** — spójne proporcje
+- ✅ **Mniejsze spacing** — więcej treści na ekranie
+- ✅ **Hero wyżej** — nagłówek bliżej góry
+- ✅ **Czytelność** — 14px minimum dla body
+- ✅ **Profesjonalny** — kompaktowy, ale nie ciasny
+
+## [3.3.1] - 2024-10-31
+
+### 🎨 Hero Box Redesign — Glassmorphism + Text Glow
+
+#### ✨ Nowe podejście (bez dziwnych kształtów)
+- **Usunięty clip-path** — Prosty, elegancki design
+- **Glassmorphism** — Biały box z backdrop-filter blur(20px)
+- **Orange accent** — Border-left: 5px solid dla wyróżnienia
+- **Dual shadow** — Czarny + orange dla głębi
+
+#### 💫 Text Enhancement
+- **Mocny text-shadow** — Triple layer:
+  - 0 2px 4px white (bliski)
+  - 0 4px 12px white (średni)
+  - 0 0 40px white (glow)
+- **Subtitle shadow** — Delikatniejszy, double layer
+- **Większa opacity** — Subtitle 0.85 → 0.9
+
+#### 📐 Layout Details
+- **Background** — rgba(255, 255, 255, 0.85) z blur
+- **Border-radius** — 4px (subtelny)
+- **Padding** — 80px 70px (desktop), 50px 30px (mobile)
+- **Box-shadow** — Dual: dark + orange accent
+
+#### 🎯 Rezultat
+- ✅ **Tekst doskonale widoczny** na pattern
+- ✅ **Glassmorphism** — Modern, trendy
+- ✅ **Orange accent** — Virgil Abloh style
+- ✅ **Clean & professional** — Bez dziwnych kształtów
+- ✅ **Text glow** — Wyróżnia się perfekcyjnie
+
+## [3.3.0] - 2024-10-31
+
+### 🎨 Hero Content Box — Prostokąt ze ściętymi bokami
+
+#### ✨ Ciekawy kształt za tekstem
+- **Clip-path polygon** — Prostokąt ze ściętymi krawędziami (15% top-left, 0% top-right, 85% bottom-right, 100% bottom-left)
+- **Background** — Białe tło rgba(255, 255, 255, 0.9) z backdrop-filter blur
+- **Box shadow** — 0 20px 60px dla głębi
+- **Border** — 3px solid rgba(28, 27, 34, 0.1) dla subtelnego outline
+
+#### 🌈 Gradient overlay
+- **::after element** — Dodatkowa warstwa z orange gradient
+- **Linear gradient** — 135deg, rgba(255, 107, 0, 0.1) → transparent
+- **Layered effect** — Pattern + gradient + white box + content
+
+#### 📐 Layout
+- **Padding hero-content** — 80px 60px (desktop), 50px 30px (mobile)
+- **Negative margins** — left: -40px, right: -40px dla szerszego box
+- **Z-index layers** — ::after (-2), ::before (-1), content (1)
+
+#### 📱 Responsive
+- **Mobile adjustments** — Mniejszy padding i margins (-20px)
+- **Zachowany kształt** — Clip-path działa na wszystkich rozmiarach
+- **Czytelność** — Tekst dobrze się odcina od tła
+
+#### 🎯 Visual Impact
+- **Tekst się odcina** — Wyraźnie widoczny na tle pattern
+- **Industrial chic** — Skośne krawędzie w stylu Virgil Abloh
+- **Modern & dynamic** — Geometryczne formy dodają energii
+- **Professional** — Nie przytłacza, ale przyciąga uwagę
+
 ## [3.2.1] - 2024-10-31
 
 ### 🎨 Pattern Adjustment — Clean Body, Textured Hero
