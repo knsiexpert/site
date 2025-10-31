@@ -1,0 +1,80 @@
+{
+  "title": "Zrealizowane cele koła",
+  "content": {
+    "years": [
+      {
+        "year": "2021/22",
+        "projects": [
+          "Zespół Social Monitor (Justyna Krotoszyńska, Kajetan Warmbier, Kacper Jach) – aplikacja wspierająca osoby mające problemy z poruszaniem się po platformach społecznościowych; finał konkursu AIS Student Chapters Annual Competition 2022.",
+          "Aktualizacja strony – wdrożenie nowego szablonu WordPress oraz integracja z systemem rezerwacji."
+        ]
+      },
+      {
+        "year": "2020/21",
+        "projects": [
+          "Talk_to – aplikacja służąca do nawiązywania kontaktów; II miejsce w finale konkursu AIS Student Chapters Annual Competition 2021.",
+          "Seria warsztatów 'Ready, set learn!' (prowadzenie: Weronika Jóźwiak, zespół LIDER). Tematy: stres, Agile, design thinking, analiza danych w R, młodzi w biznesie.",
+          "Aplikacje mobilne planu zajęć – faza aktywnego developmentu.",
+          "Warsztaty z JavaScript i NodeJS – cykliczne, otwarte zajęcia dla studentów UG.",
+          "Aktualizacja składu koła."
+        ]
+      },
+      {
+        "year": "2019/20",
+        "projects": [
+          "Projekt Apollo – aplikacja mobilna nagrodzona w konkursie AIS Student Chapter Software Innovation Challenge (III miejsce).",
+          "Zespół projektowy (Krzysztof Orłowski, Adam Ostrowski, Hubert Kołcz) – finał AIS Student Chapters Conference, Filadelfia (USA).",
+          "Projekt mobilnej aplikacji lokalizującej sklepy oferujące jedzenie z krótkim terminem – idea ograniczenia marnowania żywności zgodna z celami ONZ.",
+          "Udział w eliminacjach konkursu Czerwonej Róży 2019.",
+          "Szkolenia z C# i Excela we współpracy z firmą zewnętrzną.",
+          "Warsztaty State Street – prelekcje w siedzibie TITANIUM Tower, prezentacja 'Pomysły na biznes'.",
+          "Targi Akademia 2019 – prezentacja GitHub przez członków Koła."
+        ]
+      },
+      {
+        "year": "2018/19",
+        "projects": [
+          "Projekt Eris – 'Intelligent baby monitor system' (Paweł Stożyński, Adam Ostrowski, Krzysztof Orłowski) – III miejsce w AIS Student Chapters Annual Competition 2018 (Software Innovation Challenge).",
+          "Udział w konkursie Czerwonej Róży 2018 – najlepsze koło naukowe Pomorza.",
+          "Warsztaty React.js – prowadzenie: Adam Marczyk, Neoteric SP. ZOO (26.01.2018)."
+        ]
+      },
+      {
+        "year": "2016/17",
+        "projects": [
+          "Projekt SNet – III miejsce w konkursie AIS Student Chapters Annual Competition (Bright ICT Innovation Contest).",
+          "Rozszerzenie do przeglądarek monitorujące bezpieczeństwo odwiedzanych witryn.",
+          "Współorganizacja konferencji 'ŻAK' – warsztaty dla licealistów nt. bezpieczeństwa w Internecie.",
+          "Warsztaty z technologii Ionic – prowadzenie: Marcin Nowacki, Tomasz Hencel (Neoteric)."
+        ]
+      },
+      {
+        "year": "2015/16",
+        "projects": [
+          "Projekt Cyberwatch – III miejsce w AIS Student Chapters Annual Competition.",
+          "Cyberwatch – rozszerzenie przeglądarki monitorujące i blokujące treści naruszające bezpieczeństwo i kulturę w Internecie.",
+          "Unity – monitoring opinii o produktach; wyróżnienie w konkursie IBM Bright ICT Bluemix (Indiana University).",
+          "Patent Pending – 'Sposób bezprzewodowego wzywania pomocy w stanie zagrożenia bezpieczeństwa' (projekt SafeWatch).",
+          "Nagroda 'Best New AIS Student Chapter 2015–2016'.",
+          "Aplikacja mobileWZR – zarządzanie planem zajęć w metodologii Scrum (Android).",
+          "Współpraca z MadKom – warsztaty o Scrum i oferty pracy.",
+          "Wygrana w konkursie kół naukowych (Sopot, 70-lecie SOIE) – 1. miejsce i nagroda 7000 zł."
+        ]
+      },
+      {
+        "year": "2014/15",
+        "projects": [
+          "Projekt SafeWatch – III miejsce w AIS Student Chapters Annual Competition 2015.",
+          "Zgłoszenie wniosku patentowego 'SafeWatch' – system wezwania pomocy za pomocą gestów.",
+          "Publikacja: artykuł w monografii ICIM 2015 'Assessment of the Scrum Approach for Mobile Application Development Projects'."
+        ]
+      },
+      {
+        "year": "2013/14",
+        "projects": [
+          "Projekt 'Znajdź pracę z E-xpertem' – promocja ofert pracy i staży w mediach społecznościowych dla studentów UG."
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "title": "Projekty AIS SC",
+  "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła tworzyli rozwiązania społeczne, takie jak SafeWatch, CyberWatch, Unity, Your Guard i mobileWZR.",
+  "projects": [
+    {
+      "name": "SocialMonitor",
+      "description": "Wtyczka SocialMonitor służy do ukrywania reakcji pod materiałami w mediach społecznościowych. Jej celem jest zniwelowanie skutków ubocznych korzystania z social mediów (presja społeczna, depresja, zaburzenia odżywiania). Dzięki temu użytkownicy mogą wyrażać opinie bez wpływu liczby polubień, a serduszka czy lajki są ukryte.",
+      "team": ["Justyna Krotoszyńska", "Kajetan Warmbier", "Kacper Jach"],
+      "year": 2022,
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+      ]
+    },
+    {
+      "name": "SafeWatch",
+      "description": "Innowacyjna aplikacja mobilna umożliwiająca wezwanie pomocy w sytuacji zagrożenia za pomocą gestów (np. trzykrotne stuknięcie w smartwatch). Dane o miejscu i czasie zdarzenia trafiają na serwer i mogą być udostępniane służbom. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition 2015 na University of Alabama.",
+      "team": [
+        "Kamil Wojewski (lider)",
+        "Damian Kisielewski",
+        "Maciej Kwapiński",
+        "Szymon Nagórski",
+        "Hubert Kisielewski"
+      ],
+      "year": 2015,
+      "achievements": [
+        "III miejsce w AIS Student Chapter 2015",
+        "Patent Pending w Urzędzie Patentowym RP",
+        "Prezentacje w TVN24, TVP, RMF FM, Radio Zet, Gazeta Wyborcza, Puls Biznesu"
+      ],
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/image001.png",
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/dyp1.png",
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/zdjgrup.png",
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/patent.jpg"
+      ]
+    },
+    {
+      "name": "CyberWatch",
+      "description": "System rozpoznawania aktów cyberprzemocy, takich jak hejt, stalking czy rozpowszechnianie fałszywych informacji. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson i technologii REST. Projekt zdobył III miejsce w konkursie IBM Bright ICT (Indiana University, 2016) oraz wyróżnienie za efektywne wykorzystanie IBM Bluemix Cloud.",
+      "team": [
+        "Kamil Wojewski (lider)",
+        "Damian Kisielewski",
+        "Maciej Kwapiński",
+        "Szymon Nagórski",
+        "Hubert Kisielewski"
+      ],
+      "year": 2016,
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+      ]
+    },
+    {
+      "name": "Unity",
+      "description": "Aplikacja webowa autorstwa Piotra Małeckiego umożliwiająca monitorowanie opinii na temat osób i organizacji w Internecie. Analizuje stosunek opinii pozytywnych i negatywnych oraz trendy w czasie. Zintegrowana z IBM Bluemix i Alchemy API, zdobyła wyróżnienie za najbardziej innowacyjne zastosowanie chmury IBM w konkursie IBM Bright ICT.",
+      "team": ["Piotr Małecki"],
+      "year": 2016,
+      "images": []
+    },
+    {
+      "name": "Your Guard",
+      "description": "System cyfrowej mapy przestępczości, pozwalający śledzić miejsca zagrożeń. Informuje o częstych rozbojach i przestępstwach, wskazując luki w patrolach i działaniach policji. Projekt zakwalifikowany do finału AIS Student Chapter Competition 2015 w kategorii IS That Serves Society.",
+      "team": ["Michał Karpiński", "Tomasz Krakówka", "Piotr Sankowski"],
+      "year": 2015,
+      "images": []
+    },
+    {
+      "name": "mobileWZR",
+      "description": "Aplikacja mobilna dla studentów Wydziału Zarządzania UG, umożliwiająca przeglądanie planu zajęć, dodawanie notatek, synchronizację i powiadomienia o zbliżających się zajęciach. Pierwsza wersja powstała w 2014 roku i jest stale rozwijana.",
+      "year": 2014,
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+      ]
+    }
+  ]
+}

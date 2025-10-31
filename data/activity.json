@@ -1,0 +1,34 @@
+{
+  "title": "Działalność",
+  "slug": "dzialalnosc",
+  "content": {
+    "lead": "Koło Naukowe Systemów Informatycznych E-xpert działa na Uniwersytecie Gdańskim (Wydział Zarządzania). Głównym celem jest pogłębianie wiedzy z zakresu technologii informatycznych i metodyk zarządzania projektami IT oraz realizacja praktycznych projektów i szkoleń.",
+    "activities": [
+      "Udział w konkursach (Imagine Cup, AIS Student Chapter) — coroczny udział co najmniej w jednym konkursie.",
+      "Realizacja projektów dla Uniwersytetu Gdańskiego.",
+      "Szkolenia i warsztaty — zarówno z firmami zewnętrznymi, jak i 'od studentów dla studentów'.",
+      "Testowanie rozwiązań z zakresu zarządzania i systemów informatycznych.",
+      "Popularyzacja informatyki i przedsiębiorczości."
+    ],
+    "meetings": "Spotkania organizowane są w celu weryfikacji postępów prac projektowych i wymiany pomysłów (w praktyce komunikacja odbywa się m.in. na Discordzie).",
+    "mission_goals": [
+      "Zdobywanie i pogłębianie wiedzy z technologii informatycznych oraz metodyk zarządzania projektami IT.",
+      "Realizacja projektów tworzących oprogramowanie i systemy informatyczne służące społeczeństwu.",
+      "Rozwijanie praktycznych umiejętności wytwarzania technologii i zarządzania projektami poprzez szkolenia i warsztaty."
+    ],
+    "competitions_and_research": {
+      "competitions": "Praca zespołowa nad innowacyjnymi koncepcjami i aplikacjami użytecznymi społecznie, udział w konkursach takich jak Imagine Cup oraz AIS Student Chapter.",
+      "research": "Prace badawcze nad metodykami zarządzania projektami IT, implementacją nowych technologii oraz przygotowywanie publikacji naukowych."
+    },
+    "industry_collaboration": [
+      {
+        "partner": "MadKom",
+        "role": "Współpraca w zakresie staży i praktyk dla członków koła."
+      }
+    ],
+    "plans": [
+      "Uczestnictwo w corocznym konkursie AIS.",
+      "Pozyskanie firm oferujących warsztaty i praktyki dla członków."
+    ]
+  }
+}

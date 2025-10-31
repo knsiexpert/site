@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNSI E-XPERT — "IT DLA LUDZI"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray: #999;
+            --light-gray: #f5f5f5;
+            --accent: #ff6b00;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--black);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 0;
+        }
+        
+        .hero-content {
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: clamp(32px, 8vw, 96px);
+            font-weight: 900;
+            letter-spacing: -3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .hero .subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 2px solid var(--black);
+            text-decoration: none;
+            color: var(--black);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-size: 12px;
+        }
+        
+        .cta-button:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin: 80px 0;
+        }
+        
+        .highlight-card {
+            border: 1px solid var(--black);
+            padding: 30px;
+            transition: all 0.3s;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 0 var(--black);
+        }
+        
+        .highlight-card h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .highlight-card p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: clamp(28px, 5vw, 48px);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        /* Projects */
+        .project-card {
+            border-top: 2px solid var(--black);
+            padding: 40px 0;
+        }
+        
+        .project-card:first-child {
+            border-top: none;
+        }
+        
+        .project-year {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--light-gray);
+            margin-bottom: 20px;
+        }
+        
+        .project-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .project-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .project-team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .team-member {
+            padding: 5px 15px;
+            border: 1px solid var(--black);
+            font-size: 12px;
+        }
+        
+        /* Goals Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--black);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--white);
+            border: 2px solid var(--black);
+        }
+        
+        .timeline-year {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-content {
+            color: var(--gray);
+        }
+        
+        .timeline-content li {
+            list-style: none;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .timeline-content li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .team-year-section {
+            margin-bottom: 80px;
+        }
+        
+        .team-board {
+            background: var(--black);
+            color: var(--white);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .member-tag {
+            border: 1px solid var(--black);
+            padding: 8px 20px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Constitution */
+        .article {
+            margin-bottom: 60px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .article-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .article-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .article-content {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        
+        .article-content li {
+            margin-bottom: 10px;
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .article-content li::before {
+            content: '§';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Activities */
+        .activity-lead {
+            font-size: 18px;
+            margin-bottom: 40px;
+            padding: 30px;
+            border-left: 4px solid var(--accent);
+            background: var(--light-gray);
+        }
+        
+        .activity-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .activity-item {
+            padding: 20px;
+            border: 1px solid var(--black);
+            transition: all 0.3s;
+        }
+        
+        .activity-item:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Mobile */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger {
+            width: 25px;
+            height: 2px;
+            background: var(--black);
+            position: relative;
+        }
+        
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--black);
+        }
+        
+        .hamburger::before {
+            top: -8px;
+        }
+        
+        .hamburger::after {
+            top: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid var(--black);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Quotes */
+        .quote {
+            font-size: 24px;
+            font-style: italic;
+            margin: 60px 0;
+            padding: 40px;
+            border-left: 4px solid var(--accent);
+            position: relative;
+        }
+        
+        .quote::before {
+            content: '"';
+            font-size: 72px;
+            position: absolute;
+            left: 20px;
+            top: -10px;
+            color: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo">E-XPERT</div>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <div class="hamburger"></div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a onclick="showSection('home')" class="active">Home</a></li>
+                <li><a onclick="showSection('projects')">Projekty</a></li>
+                <li><a onclick="showSection('goals')">Cele</a></li>
+                <li><a onclick="showSection('team')">Zespół</a></li>
+                <li><a onclick="showSection('activity')">Działalność</a></li>
+                <li><a onclick="showSection('constitution')">Statut</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>KNSI E‑XPERT</h1>
+                    <p class="subtitle">"IT DLA LUDZI" — Studenckie projekty, realne wdrożenia i międzynarodowe wyróżnienia (AIS SC). Dołącz, ucz się i buduj z nami.</p>
+                    <a href="https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069" 
+                       target="_blank" 
+                       class="cta-button">Dołącz do nas</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="quote">
+                Tworzymy technologię, która służy społeczeństwu — od SafeWatch po SocialMonitor, nasze projekty zdobywają międzynarodowe uznanie
+            </div>
+            
+            <div class="highlights-grid">
+                <div class="highlight-card">
+                    <h3>III miejsce — AIS 2015</h3>
+                    <p>Projekt SafeWatch: dyskretne wzywanie pomocy gestem — finał w USA i 3. miejsce.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>III miejsce + IBM Bright ICT</h3>
+                    <p>CyberWatch: wykrywanie cyberprzemocy; dodatkowe wyróżnienie za najlepsze użycie IBM Bluemix.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Finaliści AIS SC 2022</h3>
+                    <p>SocialMonitor: ukrywanie reakcji w social media dla zdrowszej komunikacji.</p>
+                </div>
+                <div class="highlight-card">
+                    <h3>Aplikacja mobileWZR</h3>
+                    <p>Plan zajęć WZiE UG na Androida — używana od 2014 roku.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2>"PROJEKTY" AIS SC</h2>
+            <p style="font-size: 18px; color: var(--gray); margin-bottom: 60px;">
+                Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC)
+            </p>
+            
+            <div class="project-card">
+                <div class="project-year">2022</div>
+                <div class="project-name">SocialMonitor</div>
+                <p class="project-description">
+                    Wtyczka służąca do ukrywania reakcji pod materiałami w mediach społecznościowych. Jej celem jest zniwelowanie skutków ubocznych korzystania z social mediów (presja społeczna, depresja, zaburzenia odżywiania).
+                </p>
+                <div class="project-team">
+                    <span class="team-member">Justyna Krotoszyńska</span>
+                    <span class="team-member">Kajetan Warmbier</span>
+                    <span class="team-member">Kacper Jach</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-year">2015</div>
+                <div class="project-name">SafeWatch</div>
+                <p class="project-description">
+                    Innowacyjna aplikacja mobilna umożliwiająca wezwanie pomocy w sytuacji zagrożenia za pomocą gestów. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition 2015 na University of Alabama.
+                </p>
+                <div class="project-team">
+                    <span class="team-member">Kamil Wojewski (lider)</span>
+                    <span class="team-member">Damian Kisielewski</span>
+                    <span class="team-member">Maciej Kwapiński</span>
+                    <span class="team-member">Szymon Nagórski</span>
+                    <span class="team-member">Hubert Kisielewski</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-year">2016</div>
+                <div class="project-name">CyberWatch</div>
+                <p class="project-description">
+                    System rozpoznawania aktów cyberprzemocy. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson. III miejsce w konkursie IBM Bright ICT (Indiana University, 2016).
+                </p>
+                <div class="project-team">
+                    <span class="team-member">Kamil Wojewski (lider)</span>
+                    <span class="team-member">Damian Kisielewski</span>
+                    <span class="team-member">Maciej Kwapiński</span>
+                    <span class="team-member">Szymon Nagórski</span>
+                    <span class="team-member">Hubert Kisielewski</span>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-year">2014</div>
+                <div class="project-name">mobileWZR</div>
+                <p class="project-description">
+                    Aplikacja mobilna dla studentów Wydziału Zarządzania UG, umożliwiająca przeglądanie planu zajęć, dodawanie notatek, synchronizację i powiadomienia. Stale rozwijana od 2014 roku.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Goals Section -->
+    <section id="goals" class="section">
+        <div class="container">
+            <h2>"ZREALIZOWANE CELE"</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2021/22</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Zespół Social Monitor — finał konkursu AIS Student Chapters Annual Competition 2022</li>
+                            <li>Aktualizacja strony — wdrożenie nowego szablonu WordPress</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2020/21</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Talk_to — aplikacja do nawiązywania kontaktów; II miejsce w finale AIS 2021</li>
+                            <li>Seria warsztatów 'Ready, set learn!' — stres, Agile, design thinking</li>
+                            <li>Aplikacje mobilne planu zajęć — faza aktywnego developmentu</li>
+                            <li>Warsztaty z JavaScript i NodeJS — cykliczne zajęcia dla studentów UG</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2019/20</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Projekt Apollo — III miejsce w AIS Student Chapter Software Innovation Challenge</li>
+                            <li>Finał AIS Student Chapters Conference, Filadelfia (USA)</li>
+                            <li>Projekt aplikacji lokalizującej sklepy z krótkim terminem żywności</li>
+                            <li>Szkolenia z C# i Excela we współpracy z firmą zewnętrzną</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2015/16</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Projekt Cyberwatch — III miejsce w AIS Student Chapters Annual Competition</li>
+                            <li>Patent Pending — 'Sposób bezprzewodowego wzywania pomocy'</li>
+                            <li>Nagroda 'Best New AIS Student Chapter 2015–2016'</li>
+                            <li>Aplikacja mobileWZR — zarządzanie planem zajęć w metodologii Scrum</li>
+                            <li>Wygrana w konkursie kół naukowych — 1. miejsce i 7000 zł</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2>"NASZ ZESPÓŁ"</h2>
+            <p style="font-size: 18px; margin-bottom: 40px;">Opiekun: <strong>Piotr Porzuczek</strong></p>
+            
+            <div class="team-year-section">
+                <h3>2023/24</h3>
+                <div class="team-board">
+                    <p><strong>Maciej Szuwarowski</strong> — Przewodniczący Koła</p>
+                    <p><strong>Stanisław Malec</strong> — Wiceprzewodniczący</p>
+                </div>
+                <div class="team-members">
+                    <span class="member-tag">Oskar Gajewski</span>
+                    <span class="member-tag">Maciej Jankowski-Tomków</span>
+                    <span class="member-tag">Aleksandra Pstrong</span>
+                    <span class="member-tag">Mikołaj Skrzypkowski</span>
+                    <span class="member-tag">Mateusz Wiącek</span>
+                    <span class="member-tag">Mateusz Garnowski</span>
+                    <span class="member-tag">Marcin Kurkowski</span>
+                    <span class="member-tag">Remigiusz Seklecki</span>
+                    <span class="member-tag">Adam Moryc</span>
+                    <span class="member-tag">Fryderyk Szmidt</span>
+                    <span class="member-tag">Natalia Piankowska</span>
+                    <span class="member-tag">Nikodem Matlakiewicz</span>
+                    <span class="member-tag">Marcin Pawelski</span>
+                    <span class="member-tag">Adrian Sikora</span>
+                    <span class="member-tag">Julia Herold</span>
+                    <span class="member-tag">Jakub Karolewicz</span>
+                    <span class="member-tag">Igor Puścikowski</span>
+                    <span class="member-tag">Julia Korzeniewska</span>
+                    <span class="member-tag">Patrycja Stanisławczyk</span>
+                    <span class="member-tag">Aleksandra Woś</span>
+                    <span class="member-tag">Maja Kowalik</span>
+                    <span class="member-tag">Magdalena Pińska</span>
+                </div>
+            </div>
+            
+            <div class="team-year-section">
+                <h3>2022/23</h3>
+                <div class="team-board">
+                    <p><strong>Magdalena Osińska</strong> — Przewodniczący Koła</p>
+                    <p><strong>Mateusz Szreder</strong> — Wiceprzewodniczący</p>
+                </div>
+                <div class="team-members">
+                    <span class="member-tag">Mateusz Kołacz</span>
+                    <span class="member-tag">Maciej Głowacki</span>
+                    <span class="member-tag">Justyna Krotoszyńska</span>
+                    <span class="member-tag">Kajetan Warmbier</span>
+                    <span class="member-tag">Kacper Jach</span>
+                    <span class="member-tag">Cornelis Puchowicz</span>
+                    <span class="member-tag">Jan Ruczyński</span>
+                    <span class="member-tag">Maria Małasiewicz</span>
+                    <span class="member-tag">Natalia Piankowska</span>
+                    <span class="member-tag">Piotr Jemielita</span>
+                    <span class="member-tag">Urszula Mejer</span>
+                    <span class="member-tag">Łukasz Pisarczyk</span>
+                    <span class="member-tag">Małgorzata Swastek</span>
+                    <span class="member-tag">Marcin Pawelski</span>
+                    <span class="member-tag">Oskar Gajewski</span>
+                    <span class="member-tag">Szymon Pilachowski</span>
+                    <span class="member-tag">Martyna Korzeń</span>
+                    <span class="member-tag">Milan Frąckowiak</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Activity Section -->
+    <section id="activity" class="section">
+        <div class="container">
+            <h2>"DZIAŁALNOŚĆ"</h2>
+            
+            <div class="activity-lead">
+                Koło Naukowe Systemów Informatycznych E-xpert działa na Uniwersytecie Gdańskim (Wydział Zarządzania). Głównym celem jest pogłębianie wiedzy z zakresu technologii informatycznych i metodyk zarządzania projektami IT oraz realizacja praktycznych projektów i szkoleń.
+            </div>
+            
+            <div class="activity-list">
+                <div class="activity-item">
+                    <strong>KONKURSY</strong><br>
+                    Udział w konkursach (Imagine Cup, AIS Student Chapter) — coroczny udział w co najmniej jednym konkursie
+                </div>
+                <div class="activity-item">
+                    <strong>PROJEKTY</strong><br>
+                    Realizacja projektów dla Uniwersytetu Gdańskiego
+                </div>
+                <div class="activity-item">
+                    <strong>SZKOLENIA</strong><br>
+                    Warsztaty zarówno z firmami zewnętrznymi, jak i 'od studentów dla studentów'
+                </div>
+                <div class="activity-item">
+                    <strong>TESTOWANIE</strong><br>
+                    Testowanie rozwiązań z zakresu zarządzania i systemów informatycznych
+                </div>
+                <div class="activity-item">
+                    <strong>POPULARYZACJA</strong><br>
+                    Popularyzacja informatyki i przedsiębiorczości
+                </div>
+            </div>
+            
+            <h3 style="margin-top: 60px;">CELE I MISJA</h3>
+            <ul style="line-height: 2; color: var(--gray);">
+                <li>→ Zdobywanie i pogłębianie wiedzy z technologii informatycznych oraz metodyk zarządzania projektami IT</li>
+                <li>→ Realizacja projektów tworzących oprogramowanie i systemy informatyczne służące społeczeństwu</li>
+                <li>→ Rozwijanie praktycznych umiejętności wytwarzania technologii i zarządzania projektami</li>
+            </ul>
+            
+            <h3 style="margin-top: 60px;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
+            <p>Partner: <strong>MadKom</strong> — Współpraca w zakresie staży i praktyk dla członków koła</p>
+        </div>
+    </section>
+    
+    <!-- Constitution Section -->
+    <section id="constitution" class="section">
+        <div class="container">
+            <h2>"STATUT" KOŁA</h2>
+            <p style="font-size: 18px; margin-bottom: 60px;">
+                Studenckie Koło Naukowe Systemów Informatycznych E-xpert<br>
+                Uniwersytet Gdański, Wydział Zarządzania<br>
+                Sopot, marzec 2014
+            </p>
+            
+            <div class="article">
+                <span class="article-number">1</span>
+                <h3 class="article-title">Postanowienia ogólne</h3>
+                <div class="article-content">
+                    <ul>
+                        <li>Nazwa: Studenckie Koło Naukowe Systemów Informatycznych „E-xpert" działające przy Katedrze Informatyki Ekonomicznej na Wydziale Zarządzania UG</li>
+                        <li>Koło zostało powołane z inicjatywy studentów UG, zgodnie z Ustawą o Szkolnictwie Wyższym i Statutem UG</li>
+                        <li>Siedziba: Uniwersytet Gdański, Wydział Zarządzania, ul. Armii Krajowej 101, 80-824 Sopot</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <span class="article-number">2</span>
+                <h3 class="article-title">Cele działalności Koła</h3>
+                <div class="article-content">
+                    <ul>
+                        <li>Główny cel: zdobywanie wiedzy z dziedziny technologii informatycznych oraz metodyk zarządzania projektem</li>
+                        <li>Koło promuje działalność i osiągnięcia swoich członków</li>
+                        <li>Tworzenie oprogramowania i systemów informatycznych</li>
+                        <li>Poszerzanie praktycznej znajomości technologii informatycznych</li>
+                        <li>Specjalizacja członków w metodykach zarządzania projektami</li>
+                        <li>Organizacja szkoleń, warsztatów i konferencji dotyczących zastosowań informatyki w biznesie</li>
+                        <li>Promocja studentów UG w sektorze firm informatycznych i konsultingowych</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <span class="article-number">3</span>
+                <h3 class="article-title">Formy realizacji celów</h3>
+                <div class="article-content">
+                    <ul>
+                        <li>Oprogramowanie i systemy informatyczne tworzone w ramach projektów</li>
+                        <li>Publikacje wyników badań i osiągnięć Koła</li>
+                        <li>Promocja strony internetowej Koła</li>
+                        <li>Seminaria naukowe i konferencje z zakresu zainteresowań Koła</li>
+                        <li>Referaty i publikacje</li>
+                        <li>Wykłady i szkolenia wewnętrzne</li>
+                        <li>Współpraca z organizacjami naukowymi w kraju i za granicą</li>
+                        <li>Współpraca z innymi kołami UG</li>
+                        <li>Realizacja zleceń na rzecz instytucji gospodarczych</li>
+                        <li>Organizacja praktyk i stypendiów dla studentów</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <span class="article-number">6</span>
+                <h3 class="article-title">Członkostwo</h3>
+                <div class="article-content">
+                    <ul>
+                        <li>Członkami mogą być studenci UG (dzienni, zaoczni, wieczorowi)</li>
+                        <li>Absolwenci współpracujący z Kołem stają się członkami honorowymi</li>
+                        <li>O przyjęciu decyduje Zarząd</li>
+                        <li>Każdy pełnoprawny członek ma jeden głos na Walnym Zgromadzeniu</li>
+                        <li>Członkostwo ustaje przez: rezygnację, decyzję Walnego Zgromadzenia, utratę statusu studenta lub rozwiązanie Koła</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="article">
+                <span class="article-number">9</span>
+                <h3 class="article-title">Zarząd</h3>
+                <div class="article-content">
+                    <ul>
+                        <li>Składa się z prezesa i jednego lub dwóch wiceprezesów</li>
+                        <li>Współpracuje z Opiekunem Naukowym, Dziekanem i Katedrą Informatyki Ekonomicznej</li>
+                        <li>Organizuje i kieruje pracą Koła</li>
+                        <li>Wykonuje uchwały Walnego Zgromadzenia</li>
+                        <li>Wybierany na semestr większością 2/3 głosów</li>
+                        <li>Do kandydowania wymagany jest półroczny staż członkowski</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to clicked link
+            event.target.classList.add('active');
+            
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Add scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const nav = document.querySelector('nav');
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    </script>
+</body>
+</html>

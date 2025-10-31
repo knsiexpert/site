@@ -1,0 +1,256 @@
+{
+  "title": "Nasz zespół",
+  "slug": "nasz-zespol",
+  "content": {
+    "supervisor": "Piotr Porzuczek",
+    "years": [
+      {
+        "year": "2023/24",
+        "board": [
+          "Maciej Szuwarowski – Przewodniczący Koła",
+          "Stanisław Malec – Wiceprzewodniczący"
+        ],
+        "members": [
+          "Oskar Gajewski",
+          "Maciej Jankowski-Tomków",
+          "Aleksandra Pstrong",
+          "Mikołaj Skrzypkowski",
+          "Mateusz Wiącek",
+          "Mateusz Garnowski",
+          "Marcin Kurkowski",
+          "Remigiusz Seklecki",
+          "Adam Moryc",
+          "Fryderyk Szmidt",
+          "Natalia Piankowska",
+          "Nikodem Matlakiewicz",
+          "Marcin Pawelski",
+          "Adrian Sikora",
+          "Julia Herold",
+          "Jakub Karolewicz",
+          "Igor Puścikowski",
+          "Julia Korzeniewska",
+          "Patrycja Stanisławczyk",
+          "Aleksandra Woś",
+          "Maja Kowalik",
+          "Magdalena Pińska"
+        ]
+      },
+      {
+        "year": "2022/23",
+        "board": [
+          "Magdalena Osińska – Przewodniczący Koła",
+          "Mateusz Szreder – Wiceprzewodniczący"
+        ],
+        "members": [
+          "Mateusz Kołacz",
+          "Maciej Głowacki",
+          "Justyna Krotoszyńska",
+          "Kajetan Warmbier",
+          "Kacper Jach",
+          "Cornelis Puchowicz",
+          "Jan Ruczyński",
+          "Maria Małasiewicz",
+          "Natalia Piankowska",
+          "Piotr Jemielita",
+          "Urszula Mejer",
+          "Łukasz Pisarczyk",
+          "Małgorzata Swastek",
+          "Marcin Pawelski",
+          "Oskar Gajewski",
+          "Szymon Pilachowski",
+          "Martyna Korzeń",
+          "Milan Frąckowiak"
+        ]
+      },
+      {
+        "year": "2021/22",
+        "board": [
+          "Justyna Krotoszyńska – Przewodniczący Koła",
+          "Kajetan Warmbier – Wiceprzewodniczący"
+        ],
+        "members": [
+          "Bartosz Czerniak",
+          "Jakub Dudek",
+          "Kacper Jach",
+          "Karol Świątkowski",
+          "Kordian Dziula",
+          "Maciej Głowacki",
+          "Marianna Sinkevich",
+          "Mateusz Kołacz",
+          "Milan Frąckowiak",
+          "Radosław Kulka",
+          "Radosław Szulc",
+          "Dawid Balcerczyk"
+        ]
+      },
+      {
+        "year": "2020/21",
+        "board": [
+          "Weronika Jóźwiak – Przewodniczący Koła",
+          "Jakub Sarnowski – Wiceprzewodniczący"
+        ],
+        "members": [
+          "Damian Goleniewski",
+          "Mateusz Łukasiński",
+          "Daria Łuniewska",
+          "Hubert Kołcz",
+          "Mateusz Kalbarczyk",
+          "Łukasz Szafrański",
+          "Mateusz Kusiak",
+          "Szymon Lewandowski",
+          "Błażej Tempski",
+          "Arkadiusz Wawrzyniak",
+          "Hanna Zhuk",
+          "Irina Frolova",
+          "Damian Jaszewski",
+          "Paweł Szczodrowski",
+          "Paulina Ciach",
+          "Jacek Walczak",
+          "Michał Kwapiński",
+          "Eliza Sinkevich",
+          "Marcin Wiśniewski",
+          "Elena Arbuzova"
+        ]
+      },
+      {
+        "year": "2019/20",
+        "board": [
+          "Jakub Sarnowski – Przewodniczący Koła",
+          "Mateusz Łukasiński – Wiceprzewodniczący",
+          "Łukasz Szafrański – Wiceprzewodniczący"
+        ],
+        "members": [
+          "Damian Goleniewski",
+          "Władysław Grywaczewski",
+          "Weronika Jóźwiak",
+          "Eliza Sinkevich",
+          "Hubert Kołcz",
+          "Stanisław Gardziewicz",
+          "Maciej Królik",
+          "Mateusz Kusiak",
+          "Szymon Lewandowski",
+          "Błażej Tempski",
+          "Arkadiusz Wawrzyniak",
+          "Helena Łomanik",
+          "Tomasz Czarzbon",
+          "Irina Frolova",
+          "Damian Jaszewski",
+          "Paweł Szczodrowski",
+          "Andrzej Raszka",
+          "Jacek Walczak",
+          "Michał Kwapiński",
+          "Lizaveta Kochyna",
+          "Marcin Wiśniewski",
+          "Elena Arbuzova"
+        ],
+        "guests": [
+          "Artur Boniecki (Wydział Filologiczny, UG)",
+          "Piotr Miękus (Wydział Matematyki, Fizyki i Informatyki, UG)"
+        ]
+      },
+      {
+        "year": "2018/19",
+        "board": [
+          "Hubert Kołcz – prezes",
+          "Agata Ziółkowska – wiceprezes",
+          "Adam Ostrowski – wiceprezes"
+        ],
+        "members": [
+          "Elena Arbuzowa",
+          "Wojciech Baczyński",
+          "Alicja Behnka",
+          "Piotr Buczek",
+          "Maciej Choromański",
+          "Paweł Cybulski",
+          "Daniel Czapiewski",
+          "Michał Feld",
+          "Stanisław Gardziewicz",
+          "Damian Goleniewski",
+          "Marika Idczak",
+          "Katarzyna Kowalska",
+          "Piotr Kristowski",
+          "Maciej Królik",
+          "Mateusz Kusiak",
+          "Bartosz Kutkowski",
+          "Michał Kwapiński",
+          "Szymon Lewandowski",
+          "Mateusz Łukasiński",
+          "Krzysztof Orłowski",
+          "Krzysztof Pisarczyk",
+          "Paweł Stożyński",
+          "Janek Szafran",
+          "Łukasz Szafrański",
+          "Sebastian Szymański",
+          "Błażej Tempski",
+          "Arkadiusz Wawrzyniak",
+          "Małgorzata Wróbel",
+          "Sebastian Wrzałek",
+          "Joanna Cieszyńska"
+        ]
+      },
+      {
+        "year": "2017/18",
+        "board": [
+          "Agata Ziółkowska – prezes",
+          "Adam Ostrowski – wiceprezes",
+          "Miłosz Waszewski – wiceprezes"
+        ],
+        "members": [
+          "Krzysztof Orłowski",
+          "Sebastian Szymański",
+          "Paweł Stożyński",
+          "Adrian Świszcz",
+          "Jan Szczęśniewicz",
+          "Michał Kropkowski",
+          "Michał Kwapiński",
+          "Rafał Kostun",
+          "Piotr Kristowski",
+          "Maciej Smyk",
+          "Paweł Cybulski",
+          "Michał Feld",
+          "Jacek Dresler",
+          "Adam Łęgowski",
+          "Jan Szafran",
+          "Maciej Choromański",
+          "Maciej Królik"
+        ]
+      },
+      {
+        "year": "2016/17",
+        "board": [
+          "Adam Ostrowski – prezes",
+          "Krzysztof Orłowski – wiceprezes",
+          "Michał Kwapiński – wiceprezes"
+        ],
+        "members": [
+          "Jacek Dziwisz",
+          "Konrad Jodko",
+          "Rafał Kostun",
+          "Michał Kropkowski",
+          "Adrian Pieper",
+          "Paweł Stożyński",
+          "Jan Szczęśniewicz",
+          "Sebastian Szymański",
+          "Adrian Świszcz",
+          "Miłosz Waszewski"
+        ]
+      },
+      {
+        "year": "2015/16",
+        "board": [
+          "Kamil Wojewski – prezes",
+          "Maciej Kwapiński – wiceprezes",
+          "Szymon Nagórski – wiceprezes"
+        ],
+        "members": [
+          "Piotr Porzuczek",
+          "Piotr Kristowski",
+          "Piotr Małecki",
+          "Krzysztof Orłowski",
+          "Adam Ostrowski",
+          "Aleksander Wierczyński"
+        ]
+      }
+    ]
+  }
+}
