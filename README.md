@@ -1,18 +1,18 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.6.0** | Complete 2025 Design — Fully Dynamic with JSON
+**Wersja: 3.7.0** | Premium 2025 Design — Gradient Hero & Fully Dynamic
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.6.0
+## ✨ Nowe w wersji 3.7.0
 
-- 📦 **Dynamic Footer** — stopka w pełni ładowana z `data/footer.json`
-- 🔧 **Funkcja renderFooter()** — dynamiczne renderowanie całej stopki z JSON
-- 📝 **Separacja danych** — wszystkie treści stopki (brand, nawigacja, kontakt, social, copyright) w JSON
-- 🎨 **CSS attr(data-est)** — label "EST. 2015" pobierany z atrybutu HTML
-- ✅ **Łatwa edycja** — zmiana roku, linków, opisów bez modyfikacji HTML/JS
-- 🏗️ **Konsystencja** — cała strona teraz w 100% dynamiczna (7 plików JSON)
-- 📁 **Nowy plik** — `data/footer.json` z pełną konfiguracją stopki
+- 🎨 **Gradient Hero Title** — czarno-pomarańczowo-złoty gradient z animacją (8s loop)
+- 💪 **Ultra Bold Typography** — font-weight: 900, uppercase, tight spacing
+- 💫 **Drop-shadow Effects** — dual drop-shadow (orange glow + dark shadow)
+- 🌟 **Animated Underline** — 140px orange gradient z pulse animation
+- 🎬 **2 Animations** — gradientShift (background) + pulse (underline)
+- 📱 **Mobile Optimized** — wszystkie efekty zachowane, proporcjonalne rozmiary
+- ✅ **Premium Look** — profesjonalny, dynamiczny, Virgil Abloh style
 
 ## 📁 Struktura projektu
 

@@ -1,5 +1,74 @@
 # Changelog
 
+## [3.7.0] - 2024-10-31
+
+### 🎨 Hero Title — Gradient Text & Premium Typography
+
+#### ✨ Profesjonalny Gradient
+- **Multi-color gradient** — czarny (40%) → pomarańczowy (60%) → złoty (100%)
+- **Background-clip: text** — gradient wypełnia tekst
+- **Animated gradient** — `gradientShift` animation, 8s loop
+- **Background-size: 200%** — gradient przesuwa się w czasie
+
+```css
+background: linear-gradient(135deg, 
+    #1c1b22 0%, #1c1b22 40%, 
+    #ff6b00 60%, #ff8c00 80%, #ffa500 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+```
+
+#### 🎯 Enhanced Typography
+- **Font-weight: 900** — ultra bold (było 700)
+- **Text-transform: uppercase** — ALL CAPS dla impact
+- **Letter-spacing: -0.03em** — tight kerning (było -0.02em)
+- **Line-height: 1.05** — kompaktowy (było 1.1)
+- **Font-family** — dodany 'Arial Black' jako fallback
+
+#### 💫 Drop-shadow Effects
+- **Dual drop-shadow** — pomarańczowy glow + czarny cień
+- **Filter instead of text-shadow** — działa z gradient text
+```css
+filter: drop-shadow(0 4px 12px rgba(255, 107, 0, 0.3))
+        drop-shadow(0 2px 4px rgba(28, 27, 34, 0.2));
+```
+
+#### 🌟 Animated Underline
+- **Szerszy** — 140px (było 120px), 6px height (było 5px)
+- **Orange gradient** — #ff6b00 → #ff8c00 → #ffa500
+- **Pulse animation** — subtleny efekt pulsowania (opacity + scaleX)
+- **Stronger glow** — dual box-shadow z większą intensywnością
+```css
+animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
+```
+
+#### 📱 Mobile Optimized
+- **Font-weight: 900** — również na mobile
+- **Underline 80px** — proporcjonalnie mniejszy (było 50px)
+- **Height 4px** — proporcjonalnie (było 2px)
+- **Gradient zachowany** — działa identycznie na mobile
+
+#### 🎬 Animacje
+**gradientShift** — 8s loop:
+```css
+0%, 100% { background-position: 0% center; }
+50% { background-position: 100% center; }
+```
+
+**pulse** — 2s loop:
+```css
+0%, 100% { opacity: 1; transform: scaleX(1); }
+50% { opacity: 0.8; transform: scaleX(0.95); }
+```
+
+#### 🚀 Rezultat
+- ✅ **Mega profesjonalny** — gradient + ultra bold + uppercase
+- ✅ **Dynamiczny** — animowany gradient + pulsujące podkreślenie
+- ✅ **Premium look** — czarno-pomarańczowo-złoty gradient
+- ✅ **Mocny impact** — weight 900 + tight spacing
+- ✅ **Perfect mobile** — wszystkie efekty zachowane
+- ✅ **Virgil Abloh vibes** — minimalistyczny ale z mocnym akcentem
+
 ## [3.6.0] - 2024-10-31
 
 ### 📦 Dynamic Footer — JSON-Based Configuration
