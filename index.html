@@ -12,12 +12,13 @@
         }
         
         :root {
-            --black: #000;
-            --white: #fff;
+            --black: #1c1b22;
+            --white: #f3f3f7;
             --gray: #808080;
-            --light-gray: #f5f5f5;
+            --light-gray: #e8e8ed;
             --accent: #ff6b00;
             --border: 1px;
+            --surface: #ffffff;
         }
         
         body {
@@ -48,10 +49,12 @@
             top: 0;
             left: 0;
             right: 0;
-            background: var(--white);
+            background: rgba(243, 243, 247, 0.95);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 2px solid var(--black);
             transition: transform 0.3s ease;
+            box-shadow: 0 2px 20px rgba(28, 27, 34, 0.05);
         }
         
         .nav-content {
@@ -135,105 +138,159 @@
             justify-content: center;
             position: relative;
             padding: 140px 0 100px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 300px;
+            background: linear-gradient(180deg, var(--black) 0%, transparent 100%);
+            opacity: 0.02;
+            pointer-events: none;
         }
         
         .hero-content {
             text-align: left;
-            max-width: 1000px;
+            max-width: 1100px;
+            position: relative;
+            z-index: 1;
         }
         
         .hero h1 {
-            font-size: clamp(48px, 10vw, 140px);
+            font-size: clamp(52px, 10vw, 160px);
             font-weight: 700;
-            letter-spacing: -0.03em;
-            margin-bottom: 40px;
+            letter-spacing: -0.04em;
+            margin-bottom: 50px;
             text-transform: uppercase;
-            line-height: 0.95;
+            line-height: 0.9;
+            color: var(--black);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
         }
         
         .hero .subtitle {
-            font-size: 20px;
+            font-size: 22px;
             color: var(--black);
-            margin-bottom: 60px;
-            max-width: 700px;
-            line-height: 1.6;
+            margin-bottom: 70px;
+            max-width: 750px;
+            line-height: 1.7;
             font-weight: 400;
+            opacity: 0.9;
         }
         
         .cta-button {
             display: inline-block;
-            padding: 20px 60px;
-            border: 2px solid var(--black);
+            padding: 22px 70px;
+            border: 3px solid var(--black);
             text-decoration: none;
             color: var(--black);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            transition: all 0.2s;
-            font-size: 11px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 12px;
             position: relative;
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(28, 27, 34, 0.1);
         }
         
         .cta-button:hover {
             background: var(--black);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(28, 27, 34, 0.15);
         }
         
         .cta-button::before {
             content: 'LINK';
             position: absolute;
-            top: -20px;
+            top: -22px;
             left: 0;
-            font-size: 8px;
+            font-size: 9px;
             letter-spacing: 0.2em;
-            opacity: 0.4;
+            opacity: 0.5;
+            font-weight: 700;
         }
         
         /* Highlights Grid */
         .highlights-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2px;
-            margin: 100px 0;
+            gap: 3px;
+            margin: 120px 0 80px;
             background: var(--black);
+            padding: 3px;
         }
         
         .highlight-card {
-            background: var(--white);
-            padding: 50px 40px;
-            transition: all 0.2s;
+            background: var(--surface);
+            padding: 60px 45px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            border: 1px solid var(--light-gray);
         }
         
         .highlight-card::before {
             content: attr(data-index);
             position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 10px;
+            top: 25px;
+            right: 25px;
+            font-size: 11px;
             letter-spacing: 0.2em;
-            opacity: 0.3;
+            opacity: 0.4;
             font-weight: 700;
+            color: var(--black);
+            transition: all 0.3s;
+        }
+        
+        .highlight-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 2px solid var(--black);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
         }
         
         .highlight-card:hover {
             background: var(--black);
             color: var(--white);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(28, 27, 34, 0.15);
+        }
+        
+        .highlight-card:hover::before {
+            color: var(--white);
+            opacity: 0.6;
+        }
+        
+        .highlight-card:hover::after {
+            opacity: 1;
         }
         
         .highlight-card h3 {
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 15px;
+            margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 700;
-            line-height: 1.4;
+            line-height: 1.5;
+            color: inherit;
         }
         
         .highlight-card p {
             color: inherit;
-            line-height: 1.7;
-            font-size: 14px;
+            line-height: 1.8;
+            font-size: 15px;
+            opacity: 0.85;
+        }
+        
+        .highlight-card:hover p {
+            opacity: 0.95;
         }
         
         /* Typography */
@@ -319,12 +376,13 @@
         }
         
         .team-member {
-            padding: 12px 24px;
-            background: var(--white);
+            padding: 14px 26px;
+            background: var(--surface);
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 500;
+            border: 1px solid var(--light-gray);
         }
         
         @media (max-width: 768px) {
@@ -356,22 +414,23 @@
         
         .timeline-item {
             position: relative;
-            margin-bottom: 80px;
-            padding: 40px;
-            border: 2px solid var(--black);
-            background: var(--white);
+            margin-bottom: 90px;
+            padding: 50px;
+            border: 3px solid var(--black);
+            background: var(--surface);
+            box-shadow: 0 4px 20px rgba(28, 27, 34, 0.06);
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -91px;
-            top: 40px;
-            width: 20px;
-            height: 20px;
+            left: -92px;
+            top: 50px;
+            width: 22px;
+            height: 22px;
             background: var(--black);
-            border: 4px solid var(--white);
-            box-shadow: 0 0 0 2px var(--black);
+            border: 5px solid var(--white);
+            box-shadow: 0 0 0 2px var(--black), 0 2px 8px rgba(28, 27, 34, 0.15);
         }
         
         .timeline-year {
@@ -433,6 +492,7 @@
             padding: 50px;
             margin-bottom: 2px;
             position: relative;
+            box-shadow: 0 4px 20px rgba(28, 27, 34, 0.15);
         }
         
         .team-board::before {
@@ -442,7 +502,8 @@
             left: 15px;
             font-size: 9px;
             letter-spacing: 0.2em;
-            opacity: 0.4;
+            opacity: 0.5;
+            color: var(--white);
         }
         
         .team-board p {
@@ -459,40 +520,47 @@
         }
         
         .member-tag {
-            background: var(--white);
+            background: var(--surface);
             padding: 20px 30px;
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 500;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid var(--light-gray);
         }
         
         .member-tag:hover {
             background: var(--black);
             color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(28, 27, 34, 0.1);
+            border-color: var(--black);
         }
         
         /* Constitution */
         .article {
-            margin-bottom: 80px;
-            padding: 50px;
-            border: 2px solid var(--black);
+            margin-bottom: 90px;
+            padding: 55px;
+            border: 3px solid var(--black);
             position: relative;
+            background: var(--surface);
+            box-shadow: 0 4px 25px rgba(28, 27, 34, 0.06);
         }
         
         .article-number {
             position: absolute;
-            top: -20px;
-            left: 50px;
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
+            top: -22px;
+            left: 55px;
+            width: 65px;
+            height: 65px;
+            line-height: 65px;
             text-align: center;
             background: var(--black);
             color: var(--white);
             font-weight: 700;
-            font-size: 24px;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(28, 27, 34, 0.2);
         }
         
         .article-title {
@@ -529,24 +597,26 @@
         
         /* Activities */
         .activity-lead {
-            font-size: 18px;
-            margin-bottom: 60px;
-            padding: 50px;
-            border: 2px solid var(--black);
-            background: var(--white);
-            line-height: 1.8;
+            font-size: 19px;
+            margin-bottom: 70px;
+            padding: 55px;
+            border: 3px solid var(--black);
+            background: var(--surface);
+            line-height: 1.9;
             position: relative;
+            box-shadow: 0 6px 30px rgba(28, 27, 34, 0.08);
         }
         
         .activity-lead::before {
             content: 'O NAS';
             position: absolute;
-            top: 15px;
-            left: 15px;
-            font-size: 9px;
+            top: 18px;
+            left: 18px;
+            font-size: 10px;
             letter-spacing: 0.2em;
-            opacity: 0.3;
+            opacity: 0.4;
             font-weight: 700;
+            color: var(--black);
         }
         
         .activity-list {
@@ -557,21 +627,29 @@
         }
         
         .activity-item {
-            padding: 40px;
-            background: var(--white);
-            transition: all 0.2s;
+            padding: 45px;
+            background: var(--surface);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            border: 1px solid var(--light-gray);
         }
         
         .activity-item strong {
             display: block;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             font-size: 12px;
             letter-spacing: 0.15em;
+            color: var(--black);
         }
         
         .activity-item:hover {
             background: var(--black);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(28, 27, 34, 0.12);
+        }
+        
+        .activity-item:hover strong {
             color: var(--white);
         }
         
@@ -681,39 +759,43 @@
         
         /* Quotes */
         .quote {
-            font-size: 28px;
+            font-size: 32px;
             font-style: normal;
-            margin: 100px 0;
-            padding: 80px 60px;
+            margin: 120px 0;
+            padding: 90px 70px;
             border: 3px solid var(--black);
             position: relative;
-            line-height: 1.5;
+            line-height: 1.6;
             font-weight: 500;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
+            background: var(--surface);
+            box-shadow: 0 10px 60px rgba(28, 27, 34, 0.08);
         }
         
         .quote::before {
             content: 'STATEMENT';
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 25px;
+            left: 25px;
             font-size: 10px;
             letter-spacing: 0.2em;
-            opacity: 0.3;
+            opacity: 0.4;
             font-weight: 700;
+            color: var(--black);
         }
         
         .quote::after {
             content: '';
             position: absolute;
-            bottom: -10px;
-            right: -10px;
-            width: 100px;
-            height: 100px;
+            bottom: -12px;
+            right: -12px;
+            width: 120px;
+            height: 120px;
             border: 3px solid var(--black);
             border-top: none;
             border-left: none;
             z-index: -1;
+            background: var(--white);
         }
     </style>
 </head>
@@ -998,8 +1080,7 @@
             // Add SVG logo with home link
             logoContainer.innerHTML = `
                 <a href="#home" style="display: flex; align-items: center; gap: 20px; text-decoration: none; color: inherit;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="767" viewBox="0 0 1024 767"><g stroke="#000"><path d="M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18Z"/></g></svg>
-                    <span>${data.site.short_name}</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="767" viewBox="0 0 1024 767"><g stroke="#000"><path d="M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18ZM504 447l-1 1h-2l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-1 1v1l-4 4v1l-1 1v1l-1 1v1l-1 1v2l-1 1v2l-1 1v15l1 1v2l1 1v2l1 1v1l1 1v1l1 1v1l3 3v1l4 4h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h6l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l7-7v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-2-2h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM614 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v2l-1 1v2l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l3 3h1l2 2h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-4l-1-1ZM404 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v1l-1 1v3l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-2l1-1v-9l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-3l-1-1ZM659 292l-1 1h-3l-1 1h-2l-1 1h-1l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v6l1 1v4l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l3 3h1l1 1h1l1 1h2l1 1h2l1 1h5l1 1h4l1-1h6l1-1h2l1-1h2l1-1h1l1-1h1l3-3h1l6-6v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-10l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-1-1h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM351 292l-1 1h-3l-1 1h-1l-1 1h-2l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v5l1 1v5l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h5l1 1h5l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-11l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-3-3v-1l-2-2h-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM450 261l-1 1h-1l-1 1v1l-1 1v8l1 1v1l1 1v1l3 3v1l13 13v1l15 15v1l15 15v1l1 1v6l-6 6v1l-5 5v1l-6 6v1l-5 5v1l-5 5v1l-6 6v1l-5 5v1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v4l1 1v1l2 2h1l1 1h61l1-1h49l1 1v-21h-75l-1-1v-4l1-1v-1l5-5v-1l5-5v-1l5-5v-1l4-4v-1l5-5v-1l4-4v-1l3-3v-1l1-1v-1l1-1v-5l-1-1v-1l-1-1v-1l-2-2v-1l-7-7v-1l-8-8v-1l-9-9v-1l-8-8v-4l1-1h77v-20ZM611 193l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v9l1 1v3l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l1-1h1l5-5v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-2-2v-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1ZM401 193l-1 1h-2l-1 1h-1l-1 1h-1l-2 2h-1l-2 2v1l-3 3v1l-1 1v2l-1 1v2l-1 1v8l1 1v2l1 1v2l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h12l1-1h2l1-1h1l1-1h1l7-7v-1l1-1v-1l1-1v-1l1-1v-5l1-1v-2l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-6-6h-1l-2-2h-1l-1-1h-3l-1-1ZM504 143l-1 1h-3l-1 1h-1l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-2 2v1l-3 3v1l-1 1v1l-1 1v1l-1 1v1l-1 1v3l-1 1v15l1 1v3l1 1v1l1 1v2l2 2v1l2 2v1l5 5h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h7l1-1h4l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-3-3h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1Z"/></g></svg>                    <span>${data.site.short_name}</span>
                 </a>
             `;
             

@@ -14,17 +14,23 @@ Strona została przeprojektowana w stylu **Virgila Abloha** — minimalistycznym
 
 ### 2. **Kolory**
 ```css
---black: #000     /* Główny kolor */
---white: #fff     /* Tło */
---gray: #808080   /* Tekst pomocniczy */
+--black: #1c1b22     /* Soft dark (główny) */
+--white: #f3f3f7     /* Warm light (tło) */
+--surface: #ffffff   /* Czyste białe (karty) */
+--gray: #808080      /* Tekst pomocniczy */
+--light-gray: #e8e8ed /* Subtle borders */
 ```
 
-**Bez gradientów, tylko czysty czarno-biały kontrast.**
+**Refined palette:** Zamiast ostrego czarno-białego, używamy soft dark i warm light dla lepszego kontrastu i profesjonalnego wyglądu.
 
 ### 3. **Grid System**
-- **2px gaps** zamiast przestrzeni — tworzy charakterystyczną siatkę
+- **2-3px gaps** zamiast przestrzeni — tworzy charakterystyczną siatkę
 - Czarne linie separujące elementy
-- Hover effects — inwersja kolorów (czarny ↔ biały)
+- **Hover effects:**
+  - Inwersja kolorów (czarny ↔ biały)
+  - Transform: `translateY(-3px)` do `translateY(-5px)`
+  - Box shadows dla depth
+  - Smooth transitions z `cubic-bezier(0.4, 0, 0.2, 1)`
 
 ### 4. **Labels & Instructions** (signature Virgil)
 - Małe etykiety w górnych rogach: "ZARZĄD", "STATEMENT", "O NAS", "LINK"
@@ -32,10 +38,14 @@ Strona została przeprojektowana w stylu **Virgila Abloha** — minimalistycznym
 - `letter-spacing: 0.2em`
 - `opacity: 0.3-0.4`
 
-### 5. **Borders**
-- Grube, wyraźne: `2px` i `3px solid`
-- Boxed elements zamiast cieni
-- Industrial, surowy look
+### 5. **Borders & Shadows**
+- Grube, wyraźne borders: `2px` i `3px solid`
+- **Box shadows** dla depth i premium feel:
+  - Subtle: `0 4px 20px rgba(28, 27, 34, 0.06)`
+  - Medium: `0 6px 30px rgba(28, 27, 34, 0.08)`
+  - Strong (hover): `0 10px 40px rgba(28, 27, 34, 0.15)`
+- Gradient backgrounds dla hero
+- Industrial look z premium touch
 
 ## Komponenty
 

@@ -3,6 +3,32 @@
   "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła tworzyli rozwiązania społeczne, takie jak SafeWatch, CyberWatch, Unity, Your Guard i mobileWZR.",
   "projects": [
     {
+      "name": "Modernizacja Strony Internetowej Koła",
+      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem inspirowanym estetyką Virgil Abloh. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "team": [
+        "Wspólny wysiłek zespołów 2023/24 i 2024/25"
+      ],
+      "year": 2025,
+      "achievements": [
+        "Porzucenie WordPress na rzecz GitHub Pages",
+        "Migracja z CMS na statyczną stronę z JSON",
+        "Dynamiczny system zarządzania treścią (JSON)",
+        "Implementacja hash routing dla lepszej nawigacji",
+        "Nowoczesny design system z paletą #1c1b22/#f3f3f7",
+        "Automatyczne i manualne deployment workflows",
+        "Zero kosztów hostingu dzięki GitHub Pages"
+      ],
+      "technologies": [
+        "HTML5/CSS3",
+        "Vanilla JavaScript",
+        "GitHub Pages",
+        "GitHub Actions",
+        "JSON Data Structure",
+        "Hash-based Routing"
+      ],
+      "images": []
+    },
+    {
       "name": "SocialMonitor",
       "description": "Wtyczka SocialMonitor służy do ukrywania reakcji pod materiałami w mediach społecznościowych. Jej celem jest zniwelowanie skutków ubocznych korzystania z social mediów (presja społeczna, depresja, zaburzenia odżywiania). Dzięki temu użytkownicy mogą wyrażać opinie bez wpływu liczby polubień, a serduszka czy lajki są ukryte.",
       "team": ["Justyna Krotoszyńska", "Kajetan Warmbier", "Kacper Jach"],

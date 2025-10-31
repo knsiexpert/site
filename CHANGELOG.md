@@ -1,5 +1,43 @@
 # Changelog
 
+## [2.3.0] - 2024-10-31
+
+### 🎨 Refined Color Palette & Enhanced Styling
+
+- **Nowe kolory:**
+  - Zamiast `#000` → `#1c1b22` (soft dark)
+  - Zamiast `#fff` → `#f3f3f7` (warm light)
+  - Dodano `--surface: #ffffff` dla kart
+  - Dodano `--light-gray: #e8e8ed`
+  
+- **Home Page Improvements:**
+  - Gradient background dla hero section
+  - Większe fonty (h1 do 160px)
+  - Shadow effects i subtle overlays
+  - Lepsze spacing (120px margins)
+  - Enhanced CTA button z animacją i cieniem
+  
+- **Highlight Cards:**
+  - Białe tło (`--surface`)
+  - Borders i subtle shadows
+  - Lepsze hover effects z transform
+  - Zwiększony padding (60px)
+  
+- **Quote Section:**
+  - Większy font (32px)
+  - Box shadows dla depth
+  - Lepsze spacing
+  
+- **Navigation:**
+  - Backdrop blur z opacity
+  - Subtle shadow
+  
+- **Wszystkie karty:**
+  - Smooth transitions (cubic-bezier)
+  - Transform on hover
+  - Consistent shadows
+  - Białe tło z borderami
+
 ## [2.2.0] - 2024-10-31
 
 ### 🔗 Hash Routing
