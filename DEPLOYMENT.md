@@ -1,10 +1,10 @@
 # Instrukcja wdrożenia na GitHub Pages
 
-## Krok po kroku
+## 🚀 Automatyczny deployment (ZALECANE)
+
+Projekt jest skonfigurowany z **GitHub Actions** do automatycznego deploymentu!
 
 ### 1. Przygotowanie repozytorium
-
-Jeśli nie masz jeszcze repozytorium GitHub:
 
 ```bash
 # Inicjalizacja git (jeśli jeszcze nie zrobione)
@@ -41,18 +41,101 @@ git push -u origin main
 ### 4. Aktywacja GitHub Pages
 
 1. Przejdź do swojego repozytorium na GitHub
-2. Kliknij **Settings** (ustawienia)
-3. Z lewego menu wybierz **Pages**
-4. W sekcji "Source":
-   - Branch: wybierz **main**
-   - Folder: wybierz **/ (root)**
-5. Kliknij **Save**
+2. Kliknij **Settings** → **Pages**
+3. W sekcji "Build and deployment":
+   - Source: wybierz **GitHub Actions**
+4. To wszystko! 🎉
 
-### 5. Gotowe!
+### 5. Automatyczny deployment
 
-Po kilku minutach Twoja strona będzie dostępna pod adresem:
+Od teraz przy każdym `git push` do `main`:
+- GitHub Actions automatycznie zbuduje i wdroży stronę
+- Zobacz status w zakładce **Actions** na GitHub
+- Strona będzie dostępna pod: `https://YOUR_USERNAME.github.io/knmiexpert/`
+
+---
+
+## 📦 Ręczny deployment z npm (ALTERNATYWA)
+
+Jeśli wolisz ręczny deployment:
+
+### 1. Instalacja zależności
+
+```bash
+npm install
 ```
-https://YOUR_USERNAME.github.io/knmiexpert/
+
+### 2. Deploy
+
+```bash
+npm run deploy
+```
+
+Gotowe! Skrypt automatycznie:
+- Utworzy branch `gh-pages`
+- Skopiuje pliki
+- Wypchnę na GitHub
+- Strona będzie dostępna za kilka minut
+
+### 3. Aktualizacja w przyszłości
+
+```bash
+# Wprowadź zmiany w plikach
+git add .
+git commit -m "Update content"
+git push
+
+# Deploy na GitHub Pages
+npm run deploy
+```
+
+---
+
+## 📝 Oba podejścia
+
+### GitHub Actions (Automatyczny) ✅ ZALECANE
+**Zalety:**
+- ✅ W pełni automatyczny
+- ✅ Deploy przy każdym push
+- ✅ Nie wymaga npm/node lokalnie
+- ✅ Widoczny status w Actions
+
+**Wady:**
+- ❌ Wymaga konfiguracji Settings
+
+### npm gh-pages (Ręczny)
+**Zalety:**
+- ✅ Pełna kontrola
+- ✅ Deploy tylko gdy chcesz
+- ✅ Działa offline
+
+**Wady:**
+- ❌ Wymaga npm/node
+- ❌ Trzeba pamiętać o `npm run deploy`
+
+---
+
+## 🔧 Konfiguracja
+
+### Zmiana URL w package.json
+
+Jeśli Twoje repo ma inną nazwę:
+
+```json
+{
+  "homepage": "https://YOUR_USERNAME.github.io/YOUR_REPO_NAME"
+}
+```
+
+### Zmiana brancha w workflow
+
+Edytuj `.github/workflows/deploy.yml`:
+
+```yaml
+on:
+  push:
+    branches:
+      - main  # zmień na inny branch jeśli potrzeba
 ```
 
 ## Aktualizacja strony

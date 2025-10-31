@@ -31,6 +31,8 @@ Witaj w dokumentacji strony KNSI E-XPERT!
 ### Konfiguracja
 - `.gitignore` - Pliki ignorowane przez git
 - `_config.yml` - Konfiguracja GitHub Pages
+- `package.json` - Konfiguracja npm i deployment
+- `.github/workflows/deploy.yml` - GitHub Actions workflow
 
 ## 📖 Przewodniki krok po kroku
 

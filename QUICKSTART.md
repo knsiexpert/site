@@ -33,13 +33,13 @@ data/
 
 ## 3️⃣ Deployment na GitHub Pages
 
-### A) Jeśli NIE masz jeszcze repozytorium:
+### Metoda 1: Automatyczny (GitHub Actions) ✅ ZALECANE
 
 ```bash
-# Inicjalizacja
+# Inicjalizacja i push
 git init
 git add .
-git commit -m "Initial commit"
+git commit -m "Initial commit - KNSI E-XPERT website"
 
 # Połączenie z GitHub (zastąp YOUR_USERNAME)
 git remote add origin https://github.com/YOUR_USERNAME/knmiexpert.git
@@ -47,20 +47,24 @@ git branch -M main
 git push -u origin main
 ```
 
-### B) Jeśli MAM już repozytorium:
+**Następnie na GitHub:**
+1. Settings → Pages
+2. Source: **GitHub Actions**
+3. Gotowe! 🎉
+
+Od teraz każdy `git push` automatycznie wdroży stronę!
+
+### Metoda 2: Ręczny deployment z npm
 
 ```bash
-git add .
-git commit -m "Update website with JSON data structure"
-git push
+# Instalacja
+npm install
+
+# Deploy
+npm run deploy
 ```
 
-### C) Aktywacja GitHub Pages:
-
-1. Idź do: **Settings** → **Pages**
-2. Source: **main** branch, **/ (root)** folder
-3. Kliknij **Save**
-4. Gotowe! Strona będzie na: `https://YOUR_USERNAME.github.io/knmiexpert/`
+Gotowe! Strona będzie na: `https://YOUR_USERNAME.github.io/knmiexpert/`
 
 ## 4️⃣ Aktualizacja strony w przyszłości
 

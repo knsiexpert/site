@@ -21,24 +21,25 @@ site/
 
 ### Lokalne uruchomienie
 
-Aby uruchomić stronę lokalnie, potrzebujesz prostego serwera HTTP (pliki JSON nie mogą być ładowane bezpośrednio z systemu plików z powodu ograniczeń CORS).
+Strona wymaga serwera HTTP (pliki JSON nie mogą być ładowane bezpośrednio z systemu plików).
 
-**Opcja 1: Python 3**
+**Opcja 1: NPM (zalecane)**
+```bash
+npm install  # tylko pierwszy raz
+npm start
+```
+
+**Opcja 2: Python 3**
 ```bash
 python -m http.server 8000
 ```
 
-**Opcja 2: Node.js (npx)**
+**Opcja 3: Node.js (npx)**
 ```bash
 npx http-server -p 8000
 ```
 
-**Opcja 3: PHP**
-```bash
-php -S localhost:8000
-```
-
-Następnie otwórz przeglądarkę i przejdź do: `http://localhost:8000`
+Następnie otwórz: `http://localhost:8000`
 
 ### Edycja treści
 
@@ -53,59 +54,72 @@ Wszystkie treści strony znajdują się w plikach JSON w katalogu `data/`. Wysta
 
 ## 🌐 Deployment na GitHub Pages
 
-### Krok 1: Utwórz repozytorium
-
-1. Utwórz nowe repozytorium na GitHub (np. `knmiexpert.github.io`)
-2. Skopiuj wszystkie pliki do repozytorium
-
-### Krok 2: Commit i Push
+### Metoda 1: Automatyczny (GitHub Actions) ✅ ZALECANE
 
 ```bash
 git init
 git add .
 git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/TWOJ_USERNAME/knmiexpert.github.io.git
+git remote add origin https://github.com/YOUR_USERNAME/knmiexpert.git
 git push -u origin main
 ```
 
-### Krok 3: Włącz GitHub Pages
+**Na GitHub:**
+1. Settings → Pages
+2. Source: **GitHub Actions**
+3. Gotowe! 🎉
 
-1. Przejdź do Settings → Pages w swoim repozytorium
-2. W sekcji "Source" wybierz **main** branch
-3. Kliknij "Save"
-4. Strona będzie dostępna pod adresem: `https://TWOJ_USERNAME.github.io/knmiexpert/`
+Przy każdym `git push` strona automatycznie się zaktualizuje!
 
-### Opcja: Własna domena
+### Metoda 2: Ręczny deployment z npm
 
-Jeśli masz własną domenę:
-1. Utwórz plik `CNAME` w głównym katalogu
-2. Wpisz w nim swoją domenę (np. `e-xpert.pl`)
-3. Skonfiguruj DNS u swojego dostawcy domeny
+```bash
+npm install
+npm run deploy
+```
 
-## 🎨 Dostosowanie
+### Szczegóły
+
+Zobacz pełną instrukcję: [DEPLOYMENT.md](DEPLOYMENT.md)
+
+### Własna domena
+
+1. Utwórz plik `CNAME` z nazwą domeny
+2. Skonfiguruj DNS
+3. W GitHub: Settings → Pages → Custom domain
+
+## 🎨 Design
+
+Strona wykorzystuje design inspirowany **Virgilem Ablohem** — minimalizmem, industrial aesthetic i funkcjonalnością.
+
+### Kluczowe elementy:
+- **Helvetica** jako główna czcionka
+- **Czarno-biały** kontrast bez gradientów
+- **2px gaps** w gridach (charakterystyczny dla Off-White™)
+- **Labels** i instrukcje (STATEMENT, ZARZĄD, LINK, etc.)
+- **Bold typography** z uppercase dla nagłówków
+- **Numbering system** (01, 02, 03...) w kartach
+- **Logo SVG** zintegrowane w nawigację
+
+Więcej szczegółów: [DESIGN_NOTES.md](DESIGN_NOTES.md)
 
 ### Kolory
-
-Kolory są zdefiniowane w zmiennych CSS na początku pliku `index.html`:
 
 ```css
 :root {
     --black: #000;
     --white: #fff;
-    --gray: #999;
+    --gray: #808080;
     --light-gray: #f5f5f5;
-    --accent: #ff6b00;
 }
 ```
 
 ### Czcionki
 
-Domyślnie używana jest czcionka `Helvetica Neue`. Można ją zmienić w:
-
 ```css
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: -0.02em;
 }
 ```
 

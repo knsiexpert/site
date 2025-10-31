@@ -1,5 +1,39 @@
 # Changelog
 
+## [2.1.0] - 2024-10-31
+
+### 🎨 Redesign w stylu Virgila Abloha
+
+- **Nowy design** inspirowany Virgilem Ablohem i Off-White™
+- **Logo SVG** zintegrowane w nawigację
+- **Industrial aesthetic:**
+  - 2px gaps w gridach (charakterystyczny element)
+  - Bold borders (2px, 3px solid)
+  - Czarno-białe kontrasty
+- **Labels i instrukcje** w stylu Virgila:
+  - "STATEMENT", "ZARZĄD", "O NAS", "LINK"
+  - Małe, uppercase, semi-transparent
+- **Typography:**
+  - Helvetica jako główna czcionka
+  - Bold, uppercase headings (72px-140px)
+  - Tight letter-spacing (-0.02em)
+- **Numbering system** (01, 02, 03...) w highlight cards
+- **Hover effects** — inwersja czarny/biały
+- **Sticky elements** — rok w projektach
+- **Responsive design** dostosowany do mobile
+
+### 📦 Deployment
+- **GitHub Actions** workflow dla automatycznego deploymentu
+- **package.json** z npm scripts
+- **gh-pages** support dla ręcznego deploymentu
+- Dwie metody deployment: automatyczny i ręczny
+
+### 📦 Nowe pliki
+- `DESIGN_NOTES.md` - Szczegółowa dokumentacja designu
+- `package.json` - Konfiguracja npm
+- `.github/workflows/deploy.yml` - GitHub Actions workflow
+- `NPM_GUIDE.md` - Przewodnik npm
+
 ## [2.0.0] - 2024-10-31
 
 ### ✨ Nowe funkcje

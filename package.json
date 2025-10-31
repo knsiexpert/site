@@ -1,0 +1,38 @@
+{
+  "name": "knsi-e-xpert-website",
+  "version": "2.1.0",
+  "description": "KNSI E-XPERT — IT DLA LUDZI. Strona Koła Naukowego Systemów Informatycznych E-XPERT",
+  "homepage": "https://pporzuczek.github.io/knmiexpert",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000",
+    "predeploy": "echo Preparing for deployment...",
+    "deploy": "gh-pages -d .",
+    "deploy:clean": "gh-pages -d . --remove \"*.md\" --add"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pporzuczek/knmiexpert.git"
+  },
+  "keywords": [
+    "knsi",
+    "e-xpert",
+    "student-organization",
+    "university-of-gdansk",
+    "ais-sc",
+    "website"
+  ],
+  "author": "KNSI E-XPERT",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pporzuczek/knmiexpert/issues"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}
+
