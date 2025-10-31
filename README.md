@@ -1,18 +1,18 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.4.2** | Mobile-First 2025 Design — Perfect Navigation
+**Wersja: 3.6.0** | Complete 2025 Design — Fully Dynamic with JSON
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.4.2
+## ✨ Nowe w wersji 3.6.0
 
-- 🍔 **Hamburger menu działa** — naprawione nazwy klas i funkcja toggleMenu()
-- 🎨 **Animacja X** — hamburger przekształca się w X z płynną animacją (transform rotate)
-- 📜 **Scroll to top** — przy zmianie sekcji automatyczny smooth scroll do góry
-- 🔄 **Auto-close menu** — mobile menu zamyka się po kliknięciu w link
-- 📱 **Max-height animation** — płynne rozwijanie/zwijanie menu (0 → 500px)
-- 🎯 **Treść nie przykryta** — navigation fixed + scroll fix dla wszystkich sekcji
-- ✅ **Perfect UX** — intuicyjna nawigacja na mobile i desktop
+- 📦 **Dynamic Footer** — stopka w pełni ładowana z `data/footer.json`
+- 🔧 **Funkcja renderFooter()** — dynamiczne renderowanie całej stopki z JSON
+- 📝 **Separacja danych** — wszystkie treści stopki (brand, nawigacja, kontakt, social, copyright) w JSON
+- 🎨 **CSS attr(data-est)** — label "EST. 2015" pobierany z atrybutu HTML
+- ✅ **Łatwa edycja** — zmiana roku, linków, opisów bez modyfikacji HTML/JS
+- 🏗️ **Konsystencja** — cała strona teraz w 100% dynamiczna (7 plików JSON)
+- 📁 **Nowy plik** — `data/footer.json` z pełną konfiguracją stopki
 
 ## 📁 Struktura projektu
 
@@ -25,7 +25,9 @@ site/
 │   ├── goals.json     # Cele i osiągnięcia
 │   ├── team.json      # Zespół
 │   ├── activity.json  # Działalność
-│   └── constitution.json # Statut
+│   ├── constitution.json # Statut
+│   └── footer.json    # Stopka (brand, kontakt, social)
+├── package.json       # Konfiguracja npm
 └── README.md          # Ten plik
 ```
 

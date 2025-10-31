@@ -1,0 +1,80 @@
+{
+  "brand": {
+    "name": "KOŁO NAUKOWE<br>SYSTEMÓW INFORMATYCZNYCH<br>E‑XPERT",
+    "description": "Tworzymy rozwiązania IT, które zmieniają rzeczywistość. Od lat łączymy pasję do technologii z praktycznym działaniem.",
+    "year": "2025",
+    "established": ""
+  },
+  "navigation": {
+    "title": "Nawigacja",
+    "links": [
+      { "title": "Start", "section": "home" },
+      { "title": "Projekty", "section": "projects" },
+      { "title": "Cele i misja", "section": "goals" },
+      { "title": "Zespół", "section": "team" },
+      { "title": "Działalność", "section": "activity" },
+      { "title": "Statut", "section": "constitution" }
+    ]
+  },
+  "contact": {
+    "title": "Kontakt",
+    "links": [
+      {
+        "title": "knsi.expert@ug.edu.pl",
+        "url": "mailto:knsi.expert@ug.edu.pl",
+        "external": false
+      },
+      {
+        "title": "Uniwersytet Gdański",
+        "url": "https://ug.edu.pl",
+        "external": true
+      },
+      {
+        "title": "Wydział WZR",
+        "url": "https://wzr.ug.edu.pl",
+        "external": true
+      }
+    ]
+  },
+  "social": {
+    "title": "Social Media",
+    "platforms": [
+      {
+        "name": "GitHub",
+        "code": "GH",
+        "url": "https://github.com/knsiexpert"
+      },
+      {
+        "name": "Facebook",
+        "code": "FB",
+        "url": "https://facebook.com/knsiexpert"
+      },
+      {
+        "name": "LinkedIn",
+        "code": "IN",
+        "url": "https://linkedin.com/company/knsi-expert"
+      },
+      {
+        "name": "Instagram",
+        "code": "IG",
+        "url": "https://instagram.com/knsi_expert"
+      }
+    ]
+  },
+  "bottom": {
+    "copyright": "© 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA",
+    "credits": [
+      {
+        "title": "OPEN SOURCE",
+        "url": "https://github.com/knsiexpert/site",
+        "external": true
+      },
+      {
+        "title": "GITHUB PAGES",
+        "url": "#home",
+        "external": false
+      }
+    ]
+  }
+}
+

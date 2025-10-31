@@ -182,6 +182,7 @@
         .hero-content {
             text-align: left;
             max-width: 1200px;
+            width: 100vw;
             position: relative;
             z-index: 1;
             padding: 80px 70px;
@@ -917,6 +918,158 @@
             top: 0;
         }
         
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 0 40px;
+            margin-top: 150px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: attr(data-est);
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            font-weight: 700;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+        
+        .footer-brand h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+        
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+        
+        .footer-year {
+            display: inline-block;
+            padding: 15px 30px;
+            border: 2px solid var(--white);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-year:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        
+        .footer-section h4 {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+        
+        .footer-social a:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+        
+        .footer-bottom p {
+            letter-spacing: 0.05em;
+        }
+        
+        .footer-credits {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .footer-credits a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .footer-credits a:hover {
+            opacity: 1;
+        }
+        
         /* Quotes */
         .quote {
             font-size: 32px;
@@ -961,6 +1114,12 @@
         /* ===========================================
            MOBILE RESPONSIVE STYLES
            =========================================== */
+
+        @media (max-width: 1200px) {
+            .hero-content {
+                width: 100%;
+            }
+        }
         
         @media (max-width: 768px) {
             /* Base */
@@ -1058,6 +1217,7 @@
                 padding: 25px 18px;
                 border-left: 3px solid var(--accent);
                 border-radius: 2px;
+                width: auto;
             }
             
             .hero h1 {
@@ -1426,6 +1586,81 @@
                 right: -10px;
                 border-width: 2px;
             }
+            
+            /* Footer */
+            footer {
+                padding: 60px 0 30px;
+                margin-top: 80px;
+            }
+            
+            footer::before {
+                font-size: 8px;
+                top: 20px;
+                left: 16px;
+            }
+            
+            .footer-content {
+                padding: 0 16px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+            
+            .footer-brand h3 {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+            
+            .footer-brand p {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+            
+            .footer-year {
+                padding: 12px 24px;
+                font-size: 24px;
+                margin-top: 15px;
+            }
+            
+            .footer-section h4 {
+                font-size: 10px;
+                margin-bottom: 18px;
+            }
+            
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+            
+            .footer-links a {
+                font-size: 13px;
+            }
+            
+            .footer-social {
+                gap: 12px;
+                margin-top: 15px;
+            }
+            
+            .footer-social a {
+                width: 36px;
+                height: 36px;
+                font-size: 11px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding-top: 30px;
+                font-size: 11px;
+            }
+            
+            .footer-credits {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -1719,6 +1954,62 @@
             `;
         }
         
+        // Render footer
+        async function renderFooter() {
+            const data = await loadJSON('footer.json');
+            if (!data) return;
+            
+            const footer = document.querySelector('footer .footer-content');
+            footer.innerHTML = `
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>${data.brand.name}</h3>
+                        <p>${data.brand.description}</p>
+                        <div class="footer-year">${data.brand.year}</div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.navigation.title}</h4>
+                        <ul class="footer-links">
+                            ${data.navigation.links.map(link => `
+                                <li><a href="#${link.section}" onclick="showSection('${link.section}'); return false;">${link.title}</a></li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.contact.title}</h4>
+                        <ul class="footer-links">
+                            ${data.contact.links.map(link => `
+                                <li><a href="${link.url}"${link.external ? ' target="_blank" rel="noopener"' : ''}>${link.title}</a></li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.social.title}</h4>
+                        <div class="footer-social">
+                            ${data.social.platforms.map(platform => `
+                                <a href="${platform.url}" target="_blank" rel="noopener" title="${platform.name}">${platform.code}</a>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>${data.bottom.copyright}</p>
+                    <div class="footer-credits">
+                        ${data.bottom.credits.map(credit => `
+                            <a href="${credit.url}"${credit.external ? ' target="_blank" rel="noopener"' : ' onclick="showSection(\'home\'); return false;"'}>${credit.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            
+            // Update ::before content for EST. label
+            document.querySelector('footer').setAttribute('data-est', data.brand.established);
+        }
+        
         // Initialize navigation
         async function initNavigation() {
             const data = await loadJSON('home.json');
@@ -1827,6 +2118,7 @@
             await renderTeam();
             await renderActivity();
             await renderConstitution();
+            await renderFooter();
             
             // Set up hash routing
             window.addEventListener('hashchange', handleHashChange);
@@ -1838,5 +2130,12 @@
         // Load data when page loads
         document.addEventListener('DOMContentLoaded', init);
     </script>
+    
+    <!-- Footer -->
+    <footer data-est="">
+        <div class="footer-content">
+            <!-- Content will be loaded dynamically from footer.json -->
+        </div>
+    </footer>
 </body>
 </html>

@@ -1,5 +1,162 @@
 # Changelog
 
+## [3.6.0] - 2024-10-31
+
+### 📦 Dynamic Footer — JSON-Based Configuration
+
+#### ✨ Nowy plik: `data/footer.json`
+Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
+
+#### 📐 Struktura JSON
+```json
+{
+  "brand": {
+    "name": "...",
+    "description": "...",
+    "year": "2025",
+    "established": "EST. 2015"
+  },
+  "navigation": {
+    "title": "Nawigacja",
+    "links": [...]
+  },
+  "contact": {
+    "title": "Kontakt",
+    "links": [...]
+  },
+  "social": {
+    "title": "Social Media",
+    "platforms": [...]
+  },
+  "bottom": {
+    "copyright": "...",
+    "credits": [...]
+  }
+}
+```
+
+#### 🔧 Implementacja
+- **Funkcja `renderFooter()`** — ładuje `footer.json` i renderuje HTML
+- **Dynamiczny HTML** — stopka budowana z template strings
+- **attr(data-est)** — CSS ::before używa atrybutu dla EST. label
+- **Wywołanie w `init()`** — renderFooter() dodane do inicjalizacji
+
+#### 📝 Zawartość JSON
+**Brand:**
+- Nazwa koła (3 linie z <br>)
+- Opis: "Od lat łączymy pasję..." (zmiana z "Od 2015 roku")
+- Rok: 2025
+- Established: EST. 2015
+
+**Navigation:**
+- 6 linków: Start, Projekty, Cele i misja, Zespół, Działalność, Statut
+
+**Contact:**
+- Email: knsi.expert@ug.edu.pl
+- Uniwersytet Gdański
+- Wydział WZR
+- Wydział MFI
+
+**Social Media:**
+- GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
+
+**Bottom:**
+- Copyright: "© 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
+- Credits: OPEN SOURCE, GITHUB PAGES
+
+#### 🚀 Korzyści
+- ✅ **Łatwa edycja** — wszystkie dane w jednym pliku JSON
+- ✅ **Separacja danych** — HTML/CSS/JS oddzielone od treści
+- ✅ **Konsystencja** — format zgodny z resztą projektu
+- ✅ **Dynamiczne renderowanie** — jak pozostałe sekcje
+- ✅ **Utrzymywalność** — zmiana roku/linków bez dotykania HTML
+
+#### 📦 Pliki zmienione
+- `data/footer.json` — **NOWY** plik z danymi stopki
+- `index.html` — funkcja `renderFooter()`, usunięte hardcoded dane
+- CSS: `footer::before` używa `attr(data-est)`
+
+## [3.5.1] - 2024-10-31
+
+### 📚 Footer Update — Wydział WZR
+
+#### ✨ Dodany link do Wydziału WZR
+- **Wydział WZR** — dodany przed Wydziałem MFI w sekcji Kontakt
+- **Link** — https://wzr.ug.edu.pl
+- **Kolejność** — Uniwersytet Gdański → Wydział WZR → Wydział MFI
+
+## [3.5.0] - 2024-10-31
+
+### 🎯 Professional Footer — 2025 Edition
+
+#### ✨ Virgil Abloh-Inspired Footer
+- **Black background** — `background: var(--black)`, `color: var(--white)`
+- **EST. 2015 label** — `position: absolute`, `font-size: 10px`, `letter-spacing: 0.2em`, `opacity: 0.4`
+- **4-column grid** — `grid-template-columns: 2fr 1fr 1fr 1fr` (desktop), 1fr (mobile)
+- **80px gaps** — spacing między kolumnami (desktop), 40px (mobile)
+
+#### 🎨 Footer Components
+**Brand Section:**
+- **Large title** — `font-size: 28px`, `font-weight: 700`, `letter-spacing: 0.05em`
+- **Description** — `font-size: 14px`, `opacity: 0.8`, max-width 400px
+- **2025 Year badge** — `padding: 15px 30px`, `border: 2px solid`, `font-size: 32px`
+- **Hover effect** — inverse colors + translateY(-2px)
+
+**Navigation Links:**
+- **All sections** — Start, Projekty, Cele, Zespół, Działalność, Statut
+- **Hover animation** — `transform: translateX(5px)`, `opacity: 1`
+
+**Contact Info:**
+- Email: knsi.expert@ug.edu.pl
+- Uniwersytet Gdański links
+- Wydział MFI link
+
+**Social Media:**
+- **4 platforms** — GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
+- **40x40px boxes** — `border: 2px solid`, centered text
+- **Hover effect** — inverse colors + lift
+
+#### 📱 Mobile Responsive
+- **Single column** — `grid-template-columns: 1fr`
+- **Reduced padding** — 60px 0 30px (było 100px/40px)
+- **Smaller year badge** — 24px font (było 32px)
+- **Vertical footer-bottom** — flex-direction: column
+- **Centered text** — text-align: center
+- **Smaller gaps** — 40px grid gap, 12px social gap
+
+#### 🎯 Footer Bottom
+- **Border-top** — `2px solid rgba(255, 255, 255, 0.2)`
+- **Copyright** — © 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
+- **Credits** — OPEN SOURCE + GITHUB PAGES links
+- **Opacity** — 0.6 dla subtelności
+
+#### 📐 Technical Details
+```css
+footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 0 40px;
+    margin-top: 150px;
+}
+.footer-year {
+    border: 2px solid var(--white);
+    font-size: 32px;
+    transition: all 0.3s ease;
+}
+.footer-year:hover {
+    background: var(--white);
+    color: var(--black);
+}
+```
+
+#### 🚀 Rezultat
+- ✅ **Profesjonalna stopka** — elegancka, minimalistyczna
+- ✅ **2025 prominent** — duży, wyróżniony rok w ramce
+- ✅ **Full navigation** — wszystkie sekcje w stopce
+- ✅ **Social media** — 4 platformy z hover effects
+- ✅ **Virgil Abloh style** — borders, gaps, typography, inverse hover
+- ✅ **Mobile perfect** — single column, kompaktowe
+
 ## [3.4.2] - 2024-10-31
 
 ### 🍔 Hamburger Menu Fix + Navigation Scroll
