@@ -1,6 +1,17 @@
 # KNSI E-XPERT Website
 
-Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT.
+**Wersja: 3.0.0** | Modern 2025 Design
+
+Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
+
+## ✨ Nowe w wersji 3.0.0
+
+- 📊 **Sekcja statystyk** z interaktywnymi kartami (10+ lat, 50+ członków, 6 projektów, 5 nagród)
+- 🎯 **Sekcja "O nas"** z kluczowymi wartościami koła
+- 🎨 **Enhanced animations** — floating gradients, accent bars, transform effects
+- 📐 **Improved projects** — większe fonty, accent colors, hover interactions
+- 📱 **Better mobile experience** — responsywne grids, lepsze spacing
+- 🎨 **2025 design language** — modern, clean, interactive
 
 ## 📁 Struktura projektu
 
@@ -51,6 +62,29 @@ Wszystkie treści strony znajdują się w plikach JSON w katalogu `data/`. Wysta
 - **team.json** - Skład zespołu
 - **activity.json** - Opis działalności
 - **constitution.json** - Statut koła
+
+## 🔗 Hash Routing
+
+Strona wykorzystuje hash routing — każda sekcja ma własny adres URL:
+
+- `/#home` — Strona główna
+- `/#projects` — Projekty
+- `/#goals` — Cele
+- `/#team` — Zespół
+- `/#activity` — Działalność
+- `/#constitution` — Statut
+
+### Zalety:
+- ✅ **Bezpośrednie linki** — możesz linkować do konkretnej sekcji
+- ✅ **Historia przeglądarki** — przyciski wstecz/dalej działają
+- ✅ **Sharable URLs** — wysyłaj linki do konkretnych sekcji
+- ✅ **SEO friendly** — Google indeksuje sekcje
+
+### Przykład użycia:
+```html
+<!-- Link do zespołu -->
+<a href="https://yoursite.github.io/knmiexpert/#team">Nasz zespół</a>
+```
 
 ## 🌐 Deployment na GitHub Pages
 

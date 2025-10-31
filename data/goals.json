@@ -3,6 +3,15 @@
   "content": {
     "years": [
       {
+        "year": "2023/25",
+        "projects": [
+          "Modernizacja strony internetowej koła – kompleksowa aktualizacja identyfikacji online z migracją z WordPressa na GitHub Pages (https://knsiexpert.github.io/site).",
+          "Zmiana architektury technicznej – porzucenie przestarzałego WordPressa na rzecz nowoczesnego rozwiązania: statyczna strona z dynamicznym ładowaniem treści z JSON, hash routing, automatyczny deployment via GitHub Actions.",
+          "Nowy design system – implementacja minimalistycznego designu inspirowanego estetyką Virgil Abloh z paletą kolorów #1c1b22/#f3f3f7, interaktywnymi animacjami i responsywnym layoutem.",
+          "Open source – otwarcie repozytorium kodu źródłowego na GitHub, umożliwienie współpracy i transparentności rozwoju strony."
+        ]
+      },
+      {
         "year": "2021/22",
         "projects": [
           "Zespół Social Monitor (Justyna Krotoszyńska, Kajetan Warmbier, Kacper Jach) – aplikacja wspierająca osoby mające problemy z poruszaniem się po platformach społecznościowych; finał konkursu AIS Student Chapters Annual Competition 2022.",

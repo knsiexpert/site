@@ -114,10 +114,45 @@
       "link": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
     }
   },
-  "stats": {
-    "members_count_known": 12,
-    "as_of": "2022-05-31",
-    "awards": 5
+  "stats": [
+    {
+      "number": "10+",
+      "label": "Lat działalności",
+      "sublabel": "Od 2015"
+    },
+    {
+      "number": "50+",
+      "label": "Członków",
+      "sublabel": "Alumni & Active"
+    },
+    {
+      "number": "6",
+      "label": "Projektów",
+      "sublabel": "Wdrożonych"
+    },
+    {
+      "number": "5",
+      "label": "Nagród",
+      "sublabel": "Międzynarodowych"
+    }
+  ],
+  "about": {
+    "title": "O nas",
+    "lead": "Jesteśmy Kołem Naukowym Systemów Informatycznych E-XPERT — społecznością studentów Uniwersytetu Gdańskiego, którzy tworzą rozwiązania IT zmieniające rzeczywistość.",
+    "points": [
+      {
+        "title": "Tworzymy rozwiązania",
+        "text": "Od aplikacji mobilnych po systemy bezpieczeństwa — nasze projekty rozwiązują realne problemy."
+      },
+      {
+        "title": "Zdobywamy doświadczenie",
+        "text": "Praca w zespołach, metodyki agile, nowoczesne technologie — wszystko czego potrzebujesz na rynku pracy."
+      },
+      {
+        "title": "Zwyciężamy",
+        "text": "Finały AIS Student Chapter, konkursy IBM, wyróżnienia międzynarodowe — nasze projekty zyskują uznanie."
+      }
+    ]
   },
   "footer": {
     "copyright": "© Koło Naukowe Systemów Informatycznych E‑XPERT",

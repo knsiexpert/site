@@ -1,5 +1,196 @@
 # Changelog
 
+## [3.1.0] - 2024-10-31
+
+### 🎨 Typography Redesign — Cute & Pleasant Headings
+
+#### ✨ Nowa typografia nagłówków
+- **System font stack** — SF Pro Display, Segoe UI, Helvetica Neue (native fonts dla lepszej czytelności)
+- **Soft & friendly** — Obniżony font-weight (800→700 dla h1, 700→600 dla h2/h3)
+- **Better spacing** — Pozytywny letter-spacing (0.01-0.02em) zamiast negatywnego
+- **No uppercase** — Text-transform: none dla naturalniejszego wyglądu
+
+#### 🎯 Szczegóły zmian:
+
+**H1 (Hero):**
+- Font-size: 140px → 130px (bardziej proporcjonalne)
+- Font-weight: 800 → 700 (mniej agresywne)
+- Letter-spacing: -0.05em → -0.02em (lepsze czytelność)
+- Text-transform: uppercase → none
+- Line-height: 0.95 → 1.1 (więcej przestrzeni)
+- Accent line: gradient z orange + shadow glow
+
+**H2 (Sekcje):**
+- Font-size: 72px → 64px (bardziej delikatne)
+- Font-weight: 700 → 600 (soft weight)
+- Letter-spacing: -0.02em → 0.02em (przestronne)
+- Text-transform: uppercase → none (naturalnie)
+- Line-height: 1 → 1.2 (lepsza czytelność)
+- **Gradient text** — Subtelny gradient czarny → orange (135deg)
+- Accent line: 60px → 80px, gradient + glow shadow
+
+**H3 & inne nagłówki:**
+- Font-size: 18-20px → 19-21px
+- Font-weight: 700 → 600
+- Text-transform: uppercase → none
+- Letter-spacing: 0.08em → 0.01em
+- System fonts dla wszystkich
+
+**Project names, Timeline years, Article titles:**
+- Unified font-family (system stack)
+- Reduced font-weight (600)
+- Better letter-spacing
+- No uppercase transform
+
+#### 🌈 Visual Effects
+- Gradient text dla h2 (black → accent)
+- Gradient underlines z box-shadow glow
+- Border-radius na accent lines (2-3px)
+- Smooth transitions i animacje
+- Better visual hierarchy
+
+## [3.0.2] - 2024-10-31
+
+### 🎯 Navigation Update
+
+- **Zmiana nazwy w nawigacji** — "Home" → "Start"
+- Lepsza przejrzystość interfejsu użytkownika
+- Zachowany link `#home` w URL routing
+
+## [3.0.1] - 2024-10-31
+
+### 🎨 Enhanced Logo with 3D Animation
+
+- **Większe logo** — Zwiększony rozmiar SVG z 40px → 60px (desktop), 30px → 45px (mobile)
+- **3D rotacja** — Płynna animacja rotate3d (8s loop)
+  - Obrót Y: 0° → 180° → 360° → 180° → 0°
+  - Subtelny tilt X: ±5°
+  - Transform-style: preserve-3d
+- **Hover effect** — Pauza animacji + scale(1.1) + rotateY(180deg)
+- **Większy font** — Nazwa koła: 20px → 22px, gap: 20px → 25px
+- **Smooth transitions** — Cubic-bezier dla wszystkich transform
+
+## [3.0.0] - 2024-10-31
+
+### 🚀 Modern 2025 Redesign — Enhanced Layout & UX
+
+#### ✨ Nowe Sekcje
+- **Statystyki** — Dynamiczna sekcja z liczbami (10+ lat, 50+ członków, 6 projektów, 5 nagród)
+  - Grid layout z hover effects
+  - Karty z animacjami (transform, scale, color transitions)
+  - Responsywny układ (2 kolumny na mobile)
+  
+- **O Nas** — Sekcja przedstawiająca koło
+  - Lead paragraph z accent border (4px orange)
+  - 3 karty z kluczowymi wartościami
+  - Hover effects z accent line animation
+  - Transform effects na kartach
+
+#### 🎨 Enhanced Hero Section
+- **Floating animation** — Subtle background gradient z animacją (20s loop)
+- **Nowy layout** — Zwiększone padding (180px/120px)
+- **Typografia** — Font-weight: 800, lepszy line-height (0.95)
+- **Accent line** — Orange underline z slide-in animation (0.8s)
+- **Responsive** — Lepsze fonty na mobile (36-64px)
+
+#### 🎯 Improved Highlight Cards
+- **Nowe wymiary** — 300px minWidth, większy padding (70px/50px)
+- **Bottom accent** — Orange bar animation on hover (width: 0 → 100%)
+- **Enhanced hover** — Scale effect (1.02), dłuższe transitions (0.4s)
+- **Number styling** — Większe numery (12px), scale na hover (1.2)
+- **Overflow hidden** — Czystsze animacje
+
+#### 📐 Enhanced Projects Section
+- **Większe spacing** — 80px padding, 80px gap
+- **Accent hover** — Rok zmienia kolor na orange i scale (1.05)
+- **Left padding animation** — Karta przesuwa się w prawo na hover
+- **Większe fonty** — Project name: 32px, description: 16px
+- **Sticky year** — Lepszy font-weight (800), opacity transitions
+- **Team tags hover** — Transform i color change
+
+#### 🎨 Global Improvements
+- **Smooth scroll** — `scroll-behavior: smooth` na całej stronie
+- **Font rendering** — `-webkit-font-smoothing: antialiased`
+- **Better fonts** — 'Helvetica Neue', -apple-system, BlinkMacSystemFont
+- **Cubic-bezier** — Wszędzie `cubic-bezier(0.4, 0, 0.2, 1)` dla smooth animations
+- **Responsive refinements** — Lepsze breakpoints i mobile layouts
+- **Accent color usage** — Więcej użyć `var(--accent)` (#ff6b00)
+
+#### 📱 Mobile Enhancements
+- **Hero mobile** — 150px/80px padding, lepsze font sizing
+- **About lead** — 20px font, zmniejszony padding
+- **Single column** — Wszystkie grids na 1fr na mobile
+- **Reduced padding** — 50px/30px na kartach mobile
+
+#### 📊 Data Structure Updates
+- `home.json` — Nowa struktura `stats` (array) i `about` (object)
+- `projects.json` — Projekt modernizacji z rokiem 2025
+- JavaScript — Nowe renderowanie stats i about sections
+
+#### 🎨 Design Philosophy
+- **2025 aesthetic** — Modern, clean, minimalist
+- **Virgil Abloh foundation** — Zachowany industrial design, labels, bold typography
+- **Enhanced interactivity** — Więcej hover states, transforms, animations
+- **Better spacing** — Więcej "white space", lepsze proporcje
+- **Accent usage** — Orange jako highlight color
+
+## [2.3.0] - 2024-10-31
+
+### 🎨 Refined Color Palette & Enhanced Styling
+
+- **Nowe kolory:**
+  - Zamiast `#000` → `#1c1b22` (soft dark)
+  - Zamiast `#fff` → `#f3f3f7` (warm light)
+  - Dodano `--surface: #ffffff` dla kart
+  - Dodano `--light-gray: #e8e8ed`
+  
+- **Home Page Improvements:**
+  - Gradient background dla hero section
+  - Większe fonty (h1 do 160px)
+  - Shadow effects i subtle overlays
+  - Lepsze spacing (120px margins)
+  - Enhanced CTA button z animacją i cieniem
+  
+- **Highlight Cards:**
+  - Białe tło (`--surface`)
+  - Borders i subtle shadows
+  - Lepsze hover effects z transform
+  - Zwiększony padding (60px)
+  
+- **Quote Section:**
+  - Większy font (32px)
+  - Box shadows dla depth
+  - Lepsze spacing
+  
+- **Navigation:**
+  - Backdrop blur z opacity
+  - Subtle shadow
+  
+- **Wszystkie karty:**
+  - Smooth transitions (cubic-bezier)
+  - Transform on hover
+  - Consistent shadows
+  - Białe tło z borderami
+
+## [2.2.0] - 2024-10-31
+
+### 🔗 Hash Routing
+
+- **URL Routing** — każda sekcja ma własny adres
+- Hash-based routing: `/#home`, `/#projects`, `/#team`, etc.
+- **Linki bezpośrednie** — można linkować do konkretnej sekcji
+- **Historia przeglądarki** — przyciski wstecz/dalej działają
+- **Logo jako link** — kliknięcie w logo wraca do home
+- **Smooth scroll** do góry przy zmianie sekcji
+
+## [2.1.1] - 2024-10-31
+
+### 📝 Aktualizacja treści
+
+- **Dodano rok 2024/25** do sekcji zespołu
+- Zaktualizowana lista członków koła (21 osób)
+- Zarząd: Maciej Szuwarowski (Przewodniczący), Stanisław Malec (Wiceprzewodniczący)
+
 ## [2.1.0] - 2024-10-31
 
 ### 🎨 Redesign w stylu Virgila Abloha
