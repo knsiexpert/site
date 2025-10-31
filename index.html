@@ -44,6 +44,7 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             border-bottom: 1px solid var(--black);
+            transition: transform 0.3s ease;
         }
         
         .nav-content {
@@ -480,379 +481,290 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-content">
-            <div class="logo">E-XPERT</div>
+            <div class="logo" id="logoText">E-XPERT</div>
             <div class="mobile-menu" onclick="toggleMenu()">
                 <div class="hamburger"></div>
             </div>
             <ul class="nav-links" id="navLinks">
-                <li><a onclick="showSection('home')" class="active">Home</a></li>
-                <li><a onclick="showSection('projects')">Projekty</a></li>
-                <li><a onclick="showSection('goals')">Cele</a></li>
-                <li><a onclick="showSection('team')">Zespół</a></li>
-                <li><a onclick="showSection('activity')">Działalność</a></li>
-                <li><a onclick="showSection('constitution')">Statut</a></li>
+                <!-- Navigation will be loaded dynamically -->
             </ul>
         </div>
     </nav>
     
     <!-- Home Section -->
     <section id="home" class="section active">
-        <div class="hero">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>KNSI E‑XPERT</h1>
-                    <p class="subtitle">"IT DLA LUDZI" — Studenckie projekty, realne wdrożenia i międzynarodowe wyróżnienia (AIS SC). Dołącz, ucz się i buduj z nami.</p>
-                    <a href="https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069" 
-                       target="_blank" 
-                       class="cta-button">Dołącz do nas</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="container">
-            <div class="quote">
-                Tworzymy technologię, która służy społeczeństwu — od SafeWatch po SocialMonitor, nasze projekty zdobywają międzynarodowe uznanie
-            </div>
-            
-            <div class="highlights-grid">
-                <div class="highlight-card">
-                    <h3>III miejsce — AIS 2015</h3>
-                    <p>Projekt SafeWatch: dyskretne wzywanie pomocy gestem — finał w USA i 3. miejsce.</p>
-                </div>
-                <div class="highlight-card">
-                    <h3>III miejsce + IBM Bright ICT</h3>
-                    <p>CyberWatch: wykrywanie cyberprzemocy; dodatkowe wyróżnienie za najlepsze użycie IBM Bluemix.</p>
-                </div>
-                <div class="highlight-card">
-                    <h3>Finaliści AIS SC 2022</h3>
-                    <p>SocialMonitor: ukrywanie reakcji w social media dla zdrowszej komunikacji.</p>
-                </div>
-                <div class="highlight-card">
-                    <h3>Aplikacja mobileWZR</h3>
-                    <p>Plan zajęć WZiE UG na Androida — używana od 2014 roku.</p>
-                </div>
-            </div>
+        <div id="homeContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <!-- Projects Section -->
     <section id="projects" class="section">
-        <div class="container">
-            <h2>"PROJEKTY" AIS SC</h2>
-            <p style="font-size: 18px; color: var(--gray); margin-bottom: 60px;">
-                Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC)
-            </p>
-            
-            <div class="project-card">
-                <div class="project-year">2022</div>
-                <div class="project-name">SocialMonitor</div>
-                <p class="project-description">
-                    Wtyczka służąca do ukrywania reakcji pod materiałami w mediach społecznościowych. Jej celem jest zniwelowanie skutków ubocznych korzystania z social mediów (presja społeczna, depresja, zaburzenia odżywiania).
-                </p>
-                <div class="project-team">
-                    <span class="team-member">Justyna Krotoszyńska</span>
-                    <span class="team-member">Kajetan Warmbier</span>
-                    <span class="team-member">Kacper Jach</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-year">2015</div>
-                <div class="project-name">SafeWatch</div>
-                <p class="project-description">
-                    Innowacyjna aplikacja mobilna umożliwiająca wezwanie pomocy w sytuacji zagrożenia za pomocą gestów. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition 2015 na University of Alabama.
-                </p>
-                <div class="project-team">
-                    <span class="team-member">Kamil Wojewski (lider)</span>
-                    <span class="team-member">Damian Kisielewski</span>
-                    <span class="team-member">Maciej Kwapiński</span>
-                    <span class="team-member">Szymon Nagórski</span>
-                    <span class="team-member">Hubert Kisielewski</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-year">2016</div>
-                <div class="project-name">CyberWatch</div>
-                <p class="project-description">
-                    System rozpoznawania aktów cyberprzemocy. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson. III miejsce w konkursie IBM Bright ICT (Indiana University, 2016).
-                </p>
-                <div class="project-team">
-                    <span class="team-member">Kamil Wojewski (lider)</span>
-                    <span class="team-member">Damian Kisielewski</span>
-                    <span class="team-member">Maciej Kwapiński</span>
-                    <span class="team-member">Szymon Nagórski</span>
-                    <span class="team-member">Hubert Kisielewski</span>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-year">2014</div>
-                <div class="project-name">mobileWZR</div>
-                <p class="project-description">
-                    Aplikacja mobilna dla studentów Wydziału Zarządzania UG, umożliwiająca przeglądanie planu zajęć, dodawanie notatek, synchronizację i powiadomienia. Stale rozwijana od 2014 roku.
-                </p>
-            </div>
+        <div class="container" id="projectsContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <!-- Goals Section -->
     <section id="goals" class="section">
-        <div class="container">
-            <h2>"ZREALIZOWANE CELE"</h2>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-year">2021/22</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Zespół Social Monitor — finał konkursu AIS Student Chapters Annual Competition 2022</li>
-                            <li>Aktualizacja strony — wdrożenie nowego szablonu WordPress</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-year">2020/21</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Talk_to — aplikacja do nawiązywania kontaktów; II miejsce w finale AIS 2021</li>
-                            <li>Seria warsztatów 'Ready, set learn!' — stres, Agile, design thinking</li>
-                            <li>Aplikacje mobilne planu zajęć — faza aktywnego developmentu</li>
-                            <li>Warsztaty z JavaScript i NodeJS — cykliczne zajęcia dla studentów UG</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-year">2019/20</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Projekt Apollo — III miejsce w AIS Student Chapter Software Innovation Challenge</li>
-                            <li>Finał AIS Student Chapters Conference, Filadelfia (USA)</li>
-                            <li>Projekt aplikacji lokalizującej sklepy z krótkim terminem żywności</li>
-                            <li>Szkolenia z C# i Excela we współpracy z firmą zewnętrzną</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-year">2015/16</div>
-                    <div class="timeline-content">
-                        <ul>
-                            <li>Projekt Cyberwatch — III miejsce w AIS Student Chapters Annual Competition</li>
-                            <li>Patent Pending — 'Sposób bezprzewodowego wzywania pomocy'</li>
-                            <li>Nagroda 'Best New AIS Student Chapter 2015–2016'</li>
-                            <li>Aplikacja mobileWZR — zarządzanie planem zajęć w metodologii Scrum</li>
-                            <li>Wygrana w konkursie kół naukowych — 1. miejsce i 7000 zł</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="container" id="goalsContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <!-- Team Section -->
     <section id="team" class="section">
-        <div class="container">
-            <h2>"NASZ ZESPÓŁ"</h2>
-            <p style="font-size: 18px; margin-bottom: 40px;">Opiekun: <strong>Piotr Porzuczek</strong></p>
-            
-            <div class="team-year-section">
-                <h3>2023/24</h3>
-                <div class="team-board">
-                    <p><strong>Maciej Szuwarowski</strong> — Przewodniczący Koła</p>
-                    <p><strong>Stanisław Malec</strong> — Wiceprzewodniczący</p>
-                </div>
-                <div class="team-members">
-                    <span class="member-tag">Oskar Gajewski</span>
-                    <span class="member-tag">Maciej Jankowski-Tomków</span>
-                    <span class="member-tag">Aleksandra Pstrong</span>
-                    <span class="member-tag">Mikołaj Skrzypkowski</span>
-                    <span class="member-tag">Mateusz Wiącek</span>
-                    <span class="member-tag">Mateusz Garnowski</span>
-                    <span class="member-tag">Marcin Kurkowski</span>
-                    <span class="member-tag">Remigiusz Seklecki</span>
-                    <span class="member-tag">Adam Moryc</span>
-                    <span class="member-tag">Fryderyk Szmidt</span>
-                    <span class="member-tag">Natalia Piankowska</span>
-                    <span class="member-tag">Nikodem Matlakiewicz</span>
-                    <span class="member-tag">Marcin Pawelski</span>
-                    <span class="member-tag">Adrian Sikora</span>
-                    <span class="member-tag">Julia Herold</span>
-                    <span class="member-tag">Jakub Karolewicz</span>
-                    <span class="member-tag">Igor Puścikowski</span>
-                    <span class="member-tag">Julia Korzeniewska</span>
-                    <span class="member-tag">Patrycja Stanisławczyk</span>
-                    <span class="member-tag">Aleksandra Woś</span>
-                    <span class="member-tag">Maja Kowalik</span>
-                    <span class="member-tag">Magdalena Pińska</span>
-                </div>
-            </div>
-            
-            <div class="team-year-section">
-                <h3>2022/23</h3>
-                <div class="team-board">
-                    <p><strong>Magdalena Osińska</strong> — Przewodniczący Koła</p>
-                    <p><strong>Mateusz Szreder</strong> — Wiceprzewodniczący</p>
-                </div>
-                <div class="team-members">
-                    <span class="member-tag">Mateusz Kołacz</span>
-                    <span class="member-tag">Maciej Głowacki</span>
-                    <span class="member-tag">Justyna Krotoszyńska</span>
-                    <span class="member-tag">Kajetan Warmbier</span>
-                    <span class="member-tag">Kacper Jach</span>
-                    <span class="member-tag">Cornelis Puchowicz</span>
-                    <span class="member-tag">Jan Ruczyński</span>
-                    <span class="member-tag">Maria Małasiewicz</span>
-                    <span class="member-tag">Natalia Piankowska</span>
-                    <span class="member-tag">Piotr Jemielita</span>
-                    <span class="member-tag">Urszula Mejer</span>
-                    <span class="member-tag">Łukasz Pisarczyk</span>
-                    <span class="member-tag">Małgorzata Swastek</span>
-                    <span class="member-tag">Marcin Pawelski</span>
-                    <span class="member-tag">Oskar Gajewski</span>
-                    <span class="member-tag">Szymon Pilachowski</span>
-                    <span class="member-tag">Martyna Korzeń</span>
-                    <span class="member-tag">Milan Frąckowiak</span>
-                </div>
-            </div>
+        <div class="container" id="teamContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <!-- Activity Section -->
     <section id="activity" class="section">
-        <div class="container">
-            <h2>"DZIAŁALNOŚĆ"</h2>
-            
-            <div class="activity-lead">
-                Koło Naukowe Systemów Informatycznych E-xpert działa na Uniwersytecie Gdańskim (Wydział Zarządzania). Głównym celem jest pogłębianie wiedzy z zakresu technologii informatycznych i metodyk zarządzania projektami IT oraz realizacja praktycznych projektów i szkoleń.
-            </div>
-            
-            <div class="activity-list">
-                <div class="activity-item">
-                    <strong>KONKURSY</strong><br>
-                    Udział w konkursach (Imagine Cup, AIS Student Chapter) — coroczny udział w co najmniej jednym konkursie
-                </div>
-                <div class="activity-item">
-                    <strong>PROJEKTY</strong><br>
-                    Realizacja projektów dla Uniwersytetu Gdańskiego
-                </div>
-                <div class="activity-item">
-                    <strong>SZKOLENIA</strong><br>
-                    Warsztaty zarówno z firmami zewnętrznymi, jak i 'od studentów dla studentów'
-                </div>
-                <div class="activity-item">
-                    <strong>TESTOWANIE</strong><br>
-                    Testowanie rozwiązań z zakresu zarządzania i systemów informatycznych
-                </div>
-                <div class="activity-item">
-                    <strong>POPULARYZACJA</strong><br>
-                    Popularyzacja informatyki i przedsiębiorczości
-                </div>
-            </div>
-            
-            <h3 style="margin-top: 60px;">CELE I MISJA</h3>
-            <ul style="line-height: 2; color: var(--gray);">
-                <li>→ Zdobywanie i pogłębianie wiedzy z technologii informatycznych oraz metodyk zarządzania projektami IT</li>
-                <li>→ Realizacja projektów tworzących oprogramowanie i systemy informatyczne służące społeczeństwu</li>
-                <li>→ Rozwijanie praktycznych umiejętności wytwarzania technologii i zarządzania projektami</li>
-            </ul>
-            
-            <h3 style="margin-top: 60px;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
-            <p>Partner: <strong>MadKom</strong> — Współpraca w zakresie staży i praktyk dla członków koła</p>
+        <div class="container" id="activityContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <!-- Constitution Section -->
     <section id="constitution" class="section">
-        <div class="container">
-            <h2>"STATUT" KOŁA</h2>
-            <p style="font-size: 18px; margin-bottom: 60px;">
-                Studenckie Koło Naukowe Systemów Informatycznych E-xpert<br>
-                Uniwersytet Gdański, Wydział Zarządzania<br>
-                Sopot, marzec 2014
-            </p>
-            
-            <div class="article">
-                <span class="article-number">1</span>
-                <h3 class="article-title">Postanowienia ogólne</h3>
-                <div class="article-content">
-                    <ul>
-                        <li>Nazwa: Studenckie Koło Naukowe Systemów Informatycznych „E-xpert" działające przy Katedrze Informatyki Ekonomicznej na Wydziale Zarządzania UG</li>
-                        <li>Koło zostało powołane z inicjatywy studentów UG, zgodnie z Ustawą o Szkolnictwie Wyższym i Statutem UG</li>
-                        <li>Siedziba: Uniwersytet Gdański, Wydział Zarządzania, ul. Armii Krajowej 101, 80-824 Sopot</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="article">
-                <span class="article-number">2</span>
-                <h3 class="article-title">Cele działalności Koła</h3>
-                <div class="article-content">
-                    <ul>
-                        <li>Główny cel: zdobywanie wiedzy z dziedziny technologii informatycznych oraz metodyk zarządzania projektem</li>
-                        <li>Koło promuje działalność i osiągnięcia swoich członków</li>
-                        <li>Tworzenie oprogramowania i systemów informatycznych</li>
-                        <li>Poszerzanie praktycznej znajomości technologii informatycznych</li>
-                        <li>Specjalizacja członków w metodykach zarządzania projektami</li>
-                        <li>Organizacja szkoleń, warsztatów i konferencji dotyczących zastosowań informatyki w biznesie</li>
-                        <li>Promocja studentów UG w sektorze firm informatycznych i konsultingowych</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="article">
-                <span class="article-number">3</span>
-                <h3 class="article-title">Formy realizacji celów</h3>
-                <div class="article-content">
-                    <ul>
-                        <li>Oprogramowanie i systemy informatyczne tworzone w ramach projektów</li>
-                        <li>Publikacje wyników badań i osiągnięć Koła</li>
-                        <li>Promocja strony internetowej Koła</li>
-                        <li>Seminaria naukowe i konferencje z zakresu zainteresowań Koła</li>
-                        <li>Referaty i publikacje</li>
-                        <li>Wykłady i szkolenia wewnętrzne</li>
-                        <li>Współpraca z organizacjami naukowymi w kraju i za granicą</li>
-                        <li>Współpraca z innymi kołami UG</li>
-                        <li>Realizacja zleceń na rzecz instytucji gospodarczych</li>
-                        <li>Organizacja praktyk i stypendiów dla studentów</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="article">
-                <span class="article-number">6</span>
-                <h3 class="article-title">Członkostwo</h3>
-                <div class="article-content">
-                    <ul>
-                        <li>Członkami mogą być studenci UG (dzienni, zaoczni, wieczorowi)</li>
-                        <li>Absolwenci współpracujący z Kołem stają się członkami honorowymi</li>
-                        <li>O przyjęciu decyduje Zarząd</li>
-                        <li>Każdy pełnoprawny członek ma jeden głos na Walnym Zgromadzeniu</li>
-                        <li>Członkostwo ustaje przez: rezygnację, decyzję Walnego Zgromadzenia, utratę statusu studenta lub rozwiązanie Koła</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="article">
-                <span class="article-number">9</span>
-                <h3 class="article-title">Zarząd</h3>
-                <div class="article-content">
-                    <ul>
-                        <li>Składa się z prezesa i jednego lub dwóch wiceprezesów</li>
-                        <li>Współpracuje z Opiekunem Naukowym, Dziekanem i Katedrą Informatyki Ekonomicznej</li>
-                        <li>Organizuje i kieruje pracą Koła</li>
-                        <li>Wykonuje uchwały Walnego Zgromadzenia</li>
-                        <li>Wybierany na semestr większością 2/3 głosów</li>
-                        <li>Do kandydowania wymagany jest półroczny staż członkowski</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="container" id="constitutionContent">
+            <!-- Content will be loaded dynamically -->
         </div>
     </section>
     
     <script>
+        // Data cache
+        let dataCache = {};
+        
+        // Load JSON data
+        async function loadJSON(filename) {
+            if (dataCache[filename]) {
+                return dataCache[filename];
+            }
+            try {
+                const response = await fetch(`data/${filename}`);
+                const data = await response.json();
+                dataCache[filename] = data;
+                return data;
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                return null;
+            }
+        }
+        
+        // Render Home Section
+        async function renderHome() {
+            const data = await loadJSON('home.json');
+            if (!data) return;
+            
+            const homeContent = document.getElementById('homeContent');
+            homeContent.innerHTML = `
+                <div class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1>${data.hero.title}</h1>
+                            <p class="subtitle">${data.hero.subtitle}</p>
+                            <a href="${data.hero.cta.href}" 
+                               target="_blank" 
+                               class="cta-button">${data.hero.cta.label}</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="quote">
+                        Tworzymy technologię, która służy społeczeństwu — od SafeWatch po SocialMonitor, nasze projekty zdobywają międzynarodowe uznanie
+                    </div>
+                    
+                    <div class="highlights-grid">
+                        ${data.highlights.map(highlight => `
+                            <div class="highlight-card">
+                                <h3>${highlight.title}</h3>
+                                <p>${highlight.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Render Projects Section
+        async function renderProjects() {
+            const data = await loadJSON('projects.json');
+            if (!data) return;
+            
+            const projectsContent = document.getElementById('projectsContent');
+            projectsContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                <p style="font-size: 18px; color: var(--gray); margin-bottom: 60px;">
+                    ${data.intro}
+                </p>
+                
+                ${data.projects.map(project => `
+                    <div class="project-card">
+                        <div class="project-year">${project.year}</div>
+                        <div class="project-name">${project.name}</div>
+                        <p class="project-description">
+                            ${project.description}
+                        </p>
+                        ${project.team ? `
+                            <div class="project-team">
+                                ${project.team.map(member => `
+                                    <span class="team-member">${member}</span>
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Render Goals Section
+        async function renderGoals() {
+            const data = await loadJSON('goals.json');
+            if (!data) return;
+            
+            const goalsContent = document.getElementById('goalsContent');
+            goalsContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                
+                <div class="timeline">
+                    ${data.content.years.map(yearData => `
+                        <div class="timeline-item">
+                            <div class="timeline-year">${yearData.year}</div>
+                            <div class="timeline-content">
+                                <ul>
+                                    ${yearData.projects.map(project => `
+                                        <li>${project}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        // Render Team Section
+        async function renderTeam() {
+            const data = await loadJSON('team.json');
+            if (!data) return;
+            
+            const teamContent = document.getElementById('teamContent');
+            teamContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                <p style="font-size: 18px; margin-bottom: 40px;">Opiekun: <strong>${data.content.supervisor}</strong></p>
+                
+                ${data.content.years.map(yearData => `
+                    <div class="team-year-section">
+                        <h3>${yearData.year}</h3>
+                        <div class="team-board">
+                            ${yearData.board.map(boardMember => `
+                                <p><strong>${boardMember.split(' – ')[0]}</strong> — ${boardMember.split(' – ')[1]}</p>
+                            `).join('')}
+                        </div>
+                        <div class="team-members">
+                            ${yearData.members.map(member => `
+                                <span class="member-tag">${member}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Render Activity Section
+        async function renderActivity() {
+            const data = await loadJSON('activity.json');
+            if (!data) return;
+            
+            const activityContent = document.getElementById('activityContent');
+            const activityLabels = ['KONKURSY', 'PROJEKTY', 'SZKOLENIA', 'TESTOWANIE', 'POPULARYZACJA'];
+            
+            activityContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                
+                <div class="activity-lead">
+                    ${data.content.lead}
+                </div>
+                
+                <div class="activity-list">
+                    ${data.content.activities.map((activity, index) => `
+                        <div class="activity-item">
+                            <strong>${activityLabels[index] || 'DZIAŁALNOŚĆ'}</strong><br>
+                            ${activity}
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h3 style="margin-top: 60px;">CELE I MISJA</h3>
+                <ul style="line-height: 2; color: var(--gray);">
+                    ${data.content.mission_goals.map(goal => `
+                        <li>→ ${goal}</li>
+                    `).join('')}
+                </ul>
+                
+                <h3 style="margin-top: 60px;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
+                ${data.content.industry_collaboration.map(collab => `
+                    <p>Partner: <strong>${collab.partner}</strong> — ${collab.role}</p>
+                `).join('')}
+            `;
+        }
+        
+        // Render Constitution Section
+        async function renderConstitution() {
+            const data = await loadJSON('constitution.json');
+            if (!data) return;
+            
+            const constitutionContent = document.getElementById('constitutionContent');
+            constitutionContent.innerHTML = `
+                <h2>"${data.title.split(' ').slice(-1)[0].toUpperCase()}"</h2>
+                <p style="font-size: 18px; margin-bottom: 60px;">
+                    ${data.title}<br>
+                    ${data.content.intro.institution}, ${data.content.intro.location}<br>
+                    ${data.content.intro.date}
+                </p>
+                
+                ${data.content.articles.map(article => `
+                    <div class="article">
+                        <span class="article-number">${article.number}</span>
+                        <h3 class="article-title">${article.title}</h3>
+                        <div class="article-content">
+                            <ul>
+                                ${article.content.map(item => `
+                                    <li>${item}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Initialize navigation
+        async function initNavigation() {
+            const data = await loadJSON('home.json');
+            if (!data) return;
+            
+            const navLinks = document.getElementById('navLinks');
+            const logoText = document.getElementById('logoText');
+            
+            // Set page title and logo from data
+            document.title = data.site.name + ' — "IT DLA LUDZI"';
+            logoText.textContent = data.site.short_name;
+            
+            // Build navigation
+            navLinks.innerHTML = `
+                <li><a onclick="showSection('home')" class="active">Home</a></li>
+                ${data.site.nav.map(navItem => {
+                    const sectionId = navItem.href.replace('.json', '');
+                    return `<li><a onclick="showSection('${sectionId}')">${navItem.title}</a></li>`;
+                }).join('')}
+            `;
+        }
+        
+        // Show section
         function showSection(sectionId) {
             // Hide all sections
             const sections = document.querySelectorAll('.section');
@@ -873,7 +785,9 @@
             });
             
             // Add active class to clicked link
-            event.target.classList.add('active');
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
             
             // Close mobile menu
             document.getElementById('navLinks').classList.remove('active');
@@ -901,6 +815,20 @@
             
             lastScrollTop = scrollTop;
         });
+        
+        // Initialize app
+        async function init() {
+            await initNavigation();
+            await renderHome();
+            await renderProjects();
+            await renderGoals();
+            await renderTeam();
+            await renderActivity();
+            await renderConstitution();
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
