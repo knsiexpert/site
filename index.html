@@ -42,6 +42,7 @@
             max-width: 1400px;
             margin: 0 auto;
             padding: 0 40px;
+            padding-top: 30px;
         }
         
         /* Navigation */
@@ -75,6 +76,38 @@
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+        }
+        
+        .logo-text {
+            background: linear-gradient(135deg, 
+                #1c1b22 0%, 
+                #1c1b22 35%, 
+                #ff6b00 55%, 
+                #ff8c00 75%, 
+                #ffa500 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 0, 0.2));
+            transition: all 0.3s ease;
+            animation: navGradientShift 10s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+        
+        .logo-text:hover {
+            filter: drop-shadow(0 3px 8px rgba(255, 107, 0, 0.4));
+            transform: translateY(-1px);
+        }
+        
+        @keyframes navGradientShift {
+            0%, 100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
         }
         
         .logo svg {
@@ -139,7 +172,7 @@
         /* Sections */
         .section {
             min-height: 100vh;
-            padding: 140px 0 100px;
+            padding: 120px 0 100px;
             display: none;
         }
         
