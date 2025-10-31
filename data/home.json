@@ -1,0 +1,126 @@
+{
+  "site": {
+    "name": "Koło Naukowe Systemów Informatycznych E‑XPERT",
+    "short_name": "KNSI E‑XPERT",
+    "logo_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1024\" height=\"767\" viewBox=\"0 0 1024 767\"><g stroke=\"#000\"><path d=\"M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18ZM504 447l-1 1h-2l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-1 1v1l-4 4v1l-1 1v1l-1 1v1l-1 1v2l-1 1v2l-1 1v15l1 1v2l1 1v2l1 1v1l1 1v1l1 1v1l3 3v1l4 4h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h6l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l7-7v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-2-2h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM614 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v2l-1 1v2l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l3 3h1l2 2h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-4l-1-1ZM404 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v1l-1 1v3l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-2l1-1v-9l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-3l-1-1ZM659 292l-1 1h-3l-1 1h-2l-1 1h-1l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v6l1 1v4l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l3 3h1l1 1h1l1 1h2l1 1h2l1 1h5l1 1h4l1-1h6l1-1h2l1-1h2l1-1h1l1-1h1l3-3h1l6-6v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-10l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-1-1h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM351 292l-1 1h-3l-1 1h-1l-1 1h-2l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v5l1 1v5l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h5l1 1h5l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-11l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-3-3v-1l-2-2h-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM450 261l-1 1h-1l-1 1v1l-1 1v8l1 1v1l1 1v1l3 3v1l13 13v1l15 15v1l15 15v1l1 1v6l-6 6v1l-5 5v1l-6 6v1l-5 5v1l-5 5v1l-6 6v1l-5 5v1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v4l1 1v1l2 2h1l1 1h61l1-1h49l1 1v-21h-75l-1-1v-4l1-1v-1l5-5v-1l5-5v-1l5-5v-1l4-4v-1l5-5v-1l4-4v-1l3-3v-1l1-1v-1l1-1v-5l-1-1v-1l-1-1v-1l-2-2v-1l-7-7v-1l-8-8v-1l-9-9v-1l-8-8v-4l1-1h77v-20ZM611 193l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v9l1 1v3l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l1-1h1l5-5v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-2-2v-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1ZM401 193l-1 1h-2l-1 1h-1l-1 1h-1l-2 2h-1l-2 2v1l-3 3v1l-1 1v2l-1 1v2l-1 1v8l1 1v2l1 1v2l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h12l1-1h2l1-1h1l1-1h1l7-7v-1l1-1v-1l1-1v-1l1-1v-5l1-1v-2l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-6-6h-1l-2-2h-1l-1-1h-3l-1-1ZM504 143l-1 1h-3l-1 1h-1l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-2 2v1l-3 3v1l-1 1v1l-1 1v1l-1 1v1l-1 1v3l-1 1v15l1 1v3l1 1v1l1 1v2l2 2v1l2 2v1l5 5h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h7l1-1h4l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-3-3h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1Z\"/></g></svg>",
+    "nav": [
+      {
+        "title": "Projekty",
+        "slug": "projekty",
+        "href": "projects.json"
+      },
+      {
+        "title": "Statut",
+        "slug": "statut",
+        "href": "constitution.json"
+      },
+      {
+        "title": "Cele i misja",
+        "slug": "cele",
+        "href": "goals.json"
+      },
+      {
+        "title": "Nasz zespół",
+        "slug": "zespol",
+        "href": "team.json"
+      },
+      {
+        "title": "Działalność",
+        "slug": "dzialalnosc",
+        "href": "activity.json"
+      }
+    ]
+  },
+  "hero": {
+    "title": "KNSI E‑XPERT IT dla ludzi",
+    "subtitle": "Studenckie projekty, realne wdrożenia i międzynarodowe wyróżnienia (AIS SC). Dołącz, ucz się i buduj z nami.",
+    "cta": {
+      "label": "Dołącz do nas",
+      "href": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
+    }
+  },
+  "highlights": [
+    {
+      "title": "III miejsce — AIS Student Chapter (2015)",
+      "text": "Projekt SafeWatch: dyskretne wzywanie pomocy gestem — finał w USA i 3. miejsce.",
+      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/dyp1.png"
+    },
+    {
+      "title": "III miejsce + wyróżnienie IBM Bright ICT (2016)",
+      "text": "CyberWatch: wykrywanie cyberprzemocy; dodatkowe wyróżnienie za najlepsze użycie IBM Bluemix.",
+      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+    },
+    {
+      "title": "Finaliści AIS SC (2022)",
+      "text": "SocialMonitor: ukrywanie reakcji w social media dla zdrowszej komunikacji.",
+      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+    },
+    {
+      "title": "Aplikacja mobileWZR",
+      "text": "Plan zajęć WZiE UG na Androida — używana od 2014 roku.",
+      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+    }
+  ],
+  "affiliations": [
+    {
+      "name": "Association for Information Systems Student Chapters (AIS SC)",
+      "since": 2015,
+      "chapter": "AIS SC University of Gdansk"
+    }
+  ],
+  "projects_showcase": [
+    {
+      "name": "SafeWatch",
+      "blurb": "Dyskretne wezwanie pomocy gestem (smartfon/smartwatch).",
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/image001.png",
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/zdjgrup.png"
+      ],
+      "href": "projects.json#safewatch"
+    },
+    {
+      "name": "CyberWatch",
+      "blurb": "Rozpoznawanie i blokowanie treści naruszających bezpieczeństwo i kulturę w sieci.",
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+      ],
+      "href": "projects.json#cyberwatch"
+    },
+    {
+      "name": "SocialMonitor",
+      "blurb": "Ukrywa liczniki reakcji w social mediach, sprzyjając zdrowej komunikacji.",
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+      ],
+      "href": "projects.json#socialmonitor"
+    },
+    {
+      "name": "mobileWZR",
+      "blurb": "Plan zajęć i przypomnienia dla studentów WZiE UG.",
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+      ],
+      "href": "projects.json#mobilewzr"
+    }
+  ],
+  "activities": {
+    "focus": [
+      "Udział w konkursach AIS i innych hackathonach",
+      "Projekty i narzędzia dla studentów UG",
+      "Szkolenia i warsztaty (od studentów i z firmami)"
+    ],
+    "meetings": {
+      "platform": "Microsoft Teams",
+      "link": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
+    }
+  },
+  "stats": {
+    "members_count_known": 12,
+    "as_of": "2022-05-31",
+    "awards": 5
+  },
+  "footer": {
+    "copyright": "© Koło Naukowe Systemów Informatycznych E‑XPERT",
+    "social": []
+  }
+}

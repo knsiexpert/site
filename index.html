@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNSI E-XPERT — "IT DLA LUDZI"</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray: #808080;
+            --light-gray: #f5f5f5;
+            --accent: #ff6b00;
+            --border: 1px;
+        }
+        
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+            letter-spacing: -0.02em;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            border-bottom: 2px solid var(--black);
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .logo svg {
+            height: 40px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            text-transform: uppercase;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+            padding: 4px 0;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+        
+        .nav-links a.active {
+            font-weight: 700;
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--black);
+        }
+        
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 140px 0 100px;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 140px 0 100px;
+        }
+        
+        .hero-content {
+            text-align: left;
+            max-width: 1000px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(48px, 10vw, 140px);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            line-height: 0.95;
+        }
+        
+        .hero .subtitle {
+            font-size: 20px;
+            color: var(--black);
+            margin-bottom: 60px;
+            max-width: 700px;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            border: 2px solid var(--black);
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            transition: all 0.2s;
+            font-size: 11px;
+            position: relative;
+        }
+        
+        .cta-button:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .cta-button::before {
+            content: 'LINK';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 8px;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+        }
+        
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2px;
+            margin: 100px 0;
+            background: var(--black);
+        }
+        
+        .highlight-card {
+            background: var(--white);
+            padding: 50px 40px;
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .highlight-card::before {
+            content: attr(data-index);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+        
+        .highlight-card:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .highlight-card h3 {
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+        
+        .highlight-card p {
+            color: inherit;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+        
+        /* Typography */
+        h2 {
+            font-size: clamp(32px, 6vw, 72px);
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+            line-height: 1;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--black);
+        }
+        
+        h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+        
+        /* Projects */
+        .project-card {
+            border-top: 2px solid var(--black);
+            padding: 60px 0;
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        
+        .project-card:first-child {
+            border-top: none;
+        }
+        
+        .project-year {
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+            position: sticky;
+            top: 140px;
+        }
+        
+        .project-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .project-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+        }
+        
+        .project-description {
+            color: var(--black);
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+        
+        .project-team {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            margin-top: 30px;
+            background: var(--black);
+        }
+        
+        .team-member {
+            padding: 12px 24px;
+            background: var(--white);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .project-card {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .project-year {
+                position: static;
+            }
+        }
+        
+        /* Goals Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 80px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--black);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 80px;
+            padding: 40px;
+            border: 2px solid var(--black);
+            background: var(--white);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -91px;
+            top: 40px;
+            width: 20px;
+            height: 20px;
+            background: var(--black);
+            border: 4px solid var(--white);
+            box-shadow: 0 0 0 2px var(--black);
+        }
+        
+        .timeline-year {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            letter-spacing: 0.05em;
+        }
+        
+        .timeline-content {
+            color: var(--black);
+        }
+        
+        .timeline-content ul {
+            list-style: none;
+        }
+        
+        .timeline-content li {
+            list-style: none;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.7;
+        }
+        
+        .timeline-content li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline {
+                padding-left: 40px;
+            }
+            
+            .timeline-item::before {
+                left: -51px;
+            }
+        }
+        
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            margin: 40px 0;
+            background: var(--black);
+        }
+        
+        .team-year-section {
+            margin-bottom: 100px;
+        }
+        
+        .team-board {
+            background: var(--black);
+            color: var(--white);
+            padding: 50px;
+            margin-bottom: 2px;
+            position: relative;
+        }
+        
+        .team-board::before {
+            content: 'ZARZĄD';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+        }
+        
+        .team-board p {
+            font-size: 14px;
+            line-height: 2;
+            letter-spacing: 0.02em;
+        }
+        
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2px;
+            background: var(--black);
+        }
+        
+        .member-tag {
+            background: var(--white);
+            padding: 20px 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        
+        .member-tag:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Constitution */
+        .article {
+            margin-bottom: 80px;
+            padding: 50px;
+            border: 2px solid var(--black);
+            position: relative;
+        }
+        
+        .article-number {
+            position: absolute;
+            top: -20px;
+            left: 50px;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 24px;
+        }
+        
+        .article-title {
+            font-size: 20px;
+            margin-bottom: 30px;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+        
+        .article-content {
+            color: var(--black);
+            line-height: 1.8;
+        }
+        
+        .article-content ul {
+            list-style: none;
+        }
+        
+        .article-content li {
+            margin-bottom: 15px;
+            list-style: none;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .article-content li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            font-weight: 700;
+        }
+        
+        /* Activities */
+        .activity-lead {
+            font-size: 18px;
+            margin-bottom: 60px;
+            padding: 50px;
+            border: 2px solid var(--black);
+            background: var(--white);
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .activity-lead::before {
+            content: 'O NAS';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            font-size: 9px;
+            letter-spacing: 0.2em;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+        
+        .activity-list {
+            display: grid;
+            gap: 2px;
+            background: var(--black);
+            margin-bottom: 80px;
+        }
+        
+        .activity-item {
+            padding: 40px;
+            background: var(--white);
+            transition: all 0.2s;
+            position: relative;
+        }
+        
+        .activity-item strong {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 12px;
+            letter-spacing: 0.15em;
+        }
+        
+        .activity-item:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Mobile */
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        .hamburger {
+            width: 25px;
+            height: 2px;
+            background: var(--black);
+            position: relative;
+        }
+        
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: var(--black);
+        }
+        
+        .hamburger::before {
+            top: -8px;
+        }
+        
+        .hamburger::after {
+            top: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 20px;
+            }
+            
+            .logo svg {
+                height: 30px;
+            }
+            
+            .logo span {
+                font-size: 16px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 30px 20px;
+                border-bottom: 2px solid var(--black);
+                gap: 20px;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero .subtitle {
+                font-size: 16px;
+            }
+            
+            .cta-button {
+                padding: 15px 40px;
+                font-size: 10px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote {
+                font-size: 20px;
+                padding: 50px 30px;
+            }
+            
+            .quote::after {
+                width: 50px;
+                height: 50px;
+            }
+            
+            h2 {
+                font-size: 36px;
+            }
+            
+            .section {
+                padding: 100px 0 60px;
+            }
+        }
+        
+        /* Quotes */
+        .quote {
+            font-size: 28px;
+            font-style: normal;
+            margin: 100px 0;
+            padding: 80px 60px;
+            border: 3px solid var(--black);
+            position: relative;
+            line-height: 1.5;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+        }
+        
+        .quote::before {
+            content: 'STATEMENT';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 10px;
+            letter-spacing: 0.2em;
+            opacity: 0.3;
+            font-weight: 700;
+        }
+        
+        .quote::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: -10px;
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--black);
+            border-top: none;
+            border-left: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo"></div>
+            <div class="mobile-menu" onclick="toggleMenu()">
+                <div class="hamburger"></div>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <!-- Navigation will be loaded dynamically -->
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div id="homeContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container" id="projectsContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Goals Section -->
+    <section id="goals" class="section">
+        <div class="container" id="goalsContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container" id="teamContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Activity Section -->
+    <section id="activity" class="section">
+        <div class="container" id="activityContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <!-- Constitution Section -->
+    <section id="constitution" class="section">
+        <div class="container" id="constitutionContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+    
+    <script>
+        // Data cache
+        let dataCache = {};
+        
+        // Load JSON data
+        async function loadJSON(filename) {
+            if (dataCache[filename]) {
+                return dataCache[filename];
+            }
+            try {
+                const response = await fetch(`data/${filename}`);
+                const data = await response.json();
+                dataCache[filename] = data;
+                return data;
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                return null;
+            }
+        }
+        
+        // Render Home Section
+        async function renderHome() {
+            const data = await loadJSON('home.json');
+            if (!data) return;
+            
+            const homeContent = document.getElementById('homeContent');
+            homeContent.innerHTML = `
+                <div class="hero">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1>${data.hero.title}</h1>
+                            <p class="subtitle">${data.hero.subtitle}</p>
+                            <a href="${data.hero.cta.href}" 
+                               target="_blank" 
+                               class="cta-button">${data.hero.cta.label}</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="container">
+                    <div class="quote">
+                        Tworzymy technologię, która służy społeczeństwu — od SafeWatch po SocialMonitor, nasze projekty zdobywają międzynarodowe uznanie
+                    </div>
+                    
+                    <div class="highlights-grid">
+                        ${data.highlights.map((highlight, index) => `
+                            <div class="highlight-card" data-index="${String(index + 1).padStart(2, '0')}">
+                                <h3>${highlight.title}</h3>
+                                <p>${highlight.text}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Render Projects Section
+        async function renderProjects() {
+            const data = await loadJSON('projects.json');
+            if (!data) return;
+            
+            const projectsContent = document.getElementById('projectsContent');
+            projectsContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                <p style="font-size: 18px; color: var(--black); margin-bottom: 80px; line-height: 1.8;">
+                    ${data.intro}
+                </p>
+                
+                ${data.projects.map(project => `
+                    <div class="project-card">
+                        <div class="project-year">${project.year}</div>
+                        <div class="project-content">
+                            <div class="project-name">${project.name}</div>
+                            <p class="project-description">
+                                ${project.description}
+                            </p>
+                            ${project.team ? `
+                                <div class="project-team">
+                                    ${project.team.map(member => `
+                                        <span class="team-member">${member}</span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Render Goals Section
+        async function renderGoals() {
+            const data = await loadJSON('goals.json');
+            if (!data) return;
+            
+            const goalsContent = document.getElementById('goalsContent');
+            goalsContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                
+                <div class="timeline">
+                    ${data.content.years.map(yearData => `
+                        <div class="timeline-item">
+                            <div class="timeline-year">${yearData.year}</div>
+                            <div class="timeline-content">
+                                <ul>
+                                    ${yearData.projects.map(project => `
+                                        <li>${project}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        // Render Team Section
+        async function renderTeam() {
+            const data = await loadJSON('team.json');
+            if (!data) return;
+            
+            const teamContent = document.getElementById('teamContent');
+            teamContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                <p style="font-size: 18px; margin-bottom: 40px;">Opiekun: <strong>${data.content.supervisor}</strong></p>
+                
+                ${data.content.years.map(yearData => `
+                    <div class="team-year-section">
+                        <h3>${yearData.year}</h3>
+                        <div class="team-board">
+                            ${yearData.board.map(boardMember => `
+                                <p><strong>${boardMember.split(' – ')[0]}</strong> — ${boardMember.split(' – ')[1]}</p>
+                            `).join('')}
+                        </div>
+                        <div class="team-members">
+                            ${yearData.members.map(member => `
+                                <span class="member-tag">${member}</span>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Render Activity Section
+        async function renderActivity() {
+            const data = await loadJSON('activity.json');
+            if (!data) return;
+            
+            const activityContent = document.getElementById('activityContent');
+            const activityLabels = ['KONKURSY', 'PROJEKTY', 'SZKOLENIA', 'TESTOWANIE', 'POPULARYZACJA'];
+            
+            activityContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                
+                <div class="activity-lead">
+                    ${data.content.lead}
+                </div>
+                
+                <div class="activity-list">
+                    ${data.content.activities.map((activity, index) => `
+                        <div class="activity-item">
+                            <strong>${activityLabels[index] || 'DZIAŁALNOŚĆ'}</strong><br>
+                            ${activity}
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <h3 style="margin-top: 60px;">CELE I MISJA</h3>
+                <ul style="line-height: 2; color: var(--gray);">
+                    ${data.content.mission_goals.map(goal => `
+                        <li>→ ${goal}</li>
+                    `).join('')}
+                </ul>
+                
+                <h3 style="margin-top: 60px;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
+                ${data.content.industry_collaboration.map(collab => `
+                    <p>Partner: <strong>${collab.partner}</strong> — ${collab.role}</p>
+                `).join('')}
+            `;
+        }
+        
+        // Render Constitution Section
+        async function renderConstitution() {
+            const data = await loadJSON('constitution.json');
+            if (!data) return;
+            
+            const constitutionContent = document.getElementById('constitutionContent');
+            constitutionContent.innerHTML = `
+                <h2>"${data.title.split(' ').slice(-1)[0].toUpperCase()}"</h2>
+                <p style="font-size: 18px; margin-bottom: 60px;">
+                    ${data.title}<br>
+                    ${data.content.intro.institution}, ${data.content.intro.location}<br>
+                    ${data.content.intro.date}
+                </p>
+                
+                ${data.content.articles.map(article => `
+                    <div class="article">
+                        <span class="article-number">${article.number}</span>
+                        <h3 class="article-title">${article.title}</h3>
+                        <div class="article-content">
+                            <ul>
+                                ${article.content.map(item => `
+                                    <li>${item}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `).join('')}
+            `;
+        }
+        
+        // Initialize navigation
+        async function initNavigation() {
+            const data = await loadJSON('home.json');
+            if (!data) return;
+            
+            const navLinks = document.getElementById('navLinks');
+            const logoContainer = document.querySelector('.logo');
+            
+            // Set page title
+            document.title = data.site.name + ' "IT DLA LUDZI"';
+            
+            // Add SVG logo
+            logoContainer.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="767" viewBox="0 0 1024 767"><g stroke="#000"><path d="M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18Z"/></g></svg>
+                <span>${data.site.short_name}</span>
+            `;
+            
+            // Build navigation
+            navLinks.innerHTML = `
+                <li><a onclick="showSection('home')" class="active">Home</a></li>
+                ${data.site.nav.map(navItem => {
+                    const sectionId = navItem.href.replace('.json', '');
+                    return `<li><a onclick="showSection('${sectionId}')">${navItem.title}</a></li>`;
+                }).join('')}
+            `;
+        }
+        
+        // Show section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // Update nav links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to clicked link
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+            
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+        
+        // Add scroll effect
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const nav = document.querySelector('nav');
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                nav.style.transform = 'translateY(-100%)';
+            } else {
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+        
+        // Initialize app
+        async function init() {
+            await initNavigation();
+            await renderHome();
+            await renderProjects();
+            await renderGoals();
+            await renderTeam();
+            await renderActivity();
+            await renderConstitution();
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

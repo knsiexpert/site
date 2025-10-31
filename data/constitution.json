@@ -1,0 +1,158 @@
+{
+  "title": "Statut Studenckiego Koła Naukowego Systemów Informatycznych E-xpert",
+  "content": {
+    "intro": {
+      "institution": "Uniwersytet Gdański",
+      "location": "Wydział Zarządzania, ul. Armii Krajowej 101, 80-824 Sopot",
+      "date": "Sopot, marzec 2014"
+    },
+    "articles": [
+      {
+        "number": 1,
+        "title": "Postanowienia ogólne",
+        "content": [
+          "Nazwa organizacji: Studenckie Koło Naukowe Systemów Informatycznych „E-xpert” działające przy Katedrze Informatyki Ekonomicznej na Wydziale Zarządzania UG.",
+          "Koło zostało powołane z inicjatywy studentów UG, zgodnie z Ustawą o Szkolnictwie Wyższym i Statutem UG.",
+          "Siedziba Koła: Uniwersytet Gdański, Wydział Zarządzania, ul. Armii Krajowej 101, 80-824 Sopot."
+        ]
+      },
+      {
+        "number": 2,
+        "title": "Cele działalności Koła",
+        "content": [
+          "Głównym celem działalności jest zdobywanie wiedzy z dziedziny technologii informatycznych oraz metodyk zarządzania projektem.",
+          "Koło promuje działalność i osiągnięcia swoich członków.",
+          "Kierunki działalności obejmują:",
+          "1. Tworzenie oprogramowania i systemów informatycznych.",
+          "2. Poszerzanie praktycznej znajomości technologii informatycznych.",
+          "3. Specjalizację członków w metodykach zarządzania projektami.",
+          "4. Organizację szkoleń, warsztatów i konferencji dotyczących zastosowań informatyki w biznesie.",
+          "5. Promocję studentów UG w sektorze firm informatycznych i konsultingowych."
+        ]
+      },
+      {
+        "number": 3,
+        "title": "Formy realizacji celów Koła",
+        "content": [
+          "1. Oprogramowanie i systemy informatyczne tworzone w ramach projektów.",
+          "2. Publikacje wyników badań i osiągnięć Koła.",
+          "3. Promocja strony internetowej Koła.",
+          "4. Seminaria naukowe i konferencje z zakresu zainteresowań Koła.",
+          "5. Referaty i publikacje.",
+          "6. Wykłady i szkolenia wewnętrzne.",
+          "7. Współpraca z organizacjami naukowymi w kraju i za granicą.",
+          "8. Współpraca z innymi kołami UG.",
+          "9. Realizacja zleceń na rzecz instytucji gospodarczych.",
+          "10. Organizacja praktyk i stypendiów dla studentów.",
+          "11. Organizacja obozów naukowych.",
+          "12. Pomoc w zatrudnianiu studentów i absolwentów.",
+          "13. Wsparcie w uzyskiwaniu stypendiów i praktyk."
+        ]
+      },
+      {
+        "number": 4,
+        "title": "Prawa autorskie i licencje",
+        "content": [
+          "1. Oprogramowanie tworzone przez członków Koła jest objęte licencją Creative Commons 2.5 BY-SA.",
+          "2. Autor udziela Kołu dożywotniej licencji na użytkowanie, modyfikowanie i wykorzystywanie oprogramowania na cele Koła.",
+          "3. Koło ma obowiązek zachować informację o autorze w każdym pochodnym dziele."
+        ]
+      },
+      {
+        "number": 5,
+        "title": "Fundusze i majątek Koła",
+        "content": [
+          "1. Źródła finansowania:",
+          "   a) darowizny przedsiębiorstw i osób fizycznych,",
+          "   b) organizacje współdziałające z Kołem,",
+          "   c) instytucje gospodarcze zlecające prace,",
+          "   d) jednostki UG, na rzecz których Koło prowadzi badania,",
+          "   e) Katedra Informatyki Ekonomicznej.",
+          "2. Koło może posiadać majątek ruchomy i nieruchomy.",
+          "3. Koło może posiadać wartości niematerialne i prawne."
+        ]
+      },
+      {
+        "number": 6,
+        "title": "Członkostwo",
+        "content": [
+          "1. Członkami mogą być studenci UG (dzienni, zaoczni, wieczorowi).",
+          "2. Absolwenci współpracujący z Kołem stają się członkami honorowymi.",
+          "3. O przyjęciu decyduje Zarząd.",
+          "4. Każdy pełnoprawny członek ma jeden głos na Walnym Zgromadzeniu.",
+          "5. Członkostwo ustaje przez: rezygnację, decyzję Walnego Zgromadzenia, utratę statusu studenta lub rozwiązanie Koła.",
+          "6. Skreślenie może nastąpić z powodu braku aktywności, uchylania się od prac, niedotrzymywania zobowiązań lub nagannej postawy."
+        ]
+      },
+      {
+        "number": 7,
+        "title": "Organy Koła",
+        "content": [
+          "1. Zarząd.",
+          "2. Walne Zgromadzenie.",
+          "3. Uchwały mogą być uchylone przez Rektora, jeśli są sprzeczne z prawem lub naruszają interes uczelni.",
+          "4. Praca organów ma charakter społeczny."
+        ]
+      },
+      {
+        "number": 8,
+        "title": "Walne Zgromadzenie",
+        "content": [
+          "1. Wszyscy członkowie mają prawo uczestniczyć.",
+          "2. Zwoływane co najmniej raz w semestrze.",
+          "3. Nadzwyczajne zgromadzenie – na wniosek 2/5 członków lub Opiekuna.",
+          "4. Zarząd informuje o terminie co najmniej 7 dni wcześniej.",
+          "5. Kompetencje: wybór Zarządu, określanie kierunków pracy, zatwierdzanie raportów, wystąpień i przyjmowanie członków."
+        ]
+      },
+      {
+        "number": 9,
+        "title": "Zarząd",
+        "content": [
+          "1. Składa się z prezesa i jednego lub dwóch wiceprezesów.",
+          "2. Współpracuje z Opiekunem Naukowym, Dziekanem i Katedrą Informatyki Ekonomicznej.",
+          "3. Organizuje i kieruje pracą Koła.",
+          "4. Wykonuje uchwały Walnego Zgromadzenia.",
+          "5. Wybierany na semestr większością 2/3 głosów.",
+          "6. Do kandydowania wymagany jest półroczny staż członkowski.",
+          "7. Odwołanie wymaga większości kwalifikowanej 2/3 głosów."
+        ]
+      },
+      {
+        "number": 10,
+        "title": "Opiekun naukowy",
+        "content": [
+          "1. Zatwierdza tematy badawcze i udziela wsparcia merytorycznego.",
+          "2. Pomaga w organizacji pracy Koła."
+        ]
+      },
+      {
+        "number": 11,
+        "title": "Tryb pracy Koła",
+        "content": [
+          "1. Działalność prowadzona jest pod kierunkiem Opiekuna.",
+          "2. Spotkania odbywają się nie rzadziej niż raz na dwa tygodnie.",
+          "3. Celem zebrań jest omówienie bieżącej działalności.",
+          "4. Zarząd podejmuje decyzje po konsultacji z Opiekunem.",
+          "5. Walne Zgromadzenie reguluje art. 8 pkt 3, 5, 6."
+        ]
+      },
+      {
+        "number": 12,
+        "title": "Tryb zmiany statutu",
+        "content": [
+          "1. Wniosek może złożyć 1/4 członków lub Zarząd.",
+          "2. Zmiany uchwala Zarząd po głosowaniu.",
+          "3. Wymagana większość kwalifikowana przy obecności połowy członków."
+        ]
+      },
+      {
+        "number": 13,
+        "title": "Tryb rozwiązania Koła",
+        "content": [
+          "1. Rozwiązanie następuje przez: uchwałę Walnego Zgromadzenia, decyzję Rektora na wniosek Opiekuna lub wykreślenie z rejestru Kół Naukowych."
+        ]
+      }
+    ]
+  }
+}
