@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.1.1] - 2024-10-31
+
+### 📝 Aktualizacja treści
+
+- **Dodano rok 2024/25** do sekcji zespołu
+- Zaktualizowana lista członków koła (21 osób)
+- Zarząd: Maciej Szuwarowski (Przewodniczący), Stanisław Malec (Wiceprzewodniczący)
+
 ## [2.1.0] - 2024-10-31
 
 ### 🎨 Redesign w stylu Virgila Abloha
