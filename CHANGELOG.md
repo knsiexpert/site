@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.2.0] - 2024-10-31
+
+### 🔗 Hash Routing
+
+- **URL Routing** — każda sekcja ma własny adres
+- Hash-based routing: `/#home`, `/#projects`, `/#team`, etc.
+- **Linki bezpośrednie** — można linkować do konkretnej sekcji
+- **Historia przeglądarki** — przyciski wstecz/dalej działają
+- **Logo jako link** — kliknięcie w logo wraca do home
+- **Smooth scroll** do góry przy zmianie sekcji
+
 ## [2.1.1] - 2024-10-31
 
 ### 📝 Aktualizacja treści

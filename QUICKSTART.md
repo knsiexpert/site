@@ -8,6 +8,14 @@ Strona już działa lokalnie! Otwórz w przeglądarce:
 http://localhost:8000
 ```
 
+### Hash Routing — testuj różne adresy:
+- `http://localhost:8000/#home` — Strona główna
+- `http://localhost:8000/#projects` — Projekty
+- `http://localhost:8000/#team` — Zespół
+- `http://localhost:8000/#goals` — Cele
+
+Przyciski wstecz/dalej w przeglądarce działają! ✨
+
 Serwer Python działa w tle. Jeśli chcesz go zatrzymać, użyj Ctrl+C w terminalu.
 
 ## 2️⃣ Edycja treści

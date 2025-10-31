@@ -995,24 +995,30 @@
             // Set page title
             document.title = data.site.name + ' "IT DLA LUDZI"';
             
-            // Add SVG logo
+            // Add SVG logo with home link
             logoContainer.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="767" viewBox="0 0 1024 767"><g stroke="#000"><path d="M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18Z"/></g></svg>
-                <span>${data.site.short_name}</span>
+                <a href="#home" style="display: flex; align-items: center; gap: 20px; text-decoration: none; color: inherit;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="767" viewBox="0 0 1024 767"><g stroke="#000"><path d="M274 656v19h50l1-1-1-1v-15l1-1v-1ZM780 600v21h34l1 1v97h22v-97l1-1h34v-21ZM677 600v119h22l1 1v-44l1-1h17l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l2 2v1l1 1v1l1 1v1l2 2v1l1 1v1l1 1v1l1 1h25l1 1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-1-1v-1l-2-2v-1l-1-1v-4l1-1h1l1-1h1l1-1h1l3-3h1l3-3v-1l3-3v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-5l1-1v-9l-1-1v-5l-1-1v-2l-1-1v-1l-1-1v-2l-2-2v-1l-2-2v-1l-5-5h-1l-2-2h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM576 600l1 1v117l-1 1h78v-20h-53l-1-1v-27l1-1h45v-20h-45l-1-1v-27l1-1h52l-1-1v-19l1-1ZM467 600v119h23v-41l1-1h34l1-1h3l1-1h3l1-1h1l1-1h2l2-2h1l2-2h1l5-5v-1l2-2v-1l2-2v-2l1-1v-1l1-1v-2l1-1v-4l1-1v-15l-1-1v-3l-1-1v-2l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-2l-1-1h-3l-1-1h-5l-1-1ZM337 600l1 1v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v7l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-3 3v1l-1 1v1l-2 2v1l-2 2v1l-3 3v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l-2 2v1l1-1h27l1-1v-1l2-2v-1l1-1v-1l3-3v-1l1-1v-1l2-2v-1l3-3v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2h5l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l2 2v1l1 1h27l1 1v-1l-3-3v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-1l-2-2v-7l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l2-2v-1l1-1h-28l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-2 2v1l-1 1v1l-2 2v1l-1 1v1l-2 2v1l-1 1h-5l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2v-1l-1-1v-1l-2-2ZM162 600v4l1 1v2l1 1v1l1 1v1l3 3v1l3 3v1l4 4v1l5 5v1l6 6v1l5 5v1l5 5v1l5 5v1l1 1v4l-4 4v1l-3 3v1l-3 3v1l-3 3v1l-4 4v1l-3 3v1l-4 4v1l-3 3v1l-3 3v1l-4 4v1l-2 2v1l-2 2v1l-1 1v2l-1 1v5l1 1 1-1h96v-18h-59l-1-1v-4l3-3v-1l3-3v-1l3-3v-1l3-3v-1l4-4v-1l3-3v-1l3-3v-1l3-3v-1l3-3v-2l-2-2v-1l-3-3v-1l-3-3v-1l-3-3v-1l-4-4v-1l-4-4v-1l-5-5v-1l-4-4v-4l1-1h58v-18Z"/></g></svg>
+                    <span>${data.site.short_name}</span>
+                </a>
             `;
             
-            // Build navigation
+            // Build navigation with hash links
             navLinks.innerHTML = `
-                <li><a onclick="showSection('home')" class="active">Home</a></li>
+                <li><a href="#home">Home</a></li>
                 ${data.site.nav.map(navItem => {
                     const sectionId = navItem.href.replace('.json', '');
-                    return `<li><a onclick="showSection('${sectionId}')">${navItem.title}</a></li>`;
+                    return `<li><a href="#${sectionId}">${navItem.title}</a></li>`;
                 }).join('')}
             `;
         }
         
         // Show section
         function showSection(sectionId) {
+            // Update hash without triggering hashchange
+            if (window.location.hash !== '#' + sectionId) {
+                history.pushState(null, null, '#' + sectionId);
+            }
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -1029,18 +1035,25 @@
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
             });
-            
-            // Add active class to clicked link
-            if (event && event.target) {
-                event.target.classList.add('active');
-            }
             
             // Close mobile menu
             document.getElementById('navLinks').classList.remove('active');
             
             // Scroll to top
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Handle hash change
+        function handleHashChange() {
+            let hash = window.location.hash.slice(1); // Remove #
+            if (!hash || hash === '') {
+                hash = 'home';
+            }
+            showSection(hash);
         }
         
         function toggleMenu() {
@@ -1072,6 +1085,12 @@
             await renderTeam();
             await renderActivity();
             await renderConstitution();
+            
+            // Set up hash routing
+            window.addEventListener('hashchange', handleHashChange);
+            
+            // Handle initial hash
+            handleHashChange();
         }
         
         // Load data when page loads

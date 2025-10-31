@@ -52,6 +52,29 @@ Wszystkie treści strony znajdują się w plikach JSON w katalogu `data/`. Wysta
 - **activity.json** - Opis działalności
 - **constitution.json** - Statut koła
 
+## 🔗 Hash Routing
+
+Strona wykorzystuje hash routing — każda sekcja ma własny adres URL:
+
+- `/#home` — Strona główna
+- `/#projects` — Projekty
+- `/#goals` — Cele
+- `/#team` — Zespół
+- `/#activity` — Działalność
+- `/#constitution` — Statut
+
+### Zalety:
+- ✅ **Bezpośrednie linki** — możesz linkować do konkretnej sekcji
+- ✅ **Historia przeglądarki** — przyciski wstecz/dalej działają
+- ✅ **Sharable URLs** — wysyłaj linki do konkretnych sekcji
+- ✅ **SEO friendly** — Google indeksuje sekcje
+
+### Przykład użycia:
+```html
+<!-- Link do zespołu -->
+<a href="https://yoursite.github.io/knmiexpert/#team">Nasz zespół</a>
+```
+
 ## 🌐 Deployment na GitHub Pages
 
 ### Metoda 1: Automatyczny (GitHub Actions) ✅ ZALECANE
