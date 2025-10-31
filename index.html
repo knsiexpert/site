@@ -21,14 +21,20 @@
             --surface: #ffffff;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
             font-size: 15px;
             line-height: 1.8;
             color: var(--black);
             background: var(--white);
             overflow-x: hidden;
             letter-spacing: -0.02em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         
         .container {
@@ -40,6 +46,44 @@
         @media (max-width: 768px) {
             .container {
                 padding: 0 20px;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero h1 {
+                font-size: clamp(36px, 12vw, 64px);
+                margin-bottom: 30px;
+            }
+            
+            .hero .subtitle {
+                font-size: 18px;
+                margin-bottom: 40px;
+            }
+            
+            .about-lead {
+                font-size: 20px;
+                padding-left: 20px;
+                margin-bottom: 50px;
+            }
+            
+            .highlights-grid {
+                grid-template-columns: 1fr;
+                gap: 2px;
+                margin: 40px 0 80px;
+            }
+            
+            .highlight-card {
+                padding: 50px 30px;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-card {
+                padding: 50px 30px;
             }
         }
         
@@ -137,48 +181,74 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 140px 0 100px;
-            background: linear-gradient(135deg, var(--white) 0%, var(--light-gray) 100%);
+            padding: 180px 0 120px;
+            background: var(--white);
+            overflow: hidden;
         }
         
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 300px;
-            background: linear-gradient(180deg, var(--black) 0%, transparent 100%);
-            opacity: 0.02;
+            top: -50%;
+            right: -10%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, var(--light-gray) 0%, transparent 70%);
+            opacity: 0.4;
             pointer-events: none;
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-30px, 30px) rotate(5deg); }
+            66% { transform: translate(30px, -30px) rotate(-5deg); }
         }
         
         .hero-content {
             text-align: left;
-            max-width: 1100px;
+            max-width: 1200px;
             position: relative;
             z-index: 1;
         }
         
         .hero h1 {
-            font-size: clamp(52px, 10vw, 160px);
-            font-weight: 700;
-            letter-spacing: -0.04em;
-            margin-bottom: 50px;
+            font-size: clamp(48px, 9vw, 140px);
+            font-weight: 800;
+            letter-spacing: -0.05em;
+            margin-bottom: 40px;
             text-transform: uppercase;
-            line-height: 0.9;
+            line-height: 0.95;
             color: var(--black);
-            text-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { width: 0; }
+            to { width: 100px; }
         }
         
         .hero .subtitle {
-            font-size: 22px;
+            font-size: 24px;
             color: var(--black);
-            margin-bottom: 70px;
-            max-width: 750px;
-            line-height: 1.7;
+            margin-bottom: 60px;
+            margin-top: 40px;
+            max-width: 800px;
+            line-height: 1.6;
             font-weight: 400;
-            opacity: 0.9;
+            opacity: 0.85;
         }
         
         .cta-button {
@@ -215,70 +285,233 @@
             font-weight: 700;
         }
         
-        /* Highlights Grid */
-        .highlights-grid {
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 0;
+            margin: 100px 0;
+            border: 3px solid var(--black);
+            overflow: hidden;
+        }
+        
+        .stat-card {
+            padding: 60px 40px;
+            text-align: center;
+            background: var(--surface);
+            border-right: 2px solid var(--black);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card:last-child {
+            border-right: none;
+        }
+        
+        .stat-card:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(28, 27, 34, 0.2);
+            z-index: 1;
+        }
+        
+        .stat-number {
+            font-size: 64px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 20px;
+            letter-spacing: -0.03em;
+            color: var(--black);
+            transition: color 0.4s;
+        }
+        
+        .stat-card:hover .stat-number {
+            color: var(--white);
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--black);
+            transition: color 0.4s;
+        }
+        
+        .stat-card:hover .stat-label {
+            color: var(--white);
+        }
+        
+        .stat-sublabel {
+            font-size: 11px;
+            opacity: 0.6;
+            letter-spacing: 0.05em;
+            transition: opacity 0.4s;
+        }
+        
+        .stat-card:hover .stat-sublabel {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .stat-card {
+                border-right: none;
+                border-bottom: 2px solid var(--black);
+            }
+            
+            .stat-card:nth-child(2n) {
+                border-right: none;
+            }
+            
+            .stat-card:nth-child(odd) {
+                border-right: 2px solid var(--black);
+            }
+            
+            .stat-card:last-child,
+            .stat-card:nth-last-child(2) {
+                border-bottom: none;
+            }
+        }
+        
+        /* About Section */
+        .about-lead {
+            font-size: 28px;
+            line-height: 1.6;
+            margin-bottom: 80px;
+            max-width: 900px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            padding-left: 40px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .about-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 3px;
-            margin: 120px 0 80px;
             background: var(--black);
             padding: 3px;
+            margin: 60px 0;
+        }
+        
+        .about-card {
+            background: var(--surface);
+            padding: 70px 50px;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 50px;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.4s;
+        }
+        
+        .about-card:hover::before {
+            width: 80px;
+        }
+        
+        .about-card:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(28, 27, 34, 0.2);
+        }
+        
+        .about-card h3 {
+            font-size: 20px;
+            margin-bottom: 25px;
+            margin-top: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+        
+        .about-card p {
+            line-height: 1.8;
+            font-size: 15px;
+            opacity: 0.9;
+        }
+        
+        /* Highlights Grid */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2px;
+            margin: 60px 0 120px;
+            background: var(--black);
+            padding: 2px;
         }
         
         .highlight-card {
             background: var(--surface);
-            padding: 60px 45px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 70px 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             border: 1px solid var(--light-gray);
+            overflow: hidden;
         }
         
         .highlight-card::before {
             content: attr(data-index);
             position: absolute;
-            top: 25px;
-            right: 25px;
-            font-size: 11px;
+            top: 30px;
+            right: 30px;
+            font-size: 12px;
             letter-spacing: 0.2em;
-            opacity: 0.4;
-            font-weight: 700;
+            opacity: 0.3;
+            font-weight: 800;
             color: var(--black);
-            transition: all 0.3s;
+            transition: all 0.4s;
         }
         
         .highlight-card::after {
             content: '';
             position: absolute;
-            inset: 0;
-            border: 2px solid var(--black);
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .highlight-card:hover {
             background: var(--black);
             color: var(--white);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(28, 27, 34, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(28, 27, 34, 0.2);
+            z-index: 1;
         }
         
         .highlight-card:hover::before {
             color: var(--white);
-            opacity: 0.6;
+            opacity: 0.5;
+            transform: scale(1.2);
         }
         
         .highlight-card:hover::after {
-            opacity: 1;
+            width: 100%;
         }
         
         .highlight-card h3 {
-            font-size: 15px;
-            margin-bottom: 25px;
+            font-size: 16px;
+            margin-bottom: 28px;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             font-weight: 700;
-            line-height: 1.5;
+            line-height: 1.4;
             color: inherit;
         }
         
@@ -325,46 +558,63 @@
         
         /* Projects */
         .project-card {
-            border-top: 2px solid var(--black);
-            padding: 60px 0;
+            border-top: 3px solid var(--black);
+            padding: 80px 0;
             display: grid;
-            grid-template-columns: 120px 1fr;
-            gap: 60px;
+            grid-template-columns: 140px 1fr;
+            gap: 80px;
             align-items: start;
+            transition: all 0.3s ease;
+            position: relative;
         }
         
         .project-card:first-child {
             border-top: none;
+            padding-top: 40px;
+        }
+        
+        .project-card:hover {
+            padding-left: 20px;
         }
         
         .project-year {
-            font-size: 64px;
-            font-weight: 700;
+            font-size: 72px;
+            font-weight: 800;
             color: var(--black);
             line-height: 1;
             position: sticky;
             top: 140px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-year {
+            color: var(--accent);
+            opacity: 1;
+            transform: scale(1.05);
         }
         
         .project-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
         }
         
         .project-name {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 15px;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 20px;
             text-transform: uppercase;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
         
         .project-description {
             color: var(--black);
             margin-bottom: 30px;
             line-height: 1.8;
-            font-size: 15px;
+            font-size: 16px;
+            opacity: 0.9;
         }
         
         .project-team {
@@ -373,16 +623,24 @@
             gap: 2px;
             margin-top: 30px;
             background: var(--black);
+            padding: 2px;
         }
         
         .team-member {
-            padding: 14px 26px;
+            padding: 16px 28px;
             background: var(--surface);
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             font-weight: 500;
             border: 1px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-2px);
         }
         
         @media (max-width: 768px) {
@@ -895,10 +1153,33 @@
                 </div>
                 
                 <div class="container">
-                    <div class="quote">
-                        Tworzymy technologię, która służy społeczeństwu — od SafeWatch po SocialMonitor, nasze projekty zdobywają międzynarodowe uznanie
-                    </div>
+                    ${data.stats && data.stats.length > 0 ? `
+                        <div class="stats-grid">
+                            ${data.stats.map(stat => `
+                                <div class="stat-card">
+                                    <div class="stat-number">${stat.number}</div>
+                                    <div class="stat-label">${stat.label}</div>
+                                    <div class="stat-sublabel">${stat.sublabel}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
                     
+                    ${data.about ? `
+                        <h2>${data.about.title}</h2>
+                        <p class="about-lead">${data.about.lead}</p>
+                        
+                        <div class="about-grid">
+                            ${data.about.points.map(point => `
+                                <div class="about-card">
+                                    <h3>${point.title}</h3>
+                                    <p>${point.text}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+                    
+                    <h2 style="margin-top: 120px;">Nasze osiągnięcia</h2>
                     <div class="highlights-grid">
                         ${data.highlights.map((highlight, index) => `
                             <div class="highlight-card" data-index="${String(index + 1).padStart(2, '0')}">

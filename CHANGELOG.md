@@ -1,5 +1,69 @@
 # Changelog
 
+## [3.0.0] - 2024-10-31
+
+### 🚀 Modern 2025 Redesign — Enhanced Layout & UX
+
+#### ✨ Nowe Sekcje
+- **Statystyki** — Dynamiczna sekcja z liczbami (10+ lat, 50+ członków, 6 projektów, 5 nagród)
+  - Grid layout z hover effects
+  - Karty z animacjami (transform, scale, color transitions)
+  - Responsywny układ (2 kolumny na mobile)
+  
+- **O Nas** — Sekcja przedstawiająca koło
+  - Lead paragraph z accent border (4px orange)
+  - 3 karty z kluczowymi wartościami
+  - Hover effects z accent line animation
+  - Transform effects na kartach
+
+#### 🎨 Enhanced Hero Section
+- **Floating animation** — Subtle background gradient z animacją (20s loop)
+- **Nowy layout** — Zwiększone padding (180px/120px)
+- **Typografia** — Font-weight: 800, lepszy line-height (0.95)
+- **Accent line** — Orange underline z slide-in animation (0.8s)
+- **Responsive** — Lepsze fonty na mobile (36-64px)
+
+#### 🎯 Improved Highlight Cards
+- **Nowe wymiary** — 300px minWidth, większy padding (70px/50px)
+- **Bottom accent** — Orange bar animation on hover (width: 0 → 100%)
+- **Enhanced hover** — Scale effect (1.02), dłuższe transitions (0.4s)
+- **Number styling** — Większe numery (12px), scale na hover (1.2)
+- **Overflow hidden** — Czystsze animacje
+
+#### 📐 Enhanced Projects Section
+- **Większe spacing** — 80px padding, 80px gap
+- **Accent hover** — Rok zmienia kolor na orange i scale (1.05)
+- **Left padding animation** — Karta przesuwa się w prawo na hover
+- **Większe fonty** — Project name: 32px, description: 16px
+- **Sticky year** — Lepszy font-weight (800), opacity transitions
+- **Team tags hover** — Transform i color change
+
+#### 🎨 Global Improvements
+- **Smooth scroll** — `scroll-behavior: smooth` na całej stronie
+- **Font rendering** — `-webkit-font-smoothing: antialiased`
+- **Better fonts** — 'Helvetica Neue', -apple-system, BlinkMacSystemFont
+- **Cubic-bezier** — Wszędzie `cubic-bezier(0.4, 0, 0.2, 1)` dla smooth animations
+- **Responsive refinements** — Lepsze breakpoints i mobile layouts
+- **Accent color usage** — Więcej użyć `var(--accent)` (#ff6b00)
+
+#### 📱 Mobile Enhancements
+- **Hero mobile** — 150px/80px padding, lepsze font sizing
+- **About lead** — 20px font, zmniejszony padding
+- **Single column** — Wszystkie grids na 1fr na mobile
+- **Reduced padding** — 50px/30px na kartach mobile
+
+#### 📊 Data Structure Updates
+- `home.json` — Nowa struktura `stats` (array) i `about` (object)
+- `projects.json` — Projekt modernizacji z rokiem 2025
+- JavaScript — Nowe renderowanie stats i about sections
+
+#### 🎨 Design Philosophy
+- **2025 aesthetic** — Modern, clean, minimalist
+- **Virgil Abloh foundation** — Zachowany industrial design, labels, bold typography
+- **Enhanced interactivity** — Więcej hover states, transforms, animations
+- **Better spacing** — Więcej "white space", lepsze proporcje
+- **Accent usage** — Orange jako highlight color
+
 ## [2.3.0] - 2024-10-31
 
 ### 🎨 Refined Color Palette & Enhanced Styling
