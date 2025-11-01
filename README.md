@@ -1,17 +1,37 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.15.6** | Infinite Sliding Carousel 2025 — Full Effects Visible
+**Wersja: 3.19.3** | Achievements Cards Alignment
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
 
-## ✨ Nowe w wersji 3.15.6
+## ✨ Nowe w wersji 3.19.3
 
-- 💫 **Cień na hover widoczny** — zwiększono padding do 50px
-- ✨ **Box-shadow nie ucięty** — pełny efekt glow (30px radius)
-- 🔲 **Offset borders na hover** — -20px offset w pełni widoczny
-- 🎨 **Wszystkie efekty działają** — żaden artystyczny element nie jest ukryty
-- 📦 **Dual overflow system** — outer visible, inner hidden
-- 🟦 **1:1 Aspect Ratio** — kwadratowe zdjęcia
+- 📏 **Jednolita wysokość kart** — wszystkie kafelki w "Nasze osiągnięcia" mają ten sam układ
+- 🎯 **Stałe wysokości** — tytuły (min. 44px) i opisy (min. 80px) na tej samej wysokości
+- 🖼️ **Wyrównane obrazy** — wszystkie zdjęcia zaczynają się na tej samej linii
+- 📐 **Flexbox layout** — każda karta używa flex column dla perfekcyjnego układu
+- ✨ **Responsive** — zachowano spójność na desktop (44px/80px) i mobile (36px/60px)
+
+## ✨ Nowe w wersji 3.19.2
+
+- 📐 **Nowy układ sekcji działalności** — sekcja "O NAS" przeniesiona pod kolumny
+- 📊 **Lepszy flow** — najpierw kolumny z konkretnymi działaniami, potem historia
+- 🎯 **Lepsza hierarchia** — bardziej logiczny układ informacji
+- ✨ **Improved UX** — użytkownik najpierw widzi co koło robi, potem czyta historię
+
+## ✨ Nowe w wersji 3.19.1
+
+- 🎨 **Poprawka logo SVG** — logo wyświetla się poprawnie zamiast małej kropki
+- ✅ **Prawidłowy viewBox** — ustawiono viewBox na `-30 0 740 380`
+- 🔧 **Atrybut fill** — dodano `fill="currentColor"` dla poprawnego renderowania
+
+## ✨ Nowe w wersji 3.19.0
+
+- 🖼️ **12 zdjęć w karuzeli** — dodano 3 nowe zdjęcia (było 9, teraz 12)
+- 📐 **2 rzędy na desktop** — karuzela pokazuje 6 zdjęć naraz (2 rzędy po 3)
+- 🔢 **Grupy po 6 zdjęć** — każda grupa zawiera 6 zdjęć zamiast 3
+- 📱 **Mobile bez zmian** — nadal 1 kolumna z pojedynczymi zdjęciami
+- ✨ **Lepsze wykorzystanie przestrzeni** — więcej zawartości widocznej na raz
 
 ## ✨ Nowe w wersji 3.15.2
 

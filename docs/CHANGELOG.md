@@ -1,5 +1,930 @@
 # Changelog
 
+## [3.19.3] - 2025-01-01
+
+### 📏 Achievements Cards Alignment
+
+#### Wszystkie kafelki mają jednolitą wysokość tytułów, opisów i obrazów
+
+**Problem:**
+W sekcji "Nasze osiągnięcia" karty miały różną wysokość tekstu, przez co zdjęcia były na różnych poziomach i całość wyglądała nierówno.
+
+**Rozwiązanie:**
+Dodano flexbox layout do kart oraz stałe minimalne wysokości dla tytułów i opisów.
+
+**Zmiany CSS - Desktop:**
+
+```css
+/* Karta jako flex container */
+.highlight-card {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Stała wysokość tytułu */
+.highlight-card h3 {
+    min-height: 44px;  /* ~2 linie tekstu */
+}
+
+/* Stała wysokość opisu */
+.highlight-card p {
+    min-height: 80px;  /* ~3-4 linie tekstu */
+    margin-bottom: 0;
+}
+
+/* Obrazek zawsze na dole */
+.highlight-image {
+    margin-top: auto;  /* wypycha do dołu */
+    padding-top: 30px;
+}
+
+/* Poprawka pozycji dekoracyjnej ramki */
+.highlight-image::before {
+    top: calc(30px - 8px);  /* było: top: -8px */
+}
+
+.highlight-card:hover .highlight-image::before {
+    top: calc(30px - 12px);  /* było: top: -12px */
+}
+```
+
+**Zmiany CSS - Mobile:**
+
+```css
+.highlight-card h3 {
+    min-height: 36px;  /* mniejsza dla mobile */
+}
+
+.highlight-card p {
+    min-height: 60px;  /* mniejsza dla mobile */
+}
+
+.highlight-image {
+    margin-top: auto;
+    padding-top: 20px;  /* mniejszy padding */
+}
+
+.highlight-image::before {
+    top: calc(20px - 6px);
+}
+
+.highlight-card:hover .highlight-image::before {
+    top: calc(20px - 8px);
+}
+```
+
+**Diagram layoutu:**
+
+```
+┌─────────────────────────────────────────────────┐
+│ KARTA 1            KARTA 2            KARTA 3   │
+│ ┌───────────────┐  ┌───────────────┐  ┌───────┐│
+│ │ Tytuł         │  │ Długi tytuł   │  │ Tytuł ││
+│ │ (44px min)    │  │ na dwie linie │  │       ││
+│ ├───────────────┤  ├───────────────┤  ├───────┤│
+│ │ Opis tekstu   │  │ Krótki opis   │  │ Opis  ││
+│ │ (80px min)    │  │               │  │ tekstu││
+│ │               │  │               │  │       ││
+│ ├───────────────┤  ├───────────────┤  ├───────┤│ ← Wszystkie obrazy na tej samej linii
+│ │[  Obrazek   ]│  │[  Obrazek   ]│  │[Obraz]││
+│ │[  200px     ]│  │[  200px     ]│  │[200px]││
+│ └───────────────┘  └───────────────┘  └───────┘│
+└─────────────────────────────────────────────────┘
+```
+
+**PRZED:**
+```
+┌────────────────────────────────────┐
+│ Krótki tytuł                       │
+│ Krótki opis                        │
+│ [Obrazek]  ← wysoko               │
+│                                     │
+├────────────────────────────────────┤
+│ Bardzo długi tytuł na dwie linie   │
+│ Długi opis rozciągnięty            │
+│ na kilka linii tekstu              │
+│ [Obrazek]  ← nisko                │
+└────────────────────────────────────┘
+```
+
+**PO:**
+```
+┌────────────────────────────────────┐
+│ Krótki tytuł                       │
+│ (pozostała przestrzeń pusta)       │
+│ Krótki opis                        │
+│ (pozostała przestrzeń pusta)       │
+│ [Obrazek]  ← na tej samej linii   │
+│                                     │
+├────────────────────────────────────┤
+│ Bardzo długi tytuł na dwie linie   │
+│ (wypełnione całe 44px)             │
+│ Długi opis rozciągnięty            │
+│ na kilka linii tekstu              │
+│ [Obrazek]  ← na tej samej linii   │
+└────────────────────────────────────┘
+```
+
+**Efekt:**
+- ✅ **Perfekcyjne wyrównanie** — wszystkie obrazy zaczynają się na tej samej wysokości
+- ✅ **Wizualna spójność** — karty wyglądają profesjonalnie i uporządkowanie
+- ✅ **Flexbox magic** — `margin-top: auto` wypycha obrazki do dołu
+- ✅ **Responsive** — różne wysokości dla desktop i mobile
+- ✅ **Zachowana estetyka** — dekoracyjne ramki (::before) nadal działają poprawnie
+
+**Wysokości:**
+- **Desktop:** h3 = 44px, p = 80px
+- **Mobile:** h3 = 36px, p = 60px
+
+## [3.19.2] - 2025-01-01
+
+### 📐 Activity Section Layout Improvement
+
+#### Sekcja "O NAS" przeniesiona pod kolumny dla lepszej hierarchii informacji
+
+**Problem:**
+Użytkownik najpierw widział długą sekcję "O NAS" z historią, a potem dopiero konkretne działania koła.
+
+**Rozwiązanie:**
+Zmieniono kolejność - najpierw pokazujemy co koło robi (kolumny z działaniami, celami, współpracą), a potem historię.
+
+**Struktura PRZED:**
+```
+DZIAŁALNOŚĆ
+└── O NAS (historia - długi tekst)
+└── [Kolumny]
+    ├── Lewa: Konkursy, projekty, szkolenia...
+    └── Prawa: Cele i misja, Współpraca, Mapa
+```
+
+**Struktura PO:**
+```
+DZIAŁALNOŚĆ
+└── [Kolumny]
+    ├── Lewa: Konkursy, projekty, szkolenia...
+    └── Prawa: Cele i misja, Współpraca, Mapa
+└── O NAS (historia - długi tekst)
+```
+
+**Zmiany w `index.html`:**
+```javascript
+// PRZED - O NAS na górze
+activityContent.innerHTML = `
+    <h2>"${data.title.toUpperCase()}"</h2>
+    
+    ${data.content.about ? `
+        <div>O NAS...</div>
+    ` : ''}
+    
+    <div style="display: grid;">
+        <!-- Kolumny -->
+    </div>
+`;
+
+// PO - O NAS na dole
+activityContent.innerHTML = `
+    <h2>"${data.title.toUpperCase()}"</h2>
+    
+    <div style="display: grid;">
+        <!-- Kolumny -->
+    </div>
+    
+    ${data.content.about ? `
+        <div style="margin-top: 60px;">O NAS...</div>
+    ` : ''}
+`;
+```
+
+**Efekt:**
+- ✅ **Lepsza hierarchia** — najpierw konkretna działalność, potem historia
+- ✅ **Lepszy UX** — użytkownik szybciej widzi co koło robi obecnie
+- ✅ **Logiczny flow** — od "co robimy" do "skąd przyszliśmy"
+- ✅ **Mobile responsive** — nadal działa na małych ekranach
+
+**Layout Desktop:**
+```
+┌─────────────────────────────────────────────────────────┐
+│  DZIAŁALNOŚĆ                                           │
+│                                                          │
+│  ┌────────────────┬────────────────────────────────┐   │
+│  │ Konkursy       │ Cele i misja                    │   │
+│  │ Projekty       │ - cel 1                         │   │
+│  │ Szkolenia      │ - cel 2                         │   │
+│  │ Testowanie     │                                  │   │
+│  │ Popularyzacja  │ Współpraca z przemysłem         │   │
+│  │                │ [Madkom] [Neoteric] [...]       │   │
+│  │                │                                  │   │
+│  │                │ Lokalizacja                      │   │
+│  │                │ [Google Maps]                   │   │
+│  └────────────────┴────────────────────────────────┘   │
+│                                                          │
+│  O NAS                                                  │
+│  Koło Naukowe Systemów Informatycznych E-XPERT...      │
+│  [długi tekst historyczny]                             │
+└─────────────────────────────────────────────────────────┘
+```
+
+## [3.19.1] - 2025-01-01
+
+### 🎨 Logo SVG Fix
+
+#### Poprawiono wyświetlanie logo (było widoczne jako mała kropka)
+
+**Problem:**
+Logo wyświetlało się jako mała kropka zamiast pełnego symbolu E-XPERT.
+
+**Rozwiązanie:**
+Użyto poprawnego SVG z pliku `data/e-xpert-symbol.svg`.
+
+**Zmiany w `navigation.json`:**
+```json
+{
+  "site": {
+    "logo_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"-30 0 740 380\">
+      <g transform=\"translate(-162 -143)\">
+        <path fill=\"currentColor\" d=\"M504 447l-1 1h-2...\"/>
+      </g>
+    </svg>"
+  }
+}
+```
+
+**Kluczowe poprawki:**
+1. **viewBox** — zmieniono z `-30.0 0.0 740.0 380.0` na `-30 0 740 380`
+2. **fill attribute** — dodano `fill="currentColor"` bezpośrednio w elemencie `<path>`
+3. **Namespace cleanup** — usunięto namespace prefix `ns0:`
+
+**PRZED:**
+```svg
+<svg viewBox="-30.0 0.0 740.0 380.0">
+  <path d="..." fill="currentColor" />
+</svg>
+```
+
+**PO:**
+```svg
+<svg viewBox="-30 0 740 380">
+  <g transform="translate(-162 -143)">
+    <path fill="currentColor" d="..." />
+  </g>
+</svg>
+```
+
+**Efekt:**
+- ✅ Logo E-XPERT wyświetla się poprawnie
+- ✅ Zachowano gradient border i glow effect
+- ✅ Animacja 3D rotation działa poprawnie
+- ✅ Responsive na mobile i desktop
+
+## [3.19.0] - 2025-01-01
+
+### 🖼️ Enhanced Carousel — Dual-Row Display on Desktop
+
+#### Dodano 3 zdjęcia i 2 rzędy na desktop
+
+**Zmiany w `home.json`:**
+```json
+"images": [
+  "https://i.imgur.com/KbCxaWl.jpeg",
+  "https://i.imgur.com/cMbL4Zv.jpeg",
+  "https://i.imgur.com/kTqJvzR.jpeg",
+  "https://i.imgur.com/g8piQkb.jpeg",
+  "https://i.imgur.com/oeWjiYh.jpeg",
+  "https://i.imgur.com/HFihwiH.jpeg",
+  "https://i.imgur.com/gyHGyJ1.jpeg",
+  "https://i.imgur.com/dPTYUzW.jpeg",
+  "https://i.imgur.com/XirvXmJ.jpeg",
+  "https://i.imgur.com/JH7C0Yt.jpeg",  // NOWE
+  "https://i.imgur.com/MNa0Pfh.jpeg",  // NOWE
+  "https://i.imgur.com/APBdSnN.jpeg"   // NOWE
+]
+```
+
+**CSS Desktop - 2 rzędy:**
+```css
+.carousel-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);  /* NOWE - 2 rzędy */
+  gap: 30px;
+}
+```
+
+**JavaScript - Grupy po 6 zdjęć:**
+```javascript
+// PRZED - grupy po 3
+for (let i = 0; i < data.us.images.length; i += 3) {
+  groups.push(data.us.images.slice(i, i + 3));
+}
+
+// PO - grupy po 6 (2 rzędy x 3 kolumny)
+for (let i = 0; i < data.us.images.length; i += 6) {
+  groups.push(data.us.images.slice(i, i + 6));
+}
+
+// Zaktualizowano absoluteIndex
+const absoluteIndex = (groupIndex * 6 + index) % data.us.images.length;  // było * 3
+```
+
+**CSS Mobile - bez zmian:**
+```css
+@media (max-width: 768px) {
+  .carousel-group {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;  /* pojedyncza kolumna */
+    gap: 50px;
+  }
+}
+```
+
+**Porównanie:**
+
+| Wersja | Zdjęć | Desktop (widok) | Mobile (widok) | Grupa |
+|--------|-------|-----------------|----------------|-------|
+| **3.18.x** | 9 | 3 zdjęcia (1x3) | 1 zdjęcie | 3 zdjęcia |
+| **3.19.0** | 12 | 6 zdjęć (2x3) | 1 zdjęcie | 6 zdjęć |
+
+**Layout Desktop:**
+```
+┌─────────────────────────────────────┐
+│  [Img 1]   [Img 2]   [Img 3]       │  Rząd 1
+│  [Img 4]   [Img 5]   [Img 6]       │  Rząd 2
+└─────────────────────────────────────┘
+```
+
+**Nowe zdjęcia z gallery.json:**
+- JH7C0Yt
+- MNa0Pfh
+- APBdSnN
+
+**Efekt:**
+- ✅ **Więcej zawartości** — 6 zdjęć naraz zamiast 3
+- ✅ **Lepsza prezentacja** — 2 rzędy wykorzystują przestrzeń pionową
+- ✅ **12 zdjęć total** — większa różnorodność
+- ✅ **Mobile responsive** — nadal 1 kolumna na małych ekranach
+- ✅ **Smooth transitions** — seamless infinite loop działa poprawnie
+
+## [3.18.3] - 2025-01-01
+
+### 📍 Google Maps Marker Fix
+
+#### Poprawiono wyświetlanie pinezki na mapie
+
+**Problem:**
+- Mapa nie wyświetlała markera/pinezki na adresie
+- Użyty był zbyt skomplikowany format URL
+
+**Rozwiązanie:**
+```html
+<!-- PRZED - bez markera -->
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.86..."
+
+<!-- PO - z markerem -->
+src="https://maps.google.com/maps?q=Piaskowa+9C,+Sopot&t=&z=15&ie=UTF8&iwloc=&output=embed"
+```
+
+**Parametry URL:**
+- `q=Piaskowa+9C,+Sopot` - wyszukiwanie adresu (automatycznie dodaje marker)
+- `z=15` - poziom zoom (optymalny dla pojedynczego adresu)
+- `output=embed` - format dla osadzenia w iframe
+
+**Efekt:**
+- ✅ **Czerwona pinezka widoczna** — marker dokładnie na adresie Piaskowa 9C
+- ✅ **Prostszy URL** — łatwiejszy w utrzymaniu
+- ✅ **Lepsze centrum** — mapa wyśrodkowana na adresie
+- ✅ **Zoom 15** — optymalny poziom przybliżenia
+
+## [3.18.2] - 2025-01-01
+
+### 🗺️ Google Maps Location Integration
+
+#### Dodano mapę Google Maps z lokalizacją Koła
+
+**Dodano:**
+- **Sekcja "LOKALIZACJA"** w prawej kolumnie pod współpracą z przemysłem
+- **Mapa Google Maps** z pinezką na adres Koła
+- **Adres tekstowy** nad mapą
+
+**Adres:**
+```
+Piaskowa 9C, 81-862 Sopot
+```
+
+**Implementacja:**
+```html
+<h3 style="margin-top: 50px; ...">LOKALIZACJA</h3>
+<p style="margin-bottom: 20px; ...">
+    Piaskowa 9C, 81-862 Sopot
+</p>
+<div style="width: 100%; height: 300px; border: 2px solid var(--black); overflow: hidden;">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2323.86..."
+        width="100%" 
+        height="300" 
+        style="border:0;" 
+        allowfullscreen="" 
+        loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+```
+
+**Parametry:**
+- **Wysokość**: 300px
+- **Border**: 2px solid black (spójny z designem)
+- **Loading**: lazy (optymalizacja wydajności)
+- **Allowfullscreen**: możliwość otwarcia na pełnym ekranie
+- **Referrerpolicy**: no-referrer-when-downgrade (bezpieczeństwo)
+
+**Pozycjonowanie w prawej kolumnie:**
+```
+┌──────────────────────┬──────────────────────┐
+│ LEWA KOLUMNA         │ PRAWA KOLUMNA        │
+├──────────────────────┼──────────────────────┤
+│ • KONKURSY           │ CELE I MISJA         │
+│ • PROJEKTY           │ • Cel 1, 2, 3...     │
+│ • SZKOLENIA          │                      │
+│ • TESTOWANIE         │ WSPÓŁPRACA Z PRZEM.  │
+│ • POPULARYZACJA      │ [Madkom] [Neoteric]  │
+│                      │ [Bright] [Staples]   │
+│                      │                      │
+│                      │ LOKALIZACJA          │
+│                      │ Piaskowa 9C, Sopot   │
+│                      │ [Mapa Google Maps]   │
+└──────────────────────┴──────────────────────┘
+```
+
+**Efekt:**
+- ✅ **Łatwa lokalizacja** — użytkownicy wiedzą gdzie znajduje się Koło
+- ✅ **Interaktywna mapa** — możliwość zoom, przesuwania, otwarcia w Google Maps
+- ✅ **Spójny design** — czarna ramka pasuje do reszty strony
+- ✅ **Optymalizacja** — lazy loading nie spowalnia początkowego ładowania strony
+- ✅ **Profesjonalny wygląd** — jak na stronach firm
+
+## [3.18.1] - 2025-01-01
+
+### 📊 Two-Column Activity Layout — Professional Grid
+
+#### Przeprojektowano layout sekcji działalności na dwukolumnowy
+
+**Problem:**
+- Sekcje "CELE I MISJA" i "WSPÓŁPRACA Z PRZEMYSŁEM" były pod tabelką działalności
+- Layout wertykalny marnował przestrzeń
+- Strona była zbyt długa
+
+**Rozwiązanie - Grid Layout:**
+```html
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+  <div>
+    <!-- Lewa kolumna: KONKURSY, PROJEKTY, SZKOLENIA, TESTOWANIE, POPULARYZACJA -->
+    <div class="activity-list">...</div>
+  </div>
+  
+  <div>
+    <!-- Prawa kolumna: CELE I MISJA + WSPÓŁPRACA Z PRZEMYSŁEM -->
+    <h3>CELE I MISJA</h3>
+    <ul>...</ul>
+    
+    <h3>WSPÓŁPRACA Z PRZEMYSŁEM</h3>
+    <p>...</p>
+    <div><!-- Przyciski firm --></div>
+  </div>
+</div>
+```
+
+**Responsive:**
+```css
+@media (max-width: 968px) {
+  #activityContent > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+}
+```
+
+**Layout:**
+```
+┌─────────────────────────────────────────────┐
+│                                             │
+│  O NAS (pełna szerokość)                   │
+│                                             │
+└─────────────────────────────────────────────┘
+
+┌──────────────────────┬──────────────────────┐
+│ LEWA KOLUMNA         │ PRAWA KOLUMNA        │
+├──────────────────────┼──────────────────────┤
+│ • KONKURSY           │ CELE I MISJA         │
+│ • PROJEKTY           │ • Cel 1              │
+│ • SZKOLENIA          │ • Cel 2              │
+│ • TESTOWANIE         │ • Cel 3              │
+│ • POPULARYZACJA      │                      │
+│                      │ WSPÓŁPRACA Z PRZEM.  │
+│                      │ [Madkom] [Neoteric]  │
+│                      │ [Bright] [Staples]   │
+└──────────────────────┴──────────────────────┘
+```
+
+**Parametry:**
+- **Gap**: 60px (desktop), 40px (mobile)
+- **Breakpoint**: 968px
+- **Kolumny**: 1fr 1fr (równe szerokości)
+- **margin-top**: 40px (odsunięcie od sekcji "O NAS")
+
+**Zmiany w h3:**
+- `margin-top: 0` w prawej kolumnie (było 60px)
+- Zachowano `margin-top: 60px` w poprzednich wersjach
+
+**Efekt:**
+- ✅ **Lepsze wykorzystanie przestrzeni** — dwie kolumny obok siebie
+- ✅ **Profesjonalny layout** — grid jak na stronach korporacyjnych
+- ✅ **Krótsza strona** — zawartość bardziej kompaktowa
+- ✅ **Lepsza organizacja** — działalności po lewej, cele i partnerzy po prawej
+- ✅ **Responsive** — automatycznie przełącza się na jedną kolumnę na mobile
+
+## [3.18.0] - 2025-01-01
+
+### 🎯 Professional Typography & Kerning — Corporate Standard
+
+#### Przeprojektowano typografię według standardów korporacyjnych
+
+**Inspiracja:** Strona [Madkom](https://madkom.pl/) - profesjonalna firma IT dla administracji publicznej
+
+**Główne zmiany typograficzne:**
+
+**1. Font-family - System Fonts:**
+```css
+/* PRZED */
+font-family: 'Helvetica Neue', 'Helvetica', 'Arial', -apple-system, sans-serif;
+
+/* PO - profesjonalny system font stack */
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 
+             'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', 'Arial', sans-serif;
+```
+
+**2. Letter-spacing - Profesjonalny kerning:**
+```css
+/* Body */
+body: -0.01em           /* było -0.02em */
+
+/* Nagłówki */
+h2: -0.025em           /* było 0.02em */
+h3: -0.015em           /* było 0.01em */
+
+/* Logo */
+.logo: -0.01em         /* było 0.1em */
+.logo-text: -0.01em    /* było 0.08em */
+
+/* Nawigacja */
+.nav-links a: 0.08em   /* było 0.15em */
+
+/* Przyciski firm */
+partners: 0.02em       /* było 0.1em */
+```
+
+**3. Rozmiary fontów - Optymalizacja:**
+```css
+body: 16px              /* było 15px */
+h2: max 56px            /* było 64px */
+h3: 20px                /* było 19px */
+.nav-links a: 11px      /* było 10px */
+.logo: 20px             /* było 22px */
+partners: 15px          /* było 17px */
+```
+
+**4. Line-height - Lepsza czytelność:**
+```css
+body: 1.65              /* było 1.8 */
+paragraphs: 1.7         /* było 1.9 */
+lists: 2.0              /* było 2.2 */
+```
+
+**5. Font-weight - Bardziej stonowany:**
+```css
+body: 400               /* dodano */
+.nav-links a: 600       /* było 500 */
+.logo: 600              /* było 700 */
+partners: 600           /* było 700 */
+h2: 700                 /* było 600 */
+```
+
+**6. Padding - Zoptymalizowany:**
+```css
+partners: 14px 28px     /* było 16px 32px */
+```
+
+**Porównanie przed/po:**
+
+| Element | Przed | Po | Zmiana |
+|---------|-------|-----|--------|
+| **Body font-size** | 15px | 16px | +1px |
+| **Body letter-spacing** | -0.02em | -0.01em | +0.01em |
+| **Body line-height** | 1.8 | 1.65 | -0.15 |
+| **H2 max-size** | 64px | 56px | -8px |
+| **H2 letter-spacing** | 0.02em | -0.025em | -0.045em |
+| **H3 letter-spacing** | 0.01em | -0.015em | -0.025em |
+| **Nav letter-spacing** | 0.15em | 0.08em | -0.07em |
+| **Logo letter-spacing** | 0.1em | -0.01em | -0.11em |
+| **Przyciski letter-spacing** | 0.1em | 0.02em | -0.08em |
+
+**Efekt:**
+- ✅ **Profesjonalny wygląd** — przestrzeń jak na stronie korporacyjnej
+- ✅ **Lepsza czytelność** — optymalne odstępy między znakami
+- ✅ **Negatywny kerning** — nowoczesne, ciasne nagłówki
+- ✅ **System fonts** — natywne czcionki systemowe
+- ✅ **Spójność** — jednolita typografia w całej witrynie
+- ✅ **Nie wygląda jak "stronka studencka"** — poziom korporacyjny
+
+## [3.17.1] - 2025-01-01
+
+### 🎨 Fixed Partner Buttons Contrast — Black Background
+
+#### Poprawiono czytelność przycisków firm na białym tle
+
+**Problem:**
+- Przyciski firm były nieczytelne na białym tle strony
+- Zbyt mały kontrast między tłem przycisku a tłem strony
+- Tekst trudny do odczytania
+
+**Rozwiązanie:**
+```css
+/* PRZED - nieczytelne */
+background: var(--surface);     /* jasne tło */
+border: 2px solid var(--border);
+color: var(--white);
+
+/* PO - wyraźnie widoczne */
+background: var(--black);       /* czarne tło */
+border: 3px solid var(--black); /* grubszy border */
+color: var(--white);            /* biały tekst */
+```
+
+**Hover effect - jeszcze lepszy:**
+```javascript
+onmouseover="
+  this.style.borderColor='var(--accent)';
+  this.style.background='var(--accent)';  /* pomarańczowe tło */
+  this.style.color='var(--black)';        /* czarny tekst */
+  this.style.transform='translateY(-2px)';
+  this.style.boxShadow='0 4px 16px rgba(255,107,0,0.3)';
+"
+
+onmouseout="
+  this.style.borderColor='var(--black)';
+  this.style.background='var(--black)';   /* powrót do czarnego */
+  this.style.color='var(--white)';
+  this.style.transform='translateY(0)';
+  this.style.boxShadow='none';
+"
+```
+
+**Staples Solutions (bez linku):**
+```css
+background: #333;        /* ciemnoszary */
+border-color: #333;
+opacity: 0.9;           /* lekko przygaszone */
+```
+
+**Kontrast:**
+| Element | Tło | Tekst | Border | Kontrast |
+|---------|-----|-------|--------|----------|
+| **Linki** | Czarne | Biały | 3px czarny | ✅ Wysoki |
+| **Hover** | Pomarańczowy | Czarny | 3px pomarańczowy | ✅ Wysoki |
+| **Staples** | #333 | Biały | 3px #333 | ✅ Wysoki |
+
+**Efekt:**
+- ✅ **Przyciski wyraźnie widoczne** — czarne na białym tle
+- ✅ **Tekst czytelny** — biały na czarnym
+- ✅ **Lepszy hover** — accent color z czarnym tekstem
+- ✅ **Profesjonalny wygląd** — silny kontrast, czytelne nazwy firm
+
+## [3.17.0] - 2025-01-01
+
+### 📚 Enhanced Activity Page — Comprehensive About Section
+
+#### Dodano rozbudowaną sekcję "O NAS" i poprawiono czytelność
+
+**Nowa sekcja "O NAS" w `activity.json`:**
+```json
+{
+  "about": "Koło Naukowe Systemów Informatycznych E-XPERT powstało w 2001 roku..."
+}
+```
+
+Sekcja zawiera:
+- Historia powstania (2001)
+- Pierwsze projekty (mobileWZR)
+- Dołączenie do AIS SC (2015)
+- Ważne projekty (SafeWatch, CyberWatch, Unity, SNet, Eris, Apollo)
+- Rozwój kultury współpracy
+- Nowsze inicjatywy (SocialMonitor, UniGo)
+- Cyfrowa transformacja (GitHub Pages)
+- Obecna działalność
+- Opiekunowie (prof. Kuciapski, prof. Wrycza, mgr Porzuczek)
+
+**Typografia sekcji "O NAS":**
+```css
+h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 17px;      /* było 14-16px */
+  line-height: 1.9;     /* było ~1.6 */
+  text-align: justify;  /* dodano */
+  margin-bottom: 25px;
+}
+```
+
+**Poprawki w całej sekcji Działalność:**
+
+**1. Nazwy firm — znacząco większy font:**
+```css
+font-size: 17px;          /* było 15px */
+font-weight: 700;         /* było 600 */
+padding: 16px 32px;       /* było 14px 28px */
+letter-spacing: 0.1em;    /* było 0.08em */
+```
+
+**2. Usunięto strzałki z list:**
+```html
+<!-- PRZED -->
+<li>→ Cel pierwszy</li>
+
+<!-- PO -->
+<li>Cel pierwszy</li>
+```
+
+```css
+ul {
+  list-style: none;       /* usunięto default bullets */
+  padding-left: 0;        /* usunięto wcięcie */
+  font-size: 17px;        /* większy font */
+  line-height: 2.2;       /* większy spacing */
+}
+```
+
+**3. Spójne nagłówki H3:**
+```css
+h3 {
+  font-size: 24px;        /* było różnie 18-22px */
+  font-weight: 700;       /* dodano */
+  margin-top: 60px;
+}
+```
+
+**4. Etykiety działań:**
+```css
+strong {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+span {
+  font-size: 16px;
+  line-height: 1.7;
+}
+```
+
+**Struktura sekcji:**
+```
+DZIAŁALNOŚĆ
+└─ O NAS (nowa sekcja)
+   └─ 11 akapitów historii
+└─ KONKURSY, PROJEKTY, SZKOLENIA, TESTOWANIE, POPULARYZACJA
+└─ CELE I MISJA (bez strzałek)
+└─ WSPÓŁPRACA Z PRZEMYSŁEM (większe przyciski)
+```
+
+**Efekt:**
+- ✅ **Pełna historia** — od 2001 do dziś, wszystkie ważne projekty
+- ✅ **Nazwy firm czytelne** — 17px bold, większy padding
+- ✅ **Czyste listy** — bez strzałek, lepszy spacing
+- ✅ **Spójny design** — wszystkie h3 jednakowej wielkości
+- ✅ **Profesjonalny wygląd** — justified text, lepszy line-height
+
+## [3.16.1] - 2025-01-01
+
+### 📖 Improved Readability & Conditional Links
+
+#### Poprawiono czytelność i usunięto link dla Staples Solutions
+
+**Zmiany w czytelności:**
+```css
+/* Większy font i spacing */
+font-size: 15px;           /* było ~14px */
+padding: 14px 28px;        /* było 12px 24px */
+letter-spacing: 0.08em;    /* było 0.05em */
+gap: 25px;                 /* było 20px */
+
+/* Opis */
+font-size: 16px;           /* dodano */
+line-height: 1.6;          /* dodano */
+margin-bottom: 40px;       /* było 30px */
+```
+
+**Warunkowe renderowanie:**
+```javascript
+if (partner.url) {
+  // Renderuj jako <a> z hover effects
+  return `<a href="${partner.url}" target="_blank">...</a>`;
+} else {
+  // Renderuj jako <span> bez linku
+  return `<span style="border-color: var(--gray); opacity: 0.8;">...</span>`;
+}
+```
+
+**Staples Solutions:**
+```json
+{
+  "name": "Staples Solutions"
+  // brak "url" - nie będzie klikalny
+}
+```
+
+**Wizualne rozróżnienie:**
+| Partner | URL | Styl |
+|---------|-----|------|
+| Madkom | ✅ | Biała ramka, hover effect |
+| Neoteric | ✅ | Biała ramka, hover effect |
+| Bright Inventions | ✅ | Biała ramka, hover effect |
+| Staples Solutions | ❌ | Szara ramka, opacity 0.8 |
+
+**Efekt:**
+- ✅ **Lepsza czytelność** — większy tekst, lepszy spacing
+- ✅ **Jasne komunikaty** — wizualnie widać co jest linkiem
+- ✅ **Staples bez URL** — wyświetlany ale nieklikany
+- ✅ **Profesjonalny wygląd** — większe przyciski, lepszy kontrast
+
+## [3.16.0] - 2025-01-01
+
+### 🤝 Enhanced Industry Partners Section
+
+#### Rozbudowano sekcję współpracy z przemysłem
+
+**Dodano:**
+- **4 firmy partnerskie** z linkami do ich stron
+- **Opis współpracy** — kontekst o praktykach, stażach i warsztatach
+- **Interaktywne przyciski** — każdy partner jako klikalny link
+
+**Nowa struktura danych w `activity.json`:**
+```json
+"industry_collaboration": {
+  "description": "Koło współpracowało z wieloma firmami z branży IT...",
+  "partners": [
+    {
+      "name": "Madkom",
+      "url": "https://madkom.pl"
+    },
+    {
+      "name": "Neoteric",
+      "url": "https://neoteric.eu"
+    },
+    {
+      "name": "Bright Inventions",
+      "url": "https://brightinventions.pl"
+    },
+    {
+      "name": "Staples Solutions",
+      "url": "https://staples-solutions.com"
+    }
+  ]
+}
+```
+
+**Styling:**
+```css
+/* Flex layout dla responsywności */
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+
+/* Przyciski firm */
+padding: 12px 24px;
+background: var(--surface);
+border: 2px solid var(--border);
+font-weight: 600;
+letter-spacing: 0.05em;
+
+/* Hover effect */
+border-color: var(--accent);
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(255, 107, 0, 0.2);
+```
+
+**Partnerzy:**
+- ✅ **Madkom** — https://madkom.pl
+- ✅ **Neoteric** — https://neoteric.eu
+- ✅ **Bright Inventions** — https://brightinventions.pl
+- ✅ **Staples Solutions** — https://staples-solutions.com
+
+**UX:**
+- 🔗 Linki otwierają się w nowej karcie (`target="_blank"`)
+- 🎨 Smooth hover animations
+- 📱 Responsive flex layout
+- ✨ Accent color highlight na hover
+
 ## [3.15.6] - 2025-01-01
 
 ### 💫 Hover Shadow Visible — Increased Padding
