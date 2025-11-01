@@ -134,6 +134,65 @@
             height: 3px;
         }
         
+        /* Theme Switcher Buttons */
+        .theme-switcher {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 10;
+        }
+        
+        .theme-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1.5px solid var(--white);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: var(--light-gray);
+            opacity: 0.6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .theme-btn:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .theme-btn.active {
+            opacity: 1;
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .theme-btn[data-theme="orange"] {
+            background: #ff6b00;
+        }
+        
+        .theme-btn[data-theme="blue"] {
+            background: #0066ff;
+        }
+        
+        .theme-btn[data-theme="green"] {
+            background: #00cc66;
+        }
+        
+        .theme-btn[data-theme="purple"] {
+            background: #9933ff;
+        }
+        
+        .theme-btn[data-theme="red"] {
+            background: #ff3333;
+        }
+        
         @keyframes navGradientShift {
             0%, 100% {
                 background-position: 0% center;
@@ -1982,6 +2041,21 @@
                 padding: 4px;
             }
             
+            .theme-switcher {
+                bottom: -6px;
+                gap: 10px;
+            }
+            
+            .theme-btn {
+                width: 10px;
+                height: 10px;
+            }
+            
+            .theme-btn.active {
+                width: 12px;
+                height: 12px;
+            }
+            
             .mobile-menu {
                 display: block;
                 padding: 8px;
@@ -2699,6 +2773,9 @@
             <ul class="nav-links" id="navLinks">
                 <!-- Navigation will be loaded dynamically -->
             </ul>
+        </div>
+        <div class="theme-switcher" id="themeSwitcher">
+            <!-- Theme buttons will be loaded dynamically -->
         </div>
     </nav>
     
@@ -3524,6 +3601,16 @@
                 </a>
             `;
             
+            // Add theme switcher buttons
+            const themeSwitcher = document.getElementById('themeSwitcher');
+            themeSwitcher.innerHTML = `
+                <button class="theme-btn" data-theme="orange" onclick="switchTheme('orange')" title="Pomarańczowy" aria-label="Motyw pomarańczowy"></button>
+                <button class="theme-btn" data-theme="blue" onclick="switchTheme('blue')" title="Niebieski" aria-label="Motyw niebieski"></button>
+                <button class="theme-btn" data-theme="green" onclick="switchTheme('green')" title="Zielony" aria-label="Motyw zielony"></button>
+                <button class="theme-btn" data-theme="purple" onclick="switchTheme('purple')" title="Fioletowy" aria-label="Motyw fioletowy"></button>
+                <button class="theme-btn" data-theme="red" onclick="switchTheme('red')" title="Czerwony" aria-label="Motyw czerwony"></button>
+            `;
+            
             // Build navigation from sections (only visible ones, sorted by order)
             const visibleSections = navData.sections
                 .filter(section => section.visible)
@@ -3722,12 +3809,37 @@
             // Default theme is already in CSS (orange)
         }
         
+        // Switch theme and update UI (for theme buttons)
+        function switchTheme(themeName) {
+            applyTheme(themeName);
+            updateActiveThemeButton();
+        }
+        
+        // Update active state of theme buttons
+        function updateActiveThemeButton() {
+            const currentTheme = localStorage.getItem('selectedTheme') || 'orange';
+            const buttons = document.querySelectorAll('.theme-btn');
+            
+            buttons.forEach(btn => {
+                if (btn.dataset.theme === currentTheme) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+        
         // Initialize app
         async function init() {
             // Apply theme first
             initTheme();
             
+            // Initialize navigation (includes theme buttons)
             await initNavigation();
+            
+            // Update theme buttons after navigation is loaded
+            updateActiveThemeButton();
+            
             await renderHome();
             await renderProjects();
             await renderGoals();

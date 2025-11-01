@@ -1,8 +1,32 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.22.2** | Mobile Carousel Optimization
+**Wersja: 3.23.1** | Refined Theme Switcher
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.23.1
+
+- 🎯 **Subtelniejsze przyciski motywów** — mniejsze, bardziej dyskretne
+- 📍 **Umieszczenie na dolnej krawędzi** — przyciski wystawają z dolnej ramki nawigacji
+- 🎨 **Centralne wyrównanie** — przyciski wycentrowane pod nawigacją
+- ✨ **Delikatne animacje** — hover przesuwa przycisk do góry
+- 👁️ **Mniejsza nachałność** — półprzeźroczyste w spoczynku
+
+### Jak używać:
+Kliknij na małą kolorową kropkę pod nawigacją, aby zmienić motyw strony:
+- 🟠 Pomarańczowy (domyślny)
+- 🔵 Niebieski
+- 🟢 Zielony
+- 🟣 Fioletowy
+- 🔴 Czerwony
+
+## ✨ Nowe w wersji 3.23.0
+
+- 🎨 **Przyciski zmiany motywu w nawigacji** — eleganckie kulki kolorystyczne
+- 🖱️ **One-click theme switching** — zmiana motywu jednym kliknięciem
+- ✨ **Aktywny stan** — wizualne oznaczenie wybranego motywu
+- 🎯 **Brak parametrów URL** — motyw zmienia się przez localStorage
+- 📱 **Responsywne** — mniejsze przyciski na mobile
 
 ## ✨ Nowe w wersji 3.22.2
 
