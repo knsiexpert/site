@@ -1,5 +1,72 @@
 # Changelog
 
+## [3.8.0] - 2025-11-01
+
+### 🖼️ Image Gallery — Project Screenshots Display
+
+#### ✨ Responsive Image Gallery
+- **Adaptive grid layout** — 1, 2, or 3+ images automatically arranged
+- **Single image** — Full-width display
+- **Two images** — Side-by-side grid
+- **Three+ images** — Three-column grid (desktop), single column (mobile)
+- **Lazy loading** — Images load only when needed for performance
+
+#### 💫 Interactive Effects
+- **Hover animations** — Lift effect (translateY -4px) + scale(1.05)
+- **Orange accent border** — Appears on hover with smooth transition
+- **Magnifying glass icon** — 🔍 appears in center on hover
+- **Smooth transitions** — cubic-bezier(0.4, 0, 0.2, 1)
+
+#### 🔍 Lightbox Viewer
+- **Full-screen image view** — Click any image to view full-size
+- **Dark overlay** — rgba(28, 27, 34, 0.95) background
+- **Click to close** — Close by clicking anywhere or × button
+- **Body scroll lock** — Prevents page scrolling when lightbox open
+- **Fade-in animation** — Smooth entrance effect
+
+#### 📐 Technical Implementation
+```css
+.project-images {
+    display: grid;
+    gap: 15px;
+    aspect-ratio: 16/10;
+}
+.project-image-wrapper:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(28, 27, 34, 0.15);
+    border-color: var(--accent);
+}
+```
+
+#### 📱 Mobile Optimized
+- **Single column** — All images stack vertically
+- **Optimized spacing** — 10px gap (desktop: 15px)
+- **Touch-friendly** — Larger tap targets
+- **Smaller lightbox controls** — 36px close button (desktop: 48px)
+- **Reduced padding** — 20px lightbox padding (desktop: 40px)
+
+#### 🎯 Smart Handling
+- **Graceful degradation** — No images? No problem (nothing displays)
+- **Automatic layout** — Grid adjusts based on image count
+- **Performance** — Images lazy-load, lightbox renders only when needed
+
+#### 📊 Projects with Images
+7 projects now display screenshots:
+- ✅ Modernizacja Strony (1 image)
+- ✅ Modernizacja konta Github (1 image)
+- ✅ UniGo (2 images)
+- ✅ SocialMonitor (1 image)
+- ✅ CyberWatch (1 image)
+- ✅ SafeWatch (3 images)
+- ✅ mobileWZR (1 image)
+
+#### 🚀 Rezultat
+- ✅ **Beautiful galleries** — Professional image presentation
+- ✅ **Responsive** — Perfect on all devices
+- ✅ **Interactive** — Hover effects + lightbox
+- ✅ **Fast** — Lazy loading + optimized
+- ✅ **Accessible** — Works without images
+
 ## [3.7.1] - 2024-10-31
 
 ### 🎨 Navigation Logo — Professional Gradient Text

@@ -24,7 +24,9 @@
         "JSON Data Structure",
         "Hash-based Routing"
       ],
-      "images": []
+      "images": [
+        "https://i.imgur.com/RWEbA15.png"
+      ]
     },
     {
       "name": "Modernizacja konta Github",
@@ -49,7 +51,9 @@
         "JSON Data Structure",
         "Hash-based Routing"
       ],
-      "images": []
+      "images": [
+        "https://i.imgur.com/9CyVS5r.png"
+      ]
     },
     {
       "name": "UniGo - Smart Cities Communication Platform",
@@ -76,7 +80,10 @@
         "Algorithm Design",
         "User Research & Surveys"
       ],
-      "images": []
+      "images": [
+        "https://i.imgur.com/wmyUNGB.png",
+        "https://i.imgur.com/9KpbNhg.png"        
+      ]
     },
     {
       "name": "SocialMonitor",
@@ -84,7 +91,7 @@
       "team": ["Justyna Krotoszyńska", "Kajetan Warmbier", "Kacper Jach"],
       "year": 2022,
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+        "https://i.imgur.com/LTmBfuX.png"
       ]
     },
     {
@@ -99,7 +106,7 @@
       ],
       "year": 2016,
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+        "https://i.imgur.com/g3PJzSY.png"
       ]
     },
     {
@@ -126,10 +133,9 @@
         "Prezentacje w TVN24, TVP, RMF FM, Radio Zet, Gazeta Wyborcza, Puls Biznesu"
       ],
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/image001.png",
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/dyp1.png",
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/zdjgrup.png",
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/patent.jpg"
+        "https://i.imgur.com/sinO2M0.png",
+        "https://i.imgur.com/kv000A8.png",
+        "https://i.imgur.com/y0VcWnS.png"
       ]
     },
     {
@@ -144,7 +150,7 @@
       "description": "Aplikacja mobilna dla studentów Wydziału Zarządzania UG, umożliwiająca przeglądanie planu zajęć, dodawanie notatek, synchronizację i powiadomienia o zbliżających się zajęciach. Pierwsza wersja powstała w 2014 roku i jest stale rozwijana.",
       "year": 2014,
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+        "https://i.imgur.com/nk7ylQ1.png"
       ]
     }
   ]

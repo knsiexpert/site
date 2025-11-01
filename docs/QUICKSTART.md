@@ -49,8 +49,8 @@ git init
 git add .
 git commit -m "Initial commit - KNSI E-XPERT website"
 
-# Połączenie z GitHub (zastąp YOUR_USERNAME)
-git remote add origin https://github.com/YOUR_USERNAME/knmiexpert.git
+# Połączenie z GitHub (przykład dla organizacji knsiexpert)
+git remote add origin https://github.com/knsiexpert/site.git
 git branch -M main
 git push -u origin main
 ```
@@ -72,7 +72,7 @@ npm install
 npm run deploy
 ```
 
-Gotowe! Strona będzie na: `https://YOUR_USERNAME.github.io/knmiexpert/`
+Gotowe! Strona będzie na: `https://knsiexpert.github.io/site/`
 
 ## 4️⃣ Aktualizacja strony w przyszłości
 
@@ -130,11 +130,14 @@ GitHub automatycznie zaktualizuje stronę w 1-2 minuty.
 ## 🔧 Uruchomienie serwera lokalnego (gdy go zatrzymasz)
 
 ```bash
-# Python
-python -m http.server 8000
+# NPM (zalecane) - automatycznie otwiera przeglądarkę
+npm start
 
-# Lub Node.js
-npx http-server -p 8000
+# Lub npx (bez instalacji)
+npx http-server -p 8000 -o
+
+# Lub Python
+python -m http.server 8000
 ```
 
 Następnie: http://localhost:8000
