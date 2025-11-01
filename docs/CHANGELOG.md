@@ -220,7 +220,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
     "name": "...",
     "description": "...",
     "year": "2025",
-    "established": "EST. 2015"
+    "established": "EST. 2007"
   },
   "navigation": {
     "title": "Nawigacja",
@@ -248,12 +248,6 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 - **Wywołanie w `init()`** — renderFooter() dodane do inicjalizacji
 
 #### 📝 Zawartość JSON
-**Brand:**
-- Nazwa koła (3 linie z <br>)
-- Opis: "Od lat łączymy pasję..." (zmiana z "Od 2015 roku")
-- Rok: 2025
-- Established: EST. 2015
-
 **Navigation:**
 - 6 linków: Start, Projekty, Cele i misja, Zespół, Działalność, Statut
 
@@ -267,7 +261,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 - GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
 
 **Bottom:**
-- Copyright: "© 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
+- Copyright: "© 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
 - Credits: OPEN SOURCE, GITHUB PAGES
 
 #### 🚀 Korzyści
@@ -332,7 +326,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 
 #### 🎯 Footer Bottom
 - **Border-top** — `2px solid rgba(255, 255, 255, 0.2)`
-- **Copyright** — © 2015–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
+- **Copyright** — © 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
 - **Credits** — OPEN SOURCE + GITHUB PAGES links
 - **Opacity** — 0.6 dla subtelności
 
