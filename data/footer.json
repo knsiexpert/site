@@ -12,6 +12,7 @@
       { "title": "Projekty", "section": "projects" },
       { "title": "Cele i misja", "section": "goals" },
       { "title": "Zespół", "section": "team" },
+      { "title": "Galeria", "section": "gallery" },
       { "title": "Statut", "section": "constitution" },
       { "title": "Działalność", "section": "activity" }
     ]
@@ -52,7 +53,7 @@
     ]
   },
   "bottom": {
-    "copyright": "© 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA",
+    "copyright": "© 2001–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA",
     "credits": [
       {
         "title": "OPEN SOURCE",

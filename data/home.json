@@ -116,9 +116,9 @@
   },
   "stats": [
     {
-      "number": "10+",
+      "number": "24+",
       "label": "Lat działalności",
-      "sublabel": "Od 2015"
+      "sublabel": "Od 2001"
     },
     {
       "number": "50+",
@@ -153,6 +153,22 @@
         "text": "Finały AIS Student Chapter, konkursy IBM, wyróżnienia międzynarodowe — nasze projekty zyskują uznanie."
       }
     ]
+  },
+  "us": {
+    "title": "To My",
+    "subtitle": "Zdjęcia z naszej działalności",
+    "images": [
+      "https://i.imgur.com/KbCxaWl.jpeg",
+      "https://i.imgur.com/cMbL4Zv.jpeg",
+      "https://i.imgur.com/kTqJvzR.jpeg",
+      "https://i.imgur.com/g8piQkb.jpeg",
+      "https://i.imgur.com/oeWjiYh.jpeg",
+      "https://i.imgur.com/HFihwiH.jpeg",
+      "https://i.imgur.com/gyHGyJ1.jpeg",
+      "https://i.imgur.com/dPTYUzW.jpeg",
+      "https://i.imgur.com/XirvXmJ.jpeg"
+    ],
+    "interval": 4000
   },
   "footer": {
     "copyright": "© Koło Naukowe Systemów Informatycznych E‑XPERT",
