@@ -31,6 +31,8 @@
             --gradient-primary: linear-gradient(90deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
             --gradient-hero: linear-gradient(135deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
             --gradient-text: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            --gradient-text-light: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            --gradient-text-dark: linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
             --gradient-underline: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent-lighter) 100%);
             
             --border: 1px;
@@ -405,7 +407,19 @@
             position: relative;
             display: inline-block;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', 'Arial Black', sans-serif;
-            background: var(--gradient-text);
+            background: var(--gradient-text-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 4px 12px rgba(var(--accent-rgb), 0.3))
+                    drop-shadow(0 2px 4px rgba(28, 27, 34, 0.2));
+            animation: gradientShift 8s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        .dark-mode .hero h1 {
+            background: var(--gradient-text-dark);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -4456,6 +4470,10 @@
                 `linear-gradient(135deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
             root.style.setProperty('--gradient-text', 
                 `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-light', 
+                `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-dark', 
+                `linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
             root.style.setProperty('--gradient-underline', 
                 `linear-gradient(90deg, ${theme.accent} 0%, ${theme.accentLight} 50%, ${theme.accentLighter} 100%)`);
             
