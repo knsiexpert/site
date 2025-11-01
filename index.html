@@ -31,6 +31,8 @@
             --gradient-primary: linear-gradient(90deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
             --gradient-hero: linear-gradient(135deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
             --gradient-text: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            --gradient-text-light: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            --gradient-text-dark: linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
             --gradient-underline: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent-lighter) 100%);
             
             --border: 1px;
@@ -53,6 +55,11 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             font-weight: 400;
+        }
+
+        body.dark-mode {
+            color: var(--white);
+            background: var(--black);
         }
         
         p {
@@ -117,6 +124,10 @@
             position: relative;
             display: inline-block;
             transition: all 0.3s ease;
+        }
+
+        .dark-mode .logo-text {
+            color: var(--white);
         }
         
         .logo-text::after {
@@ -195,6 +206,29 @@
         
         .theme-btn[data-theme="red"] {
             background: #ff3333;
+        }
+        
+        .theme-btn.dark-mode-toggle {
+            background: transparent;
+            border: 1.5px solid var(--black);
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin-left: 4px;
+        }
+        
+        .theme-btn.dark-mode-toggle:hover {
+            border-color: var(--accent);
+        }
+        
+        .dark-mode-icon {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         @keyframes navGradientShift {
@@ -373,7 +407,19 @@
             position: relative;
             display: inline-block;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', 'Arial Black', sans-serif;
-            background: var(--gradient-text);
+            background: var(--gradient-text-light);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            filter: drop-shadow(0 4px 12px rgba(var(--accent-rgb), 0.3))
+                    drop-shadow(0 2px 4px rgba(28, 27, 34, 0.2));
+            animation: gradientShift 8s ease-in-out infinite;
+            background-size: 200% auto;
+        }
+
+        .dark-mode .hero h1 {
+            background: var(--gradient-text-dark);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -835,6 +881,10 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
+        }
+
+        .dark-mode .highlight-card {
+            background: var(--black);
         }
         
         .highlight-card::before {
@@ -1557,6 +1607,15 @@
             box-shadow: 0 4px 20px rgba(28, 27, 34, 0.06);
         }
         
+        .dark-mode .timeline-item {
+            background: var(--black);
+            border: 3px solid var(--white);
+        }
+
+        .dark-mode .timeline::before {
+            background: var(--white);
+        }
+        
         .timeline-item::before {
             content: '';
             position: absolute;
@@ -1674,6 +1733,11 @@
             background: var(--surface);
             box-shadow: 0 4px 25px rgba(28, 27, 34, 0.06);
         }
+
+        .dark-mode .article {
+            background: var(--black);
+            border: 3px solid var(--white);
+        }
         
         .article-number {
             position: absolute;
@@ -1761,6 +1825,11 @@
             position: relative;
             border: 1px solid var(--light-gray);
         }
+
+        .dark-mode .activity-item {
+            background: var(--black);
+            border: 1px solid var(--white);
+        }
         
         .activity-item strong {
             display: block;
@@ -1768,6 +1837,10 @@
             font-size: 12px;
             letter-spacing: 0.15em;
             color: var(--black);
+        }
+
+        .dark-mode .activity-item strong {
+            color: var(--white);
         }
         
         .activity-item:hover {
@@ -2112,6 +2185,15 @@
             .theme-btn.active {
                 width: 12px;
                 height: 12px;
+            }
+            
+            .theme-btn.dark-mode-toggle {
+                width: 16px;
+                height: 16px;
+            }
+            
+            .dark-mode-icon {
+                font-size: 9px;
             }
             
             .mobile-menu {
@@ -2697,18 +2779,18 @@
                 font-size: 7px;
                 top: 10px;
                 right: 10px;
-            }
-            
-            /* Quotes */
-            .quote {
+        }
+        
+        /* Quotes */
+        .quote {
                 font-size: 18px;
-                margin: 60px 0;
+            margin: 60px 0;
                 padding: 40px 22px;
                 border: 2px solid var(--black);
                 line-height: 1.5;
-            }
-            
-            .quote::before {
+        }
+        
+        .quote::before {
                 font-size: 8px;
                 top: 15px;
                 left: 15px;
@@ -2840,6 +2922,510 @@
                 flex-direction: column;
                 gap: 10px;
             }
+        }
+        
+        /* Dark Mode - ręczne przełączanie lub automatyczne wykrywanie */
+        body.dark-mode {
+            :root {
+                --black: #f3f3f7;
+                --white: #1c1b22;
+                --gray: #a0a0a0;
+                --light-gray: #2d2d35;
+                --surface: #252530;
+            }
+            
+            body {
+                background: #1c1b22;
+                color: #f3f3f7;
+            }
+            
+            /* Navigation */
+            nav {
+                background: rgba(28, 27, 34, 0.98);
+                border-bottom: 1px solid #3d3d45;
+            }
+            
+            .nav-content h1 {
+                color: #f3f3f7;
+            }
+            
+            .nav-links a {
+                color: #f3f3f7;
+            }
+            
+            .nav-links a:hover,
+            .nav-links a.active {
+                color: var(--accent);
+            }
+            
+            /* Hamburger menu - jasne linie na ciemnym tle */
+            .hamburger,
+            .hamburger::before,
+            .hamburger::after {
+                background: #f3f3f7;
+            }
+            
+            /* Hero section */
+            .hero {
+                background-color: #1c1b22;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%232d2d35' fill-opacity='0.4' d='M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a 3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'%3E%3C/path%3E%3C/svg%3E");
+            }
+            
+            /* Headings with gradient text - override for dark mode */
+            h2 {
+                background: linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 70%, var(--accent) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            
+            h3, h4, h5, h6 {
+                color: #f3f3f7;
+            }
+            
+            
+            /* Home page stats and achievement cards */
+            .stats-grid .stat-card {
+                background: #252530;
+                border: 1px solid #3d3d45;
+            }
+            
+            .stat-card {
+                background: #252530;
+                border-right-color: #3d3d45;
+            }
+            
+            .stat-card:hover {
+                background: #2d2d35;
+            }
+            
+            .stat-number,
+            .stat-label,
+            .stat-sublabel {
+                color: #f3f3f7;
+            }
+            
+            .stat-card:hover .stat-number {
+                color: #f3f3f7;
+            }
+            
+            .achievement-card {
+                background: #2d2d35;
+                border-top-color: #3d3d45;
+            }
+            
+            .achievement-card:hover {
+                background: #1c1b22;
+            }
+            
+            .achievement-card h3,
+            .achievement-card p {
+                color: #f3f3f7;
+            }
+            
+            /* About cards - O nas section */
+            .about-card {
+                background: #252530;
+            }
+            
+            .about-card:hover {
+                background: #1c1b22;
+            }
+            
+            .about-card h3,
+            .about-card p {
+                color: #f3f3f7;
+            }
+            
+            /* Project cards */
+            .project-card h3,
+            .project-card p,
+            .project-meta,
+            .project-tech {
+                color: #f3f3f7;
+            }
+            
+            /* Goals section */
+            .year-section {
+                border-left-color: var(--accent);
+            }
+            
+            /* Constitution content */
+            .constitution-content {
+                background: #252530;
+            }
+            
+            .constitution-content h3,
+            .constitution-content h4,
+            .constitution-content p,
+            .constitution-content li {
+                color: #f3f3f7;
+            }
+            
+            /* Activity section - table and map */
+            .activity-content table {
+                background: #252530;
+            }
+            
+            .activity-content tbody tr {
+                background: #252530;
+            }
+            
+            .activity-content th,
+            .activity-content td,
+            .activity-content p,
+            .activity-content li {
+                color: #f3f3f7;
+            }
+            
+            .google-maps-container iframe {
+                height: 370px;
+            }
+            
+            /* Logo dark background */
+            .logo svg {
+                background: #252530;
+                border-color: #3d3d45;
+            }
+            
+            /* Footer animation dark background */
+            .footer-animation {
+                background: transparent;
+            }
+            
+            .hero-content {
+                background: rgba(37, 37, 48, 0.95);
+                backdrop-filter: blur(20px);
+                border: 1px solid #3d3d45;
+            }
+            
+            .hero h1 {
+                color: #f3f3f7;
+            }
+            
+            .hero .subtitle {
+                color: var(--accent);
+            }
+            
+            .hero p {
+                color: #d0d0d5;
+            }
+            
+            /* Sections */
+            .section {
+                background: #1c1b22;
+            }
+            
+            .section h2 {
+                color: #f3f3f7;
+            }
+            
+            .section p,
+            .section li {
+                color: #d0d0d5;
+            }
+            
+            /* Cards */
+            .project-card,
+            .achievement-card,
+            .team-member,
+            .gallery-item {
+                background: #2d2d35;
+                border: 1px solid #3d3d45;
+            }
+            
+            .project-card:hover,
+            .achievement-card:hover,
+            .team-member:hover,
+            .gallery-item:hover {
+                border-color: var(--accent);
+                box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.3);
+                transform: translateY(-4px);
+            }
+            
+            .project-card h3,
+            .achievement-card h3,
+            .team-member h3 {
+                color: #f3f3f7;
+            }
+            
+            .project-meta,
+            .project-tech {
+                color: #a0a0a0;
+            }
+            
+            /* Stats */
+            .stats-grid .stat-card {
+                background: #252530;
+                border: 1px solid #3d3d45;
+            }
+            
+            .stat-card .stat-value {
+                background: linear-gradient(135deg, #f3f3f7 0%, var(--accent) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            
+            .stat-card .stat-label {
+                color: #f3f3f7;
+            }
+            
+            .stat-card .stat-description {
+                color: #a0a0a0;
+            }
+            
+            /* Tables */
+            table {
+                border: 1px solid #3d3d45;
+            }
+            
+            thead {
+                background: #252530;
+            }
+            
+            th {
+                color: #f3f3f7;
+                border-bottom: 2px solid var(--accent);
+            }
+            
+            td {
+                border-bottom: 1px solid #3d3d45;
+                color: #d0d0d5;
+            }
+            
+            tbody tr:hover {
+                background: rgba(var(--accent-rgb), 0.05);
+            }
+            
+            /* Activity section */
+            .activity-columns {
+                background: #252530;
+                border: 1px solid #3d3d45;
+            }
+            
+            .activity-column h3 {
+                color: #f3f3f7;
+                border-bottom: 2px solid var(--accent);
+            }
+            
+            /* Partner buttons */
+            .partner-btn {
+                background: #252530;
+                color: #f3f3f7;
+                border: 3px solid #3d3d45;
+            }
+            
+            .partner-btn:hover {
+                background: var(--accent);
+                color: #1c1b22;
+                border-color: var(--accent);
+            }
+            
+            .partner-btn.no-link {
+                background: #2d2d35;
+                border-color: #4d4d55;
+            }
+            
+            /* Constitution section */
+            .constitution-content {
+                background: #252530;
+                border: 1px solid #3d3d45;
+            }
+            
+            .constitution-content h3,
+            .constitution-content h4 {
+                color: #f3f3f7;
+            }
+            
+            /* Goals section */
+            .year-section {
+                border-left: 3px solid var(--accent);
+            }
+            
+            .year-section h3 {
+                color: var(--accent);
+            }
+            
+            /* Image previews */
+            .image-preview-item {
+                border: 2px solid #3d3d45;
+            }
+            
+            .image-preview-item::before {
+                border: 2px solid var(--accent);
+            }
+            
+            .preview-label {
+                background: #1c1b22;
+                color: var(--accent);
+                border: 1px solid var(--accent);
+            }
+            
+            /* Lightbox */
+            .image-lightbox {
+                background: rgba(28, 27, 34, 0.95);
+            }
+            
+            .lightbox-close {
+                color: #f3f3f7;
+                background: rgba(37, 37, 48, 0.8);
+            }
+            
+            .lightbox-nav {
+                background: rgba(37, 37, 48, 0.9);
+                color: #f3f3f7;
+                border: 1px solid #3d3d45;
+            }
+            
+            .lightbox-counter {
+                background: rgba(37, 37, 48, 0.9);
+                color: #f3f3f7;
+                border: 1px solid #3d3d45;
+            }
+            
+            /* Theme switcher buttons */
+            .theme-btn {
+                background: rgba(37, 37, 48, 0.8);
+                border: 2px solid #3d3d45;
+            }
+            
+            .theme-btn:hover,
+            .theme-btn.active {
+                border-color: var(--accent);
+                box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3);
+            }
+            
+            .theme-btn.dark-mode-toggle {
+                border-color: #f3f3f7;
+            }
+            
+            .theme-btn.dark-mode-toggle:hover {
+                border-color: var(--accent);
+            }
+            
+            /* Carousel */
+            .carousel-wrapper {
+                background: #1c1b22;
+            }
+            
+            .carousel-item {
+                border: 3px solid #3d3d45;
+            }
+            
+            .carousel-item::before {
+                border: 3px solid var(--accent);
+            }
+            
+            .carousel-item:hover {
+                border-color: var(--accent);
+            }
+            
+            /* Logo */
+            .logo svg {
+                border: 2px solid #3d3d45;
+            }
+            
+            /* Google Maps iframe */
+            .google-maps-container iframe {
+                border: 2px solid #3d3d45;
+            }
+            
+            /* Footer */
+            footer {
+                background: #16151b;
+                color: #f3f3f7;
+                border-top: 1px solid #3d3d45;
+            }
+            
+            footer::before {
+                color: rgba(243, 243, 247, 0.3);
+            }
+            
+            .footer-brand h3 {
+                color: #f3f3f7;
+            }
+            
+            .footer-brand p {
+                color: #d0d0d5;
+            }
+            
+            .footer-year {
+                background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+                color: #1c1b22;
+            }
+            
+            .footer-section h4 {
+                color: #f3f3f7;
+            }
+            
+            .footer-links a {
+                color: #d0d0d5;
+            }
+            
+            .footer-links a:hover {
+                color: var(--accent);
+            }
+            
+            .footer-social a {
+                background: rgba(243, 243, 247, 0.1);
+                color: #f3f3f7;
+                border: 1px solid #3d3d45;
+            }
+            
+            .footer-social a:hover {
+                background: var(--accent);
+                color: #1c1b22;
+                border-color: var(--accent);
+            }
+            
+            .footer-bottom {
+                border-top: 1px solid #3d3d45;
+                color: #a0a0a0;
+            }
+            
+            /* Team section */
+            .team-year-section h3 {
+                color: #f3f3f7;
+            }
+            
+            .team-board {
+                background: #252530;
+                color: #f3f3f7;
+                border: 1px solid #3d3d45;
+            }
+            
+            .team-board::before {
+                color: var(--accent);
+            }
+            
+            .team-board p {
+                color: #f3f3f7;
+            }
+            
+            .team-board strong {
+                color: var(--accent);
+            }
+            
+            .team-members {
+                background: #1c1b22;
+            }
+            
+            .member-tag {
+                background: #252530;
+                color: #f3f3f7;
+                border: 1px solid #3d3d45;
+            }
+            
+            .member-tag:hover {
+                background: var(--accent);
+                color: #1c1b22;
+                border-color: var(--accent);
+            }
+        }
+
+        .section.active {
+            margin-bottom: 30px;
         }
     </style>
 </head>
@@ -2992,7 +3578,7 @@
                             <div class="container">
                                 <h2>${data.us.title}</h2>
                                 <p class="carousel-subtitle">${data.us.subtitle}</p>
-                            </div>
+                </div>
                             <div class="container">
                                 <div class="carousel-wrapper">
                                     <button class="carousel-nav carousel-nav-prev" onclick="prevGroup()" aria-label="Poprzednia grupa">‹</button>
@@ -3031,15 +3617,15 @@
                                                                      referrerpolicy="no-referrer"
                                                                      onerror="this.closest('.carousel-item').style.display='none';">
                                                                 <div class="carousel-item-stripe"></div>
-                                                            </div>
-                                                        </div>
+                </div>
+            </div>
                                                     `;
                                                 }).join('')}
-                                            </div>
+        </div>
                                         `).join('');
                                     })()}
-                                        </div>
-                                    </div>
+                </div>
+            </div>
                                 </div>
                             </div>
                         </div>
@@ -3053,7 +3639,6 @@
                                 <p>${highlight.text}</p>
                                 ${highlight.image ? `
                                     <div class="highlight-image" onclick="openLightbox('${highlight.image.replace(/'/g, "\\'")}')">
-                                        <div class="highlight-image-label">PREV</div>
                                         <div class="highlight-image-number">${index + 1}</div>
                                         <div class="highlight-image-inner">
                                             <img 
@@ -3065,8 +3650,8 @@
                                                 onerror="this.closest('.highlight-image').style.display='none';"
                                             >
                                             <div class="highlight-image-stripe"></div>
-                                        </div>
-                                    </div>
+                </div>
+            </div>
                                 ` : ''}
                 </div>
                         `).join('')}
@@ -3205,7 +3790,7 @@
             const projectsContent = document.getElementById('projectsContent');
             projectsContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
-                <p style="font-size: 18px; color: var(--black); margin-bottom: 80px; line-height: 1.8;">
+                <p style="font-size: 18px; margin-bottom: 80px; line-height: 1.8;">
                     ${data.intro}
                 </p>
                 
@@ -3240,11 +3825,11 @@
                                                 referrerpolicy="no-referrer"
                                                 onerror="this.parentElement.innerHTML='<div class=\\'project-image-error\\'>⚠️ Obraz tymczasowo niedostępny</div>'; this.parentElement.style.cursor='default';"
                                             >
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            ` : ''}
             </div>
+                                    `).join('')}
+            </div>
+                            ` : ''}
+        </div>
                 </div>
                     `;
                 }).join('')}
@@ -3348,7 +3933,7 @@
                     </div>
                 </div>
                     `).join('')}
-                    </div>
+            </div>
             `;
         }
         
@@ -3405,7 +3990,7 @@
                             <div class="gallery-item-number">${image.id}</div>
                             <div class="gallery-item-overlay"></div>
                             <div class="gallery-item-icon">🔍</div>
-                        </div>
+                </div>
                     `).join('')}
                 </div>
             `;
@@ -3490,14 +4075,14 @@
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
                 <div>
-                    <div class="activity-list">
+            <div class="activity-list">
                             ${data.content.activities.map((activity, index) => `
-                        <div class="activity-item">
+                <div class="activity-item">
                                     <strong style="font-size: 16px; font-weight: 700;">${activityLabels[index] || 'DZIAŁALNOŚĆ'}</strong><br>
                                     <span style="font-size: 16px; line-height: 1.7;">${activity}</span>
-                        </div>
+                </div>
                             `).join('')}
-                    </div>
+                </div>
                 </div>
                 
                 <div>
@@ -3542,13 +4127,13 @@
                                 `;
                             }
                         }).join('')}
-                    </div>
+                </div>
                     
                     <h3 style="margin-top: 50px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">LOKALIZACJA</h3>
                     <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">
                         Piaskowa 9C, 81-862 Sopot
                     </p>
-                    <div style="width: 100%; height: 300px; border: 2px solid var(--black); overflow: hidden;">
+                    <div style="width: 100%; height: 265px; border: 2px solid var(--black); overflow: hidden;">
                         <iframe 
                             src="https://maps.google.com/maps?q=Piaskowa+9C,+Sopot&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                             width="100%" 
@@ -3570,7 +4155,7 @@
                             ${paragraph}
                         </p>
                     `).join('')}
-                </div>
+        </div>
             ` : ''}
             
             <style>
@@ -3626,8 +4211,8 @@
                         <h3>${data.brand.name}</h3>
                         <p>${data.brand.description}</p>
                         <div class="footer-year">${data.brand.year}</div>
-                    </div>
-                    
+            </div>
+            
                     <div class="footer-section">
                         <h4>${data.navigation.title}</h4>
                         <ul class="footer-links">
@@ -3636,27 +4221,27 @@
                                 const href = link.section === 'home' ? basePath + '/' : basePath + '/' + link.section;
                                 return `<li><a href="${href}" onclick="event.preventDefault(); showSection('${link.section}');">${link.title}</a></li>`;
                             }).join('')}
-                        </ul>
-                    </div>
-                    
+                    </ul>
+            </div>
+            
                     <div class="footer-section">
                         <h4>${data.contact.title}</h4>
                         <ul class="footer-links">
                             ${data.contact.links.map(link => `
                                 <li><a href="${link.url}"${link.external ? ' target="_blank" rel="noopener"' : ''}>${link.title}</a></li>
                             `).join('')}
-                        </ul>
-                    </div>
-                    
+                    </ul>
+            </div>
+            
                     <div class="footer-section">
                         <h4>${data.social.title}</h4>
                         <div class="footer-social">
                             ${data.social.platforms.map(platform => `
                                 <a href="${platform.url}" target="_blank" rel="noopener" title="${platform.name}">${platform.code}</a>
                             `).join('')}
-                        </div>
-                    </div>
                 </div>
+            </div>
+        </div>
                 
                 <div class="footer-bottom">
                     <p>${data.bottom.copyright}</p>
@@ -3699,12 +4284,16 @@
             
             // Add theme switcher buttons
             const themeSwitcher = document.getElementById('themeSwitcher');
+            const isDarkMode = document.body.classList.contains('dark-mode');
             themeSwitcher.innerHTML = `
                 <button class="theme-btn" data-theme="orange" onclick="switchTheme('orange')" title="Pomarańczowy" aria-label="Motyw pomarańczowy"></button>
                 <button class="theme-btn" data-theme="blue" onclick="switchTheme('blue')" title="Niebieski" aria-label="Motyw niebieski"></button>
                 <button class="theme-btn" data-theme="green" onclick="switchTheme('green')" title="Zielony" aria-label="Motyw zielony"></button>
                 <button class="theme-btn" data-theme="purple" onclick="switchTheme('purple')" title="Fioletowy" aria-label="Motyw fioletowy"></button>
                 <button class="theme-btn" data-theme="red" onclick="switchTheme('red')" title="Czerwony" aria-label="Motyw czerwony"></button>
+                <button class="theme-btn dark-mode-toggle" onclick="toggleDarkMode()" title="${isDarkMode ? 'Tryb jasny' : 'Tryb ciemny'}" aria-label="Przełącz tryb">
+                    <span class="dark-mode-icon">${isDarkMode ? '☀️' : '🌙'}</span>
+                </button>
             `;
             
             // Build navigation from sections (only visible ones, sorted by order)
@@ -3881,6 +4470,10 @@
                 `linear-gradient(135deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
             root.style.setProperty('--gradient-text', 
                 `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-light', 
+                `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-dark', 
+                `linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
             root.style.setProperty('--gradient-underline', 
                 `linear-gradient(90deg, ${theme.accent} 0%, ${theme.accentLight} 50%, ${theme.accentLighter} 100%)`);
             
@@ -3908,6 +4501,50 @@
             }
             
             // Default theme is already in CSS (orange)
+        }
+        
+        // Dark Mode Management
+        function initDarkMode() {
+            // Check localStorage first
+            const savedDarkMode = localStorage.getItem('darkMode');
+            
+            if (savedDarkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                return;
+            }
+            
+            if (savedDarkMode === 'disabled') {
+                document.body.classList.remove('dark-mode');
+                return;
+            }
+            
+            // If no preference saved, check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+            
+            // Update button icon
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            const icon = toggleBtn.querySelector('.dark-mode-icon');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            if (icon) {
+                icon.textContent = isDarkMode ? '☀️' : '🌙';
+                toggleBtn.title = isDarkMode ? 'Tryb jasny' : 'Tryb ciemny';
+            }
+            
+            console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
         }
         
         // Switch theme and update UI (for theme buttons)
@@ -3990,7 +4627,10 @@
         
         // Initialize app
         async function init() {
-            // Apply theme first
+            // Initialize dark mode first
+            initDarkMode();
+            
+            // Apply theme
             initTheme();
             
             // Initialize navigation (includes theme buttons)

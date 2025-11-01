@@ -1,8 +1,79 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.30.0** | CSS Hue-Rotate Animation Color Control
+**Wersja: 3.32.2** | Dark Mode Complete Fix
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.32.2
+
+- 🌙 **Pełna naprawa dark mode** — wszystkie elementy działają poprawnie:
+  - **Nagłówki** - `h2` z gradientem (#f3f3f7 + accent), pozostałe jasne
+  - **Kafelki home** - ciemne tło #252530, jasny tekst #f3f3f7
+  - **Stats cards** - ciemne tło, jasne liczby i etykiety
+  - **Achievement cards** - ciemne tło, jasne nagłówki i tekst
+  - **Hover** - ciemniejsze tło #2d2d35 na wszystkich kafelkach
+  - **Bordery** - ciemne #3d3d45 zamiast czarnych
+
+## ✨ Nowe w wersji 3.32.1
+
+- 🌙 **Kompleksowa naprawa dark mode** — poprawiono wszystkie elementy w ciemnym trybie:
+  - Nagłówki sekcji (`h2`, `h3`) - jasny kolor #f3f3f7
+  - Kafelki na home page - ciemne tło #252530
+  - Hover na achievement cards - ciemniejsze tło #2d2d35
+  - Projekty - jasna czcionka dla wszystkich elementów
+  - Cele i misja - jasna linia boczna (var(--accent))
+  - Statut - jasna czcionka, ciemne tło kafelków
+  - Działalność - jasna czcionka w tabeli, ciemne tło #252530
+  - Mapa Google - zmniejszona wysokość do 370px (było 400px)
+  - Logo - ciemne tło #252530 z ciemnym borderem
+  - Footer animation - ciemne tło #16151b
+
+## ✨ Nowe w wersji 3.32.0
+
+- 🌓 **Przełącznik trybu ciemnego** — ręczne przełączanie między jasnym a ciemnym trybem
+  - Przycisk ☀️/🌙 w nawigacji obok przycisków motywów kolorów
+  - Zapis preferencji w localStorage (`darkMode: enabled/disabled`)
+  - Automatyczne wykrywanie systemowego trybu jeśli brak preferencji
+  - Zmiana z `@media (prefers-color-scheme: dark)` na `body.dark-mode`
+- ✨ **Ulepszony hover** — efekt hover w "Nasze osiągnięcia" w dark mode
+  - Zwiększony cień: `box-shadow: 0 8px 32px rgba(var(--accent-rgb), 0.3)`
+  - Dodany `transform: translateY(-4px)` dla efektu unoszenia
+
+## ✨ Nowe w wersji 3.31.3
+
+- 🎨 **Ciemny hero pattern** — wzór w tle sekcji hero widoczny również w dark mode
+  - Jasny motyw: pattern w kolorze `#d4d4d9` (jasny szary) na jasnym tle
+  - Ciemny motyw: pattern w kolorze `#2d2d35` (ciemny szary) na ciemnym tle
+  - Zachowana ta sama struktura geometryczna w obu motywach
+
+## ✨ Nowe w wersji 3.31.2
+
+- 👥 **Ciemna sekcja "Nasz zespół"** — wszystkie elementy z ciemnymi tłami i akcentowymi highlightami
+  - Zarząd (`.team-board`): ciemne tło z borderem
+  - Tagi członków (`.member-tag`): ciemne tło z hover efektem
+  - Nazwy stanowisk w zarządzie wyróżnione kolorem akcentu
+
+## ✨ Nowe w wersji 3.31.1
+
+- 🦶 **Ciemna stopka** — footer z ciemnym tłem (#16151b), jasnymi tekstami i akcentowym przyciskiem roku
+
+## ✨ Nowe w wersji 3.31.0
+
+- 🌙 **Automatyczny ciemny motyw** — wykrywanie systemowego trybu ciemnego przez `@media (prefers-color-scheme: dark)`
+- 📱 **Poprawiona widoczność na mobile** — hamburger button teraz widoczny w ciemnym trybie (jasne linie)
+- 🎨 **Kompletna paleta ciemna** — wszystkie elementy dostosowane do ciemnego tła
+- ✨ **Naturalny dark mode** — odwrócone kolory `--black` ↔ `--white` dla spójności
+- 🔲 **Ciemne karty** — wszystkie project cards, achievements, gallery z ciemnym tłem (#252530)
+- 🖼️ **Ciemne UI elementy** — nawigacja, modals, lightbox, przyciski, tabele w ciemnej wersji
+- 💡 **Zachowany akcent** — kolory motywów (orange, blue, green, etc.) działają w dark mode
+
+**Paleta kolorów dark mode:**
+- Tło: `#1c1b22` (ciemny grafit)
+- Powierzchnie: `#252530` (ciemniejszy grafit)
+- Tekst: `#f3f3f7` (jasny)
+- Tekst secondary: `#d0d0d5` (szary)
+- Borders: `#3d3d45` (subtelny szary)
+- Akcent: zachowany z motywu (np. `#ff6b00`)
 
 ## ✨ Nowe w wersji 3.30.0
 
@@ -11,15 +82,6 @@ Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowocze
 - 🔢 **Precyzyjna konwersja HSL** — obliczanie różnicy odcieni między kolorem oryginalnym a docelowym
 - 🎯 **Działa z Lottie** — kompatybilne z dynamicznym renderowaniem kolorów przez silnik Lottie
 - 🐛 **Rozwiązany problem** — kolory Lottie są renderowane w JS, nie jako atrybuty SVG
-- 📐 **Algorytm konwersji** — hex → RGB → HSL → obliczenie rotacji odcienia
-
-**Jak działa:**
-```javascript
-// Oryginalny kolor bluzy: #4AA5FF (hue ≈ 210deg)
-// Docelowy kolor (np. pomarańczowy): #ff6b00 (hue ≈ 25deg)
-// Rotacja: 25 - 210 = -185deg
-player.style.filter = 'hue-rotate(-185deg)';
-```
 
 ## ✨ Nowe w wersji 3.29.2
 
