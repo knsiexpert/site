@@ -1,5 +1,160 @@
 # Changelog
 
+## [3.31.1] - 2025-01-02
+
+### 🦶 Complete Dark Mode with Footer
+
+#### Dodanie ciemnej stopki do dark mode
+
+**Dodano:**
+Kompletne style dla stopki w ciemnym motywie.
+
+**Implementacja:**
+
+```css
+@media (prefers-color-scheme: dark) {
+    footer {
+        background: #16151b;  /* Jeszcze ciemniejszy niż body */
+        color: #f3f3f7;
+        border-top: 1px solid #3d3d45;
+    }
+    
+    .footer-year {
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+        color: #1c1b22;  /* Ciemny tekst na jasnym akcentowym tle */
+    }
+    
+    .footer-links a {
+        color: #d0d0d5;
+    }
+    
+    .footer-links a:hover {
+        color: var(--accent);
+    }
+    
+    .footer-social a {
+        background: rgba(243, 243, 247, 0.1);
+        color: #f3f3f7;
+        border: 1px solid #3d3d45;
+    }
+    
+    .footer-social a:hover {
+        background: var(--accent);
+        color: #1c1b22;
+        border-color: var(--accent);
+    }
+}
+```
+
+**Elementy stopki w dark mode:**
+- ✅ Tło footera: `#16151b` (najciemniejszy odcień)
+- ✅ Napisy: jasne (`#f3f3f7` i `#d0d0d5`)
+- ✅ Przycisk roku: gradient akcent z ciemnym tekstem
+- ✅ Linki: szare z akcentowym hover
+- ✅ Przyciski social: półprzezroczyste z borderem
+- ✅ Border top: subtelny separator `#3d3d45`
+- ✅ Watermark "EST": przezroczysty jasny
+
+Teraz **cała strona** ma pełne wsparcie dark mode, od nawigacji po stopkę! 🌙
+
+## [3.31.0] - 2025-01-02
+
+### 🌙 Native Dark Mode Support
+
+#### Automatyczne wykrywanie i wsparcie systemowego trybu ciemnego
+
+**Problem:**
+Na urządzeniach mobilnych z włączonym ciemnym trybem systemowym strona wyświetlała się z jasnym tłem, co było nieestetyczne. Hamburger button był niewidoczny (ciemne linie na ciemnym tle).
+
+**Rozwiązanie:**
+Dodanie kompletnego ciemnego motywu aktywowanego automatycznie przez media query `@media (prefers-color-scheme: dark)`.
+
+**Implementacja:**
+
+1. **Media Query dla Dark Mode:**
+```css
+@media (prefers-color-scheme: dark) {
+    :root {
+        --black: #f3f3f7;  /* Odwrócone */
+        --white: #1c1b22;  /* Odwrócone */
+        --gray: #a0a0a0;
+        --light-gray: #2d2d35;
+        --surface: #252530;
+    }
+    
+    body {
+        background: #1c1b22;
+        color: #f3f3f7;
+    }
+}
+```
+
+2. **Naprawiony Hamburger Menu:**
+```css
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    background: #f3f3f7;  /* Jasne linie na ciemnym tle */
+}
+```
+
+3. **Ciemne elementy UI:**
+- Nawigacja: `rgba(28, 27, 34, 0.98)` z jasnymi tekstami
+- Hero section: ciemne tło z półprzezroczystym content box
+- Karty: `#252530` z subtelnym borderem `#3d3d45`
+- Tabele: ciemne tło z akcentowym borderem
+- Lightbox: ciemny overlay z jasnymi kontrolkami
+- Przyciski motywów: ciemne tło z akcentowym podświetleniem
+
+**Paleta kolorów:**
+
+| Element            | Light Mode    | Dark Mode     |
+|--------------------|---------------|---------------|
+| Tło body          | `#f3f3f7`     | `#1c1b22`     |
+| Powierzchnie      | `#ffffff`     | `#252530`     |
+| Tekst główny      | `#1c1b22`     | `#f3f3f7`     |
+| Tekst secondary   | `#808080`     | `#d0d0d5`     |
+| Borders           | `#e8e8ed`     | `#3d3d45`     |
+| Akcent            | (zachowany z motywu)          |
+
+**Objęte elementy:**
+- ✅ Nawigacja (+ hamburger menu)
+- ✅ Hero section
+- ✅ Wszystkie sekcje
+- ✅ Project cards
+- ✅ Achievement cards
+- ✅ Team member cards
+- ✅ Gallery items
+- ✅ Stats cards
+- ✅ Tabele
+- ✅ Activity columns
+- ✅ Partner buttons
+- ✅ Constitution content
+- ✅ Image previews
+- ✅ Lightbox
+- ✅ Theme switcher buttons
+- ✅ Carousel
+- ✅ Logo border
+- ✅ Google Maps iframe
+
+**Zachowane funkcje:**
+- 🎨 Kolory motywów (orange, blue, green, purple, red) działają w dark mode
+- 🔄 hue-rotate animacji działa poprawnie
+- 📱 Responsywność zachowana
+- ⚡ Płynne przejścia między trybami
+
+**Testowanie:**
+1. System z jasnym trybem: strona wyświetla się normalnie (jasna)
+2. System z ciemnym trybem: strona automatycznie przełącza się na ciemną
+3. Mobile z ciemnym trybem: hamburger menu jest widoczny (jasne linie)
+
+**Kompatybilność:**
+- ✅ Chrome/Edge 76+
+- ✅ Firefox 67+
+- ✅ Safari 12.1+
+- ✅ iOS Safari 13+
+- ✅ Android Chrome 76+
+
 ## [3.30.0] - 2025-01-02
 
 ### 🎨 CSS Hue-Rotate Animation Color Control
