@@ -1,5 +1,343 @@
 # Changelog
 
+## [3.23.1] - 2025-01-01
+
+### 🎯 Refined Theme Switcher
+
+#### Subtelniejsze i bardziej eleganckie przyciski motywów
+
+**Problem:**
+Pierwotna implementacja przycisków motywów była zbyt nachalna — przyciski były zbyt duże, umieszczone obok logo i zbyt wyróżniające się.
+
+**Rozwiązanie:**
+Przeprojektowano przyciski, aby były bardziej subtelne i elegancko umieszczone na dolnej krawędzi nawigacji.
+
+**Zmiany w lokalizacji:**
+- **Poprzednio:** Obok logo, z lewej strony nazwy "KNSI E-XPERT"
+- **Teraz:** Na dolnej krawędzi nawigacji, wycentrowane, lekko wystawające poza ramkę
+
+**Nowe wymiary:**
+
+**Desktop:**
+- Rozmiar: 12×12px (poprzednio 20×20px)
+- Aktywny: 14×14px
+- Odstęp: 12px
+- Pozycja: `bottom: -8px` (wysuwa się poza dolną ramkę)
+
+**Mobile:**
+- Rozmiar: 10×10px
+- Aktywny: 12×12px
+- Odstęp: 10px
+- Pozycja: `bottom: -6px`
+
+**CSS:**
+```css
+.theme-switcher {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 10;
+}
+
+.theme-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1.5px solid var(--white);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: var(--light-gray);
+    opacity: 0.6; /* Półprzeźroczyste w spoczynku */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.theme-btn:hover {
+    opacity: 1;
+    transform: translateY(-2px); /* Przesunięcie do góry */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-btn.active {
+    opacity: 1;
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Kolory bez gradientów - jednolite, solidne */
+.theme-btn[data-theme="orange"] {
+    background: #ff6b00;
+}
+
+.theme-btn[data-theme="blue"] {
+    background: #0066ff;
+}
+
+.theme-btn[data-theme="green"] {
+    background: #00cc66;
+}
+
+.theme-btn[data-theme="purple"] {
+    background: #9933ff;
+}
+
+.theme-btn[data-theme="red"] {
+    background: #ff3333;
+}
+```
+
+**HTML:**
+```html
+<nav>
+    <div class="nav-content">
+        <div class="logo"></div>
+        <!-- ... inne elementy ... -->
+    </div>
+    <div class="theme-switcher" id="themeSwitcher">
+        <!-- Theme buttons będą załadowane dynamicznie -->
+    </div>
+</nav>
+```
+
+**JavaScript:**
+```javascript
+// Renderowanie przycisków w osobnym kontenerze
+const themeSwitcher = document.getElementById('themeSwitcher');
+themeSwitcher.innerHTML = `
+    <button class="theme-btn" data-theme="orange" 
+            onclick="switchTheme('orange')" 
+            title="Pomarańczowy"></button>
+    <button class="theme-btn" data-theme="blue" 
+            onclick="switchTheme('blue')" 
+            title="Niebieski"></button>
+    <button class="theme-btn" data-theme="green" 
+            onclick="switchTheme('green')" 
+            title="Zielony"></button>
+    <button class="theme-btn" data-theme="purple" 
+            onclick="switchTheme('purple')" 
+            title="Fioletowy"></button>
+    <button class="theme-btn" data-theme="red" 
+            onclick="switchTheme('red')" 
+            title="Czerwony"></button>
+`;
+```
+
+**Efekty:**
+
+**Przed:**
+- ❌ Przyciski 20×20px — zbyt duże
+- ❌ Obok logo — zabierały miejsce
+- ❌ Z gradientem — zbyt kolorowe
+- ❌ Czarna kropka w środku aktywnego — zbyt skomplikowane
+- ❌ Pełna opacity — zbyt nachalne
+
+**Po:**
+- ✅ Przyciski 12×12px — subtelne i eleganckie
+- ✅ Pod nawigacją — nie przeszkadzają
+- ✅ Bez gradientu — jednolity kolor
+- ✅ Większy rozmiar aktywnego — proste i czytelne
+- ✅ Opacity 0.6 — dyskretne w spoczynku
+- ✅ Hover `translateY(-2px)` — delikatne uniesienie
+- ✅ Wycentrowane — symetryczne
+
+**UX Flow:**
+1. Użytkownik widzi małe kolorowe kropki pod nawigacją
+2. Najeżdża myszką — kropka staje się pełna i unosi się
+3. Kliknie — strona zmienia motyw
+4. Aktywna kropka jest większa (14px vs 12px) i w pełni widoczna
+5. Inne kropki pozostają dyskretne (60% opacity)
+
+**Zalety nowej wersji:**
+- ✅ **Dyskretne** — nie odwracają uwagi od treści
+- ✅ **Eleganckie** — wyglądają jak wskaźniki statusu
+- ✅ **Intuicyjne** — jasne które jest aktywne
+- ✅ **Centralne** — symetryczne i wyważone
+- ✅ **Subtelne** — pojawia się pełna jasność przy hover
+
+## [3.23.0] - 2025-01-01
+
+### 🎨 Theme Switcher UI Buttons
+
+#### Interaktywne przyciski zmiany motywu w nawigacji
+
+**Nowa funkcjonalność:**
+Dodano eleganckie, kolorowe przyciski-kulki do nawigacji, które pozwalają na natychmiastową zmianę motywu strony jednym kliknięciem, bez dodawania parametrów do URL.
+
+**Lokalizacja:**
+Przyciski znajdują się w nagłówku nawigacji, po prawej stronie od nazwy "KNSI E-XPERT", oddzielone subtelną kreską pionową.
+
+**Implementacja:**
+
+**CSS:**
+```css
+.theme-switcher {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid var(--light-gray);
+}
+
+.theme-btn {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.theme-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-btn.active {
+    border-color: var(--black);
+    box-shadow: 0 0 0 3px rgba(28, 27, 34, 0.1);
+}
+
+.theme-btn.active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--black);
+}
+
+/* Kolory dla każdego motywu */
+.theme-btn[data-theme="orange"] {
+    background: linear-gradient(135deg, #ff6b00 0%, #ffa500 100%);
+}
+
+.theme-btn[data-theme="blue"] {
+    background: linear-gradient(135deg, #0066ff 0%, #66b3ff 100%);
+}
+
+.theme-btn[data-theme="green"] {
+    background: linear-gradient(135deg, #00cc66 0%, #33ff99 100%);
+}
+
+.theme-btn[data-theme="purple"] {
+    background: linear-gradient(135deg, #9933ff 0%, #cc99ff 100%);
+}
+
+.theme-btn[data-theme="red"] {
+    background: linear-gradient(135deg, #ff3333 0%, #ff8888 100%);
+}
+```
+
+**HTML (w initNavigation()):**
+```html
+<div class="theme-switcher">
+    <button class="theme-btn" data-theme="orange" 
+            onclick="switchTheme('orange')" 
+            title="Pomarańczowy motyw" 
+            aria-label="Motyw pomarańczowy"></button>
+    <button class="theme-btn" data-theme="blue" 
+            onclick="switchTheme('blue')" 
+            title="Niebieski motyw" 
+            aria-label="Motyw niebieski"></button>
+    <button class="theme-btn" data-theme="green" 
+            onclick="switchTheme('green')" 
+            title="Zielony motyw" 
+            aria-label="Motyw zielony"></button>
+    <button class="theme-btn" data-theme="purple" 
+            onclick="switchTheme('purple')" 
+            title="Fioletowy motyw" 
+            aria-label="Motyw fioletowy"></button>
+    <button class="theme-btn" data-theme="red" 
+            onclick="switchTheme('red')" 
+            title="Czerwony motyw" 
+            aria-label="Motyw czerwony"></button>
+</div>
+```
+
+**JavaScript:**
+```javascript
+// Przełącz motyw i zaktualizuj UI
+function switchTheme(themeName) {
+    applyTheme(themeName);
+    updateActiveThemeButton();
+}
+
+// Zaktualizuj aktywny stan przycisków
+function updateActiveThemeButton() {
+    const currentTheme = localStorage.getItem('selectedTheme') || 'orange';
+    const buttons = document.querySelectorAll('.theme-btn');
+    
+    buttons.forEach(btn => {
+        if (btn.dataset.theme === currentTheme) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+}
+```
+
+**Funkcje:**
+
+**5 przycisków motywów:**
+| Przycisk | Motyw | Gradient |
+|----------|-------|----------|
+| 🟠 | Orange | `#ff6b00` → `#ffa500` |
+| 🔵 | Blue | `#0066ff` → `#66b3ff` |
+| 🟢 | Green | `#00cc66` → `#33ff99` |
+| 🟣 | Purple | `#9933ff` → `#cc99ff` |
+| 🔴 | Red | `#ff3333` → `#ff8888` |
+
+**Interakcje:**
+- **Hover** — powiększenie do 120% z cieniem
+- **Active** — czarna ramka + czarna kropka w środku
+- **Click** — zmiana motywu + aktualizacja aktywnego stanu
+
+**Responsywność:**
+
+**Desktop:**
+- Rozmiar przycisków: 20×20px
+- Odstęp między przyciskami: 8px
+- Kropka aktywnego: 6×6px
+
+**Mobile (≤ 768px):**
+- Rozmiar przycisków: 16×16px
+- Odstęp między przyciskami: 6px
+- Kropka aktywnego: 4×4px
+- Mniejsze marginesy: 10px
+
+**Zalety:**
+- ✅ **One-click** — zmiana motywu jednym kliknięciem
+- ✅ **Wizualny feedback** — natychmiastowa zmiana kolorów
+- ✅ **Aktywny stan** — wyraźne oznaczenie wybranego motywu
+- ✅ **Brak URL clutter** — motyw zapisywany w localStorage
+- ✅ **Accessibility** — pełne wsparcie dla `title` i `aria-label`
+- ✅ **Responsywne** — dostosowane do mobile i desktop
+
+**UX Flow:**
+1. Użytkownik widzi kolorowe kulki w nawigacji
+2. Najeżdża myszką — kulka powiększa się z cieniem
+3. Kliknie — strona natychmiast zmienia motyw
+4. Aktywna kulka ma czarną ramkę i czarną kropkę
+5. Motyw zapisywany w localStorage
+6. Przy kolejnym wejściu — motyw przywrócony
+
+**Różnica vs. parametr URL:**
+- **Stary sposób:** `?theme=blue` (dodawał parametr do URL)
+- **Nowy sposób:** Kliknięcie przycisku (tylko localStorage, bez zmiany URL)
+- **Oba działają:** Parametr URL ma priorytet nad przyciskami
+
 ## [3.22.2] - 2025-01-01
 
 ### 📱 Mobile Carousel Optimization
