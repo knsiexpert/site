@@ -1,5 +1,305 @@
 # Changelog
 
+## [3.30.0] - 2025-01-02
+
+### 🎨 CSS Hue-Rotate Animation Color Control
+
+#### Przełączenie na filtr CSS zamiast modyfikacji SVG
+
+**Problem:**
+Debugging wykazał, że kolory w animacji Lottie nie są przechowywane jako atrybuty SVG (`fill="null"`), ale są renderowane dynamicznie przez silnik Lottie. Poprzednie podejście z modyfikacją atrybutów SVG nie mogło działać.
+
+**Rozwiązanie:**
+Zastosowanie filtru CSS `hue-rotate()` który zmienia odcień **wszystkich kolorów** w animacji, niezależnie od tego jak są renderowane.
+
+**Implementacja:**
+
+1. **Funkcja konwersji hex → hue:**
+```javascript
+const hexToHue = (hex) => {
+    hex = hex.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16) / 255;
+    const g = parseInt(hex.substr(2, 2), 16) / 255;
+    const b = parseInt(hex.substr(4, 2), 16) / 255;
+    
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    
+    if (max !== min) {
+        const d = max - min;
+        switch (max) {
+            case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+            case g: h = ((b - r) / d + 2) / 6; break;
+            case b: h = ((r - g) / d + 4) / 6; break;
+        }
+    }
+    
+    return h * 360;
+};
+```
+
+2. **Obliczanie rotacji odcienia:**
+```javascript
+// Oryginalny kolor bluzy w animacji: #4AA5FF (hue ≈ 210deg)
+const originalHue = 210;
+const targetHue = hexToHue(accentColor);
+const hueRotation = targetHue - originalHue;
+
+// Zastosowanie filtru
+player.style.filter = `hue-rotate(${hueRotation}deg)`;
+```
+
+**Przykłady rotacji dla różnych motywów:**
+
+| Motyw      | Kolor akcent | Hue docelowy | Rotacja     |
+|------------|--------------|--------------|-------------|
+| Orange     | #ff6b00      | ~25°         | -185°       |
+| Blue       | #0066ff      | ~220°        | +10°        |
+| Green      | #10b981      | ~160°        | -50°        |
+| Purple     | #8b5cf6      | ~260°        | +50°        |
+| Red        | #ff3333      | ~0°          | -210°       |
+
+**Zalety rozwiązania:**
+- ✅ **Działa natychmiast** — CSS filter aplikowany bez czekania na DOM
+- ✅ **Uniwersalne** — działa z każdym Lottie animation
+- ✅ **Proste** — jedna linijka CSS zamiast iteracji po elementach SVG
+- ✅ **Wydajne** — akcelerowane przez GPU
+- ✅ **Kompatybilne** — działa ze wszystkimi sposobami renderowania kolorów w Lottie
+
+**Ograniczenia:**
+- ⚠️ Zmienia **wszystkie** kolory w animacji (nie tylko bluzy)
+- ⚠️ Zmienia odcień, ale nie saturację ani jasność
+- ⚠️ Może wpłynąć na inne elementy (skóra, tło, akcenty)
+
+**Timeouty:**
+- Init: 200ms (było 1000ms)
+- Navigation: 100ms (było 500ms)
+
+Krótsze timeouty są możliwe, ponieważ nie musimy czekać na Shadow DOM.
+
+## [3.29.2] - 2025-01-02
+
+### 🔍 Enhanced Animation Color Debugging
+
+#### Zaawansowane debugowanie struktury Lottie
+
+**Dodano:**
+- Element sampling - wyświetlanie pierwszych 10 elementów SVG z ich atrybutami
+- Szczegółowe logowanie Shadow DOM i struktury SVG
+- Emoji indicators dla czytelności logów
+
+**Odkrycie:**
+Wszystkie elementy SVG miały `fill="null"` - to wykazało, że kolory nie są w atrybutach, ale renderowane dynamicznie przez Lottie.
+
+```
+Sampling first 10 elements:
+[0] defs: fill="null" stroke="null" style="null"
+[1] clipPath: fill="null" stroke="null" style="null"
+[2] rect: fill="null" stroke="null" style="null"
+[6] path: fill="#ffffff" stroke="null" style="null"
+```
+
+To odkrycie doprowadziło do zmiany podejścia w wersji 3.30.0.
+
+## [3.29.1] - 2025-01-02
+
+### 🐛 Fixed Animation Color Control
+
+#### Poprawka wykrywania koloru i dodanie debugowania
+
+**Problem:**
+Początkowa implementacja nie wykrywała właściwego koloru `#4AA5FF` z animacji `anim-designer.lottie`.
+
+**Rozwiązanie:**
+
+1. **Dodano konkretny target color:**
+```javascript
+const colorTargets = [
+    '#4AA5FF', '#4aa5ff', // Main target color (case variations)
+    'rgb(74, 165, 255)', 'rgba(74, 165, 255', // RGB variations
+    // ... other colors
+];
+```
+
+2. **Ulepszone logowanie debugowe:**
+```javascript
+let changedCount = 0;
+elements.forEach(el => {
+    const fill = el.getAttribute('fill');
+    if (fill && colorTargets.some(color => 
+        fill.toLowerCase().includes(color.toLowerCase())
+    )) {
+        el.setAttribute('fill', accentColor);
+        changedCount++;
+        console.log(`Changed fill: ${fill} -> ${accentColor}`);
+    }
+});
+
+console.log(`Animation colors updated: ${changedCount} elements changed to ${accentColor}`);
+```
+
+**Korzyści:**
+- ✅ **Dokładne wykrywanie** — kolor `#4AA5FF` jest teraz na pierwszym miejscu w liście
+- ✅ **Debug info** — każda zmiana jest logowana w konsoli
+- ✅ **Change counter** — łatwo sprawdzić ile elementów zostało zmienionych
+- ✅ **Warianty koloru** — obsługa uppercase, lowercase i RGB
+
+**Testowanie:**
+Po wczytaniu strony sprawdź konsolę - powinno pojawić się:
+```
+Changed fill: #4AA5FF -> #ff6b00
+Animation colors updated: X elements changed to #ff6b00
+```
+
+## [3.29.0] - 2025-01-02
+
+### 🎨 Dynamic Animation Color Control
+
+#### Dynamiczna zmiana kolorów w animacji Lottie wraz z motywem strony
+
+**Nowa funkcjonalność:**
+System automatycznej zmiany kolorów elementów animacji `anim-designer.lottie` w odpowiedzi na zmianę motywu kolorystycznego strony. Kolory bluzy postaci w animacji synchronizują się z aktualnym kolorem akcentu.
+
+**Implementacja:**
+
+1. **ID dla dotlottie-player:**
+```html
+<dotlottie-player 
+    id="heroAnimation"
+    src="data/anim-designer.lottie" 
+    background="transparent" 
+    speed="1" 
+    loop 
+    autoplay>
+</dotlottie-player>
+```
+
+2. **Funkcja updateAnimationColors():**
+```javascript
+function updateAnimationColors() {
+    const player = document.getElementById('heroAnimation');
+    if (!player) return;
+    
+    const updateColors = () => {
+        const accentColor = getComputedStyle(document.documentElement)
+            .getPropertyValue('--accent').trim();
+        
+        if (player.shadowRoot) {
+            const svg = player.shadowRoot.querySelector('svg');
+            if (svg) {
+                const colorTargets = [
+                    '#6366f1', '#8b5cf6', '#a855f7', '#c084fc', // purples
+                    '#3b82f6', '#60a5fa', '#93c5fd',             // blues
+                    '#4f46e5', '#6366f1',                         // indigos
+                    '#10b981', '#34d399'                          // greens
+                ];
+                
+                const elements = svg.querySelectorAll('path, rect, circle, ellipse, polygon');
+                
+                elements.forEach(el => {
+                    const fill = el.getAttribute('fill');
+                    const stroke = el.getAttribute('stroke');
+                    
+                    if (fill && colorTargets.some(color => 
+                        fill.toLowerCase().includes(color.toLowerCase())
+                    )) {
+                        el.setAttribute('fill', accentColor);
+                    }
+                    
+                    if (stroke && colorTargets.some(color => 
+                        stroke.toLowerCase().includes(color.toLowerCase())
+                    )) {
+                        el.setAttribute('stroke', accentColor);
+                    }
+                });
+            }
+        }
+    };
+    
+    if (player.shadowRoot) {
+        updateColors();
+    }
+    
+    player.addEventListener('ready', updateColors, { once: true });
+}
+```
+
+3. **Integracja z systemem motywów:**
+```javascript
+function switchTheme(themeName) {
+    applyTheme(themeName);
+    updateActiveThemeButton();
+    updateAnimationColors();  // ← Automatyczna aktualizacja kolorów
+}
+```
+
+4. **Aktualizacja przy nawigacji:**
+```javascript
+function showSection(sectionId, addToHistory = true) {
+    // ... existing code ...
+    
+    if (sectionId === 'home') {
+        setTimeout(() => updateAnimationColors(), 100);
+    }
+}
+```
+
+**Mechanizm działania:**
+- 🔍 **Shadow DOM Access** — dostęp do SVG wewnątrz dotlottie-player poprzez `shadowRoot`
+- 🎯 **Color Target Detection** — wykrywanie elementów z typowymi kolorami ubrań
+- 🔄 **Real-time Update** — natychmiastowa zmiana przy przełączaniu motywów
+- ⏱️ **Ready Event** — synchronizacja z załadowaniem animacji
+- 🏠 **Navigation Sync** — aktualizacja przy powrocie do sekcji home
+
+**Korzyści:**
+- ✅ **Spójność wizualna** — animacja harmonizuje z motywem strony
+- ✅ **Dynamiczność** — kolory reagują na wybór użytkownika
+- ✅ **Elegancja** — płynna integracja z system motywów (orange, blue, green, purple, red)
+- ✅ **Responsywność** — działa na wszystkich urządzeniach
+
+**Kolory docelowe (detectowane):**
+- Fioletowy: `#6366f1`, `#8b5cf6`, `#a855f7`, `#c084fc`
+- Niebieski: `#3b82f6`, `#60a5fa`, `#93c5fd`
+- Indygo: `#4f46e5`, `#6366f1`
+- Zielony: `#10b981`, `#34d399`
+
+Te kolory są automatycznie zamieniane na aktualny `--accent` color przy zmianie motywu.
+
+## [3.28.1] - 2025-01-02
+
+### 🔝 Enhanced Footer Animation
+
+#### Zwiększenie rozmiaru animacji i zmniejszenie odstępów
+
+**Zmiany:**
+- 🔝 **Większa animacja** — zwiększono do 550×550px (desktop), 350×350px (mobile)
+- 📐 **Wyższy kontener** — 450px (desktop), 280px (mobile)
+- 📉 **Zredukowane odstępy** — `margin-top: 0px`, `padding` sekcji: `0px`
+- 🎯 **Bliżej treści** — animacja bezpośrednio pod contentem
+- ⬆️ **Większe przykrycie** — footer `margin-top: -200px` (desktop), `-120px` (mobile)
+
+**CSS:**
+```css
+.footer-animation {
+    height: 450px;       /* było 350px */
+    margin-top: 0px;     /* było 100px */
+}
+
+.footer-animation dotlottie-player {
+    width: 550px;        /* było 400px */
+    height: 550px;       /* było 400px */
+}
+
+footer {
+    margin-top: -200px;  /* było -100px */
+}
+
+.section {
+    padding: 120px 0 0px; /* było 120px 0 100px */
+}
+```
+
 ## [3.28.0] - 2025-01-01
 
 ### 🎬 Dual Layered Animations
