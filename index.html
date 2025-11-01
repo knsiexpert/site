@@ -27,15 +27,16 @@
         }
         
         body {
-            font-family: 'Helvetica Neue', 'Helvetica', 'Arial', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 15px;
-            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
             color: var(--black);
             background: var(--white);
             overflow-x: hidden;
-            letter-spacing: -0.02em;
+            letter-spacing: -0.01em;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
         }
         
         .container {
@@ -72,20 +73,19 @@
             display: flex;
             align-items: center;
             gap: 25px;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 0.1em;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             text-transform: uppercase;
         }
         
         .logo-text {
             color: var(--black);
             font-weight: 600;
-            letter-spacing: 0.08em;
+            letter-spacing: -0.01em;
             position: relative;
             display: inline-block;
             transition: all 0.3s ease;
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
         }
         
         .logo-text::after {
@@ -160,9 +160,9 @@
             text-decoration: none;
             color: var(--black);
             text-transform: uppercase;
-            font-size: 10px;
-            letter-spacing: 0.15em;
-            font-weight: 500;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            font-weight: 600;
             transition: all 0.2s;
             cursor: pointer;
             position: relative;
@@ -581,6 +581,7 @@
         .carousel-group {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
             gap: 30px;
             width: 100%;
             flex-shrink: 0;
@@ -723,6 +724,8 @@
             position: relative;
             border: 1px solid var(--light-gray);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         
         .highlight-card::before {
@@ -775,6 +778,7 @@
             font-weight: 700;
             line-height: 1.4;
             color: inherit;
+            min-height: 44px;
         }
         
         .highlight-card p {
@@ -782,6 +786,8 @@
             line-height: 1.8;
             font-size: 15px;
             opacity: 0.85;
+            min-height: 80px;
+            margin-bottom: 0;
         }
         
         .highlight-card:hover p {
@@ -789,7 +795,8 @@
         }
         
         .highlight-image {
-            margin-top: 30px;
+            margin-top: auto;
+            padding-top: 30px;
             position: relative;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -798,7 +805,7 @@
         .highlight-image::before {
             content: '';
             position: absolute;
-            top: -8px;
+            top: calc(30px - 8px);
             left: -8px;
             right: 8px;
             bottom: 8px;
@@ -810,7 +817,7 @@
         
         .highlight-card:hover .highlight-image::before {
             border-color: var(--white);
-            top: -12px;
+            top: calc(30px - 12px);
             left: -12px;
             right: 12px;
             bottom: 12px;
@@ -921,11 +928,11 @@
         
         /* Typography */
         h2 {
-            font-size: clamp(36px, 6vw, 64px);
+            font-size: clamp(36px, 6vw, 56px);
             margin-bottom: 70px;
             text-transform: none;
-            letter-spacing: 0.02em;
-            font-weight: 600;
+            letter-spacing: -0.025em;
+            font-weight: 700;
             line-height: 1.2;
             position: relative;
             padding-bottom: 25px;
@@ -950,10 +957,10 @@
         }
         
         h3 {
-            font-size: 19px;
+            font-size: 20px;
             margin-bottom: 22px;
             text-transform: none;
-            letter-spacing: 0.01em;
+            letter-spacing: -0.015em;
             font-weight: 600;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif;
             line-height: 1.4;
@@ -2189,6 +2196,7 @@
             
             .carousel-group {
                 grid-template-columns: 1fr;
+                grid-template-rows: auto;
                 gap: 50px;
                 padding: 0 15px;
             }
@@ -2240,26 +2248,29 @@
             .highlight-card h3 {
                 font-size: 13px;
                 margin-bottom: 14px;
+                min-height: 36px;
             }
             
             .highlight-card p {
                 font-size: 12px;
                 line-height: 1.6;
+                min-height: 60px;
             }
             
             .highlight-image {
-                margin-top: 20px;
+                margin-top: auto;
+                padding-top: 20px;
             }
             
             .highlight-image::before {
-                top: -6px;
+                top: calc(20px - 6px);
                 left: -6px;
                 right: 6px;
                 bottom: 6px;
             }
             
             .highlight-card:hover .highlight-image::before {
-                top: -8px;
+                top: calc(20px - 8px);
                 left: -8px;
                 right: 8px;
                 bottom: 8px;
@@ -2803,10 +2814,10 @@
                                     <div class="carousel-wrapper-inner">
                                         <div class="carousel-track" id="carouselTrack">
                                     ${(() => {
-                                        // Create groups of 3 images
+                                        // Create groups of 6 images (2 rows x 3 columns)
                                         const groups = [];
-                                        for (let i = 0; i < data.us.images.length; i += 3) {
-                                            groups.push(data.us.images.slice(i, i + 3));
+                                        for (let i = 0; i < data.us.images.length; i += 6) {
+                                            groups.push(data.us.images.slice(i, i + 6));
                                         }
                                         // Duplicate first group at the end for seamless loop
                                         groups.push(groups[0]);
@@ -2814,7 +2825,7 @@
                                         return groups.map((group, groupIndex) => `
                                             <div class="carousel-group" data-group="${groupIndex}">
                                                 ${group.map((image, index) => {
-                                                    const absoluteIndex = (groupIndex * 3 + index) % data.us.images.length;
+                                                    const absoluteIndex = (groupIndex * 6 + index) % data.us.images.length;
                                                     return `
                                                         <div class="carousel-item">
                                                             <div class="carousel-item-label">MOMENT</div>
@@ -3275,50 +3286,99 @@
             activityContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
             
-            ${data.content.history ? `
-                <div style="margin-bottom: 50px; padding: 30px; background: var(--light-gray); border-left: 4px solid var(--accent);">
-                    <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 22px;">HISTORIA KOŁA</h3>
-                    <p style="margin-bottom: 15px; line-height: 1.8; color: var(--gray);">
-                        <strong style="color: var(--black);">Katedra:</strong> ${data.content.history.affiliation}
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
+                <div>
+                    <div class="activity-list">
+                            ${data.content.activities.map((activity, index) => `
+                        <div class="activity-item">
+                                    <strong style="font-size: 16px; font-weight: 700;">${activityLabels[index] || 'DZIAŁALNOŚĆ'}</strong><br>
+                                    <span style="font-size: 16px; line-height: 1.7;">${activity}</span>
+                        </div>
+                            `).join('')}
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 style="margin-top: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">CELE I MISJA</h3>
+                    <ul style="line-height: 2; color: var(--text); font-size: 16px; list-style: none; padding-left: 0; letter-spacing: -0.01em; margin-bottom: 50px;">
+                            ${data.content.mission_goals.map(goal => `
+                                <li style="margin-bottom: 15px; padding-left: 0;">${goal}</li>
+                            `).join('')}
+                    </ul>
+                    
+                    <h3 style="margin-top: 0; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
+                    <p style="margin-bottom: 30px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">${data.content.industry_collaboration.description}</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 15px; align-items: center;">
+                        ${data.content.industry_collaboration.partners.map(partner => {
+                            const baseStyle = `
+                                display: inline-block;
+                                padding: 14px 28px;
+                                background: var(--black);
+                                border: 2px solid var(--black);
+                                color: var(--white);
+                                font-weight: 600;
+                                font-size: 15px;
+                                letter-spacing: 0.02em;
+                                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                                position: relative;
+                            `;
+                            
+                            if (partner.url) {
+                                return `
+                                    <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
+                                       style="${baseStyle} text-decoration: none; cursor: pointer;"
+                                       onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--accent)'; this.style.color='var(--black)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(255,107,0,0.3)';"
+                                       onmouseout="this.style.borderColor='var(--black)'; this.style.background='var(--black)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                                        ${partner.name}
+                                    </a>
+                                `;
+                            } else {
+                                return `
+                                    <span style="${baseStyle} background: #333; border-color: #333; opacity: 0.9;">
+                                        ${partner.name}
+                                    </span>
+                                `;
+                            }
+                        }).join('')}
+                    </div>
+                    
+                    <h3 style="margin-top: 50px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">LOKALIZACJA</h3>
+                    <p style="margin-bottom: 20px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">
+                        Piaskowa 9C, 81-862 Sopot
                     </p>
-                    <p style="margin-bottom: 15px; line-height: 1.8; color: var(--gray);">
-                        <strong style="color: var(--black);">Powstanie (2001):</strong> ${data.content.history.founding}
-                    </p>
-                    <p style="margin-bottom: ${data.content.history.advisors ? '15px' : '0'}; line-height: 1.8; color: var(--gray);">
-                        <strong style="color: var(--black);">Reaktywacja (2012):</strong> ${data.content.history.reactivation}
-                    </p>
-                    ${data.content.history.advisors ? `
-                        <p style="margin-bottom: 0; line-height: 1.8; color: var(--gray);">
-                            <strong style="color: var(--black);">Opiekunowie koła:</strong> ${data.content.history.advisors}
+                    <div style="width: 100%; height: 300px; border: 2px solid var(--black); overflow: hidden;">
+                        <iframe 
+                            src="https://maps.google.com/maps?q=Piaskowa+9C,+Sopot&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+            
+            ${data.content.about ? `
+                <div style="margin-top: 60px; margin-bottom: 60px; padding: 0;">
+                    <h3 style="margin-top: 40px; margin-bottom: 30px; font-size: 24px; font-weight: 700; letter-spacing: -0.015em;">O NAS</h3>
+                    ${data.content.about.split('\n\n').map(paragraph => `
+                        <p style="margin-bottom: 25px; line-height: 1.7; font-size: 16px; color: var(--text); text-align: justify; letter-spacing: -0.01em;">
+                            ${paragraph}
                         </p>
-                    ` : ''}
+                    `).join('')}
                 </div>
             ` : ''}
             
-            <div class="activity-lead">
-                    ${data.content.lead}
-            </div>
-            
-            <div class="activity-list">
-                    ${data.content.activities.map((activity, index) => `
-                <div class="activity-item">
-                            <strong>${activityLabels[index] || 'DZIAŁALNOŚĆ'}</strong><br>
-                            ${activity}
-                </div>
-                    `).join('')}
-            </div>
-            
-            <h3 style="margin-top: 60px;">CELE I MISJA</h3>
-            <ul style="line-height: 2; color: var(--gray);">
-                    ${data.content.mission_goals.map(goal => `
-                        <li>→ ${goal}</li>
-                    `).join('')}
-            </ul>
-            
-            <h3 style="margin-top: 60px;">WSPÓŁPRACA Z PRZEMYSŁEM</h3>
-                ${data.content.industry_collaboration.map(collab => `
-                    <p>Partner: <strong>${collab.partner}</strong> — ${collab.role}</p>
-                `).join('')}
+            <style>
+                @media (max-width: 968px) {
+                    #activityContent > div[style*="grid-template-columns"] {
+                        grid-template-columns: 1fr !important;
+                        gap: 40px !important;
+                    }
+                }
+            </style>
             `;
         }
         

@@ -2,6 +2,7 @@
   "title": "Działalność",
   "slug": "dzialalnosc",
   "content": {
+    "about": "Koło Naukowe Systemów Informatycznych E-XPERT powstało w 2001 roku przy Katedrze Informatyki Ekonomicznej Wydziału Zarządzania Uniwersytetu Gdańskiego. Od początku jego misją było połączenie wiedzy z praktyką – stworzenie miejsca, w którym studenci nie tylko uczą się o technologiach, ale sami je budują. W czasach, gdy pojęcie 'transformacji cyfrowej' dopiero zaczynało nabierać znaczenia, E-XPERT gromadził ludzi, którzy wyczuwali jej nadejście i chcieli w niej uczestniczyć.\n\nPierwsze działania Koła skupiały się na praktycznych aspektach informatyki ekonomicznej i zarządzania projektami IT. Studenci tworzyli pierwsze aplikacje akademickie, testowali metodyki pracy zespołowej i wdrażali rozwiązania dla Uniwersytetu Gdańskiego. Jednym z wczesnych sukcesów była aplikacja mobileWZR, ułatwiająca planowanie zajęć i organizację dnia studentów Wydziału Zarządzania. To właśnie wtedy E-XPERT zaczął kształtować swoją tożsamość – jako zespół, który zamiast mówić o technologii, po prostu ją wdraża.\n\nW 2015 roku Koło dołączyło do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Od tego momentu działalność E-XPERT nabrała globalnego charakteru. Członkowie zaczęli uczestniczyć w konkursach i konferencjach o zasięgu światowym, zdobywając wyróżnienia za projekty łączące technologię z odpowiedzialnością społeczną. Jednym z nich był SafeWatch – aplikacja ratująca życie, umożliwiająca wezwanie pomocy za pomocą gestu smartwatcha. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition i został objęty ochroną patentową.\n\nW kolejnych latach E-XPERT rozwijał projekty, które odpowiadały na realne potrzeby społeczne i technologiczne. Powstały m.in. CyberWatch – system wykrywający cyberprzemoc, Unity – narzędzie do monitorowania opinii w Internecie, SNet – rozwiązanie wspierające bezpieczeństwo w sieci, czy Eris – Intelligent Baby Monitor System i Apollo, aplikacja pomagająca ograniczyć marnowanie żywności. Takie inicjatywy sprawiły, że E-XPERT stał się jednym z najbardziej rozpoznawalnych ośrodków studenckich innowacji w Polsce, regularnie pojawiającym się w finałach międzynarodowych konkursów AIS.\n\nKoło konsekwentnie rozwijało kulturę współpracy i dzielenia się wiedzą. Organizowane były otwarte warsztaty i szkolenia z zakresu JavaScript, Node.js, R, Excela, Agile czy Design Thinking, prowadzone przez członków E-XPERT oraz partnerów z branży IT. Spotkania i sesje projektowe odbywają się dziś w środowisku Microsoft Teams, które stało się cyfrowym centrum komunikacji Koła. To tam rodzą się nowe pomysły, powstają plany projektów i rozwijane są koncepcje, które później trafiają na areny międzynarodowe.\n\nWśród nowszych inicjatyw szczególnym uznaniem cieszył się projekt SocialMonitor – wtyczka do przeglądarki, która ukrywa liczbę reakcji w mediach społecznościowych, pomagając użytkownikom uwolnić się od presji popularności. Z kolei UniGo, inteligentna platforma wspierająca wybór kierunku studiów w ramach koncepcji Smart Cities, pokazała, że Koło potrafi łączyć naukę, sztuczną inteligencję i społeczne zaangażowanie. W projekcie wykorzystano algorytmy AI do analizy i standaryzacji danych edukacyjnych, co przyniosło Kołu kolejne wyróżnienie w międzynarodowym konkursie AIS.\n\nW ostatnich latach E-XPERT przeszedł również cyfrową transformację własnych struktur. Zespół całkowicie zmodernizował stronę internetową Koła, przenosząc ją z systemu CMS do modelu open source opartego o GitHub Pages. Był to symboliczny krok w kierunku otwartości, przejrzystości i samodzielności technologicznej – wartości, które dziś definiują działalność Koła. Modernizacja strony i repozytoriów GitHub, zrealizowana wspólnie przez zespoły 2023/24 i 2024/25, stała się wyrazem nowej tożsamości E-XPERT: nowoczesnej, spójnej i społecznościowej.\n\nObecnie Koło Naukowe Systemów Informatycznych E-XPERT skupia grupę aktywnych studentów, którzy nie tylko tworzą oprogramowanie, ale też prowadzą badania, występują na konferencjach i współpracują z partnerami biznesowymi. Współpraca z firmami, takimi jak MadKom, umożliwia członkom zdobycie praktycznego doświadczenia jeszcze w trakcie studiów, a udział w konkursach AIS i Imagine Cup otwiera drogę do międzynarodowych inicjatyw i karier.\n\nPo ponad dwóch dekadach działalności E-XPERT pozostaje jednym z najważniejszych kół naukowych Uniwersytetu Gdańskiego – organizacją, która łączy akademicką tradycję z duchem startupowej innowacyjności. To społeczność, która pokazuje, że technologia nie musi być tylko narzędziem – może być formą współpracy, ekspresji i wpływu na rzeczywistość.\n\nNad działalnością Koła czuwają prof. Michał Kuciapski, prof. Stanisław Wrycza oraz mgr Piotr Porzuczek, którzy od lat wspierają studentów w rozwoju naukowym, merytorycznym i organizacyjnym.\n\nDla członków E-XPERT technologia to nie tylko kod.\nTo sposób rozumienia świata i zmieniania go na lepsze.",
     "history": {
       "affiliation": "Koło działa przy Katedrze Informatyki Ekonomicznej Wydziału Zarządzania Uniwersytetu Gdańskiego.",
       "founding": "Powstało na początku stycznia 2001 roku dzięki grupie studentów naszego Wydziału, którzy chcieli rozwinąć swoją wiedzę z zakresu informatyki w biznesie. Niestety po kilku latach intensywnej działalności zabrakło ludzi na tyle odważnych aby kontynuować działalność E-xperta. Koło przestało funkcjonować.",
@@ -26,12 +27,26 @@
       "competitions": "Praca zespołowa nad innowacyjnymi koncepcjami i aplikacjami użytecznymi społecznie, udział w konkursach takich jak Imagine Cup oraz AIS Student Chapter.",
       "research": "Prace badawcze nad metodykami zarządzania projektami IT, implementacją nowych technologii oraz przygotowywanie publikacji naukowych."
     },
-    "industry_collaboration": [
-      {
-        "partner": "MadKom",
-        "role": "Współpraca w zakresie staży i praktyk dla członków koła."
-      }
-    ],
+    "industry_collaboration": {
+      "description": "Koło współpracowało z wieloma firmami z branży IT, dzięki czemu nasi członkowie zdobywali praktyczne doświadczenie poprzez staże, projekty i warsztaty.",
+      "partners": [
+        {
+          "name": "Madkom",
+          "url": "https://madkom.pl"
+        },
+        {
+          "name": "Neoteric",
+          "url": "https://neoteric.eu"
+        },
+        {
+          "name": "Bright Inventions",
+          "url": "https://brightinventions.pl"
+        },
+        {
+          "name": "Staples Solutions"
+        }
+      ]
+    },
     "plans": [
       "Uczestnictwo w corocznym konkursie AIS.",
       "Pozyskanie firm oferujących warsztaty i praktyki dla członków."
