@@ -3,12 +3,21 @@
   "content": {
     "years": [
       {
-        "year": "2023/25",
+        "year": "2024/25",
         "projects": [
           "Modernizacja strony internetowej koła – kompleksowa aktualizacja identyfikacji online z migracją z WordPressa na GitHub Pages (https://knsiexpert.github.io/site).",
           "Zmiana architektury technicznej – porzucenie przestarzałego WordPressa na rzecz nowoczesnego rozwiązania: statyczna strona z dynamicznym ładowaniem treści z JSON, hash routing, automatyczny deployment via GitHub Actions.",
           "Nowy design system – implementacja minimalistycznego designu inspirowanego estetyką Virgil Abloh z paletą kolorów #1c1b22/#f3f3f7, interaktywnymi animacjami i responsywnym layoutem.",
           "Open source – otwarcie repozytorium kodu źródłowego na GitHub, umożliwienie współpracy i transparentności rozwoju strony."
+        ]
+      },
+      {
+        "year": "2022/23",
+        "projects": [
+          "Projekt UniGo (Cornelis Puchowicz, Łukasz Pisarczyk, Piotr Jemielita) – platforma komunikacji i współpracy dla Smart Cities adresująca problem wyboru kierunku studiów; nominacja do finałów AIS Student Chapter Competition 2023.",
+          "Badania i analiza procesu wyboru kierunku studiów w Polsce – kompleksowe badania z 50 respondentami oraz analiza istniejących rozwiązań rządowych (ELA, studia.gov.pl).",
+          "Wykorzystanie sztucznej inteligencji (OpenAI) do standaryzacji i normalizacji danych edukacyjnych o kierunkach studiów.",
+          "Propozycja nowego standardu danych o uczelniach – algorytm dopasowywania kierunków do zainteresowań studentów i interfejs użytkownika dla Smart Cities."
         ]
       },
       {
