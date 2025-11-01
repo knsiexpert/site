@@ -43,22 +43,22 @@
     {
       "title": "III miejsce — AIS Student Chapter (2015)",
       "text": "Projekt SafeWatch: dyskretne wzywanie pomocy gestem — finał w USA i 3. miejsce.",
-      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/dyp1.png"
+      "image": "https://i.imgur.com/kv000A8.png"
     },
     {
       "title": "III miejsce + wyróżnienie IBM Bright ICT (2016)",
       "text": "CyberWatch: wykrywanie cyberprzemocy; dodatkowe wyróżnienie za najlepsze użycie IBM Bluemix.",
-      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+      "image": "https://i.imgur.com/g3PJzSY.png"
     },
     {
       "title": "Finaliści AIS SC (2022)",
       "text": "SocialMonitor: ukrywanie reakcji w social media dla zdrowszej komunikacji.",
-      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+      "image": "https://i.imgur.com/LTmBfuX.png"
     },
     {
       "title": "Aplikacja mobileWZR",
       "text": "Plan zajęć WZiE UG na Androida — używana od 2014 roku.",
-      "image": "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+      "image": "https://i.imgur.com/nk7ylQ1.png"
     }
   ],
   "affiliations": [
@@ -73,8 +73,8 @@
       "name": "SafeWatch",
       "blurb": "Dyskretne wezwanie pomocy gestem (smartfon/smartwatch).",
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/image001.png",
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/zdjgrup.png"
+        "https://i.imgur.com/sinO2M0.png",
+        "https://i.imgur.com/y0VcWnS.png"
       ],
       "href": "projects.json#safewatch"
     },
@@ -82,7 +82,7 @@
       "name": "CyberWatch",
       "blurb": "Rozpoznawanie i blokowanie treści naruszających bezpieczeństwo i kulturę w sieci.",
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+        "https://i.imgur.com/g3PJzSY.png"
       ],
       "href": "projects.json#cyberwatch"
     },
@@ -90,7 +90,7 @@
       "name": "SocialMonitor",
       "blurb": "Ukrywa liczniki reakcji w social mediach, sprzyjając zdrowej komunikacji.",
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2022/05/Screenshot_3.png"
+        "https://i.imgur.com/9iG0SZg.png"
       ],
       "href": "projects.json#socialmonitor"
     },
@@ -98,7 +98,7 @@
       "name": "mobileWZR",
       "blurb": "Plan zajęć i przypomnienia dla studentów WZiE UG.",
       "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/fsfs.png"
+        "https://i.imgur.com/nk7ylQ1.png"
       ],
       "href": "projects.json#mobilewzr"
     }
