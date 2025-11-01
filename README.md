@@ -1,8 +1,46 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.28.1** | Enhanced Footer Animation
+**Wersja: 3.30.0** | CSS Hue-Rotate Animation Color Control
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.30.0
+
+- 🎨 **CSS hue-rotate filter** — zmiana kolorów animacji poprzez filtr CSS zamiast modyfikacji SVG
+- ⚡ **Natychmiastowe działanie** — brak potrzeby czekania na Shadow DOM czy parsowanie SVG
+- 🔢 **Precyzyjna konwersja HSL** — obliczanie różnicy odcieni między kolorem oryginalnym a docelowym
+- 🎯 **Działa z Lottie** — kompatybilne z dynamicznym renderowaniem kolorów przez silnik Lottie
+- 🐛 **Rozwiązany problem** — kolory Lottie są renderowane w JS, nie jako atrybuty SVG
+- 📐 **Algorytm konwersji** — hex → RGB → HSL → obliczenie rotacji odcienia
+
+**Jak działa:**
+```javascript
+// Oryginalny kolor bluzy: #4AA5FF (hue ≈ 210deg)
+// Docelowy kolor (np. pomarańczowy): #ff6b00 (hue ≈ 25deg)
+// Rotacja: 25 - 210 = -185deg
+player.style.filter = 'hue-rotate(-185deg)';
+```
+
+## ✨ Nowe w wersji 3.29.2
+
+- 🔍 **Zaawansowane debugowanie** — szczegółowe logowanie struktury Shadow DOM i elementów SVG
+- 📊 **Element sampling** — wyświetlanie pierwszych 10 elementów z ich kolorami w konsoli
+- 💡 **Odkrycie problemu** — kolory nie są w atrybutach SVG, tylko renderowane dynamicznie
+
+## ✨ Nowe w wersji 3.29.1
+
+- 🎯 **Dokładny target color** — dodano konkretny kolor `#4AA5FF` z animacji do listy docelowych
+- 🐛 **Debug logging** — szczegółowe logowanie zmian kolorów w konsoli dla debugowania
+- 📊 **Change counter** — wyświetlanie liczby zmienionych elementów
+- ✅ **Improved detection** — lepsze wykrywanie wariantów koloru (uppercase, lowercase, rgb)
+
+## ✨ Nowe w wersji 3.29.0
+
+- 🎨 **Dynamiczna kontrola kolorów animacji** — kolory bluzy w animacji `anim-designer.lottie` zmieniają się wraz z motywem
+- 🔄 **Automatyczna aktualizacja** — kolory aktualizują się przy zmianie motywu i przy powrocie do sekcji home
+- 🎭 **Shadow DOM integration** — bezpośredni dostęp do elementów SVG w dotlottie-player
+- 🎯 **Inteligentne wykrywanie** — system rozpoznaje i zamienia kolor `#4AA5FF` na aktualny motyw
+- ⚡ **Real-time synchronization** — natychmiastowa zmiana kolorów po wyborze nowego motywu
 
 ## ✨ Nowe w wersji 3.28.1
 

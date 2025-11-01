@@ -2940,6 +2940,7 @@
             <div class="hero-animations-row">
                 <div class="hero-animation">
                     <dotlottie-player 
+                        id="heroAnimation"
                         src="data/anim-designer.lottie" 
                         background="transparent" 
                         speed="1" 
@@ -3769,6 +3770,11 @@
             // Close mobile menu
             document.getElementById('navLinks').classList.remove('active');
             
+            // Update animation colors when showing home section
+            if (sectionId === 'home') {
+                setTimeout(() => updateAnimationColors(), 100);
+            }
+            
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -3908,6 +3914,64 @@
         function switchTheme(themeName) {
             applyTheme(themeName);
             updateActiveThemeButton();
+            updateAnimationColors();
+        }
+        
+        // Update animation colors based on current theme using CSS filter
+        function updateAnimationColors() {
+            const player = document.getElementById('heroAnimation');
+            if (!player) {
+                console.log('⚠️ Hero animation player not found');
+                return;
+            }
+            
+            console.log('🎨 Attempting to update animation colors using CSS filter...');
+            
+            // Get current accent color
+            const accentColor = getComputedStyle(document.documentElement)
+                .getPropertyValue('--accent').trim();
+            
+            console.log(`Target accent color: ${accentColor}`);
+            
+            // Since Lottie renders colors dynamically (not in SVG attributes),
+            // we'll use CSS filters to shift the hue
+            // The original color #4AA5FF is a blue (hue ~210deg)
+            
+            // Convert hex to hue
+            const hexToHue = (hex) => {
+                // Remove #
+                hex = hex.replace('#', '');
+                const r = parseInt(hex.substr(0, 2), 16) / 255;
+                const g = parseInt(hex.substr(2, 2), 16) / 255;
+                const b = parseInt(hex.substr(4, 2), 16) / 255;
+                
+                const max = Math.max(r, g, b);
+                const min = Math.min(r, g, b);
+                let h = 0;
+                
+                if (max !== min) {
+                    const d = max - min;
+                    switch (max) {
+                        case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+                        case g: h = ((b - r) / d + 2) / 6; break;
+                        case b: h = ((r - g) / d + 4) / 6; break;
+                    }
+                }
+                
+                return h * 360;
+            };
+            
+            // Original blue color hue: #4AA5FF ≈ 210deg
+            const originalHue = 210;
+            const targetHue = hexToHue(accentColor);
+            const hueRotation = targetHue - originalHue;
+            
+            console.log(`Original hue: ${originalHue}deg, Target hue: ${targetHue.toFixed(1)}deg, Rotation: ${hueRotation.toFixed(1)}deg`);
+            
+            // Apply hue-rotate filter
+            player.style.filter = `hue-rotate(${hueRotation}deg)`;
+            
+            console.log(`✅ Applied hue-rotate filter: ${hueRotation.toFixed(1)}deg`);
         }
         
         // Update active state of theme buttons
@@ -3936,6 +4000,10 @@
             updateActiveThemeButton();
             
             await renderHome();
+            
+            // Update animation colors after home is rendered (CSS filter - instant)
+            setTimeout(() => updateAnimationColors(), 200);
+            
             await renderProjects();
             await renderGoals();
             await renderTeam();
