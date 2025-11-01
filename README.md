@@ -1,15 +1,28 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.27.1** | Fixed Single Animation Layout
+**Wersja: 3.28.1** | Enhanced Footer Animation
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
 
+## ✨ Nowe w wersji 3.28.1
+
+- 🔝 **Większa animacja** — zwiększono do 550×550px (desktop), 350×350px (mobile)
+- 📐 **Wyższy kontener** — 450px (desktop), 280px (mobile)
+- 📉 **Zredukowane odstępy** — margin-top: 0px, padding sekcji: 0px
+- 🎯 **Bliżej treści** — animacja bezpośrednio pod contentem
+
+## ✨ Nowe w wersji 3.28.0
+
+- 🎬 **Dwie animacje warstwowe** — `anim-designer.lottie` u góry, `anim-education.lottie` nad footerem
+- 📍 **Footer animation** — wyśrodkowana animacja nad footerem
+- 🎨 **Efekt przykrycia** — footer z `z-index: 2` przykrywa animację od dołu
+- ⬆️ **Negative margin** — footer `margin-top: -100px` dla efektu warstwowego
+
 ## ✨ Nowe w wersji 3.27.1
 
-- 🎨 **Przywrócona pozycja hero** — `padding-top: 280px` (desktop), `180px` (mobile)
+- 🎨 **Przywrócona pozycja hero** — poprawny layout
 - 📐 **Ograniczona wysokość kontenera** — `height: 400px` (desktop), `220px` (mobile)
 - ✂️ **Overflow: hidden** — animacja nie wylewa się poza kontener
-- ✅ **Poprawny layout** — hero tam gdzie był z dwiema animacjami
 
 ## ✨ Nowe w wersji 3.27.0
 

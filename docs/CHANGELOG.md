@@ -1,5 +1,48 @@
 # Changelog
 
+## [3.28.0] - 2025-01-01
+
+### 🎬 Dual Layered Animations
+
+#### Dodanie drugiej animacji nad footerem z efektem warstwowym
+
+**Nowa funkcjonalność:**
+Dodano drugą animację Lottie (`anim-education.lottie`) umieszczoną nad footerem, która jest częściowo przykryta przez footer tworząc efekt głębi i warstwowości.
+
+**CSS:**
+```css
+.footer-animation {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    z-index: 0;
+}
+
+.footer-animation dotlottie-player {
+    width: 400px;
+    height: 400px;
+}
+
+footer {
+    margin-top: -100px;  /* Negative margin dla efektu przykrycia */
+    z-index: 2;          /* Footer nad animacją */
+}
+```
+
+**Rozmiary:**
+- Desktop: 400×400px (kontener 350px)
+- Mobile: 250×250px (kontener 220px)
+
+**Efekty:**
+- ✅ **Symetria** — animacje u góry (`anim-designer.lottie`) i u dołu (`anim-education.lottie`)
+- ✅ **Warstwowy design** — footer przykrywa animację od dołu
+- ✅ **Wyśrodkowanie** — animacja po środku strony
+- ✅ **Balance** — wizualna równowaga góra/dół
+
 ## [3.25.0] - 2025-01-01
 
 ### 🎬 Dual Animations Header
