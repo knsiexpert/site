@@ -1,5 +1,390 @@
 # Changelog
 
+## [3.22.2] - 2025-01-01
+
+### 📱 Mobile Carousel Optimization
+
+#### Optymalizacja karuzeli "To My" dla urządzeń mobilnych
+
+**Problem:**
+Na urządzeniach mobilnych karuzela "To My" ładowała wszystkie 12 zdjęć, co powodowało:
+- Wolniejsze ładowanie strony
+- Większe zużycie danych mobilnych
+- Zbędne obciążenie dla małych ekranów
+
+**Rozwiązanie:**
+Zaimplementowano inteligentną detekcję urządzenia mobilnego i ograniczenie liczby wyświetlanych zdjęć.
+
+**Implementacja:**
+
+```javascript
+// Użyj tylko 3 zdjęć na mobile, wszystkich na desktop
+const isMobile = window.innerWidth <= 768;
+const imagesToUse = isMobile ? data.us.images.slice(0, 3) : data.us.images;
+
+// Utwórz grupy: 3 zdjęcia na mobile, 6 na desktop (2 rzędy x 3 kolumny)
+const itemsPerGroup = isMobile ? 3 : 6;
+
+for (let i = 0; i < imagesToUse.length; i += itemsPerGroup) {
+    groups.push(imagesToUse.slice(i, i + itemsPerGroup));
+}
+```
+
+**Efekty:**
+
+**Desktop (> 768px):**
+- ✅ Wyświetla wszystkie 12 zdjęć
+- ✅ 2 rzędy po 3 zdjęcia (6 na grupę)
+- ✅ Pełna galeria z automatycznym przewijaniem
+
+**Mobile (≤ 768px):**
+- ✅ Wyświetla tylko pierwsze 3 zdjęcia
+- ✅ 1 rząd z 3 zdjęciami
+- ✅ Szybsze ładowanie (75% mniej danych)
+- ✅ Lepszy UX na małych ekranach
+
+**Zalety:**
+- 📱 **Performance** — 75% redukcja rozmiaru karuzeli na mobile
+- ⚡ **Szybkość** — błyskawiczne ładowanie na urządzeniach mobilnych
+- 💾 **Oszczędność danych** — mniejsze zużycie pakietu internetowego
+- 🎨 **UX** — karuzela dostosowana do możliwości ekranu
+
+**Które zdjęcia są wybierane na mobile:**
+```javascript
+// Pierwsze 3 zdjęcia z home.json us.images:
+1. https://i.imgur.com/KbCxaWl.jpeg
+2. https://i.imgur.com/cMbL4Zv.jpeg
+3. https://i.imgur.com/kTqJvzR.jpeg
+```
+
+## [3.22.1] - 2025-01-01
+
+### 📝 Goals Section Introduction Text
+
+#### Dodanie tekstu wprowadzającego w sekcji "Cele i Misja"
+
+**Zmiany:**
+
+**`data/goals.json`:**
+```json
+{
+  "title": "Zrealizowane cele koła",
+  "intro": "Od początku swojego istnienia w 2001 roku, misją Koła Naukowego Systemów Informatycznych E-XPERT jest połączenie wiedzy z praktyką – stworzenie miejsca, w którym studenci nie tylko uczą się o technologiach, ale sami je budują. Jako część międzynarodowej organizacji Association for Information Systems Student Chapters, realizujemy projekty łączące technologię z odpowiedzialnością społeczną, zdobywamy międzynarodowe wyróżnienia i rozwijamy kulturę współpracy. Nasze działania to nie tylko kod – to sposób rozumienia świata i zmieniania go na lepsze poprzez innowacje, które odpowiadają na realne potrzeby społeczne i technologiczne.",
+  "content": {
+    "years": [...]
+  }
+}
+```
+
+**`index.html` - renderGoals():**
+```javascript
+goalsContent.innerHTML = `
+    <h2>"${data.title.toUpperCase()}"</h2>
+
+    ${data.intro ? `
+        <p style="font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 60px; text-align: justify; letter-spacing: -0.01em; max-width: 1000px;">
+            ${data.intro}
+        </p>
+    ` : ''}
+    
+    <div class="timeline">
+        ...
+    </div>
+`;
+```
+
+**Efekt:**
+- ✅ **Kontekst** — czytelny akapit wprowadzający przed listą celów
+- ✅ **Misja** — tekst oparty na wartościach z sekcji "O nas"
+- ✅ **UX** — lepsze zrozumienie celu i charakteru koła
+
+## [3.22.0] - 2025-01-01
+
+### 🎨 Dynamic Theme Switcher
+
+#### System dynamicznej zmiany motywów kolorystycznych
+
+**Nowa funkcjonalność:**
+System umożliwiający zmianę motywu kolorystycznego strony za pomocą parametru URL lub zapisanego ustawienia w localStorage.
+
+**5 gotowych motywów:**
+
+| Motyw | URL | Kolor główny | RGB | Light | Lighter |
+|-------|-----|--------------|-----|-------|---------|
+| 🟠 **Orange** | `?theme=orange` | `#ff6b00` | `255, 107, 0` | `#ff8c00` | `#ffa500` |
+| 🔵 **Blue** | `?theme=blue` | `#0066ff` | `0, 102, 255` | `#3399ff` | `#66b3ff` |
+| 🟢 **Green** | `?theme=green` | `#00cc66` | `0, 204, 102` | `#00e673` | `#33ff99` |
+| 🟣 **Purple** | `?theme=purple` | `#9933ff` | `153, 51, 255` | `#b366ff` | `#cc99ff` |
+| 🔴 **Red** | `?theme=red` | `#ff3333` | `255, 51, 51` | `#ff5555` | `#ff8888` |
+
+**Kod JavaScript:**
+
+```javascript
+// Definicje motywów
+const themes = {
+    orange: {
+        accent: '#ff6b00',
+        accentRgb: '255, 107, 0',
+        accentLight: '#ff8c00',
+        accentLighter: '#ffa500'
+    },
+    blue: {
+        accent: '#0066ff',
+        accentRgb: '0, 102, 255',
+        accentLight: '#3399ff',
+        accentLighter: '#66b3ff'
+    },
+    // ... inne motywy
+};
+
+// Funkcja aplikowania motywu
+function applyTheme(themeName) {
+    const theme = themes[themeName];
+    if (!theme) return;
+    
+    const root = document.documentElement;
+    
+    // Ustaw zmienne CSS
+    root.style.setProperty('--accent', theme.accent);
+    root.style.setProperty('--accent-rgb', theme.accentRgb);
+    root.style.setProperty('--accent-light', theme.accentLight);
+    root.style.setProperty('--accent-lighter', theme.accentLighter);
+    
+    // Zaktualizuj gradienty
+    root.style.setProperty('--gradient-primary', ...);
+    root.style.setProperty('--gradient-hero', ...);
+    root.style.setProperty('--gradient-text', ...);
+    root.style.setProperty('--gradient-underline', ...);
+    
+    // Zapisz w localStorage
+    localStorage.setItem('selectedTheme', themeName);
+}
+
+// Inicjalizacja motywu
+function initTheme() {
+    // 1. Sprawdź parametr URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
+    
+    if (themeParam && themes[themeParam]) {
+        applyTheme(themeParam);
+        return;
+    }
+    
+    // 2. Sprawdź localStorage
+    const savedTheme = localStorage.getItem('selectedTheme');
+    if (savedTheme && themes[savedTheme]) {
+        applyTheme(savedTheme);
+        return;
+    }
+    
+    // 3. Użyj domyślnego (orange z CSS)
+}
+```
+
+**Jak używać:**
+
+1. **Zmiana przez URL:**
+```
+https://knsiexpert.github.io/site/?theme=blue
+https://knsiexpert.github.io/site/?theme=green
+https://knsiexpert.github.io/site/?theme=purple
+https://knsiexpert.github.io/site/?theme=red
+```
+
+2. **Programowo w konsoli:**
+```javascript
+// Zmień motyw na niebieski
+applyTheme('blue');
+
+// Zmień motyw na zielony
+applyTheme('green');
+```
+
+3. **Zachowanie motywu:**
+- Wybrany motyw jest zapisywany w localStorage
+- Przy kolejnym wejściu na stronę motyw zostaje przywrócony
+- Parametr URL ma priorytet nad localStorage
+
+**Priorytet:**
+1. Parametr URL `?theme=...` (najwyższy)
+2. Zapisany motyw w localStorage
+3. Domyślny motyw orange z CSS (najniższy)
+
+**Przykłady użycia:**
+
+```bash
+# Localhost
+http://localhost:8000/?theme=blue
+http://localhost:8000/projekty?theme=green
+
+# GitHub Pages
+https://knsiexpert.github.io/site/?theme=purple
+https://knsiexpert.github.io/site/galeria?theme=red
+```
+
+**Co się zmienia przy zmianie motywu:**
+- ✅ Logo border i shadow
+- ✅ Navigation underline
+- ✅ Hero section (tło, tekst, underline)
+- ✅ Wszystkie przyciski i hover effects
+- ✅ Karuzela (borders, shadows)
+- ✅ Project cards
+- ✅ Gallery hover effects
+- ✅ Activity partner buttons
+- ✅ Wszystkie elementy używające `--accent`
+
+**Efekt:**
+- ✅ **5 gotowych motywów** — orange, blue, green, purple, red
+- ✅ **Instant switching** — bez przeładowania strony
+- ✅ **Persistence** — motyw zapamiętywany w localStorage
+- ✅ **URL control** — łatwe udostępnianie z konkretnym motywem
+- ✅ **Priorytetyzacja** — URL > localStorage > domyślny
+
+**Kolory poszczególnych motywów:**
+
+**🟠 Orange (domyślny):**
+- Base: `#ff6b00` — pomarańczowy
+- Light: `#ff8c00` — jaśniejszy pomarańczowy
+- Lighter: `#ffa500` — jeszcze jaśniejszy
+
+**🔵 Blue:**
+- Base: `#0066ff` — królewski niebieski
+- Light: `#3399ff` — jasnoniebieski
+- Lighter: `#66b3ff` — błękitny
+
+**🟢 Green:**
+- Base: `#00cc66` — szmaragdowy
+- Light: `#00e673` — jasnozielony
+- Lighter: `#33ff99` — miętowy
+
+**🟣 Purple:**
+- Base: `#9933ff` — fioletowy
+- Light: `#b366ff` — lawendowy
+- Lighter: `#cc99ff` — liliowy
+
+**🔴 Red:**
+- Base: `#ff3333` — czerwony
+- Light: `#ff5555` — łososiowy
+- Lighter: `#ff8888` — różowy
+
+## [3.21.0] - 2025-01-01
+
+### 🎨 Centralized Color Variables
+
+#### Scentralizowane zmienne kolorów dla łatwej zmiany motywu
+
+**Problem:**
+Kolor pomarańczowy (accent color) był hardcoded w wielu miejscach w kodzie jako `#ff6b00`, `#ff8c00`, `#ffa500`, `rgba(255, 107, 0, ...)` itp. Zmiana głównego koloru strony wymagała edycji dziesiątek miejsc w kodzie.
+
+**Rozwiązanie:**
+Utworzono scentralizowane zmienne CSS w `:root`, które definiują cały motyw kolorystyczny. Wszystkie wystąpienia kolorów zostały zamienione na zmienne.
+
+**Nowe zmienne w `:root`:**
+
+```css
+:root {
+    /* Accent colors - change these to change the main color theme */
+    --accent: #ff6b00;
+    --accent-rgb: 255, 107, 0;
+    --accent-light: #ff8c00;
+    --accent-lighter: #ffa500;
+    
+    /* Gradients using accent colors */
+    --gradient-primary: linear-gradient(90deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
+    --gradient-hero: linear-gradient(135deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
+    --gradient-text: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+    --gradient-underline: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent-lighter) 100%);
+}
+```
+
+**Zamienione wartości:**
+
+| Element | PRZED | PO |
+|---------|-------|-----|
+| Box shadows | `rgba(255, 107, 0, 0.3)` | `rgba(var(--accent-rgb), 0.3)` |
+| Gradients | `#ff6b00`, `#ff8c00`, `#ffa500` | `var(--accent)`, `var(--accent-light)`, `var(--accent-lighter)` |
+| Logo border | `linear-gradient(135deg, #1c1b22 0%, #ff6b00 50%, #ffa500 100%)` | `var(--gradient-hero)` |
+| Hero text | Hardcoded gradient | `var(--gradient-text)` |
+| Underline | Hardcoded gradient | `var(--gradient-underline)` |
+| Navigation | Hardcoded gradient | `var(--gradient-primary)` |
+
+**Przykłady zmian:**
+
+```css
+/* PRZED */
+box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+
+/* PO */
+box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.3);
+```
+
+```css
+/* PRZED */
+background: linear-gradient(90deg, 
+    #ff6b00 0%, 
+    #ff8c00 50%, 
+    #ffa500 100%);
+
+/* PO */
+background: var(--gradient-underline);
+```
+
+**Jak zmienić kolor motywu:**
+
+Teraz wystarczy zmienić wartości w `:root`:
+
+```css
+:root {
+    /* Przykład: Zmiana na niebieski motyw */
+    --accent: #0066ff;
+    --accent-rgb: 0, 102, 255;
+    --accent-light: #3385ff;
+    --accent-lighter: #66a3ff;
+    
+    /* Gradienty automatycznie się zaktualizują! */
+}
+```
+
+**Miejsca gdzie zastosowano zmienne:**
+
+1. ✅ **Logo** — gradient border i box-shadow
+2. ✅ **Navigation** — gradient underline
+3. ✅ **Hero** — tło, tytuł, underline, box-shadow
+4. ✅ **Sections** — h2 underline, hover effects
+5. ✅ **Carousel** — hover borders, shadows
+6. ✅ **Highlights** — gradient overlays
+7. ✅ **Projects** — hover effects, shadows
+8. ✅ **Gallery** — hover effects
+9. ✅ **Activity** — partner buttons hover
+10. ✅ **Lightbox** — navigation hover
+
+**Efekt:**
+- ✅ **Jeden punkt zmiany** — wszystkie kolory w `:root`
+- ✅ **Automatyczne aktualizacje** — gradienty używają zmiennych
+- ✅ **Konsystencja** — ten sam kolor wszędzie
+- ✅ **Łatwa customizacja** — zmiana motywu w kilka sekund
+- ✅ **Maintainability** — łatwiejsze utrzymanie kodu
+
+**Zastosowanie dla różnych motywów:**
+
+```css
+/* Pomarańczowy (domyślny) */
+--accent: #ff6b00;
+
+/* Niebieski */
+--accent: #0066ff;
+
+/* Zielony */
+--accent: #00cc66;
+
+/* Fioletowy */
+--accent: #9933ff;
+
+/* Czerwony */
+--accent: #ff3333;
+```
+
 ## [3.20.3] - 2025-01-01
 
 ### 🔧 404.html Localhost Fix

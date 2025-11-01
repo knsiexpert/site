@@ -1,8 +1,43 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.20.3** | 404.html Localhost Fix
+**Wersja: 3.22.2** | Mobile Carousel Optimization
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.22.2
+
+- 📱 **Optymalizacja karuzeli na mobile** — wyświetlanie tylko 3 zdjęć zamiast 12
+- ⚡ **Szybsze ładowanie** — mniejsze zużycie danych na urządzeniach mobilnych
+- 🎨 **Lepszy UX mobile** — karuzela dopasowana do małych ekranów
+
+## ✨ Nowe w wersji 3.22.1
+
+- 📝 **Tekst wprowadzający w Cele i Misja** — dodano akapit opisujący misję koła
+- 🎯 **Kontekst historyczny** — tekst oparty na charakterze i wartościach z sekcji "O nas"
+- ✨ **Lepszy UX** — czytelniejsze wprowadzenie przed listą zrealizowanych celów
+
+## ✨ Nowe w wersji 3.22.0
+
+- 🎨 **System dynamicznych motywów** — 5 gotowych motywów kolorystycznych
+- 🔗 **Zmiana przez URL** — `?theme=blue`, `?theme=green`, `?theme=purple`, `?theme=red`
+- 💾 **Zapamiętywanie** — wybrany motyw zapisywany w localStorage
+- 🌈 **5 motywów** — orange (domyślny), blue, green, purple, red
+- ⚡ **Instant switching** — zmiana motywu bez przeładowania strony
+
+### Dostępne motywy:
+- 🟠 **Orange** — `?theme=orange` (domyślny)
+- 🔵 **Blue** — `?theme=blue`
+- 🟢 **Green** — `?theme=green`
+- 🟣 **Purple** — `?theme=purple`
+- 🔴 **Red** — `?theme=red`
+
+## ✨ Nowe w wersji 3.21.0
+
+- 🎨 **Scentralizowane zmienne kolorów** — jeden punkt zmiany dla całego motywu
+- 🔧 **Zmienne CSS dla akcentu** — `--accent`, `--accent-rgb`, `--accent-light`, `--accent-lighter`
+- 🌈 **Zmienne dla gradientów** — `--gradient-primary`, `--gradient-hero`, `--gradient-text`, `--gradient-underline`
+- ✨ **Łatwa zmiana motywu** — wystarczy zmienić wartości w `:root`
+- 🚀 **Wszystkie kolory pomarańczowe** — teraz używają zmiennych CSS
 
 ## ✨ Nowe w wersji 3.20.3
 
