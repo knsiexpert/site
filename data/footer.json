@@ -48,16 +48,6 @@
         "name": "Facebook",
         "code": "FB",
         "url": "https://facebook.com/knsiexpert"
-      },
-      {
-        "name": "LinkedIn",
-        "code": "IN",
-        "url": "https://linkedin.com/company/knsi-expert"
-      },
-      {
-        "name": "Instagram",
-        "code": "IG",
-        "url": "https://instagram.com/knsi_expert"
       }
     ]
   },
