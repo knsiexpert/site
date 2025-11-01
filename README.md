@@ -1,8 +1,73 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.23.1** | Refined Theme Switcher
+**Wersja: 3.28.1** | Enhanced Footer Animation
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.28.1
+
+- 🔝 **Większa animacja** — zwiększono do 550×550px (desktop), 350×350px (mobile)
+- 📐 **Wyższy kontener** — 450px (desktop), 280px (mobile)
+- 📉 **Zredukowane odstępy** — margin-top: 0px, padding sekcji: 0px
+- 🎯 **Bliżej treści** — animacja bezpośrednio pod contentem
+
+## ✨ Nowe w wersji 3.28.0
+
+- 🎬 **Dwie animacje warstwowe** — `anim-designer.lottie` u góry, `anim-education.lottie` nad footerem
+- 📍 **Footer animation** — wyśrodkowana animacja nad footerem
+- 🎨 **Efekt przykrycia** — footer z `z-index: 2` przykrywa animację od dołu
+- ⬆️ **Negative margin** — footer `margin-top: -100px` dla efektu warstwowego
+
+## ✨ Nowe w wersji 3.27.1
+
+- 🎨 **Przywrócona pozycja hero** — poprawny layout
+- 📐 **Ograniczona wysokość kontenera** — `height: 400px` (desktop), `220px` (mobile)
+- ✂️ **Overflow: hidden** — animacja nie wylewa się poza kontener
+
+## ✨ Nowe w wersji 3.27.0
+
+- 🎨 **Jedna animacja z prawej** — pozostawiono tylko `anim-designer.lottie`
+- 📍 **Negatywne top** — `top: -50px` (desktop), `-30px` (mobile)
+- ⬆️ **Animacja ponad nawigacją** — częściowo wystaje ponad navbar
+- 🎯 **Minimalistyczny efekt** — czysta, elegancka kompozycja
+- 👁️ **Right-aligned** — animacja po prawej stronie
+
+## ✨ Nowe w wersji 3.26.1
+
+- 🎨 **Idealny efekt warstwowy** — animacje widoczne nad hero content
+- 🔝 **Większe animacje** — 400×400px (desktop), 220×220px (mobile)
+- 📍 **Optymalne pozycjonowanie** — top: 70px, więcej przestrzeni dla animacji
+- 👁️ **Visible layering** — górna część animacji widoczna, dolna przykryta
+
+## ✨ Nowe w wersji 3.26.0
+
+- 🎨 **Efekt warstwowy** — animacje pod nawigacją, hero content je przykrywa
+- 📍 **Position: absolute** — animacje fixed zaraz pod navbar
+- 🎯 **Z-index layering** — hero content (z-index: 2) nad animacjami (z-index: 0)
+- 👁️ **Eye-catching depth** — efekt głębi dzięki warstom
+
+## ✨ Nowe w wersji 3.25.0
+
+- 🎬 **Dwie animacje nad hero** — `anim-education.lottie` z lewej, `anim-designer.lottie` z prawej
+- 📐 **Kompaktowy layout** — wiersz animacji max 200px wysokości
+- 👁️ **Eye-catching design** — animacje nad eleganckim nagłówkiem
+- 📱 **Responsywne** — 200×200px (desktop), 120×120px (mobile)
+- 🎯 **Przywrócony oryginalny hero** — czysty nagłówek bez animacji obok
+
+## ✨ Nowe w wersji 3.24.1
+
+- 🔧 **DotLottie Player** — zmiana na `@dotlottie/player-component` dla obsługi `.lottie`
+- ✅ **Natywne wsparcie .lottie** — bez konieczności konwersji do JSON
+- 🎯 **Web Component** — prostsze użycie, bez JavaScript API
+- ⚡ **Automatyczne działanie** — autoplay i loop wbudowane
+- 🎨 **Transparent background** — animacja bez tła
+
+## ✨ Nowe w wersji 3.24.0
+
+- 🎬 **Animacje Lottie** — integracja z animacjami
+- 🎨 **Animacja w Hero** — wyświetlanie animacji `anim-education.lottie` na stronie głównej
+- 📱 **Responsywne animacje** — 300×300px (desktop), 200×200px (mobile)
+- 🎯 **Flexbox layout** — hero sekcja z tekstem i animacją obok siebie
 
 ## ✨ Nowe w wersji 3.23.1
 

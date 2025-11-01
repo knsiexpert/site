@@ -1,5 +1,554 @@
 # Changelog
 
+## [3.28.0] - 2025-01-01
+
+### 🎬 Dual Layered Animations
+
+#### Dodanie drugiej animacji nad footerem z efektem warstwowym
+
+**Nowa funkcjonalność:**
+Dodano drugą animację Lottie (`anim-education.lottie`) umieszczoną nad footerem, która jest częściowo przykryta przez footer tworząc efekt głębi i warstwowości.
+
+**CSS:**
+```css
+.footer-animation {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    z-index: 0;
+}
+
+.footer-animation dotlottie-player {
+    width: 400px;
+    height: 400px;
+}
+
+footer {
+    margin-top: -100px;  /* Negative margin dla efektu przykrycia */
+    z-index: 2;          /* Footer nad animacją */
+}
+```
+
+**Rozmiary:**
+- Desktop: 400×400px (kontener 350px)
+- Mobile: 250×250px (kontener 220px)
+
+**Efekty:**
+- ✅ **Symetria** — animacje u góry (`anim-designer.lottie`) i u dołu (`anim-education.lottie`)
+- ✅ **Warstwowy design** — footer przykrywa animację od dołu
+- ✅ **Wyśrodkowanie** — animacja po środku strony
+- ✅ **Balance** — wizualna równowaga góra/dół
+
+## [3.25.0] - 2025-01-01
+
+### 🎬 Dual Animations Header
+
+#### Dwie animacje nad hero section dla eye-catching efektu
+
+**Nowa funkcjonalność:**
+Przeprojektowanie layoutu hero section - dwie animacje Lottie umieszczone nad nagłówkiem (lewa i prawa strona), tworząc atrakcyjny wizualnie układ.
+
+**Layout:**
+
+**Desktop:**
+```
+┌───────────────────────────────────────────────┐
+│                 [CONTAINER]                   │
+│                                               │
+│  ┌─────────┐                     ┌─────────┐ │
+│  │         │                     │         │ │
+│  │  ANIM   │     (spacer)        │  ANIM   │ │
+│  │  LEFT   │                     │  RIGHT  │ │
+│  │ 200x200 │                     │ 200x200 │ │
+│  └─────────┘                     └─────────┘ │
+│                                               │
+│  ┌─────────────────────────────────────────┐ │
+│  │                                         │ │
+│  │         HERO CONTENT                    │ │
+│  │                                         │ │
+│  │    KNSI E-XPERT                         │ │
+│  │    IT DLA LUDZI                         │ │
+│  │    [CTA BUTTON]                         │ │
+│  │                                         │ │
+│  └─────────────────────────────────────────┘ │
+│                                               │
+└───────────────────────────────────────────────┘
+```
+
+**Mobile:**
+```
+┌─────────────────────────┐
+│    [CONTAINER]          │
+│                         │
+│  ┌────┐         ┌────┐  │
+│  │    │         │    │  │
+│  │ANM │ (space) │ANM │  │
+│  │120 │         │120 │  │
+│  └────┘         └────┘  │
+│                         │
+│  ┌───────────────────┐  │
+│  │                   │  │
+│  │   HERO CONTENT    │  │
+│  │                   │  │
+│  │   Title           │  │
+│  │   Subtitle        │  │
+│  │   [CTA]           │  │
+│  │                   │  │
+│  └───────────────────┘  │
+│                         │
+└─────────────────────────┘
+```
+
+**HTML struktura:**
+```html
+<div class="hero">
+    <div class="container">
+        <!-- Wiersz animacji NAD hero-content -->
+        <div class="hero-animations-row">
+            <div class="hero-animation">
+                <dotlottie-player 
+                    src="data/anim-education.lottie" 
+                    background="transparent" 
+                    speed="1" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+            </div>
+            <div class="hero-animation-spacer"></div>
+            <div class="hero-animation">
+                <dotlottie-player 
+                    src="data/anim-designer.lottie" 
+                    background="transparent" 
+                    speed="1" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+            </div>
+        </div>
+        
+        <!-- Hero content jak wcześniej -->
+        <div class="hero-content">
+            <h1>${data.hero.title}</h1>
+            <p class="subtitle">${data.hero.subtitle}</p>
+            <a href="${data.hero.cta.href}" 
+               target="_blank" 
+               class="cta-button">${data.hero.cta.label}</a>
+        </div>
+    </div>
+</div>
+```
+
+**CSS:**
+```css
+.hero-animations-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 30px;
+    height: 200px;
+    gap: 20px;
+}
+
+.hero-animation {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.hero-animation-spacer {
+    flex: 1; /* Wypełnia przestrzeń między animacjami */
+}
+
+.hero-content {
+    /* Wrócił do oryginalnego stylu - bez flexbox */
+    text-align: left;
+    max-width: 1200px;
+    padding: 80px 70px;
+    /* ... pozostałe style ... */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-animations-row {
+        height: 120px;
+        margin-bottom: 20px;
+        padding: 0 16px;
+    }
+    
+    .hero-animation {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .hero-content {
+        padding: 25px 18px;
+    }
+}
+```
+
+**Animacje:**
+- **Lewa:** `anim-education.lottie`
+- **Prawa:** `anim-designer.lottie`
+
+**Rozmiary:**
+
+| Element | Desktop | Mobile |
+|---------|---------|--------|
+| Wysokość wiersza | 200px | 120px |
+| Rozmiar animacji | 200×200px | 120×120px |
+| Margin bottom | 30px | 20px |
+
+**Właściwości:**
+- ✅ **Transparent background** — animacje bez tła
+- ✅ **Space-between** — animacje na krańcach
+- ✅ **Spacer** — elastyczna przestrzeń między nimi
+- ✅ **Kompaktowy** — max 200px wysokości
+- ✅ **Oryginalny hero** — czysty layout nagłówka
+
+**Efekt:**
+- 👁️ **Eye-catching** — dwie animacje przyciągają wzrok
+- 🎨 **Elegancki** — animacje nad, nie obok nagłówka
+- 📐 **Kompaktowy** — nie zajmują za dużo miejsca
+- 🎯 **Balans** — symetryczne rozmieszczenie
+- ✨ **Przezroczyste** — blend z tłem hero section
+
+**Przewaga nad poprzednią wersją:**
+- **Było:** Animacja obok tekstu (flexbox side-by-side)
+- **Jest:** Dwie animacje NAD tekstem (lewa + prawa)
+- **Korzyść:** Więcej przestrzeni dla nagłówka, lepszy visual flow
+
+## [3.24.1] - 2025-01-01
+
+### 🔧 DotLottie Player Fix
+
+#### Zmiana na właściwą bibliotekę dla plików `.lottie`
+
+**Problem:**
+Biblioteka `lottie-web` nie obsługuje natywnie skompresowanych plików `.lottie`, tylko standardowe pliki JSON. Powodowało to błąd:
+```
+Uncaught InvalidStateError: Failed to read the 'responseText' property from 'XMLHttpRequest': 
+The value is only accessible if the object's 'responseType' is '' or 'text' (was 'json').
+```
+
+**Rozwiązanie:**
+Zmiana na bibliotekę `@dotlottie/player-component`, która jest dedykowana do obsługi skompresowanych plików `.lottie`.
+
+**Zmiany:**
+
+**1. CDN:**
+```html
+<!-- Poprzednio -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+
+<!-- Teraz -->
+<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+```
+
+**2. HTML - Web Component zamiast div:**
+```html
+<!-- Poprzednio -->
+<div class="hero-animation">
+    <div id="lottieAnimation"></div>
+</div>
+
+<!-- Teraz -->
+<div class="hero-animation">
+    <dotlottie-player 
+        src="data/anim-education.lottie" 
+        background="transparent" 
+        speed="1" 
+        loop 
+        autoplay>
+    </dotlottie-player>
+</div>
+```
+
+**3. CSS:**
+```css
+/* Poprzednio */
+.hero-animation #lottieAnimation {
+    width: 100%;
+    height: 100%;
+}
+
+/* Teraz */
+.hero-animation dotlottie-player {
+    width: 100%;
+    height: 100%;
+}
+```
+
+**4. JavaScript - usunięte:**
+```javascript
+// Poprzednio - wymagało JavaScript API
+function initLottieAnimation() {
+    const container = document.getElementById('lottieAnimation');
+    lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'data/anim-education.lottie'
+    });
+}
+
+// Teraz - Web Component działa automatycznie
+// Brak kodu JavaScript wymaganego!
+```
+
+**Właściwości DotLottie Player:**
+
+| Atrybut | Wartość | Opis |
+|---------|---------|------|
+| `src` | `data/anim-education.lottie` | Ścieżka do pliku |
+| `background` | `transparent` | Przezroczyste tło |
+| `speed` | `1` | Prędkość animacji (1 = normalna) |
+| `loop` | - | Zapętlenie animacji |
+| `autoplay` | - | Automatyczne uruchomienie |
+
+**Zalety DotLottie Player:**
+
+**vs. Lottie Web:**
+- ✅ **Natywne wsparcie .lottie** — nie trzeba konwertować do JSON
+- ✅ **Web Component** — prostsze użycie, deklaratywne
+- ✅ **Mniejszy kod** — brak JavaScript initialization
+- ✅ **Automatyczne działanie** — plug & play
+- ✅ **Lepsze performance** — skompresowane pliki .lottie są mniejsze
+
+**Format .lottie vs .json:**
+- **`.lottie`** — skompresowany format (mniejszy rozmiar pliku)
+- **`.json`** — nieskompresowany (większy rozmiar)
+- **DotLottie Player** — obsługuje oba formaty
+
+**Możliwości rozszerzenia:**
+```html
+<!-- Inne opcje dotlottie-player -->
+<dotlottie-player 
+    src="data/anim-designer.lottie" 
+    background="transparent"
+    speed="1.5"                    <!-- Szybsza animacja -->
+    direction="1"                  <!-- 1 = do przodu, -1 = do tyłu -->
+    mode="normal"                  <!-- normal, bounce -->
+    loop
+    autoplay
+    controls                       <!-- Pokaż kontrolki -->
+    hover                          <!-- Play tylko na hover -->
+    intermission="1000">           <!-- Pauza między pętlami (ms) -->
+</dotlottie-player>
+```
+
+**Efekt:**
+- ✅ **Działa z .lottie** — natywna obsługa skompresowanych plików
+- ✅ **Brak błędów** — poprawne ładowanie animacji
+- ✅ **Prostszy kod** — Web Component zamiast JavaScript API
+- ✅ **Mniejszy bundle** — nie trzeba ładować całego lottie-web
+- ✅ **Lepszy DX** — deklaratywne atrybuty HTML
+
+## [3.24.0] - 2025-01-01
+
+### 🎬 Lottie Animations Integration
+
+#### Integracja animacji Lottie na stronie głównej
+
+**Nowa funkcjonalność:**
+Dodano obsługę animacji Lottie z użyciem biblioteki Lottie Web. Animacje są wyświetlane w sekcji hero na stronie głównej, dodając dynamiczny, nowoczesny element wizualny.
+
+**Implementacja:**
+
+**1. CDN Lottie Web:**
+```html
+<!-- Lottie Animation Library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+```
+
+**2. CSS dla kontenera animacji:**
+```css
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-animation {
+    width: 300px;
+    height: 300px;
+    flex-shrink: 0;
+}
+
+.hero-animation #lottieAnimation {
+    width: 100%;
+    height: 100%;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .hero-animation {
+        width: 200px;
+        height: 200px;
+    }
+}
+```
+
+**3. HTML struktura:**
+```html
+<div class="hero-content">
+    <div class="hero-text">
+        <h1>${data.hero.title}</h1>
+        <p class="subtitle">${data.hero.subtitle}</p>
+        <a href="${data.hero.cta.href}" 
+           target="_blank" 
+           class="cta-button">${data.hero.cta.label}</a>
+    </div>
+    <div class="hero-animation">
+        <div id="lottieAnimation"></div>
+    </div>
+</div>
+```
+
+**4. JavaScript inicjalizacja:**
+```javascript
+// Initialize Lottie Animation
+function initLottieAnimation() {
+    const container = document.getElementById('lottieAnimation');
+    if (!container) return;
+    
+    // Load animation from data directory
+    lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'data/anim-education.lottie'
+    });
+}
+
+// Call in renderHome()
+async function renderHome() {
+    // ... render content ...
+    
+    // Initialize Lottie animation
+    initLottieAnimation();
+}
+```
+
+**Pliki animacji:**
+Umieszczone w katalogu `data/`:
+- `anim-education.lottie` — animacja edukacyjna (obecnie wyświetlana)
+- `anim-designer.lottie` — animacja projektanta (dostępna do użycia)
+
+**Konfiguracja Lottie:**
+```javascript
+lottie.loadAnimation({
+    container: container,      // Element DOM
+    renderer: 'svg',           // Renderer SVG (najlepsza jakość)
+    loop: true,                // Zapętlenie animacji
+    autoplay: true,            // Automatyczne uruchomienie
+    path: 'data/anim-education.lottie'  // Ścieżka do pliku
+});
+```
+
+**Layout:**
+
+**Desktop (> 768px):**
+```
+┌─────────────────────────────────────────┐
+│ [HERO CONTENT]                          │
+│                                         │
+│  ┌──────────────┐  ┌────────────────┐ │
+│  │              │  │                │ │
+│  │  HERO TEXT   │  │   ANIMATION    │ │
+│  │              │  │   300×300px    │ │
+│  │   Title      │  │                │ │
+│  │   Subtitle   │  │                │ │
+│  │   CTA        │  │                │ │
+│  │              │  │                │ │
+│  └──────────────┘  └────────────────┘ │
+│                                         │
+└─────────────────────────────────────────┘
+```
+
+**Mobile (≤ 768px):**
+```
+┌───────────────────────┐
+│   [HERO CONTENT]      │
+│                       │
+│   ┌──────────────┐   │
+│   │              │   │
+│   │  HERO TEXT   │   │
+│   │              │   │
+│   │   Title      │   │
+│   │   Subtitle   │   │
+│   │   CTA        │   │
+│   │              │   │
+│   └──────────────┘   │
+│                       │
+│   ┌──────────────┐   │
+│   │              │   │
+│   │  ANIMATION   │   │
+│   │  200×200px   │   │
+│   │              │   │
+│   └──────────────┘   │
+│                       │
+└───────────────────────┘
+```
+
+**Właściwości:**
+
+**Lottie Web:**
+- Wersja: 5.12.2
+- Renderer: SVG
+- Format: `.lottie` (kompresowany JSON)
+- Loop: Nieskończona pętla
+- Autoplay: Automatyczne uruchomienie
+
+**Rozmiary:**
+- **Desktop:** 300×300px
+- **Mobile:** 200×200px
+- **Gap:** 60px (desktop), 30px (mobile)
+
+**Zalety:**
+- ✅ **SVG renderer** — najwyższa jakość, skalowalna
+- ✅ **Loop + autoplay** — płynna animacja w tle
+- ✅ **Responsywne** — dostosowane do rozmiaru ekranu
+- ✅ **Flexbox layout** — elastyczne pozycjonowanie
+- ✅ **CDN** — szybkie ładowanie
+- ✅ **Lightweight** — pliki `.lottie` są skompresowane
+
+**Jak zmienić animację:**
+```javascript
+// W initLottieAnimation() zmień ścieżkę:
+path: 'data/anim-designer.lottie'  // Zamiast anim-education.lottie
+```
+
+**Możliwe rozszerzenia:**
+- Dynamiczny wybór animacji z `home.json`
+- Różne animacje dla różnych sekcji
+- Interakcja z animacją (play/pause na hover)
+- Synchronizacja animacji z scrollem
+- Zmiana animacji w zależności od motywu
+
+**Efekt:**
+- ✅ **Nowoczesny hero** — dynamiczny element wizualny
+- ✅ **Profesjonalny wygląd** — płynna, wysokiej jakości animacja
+- ✅ **Responsywny design** — działa na wszystkich urządzeniach
+- ✅ **Flexbox layout** — elastyczne pozycjonowanie treści
+- ✅ **Gotowe do rozbudowy** — łatwo dodać więcej animacji
+
 ## [3.23.1] - 2025-01-01
 
 ### 🎯 Refined Theme Switcher
