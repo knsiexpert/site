@@ -1,12 +1,20 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.9.0** | Premium 2025 Design — Virgil Abloh Style Gallery
+**Wersja: 3.10.1** | Premium 2025 Design — Navigation Configuration System
 
-Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
+Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.10.0
+
+- ⚙️ **Navigation Configuration** — osobny plik `navigation.json` z konfiguracją menu
+- 📋 **Meta dane sekcji** — description, keywords, icon dla każdej strony
+- 🎚️ **Kontrola widoczności** — łatwe włączanie/wyłączanie sekcji
+- 🔢 **Sortowanie menu** — kontrola kolejności wyświetlania sekcji
+- 🎯 **Dynamiczne generowanie** — menu automatycznie budowane z danych
 
 ## ✨ Nowe w wersji 3.9.0
 
-- 🎨 **Virgil Abloh Style Images** — industrial aesthetic z etykietami "IMAGE"
+- 🎨 **Industrial Style Images** — nowoczesna estetyka z etykietami "PREV"
 - 🔲 **Double Border Frame** — offset shadow border effect
 - 🔢 **Numbered Tags** — pomarańczowe numery na każdym obrazku
 - ➡️ **Diagonal Arrow Indicator** — ikona strzałki w rogu (45° rotation)
@@ -32,7 +40,7 @@ Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowocze
 - 🌟 **Animated Underline** — 140px orange gradient z pulse animation
 - 🎬 **2 Animations** — gradientShift (background) + pulse (underline)
 - 📱 **Mobile Optimized** — wszystkie efekty zachowane, proporcjonalne rozmiary
-- ✅ **Premium Look** — profesjonalny, dynamiczny, Virgil Abloh style
+- ✅ **Premium Look** — profesjonalny, dynamiczny design
 
 ## 📁 Struktura projektu
 
@@ -146,7 +154,7 @@ Zobacz pełną instrukcję: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 
 ## 🎨 Design
 
-Strona wykorzystuje design inspirowany **Virgilem Ablohem** — minimalizmem, industrial aesthetic i funkcjonalnością.
+Strona wykorzystuje nowoczesny design — minimalizm, industrial aesthetic i funkcjonalność.
 
 ### Kluczowe elementy:
 - **Helvetica** jako główna czcionka

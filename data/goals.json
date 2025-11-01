@@ -7,7 +7,7 @@
         "projects": [
           "Modernizacja strony internetowej koła – kompleksowa aktualizacja identyfikacji online z migracją z WordPressa na GitHub Pages (https://knsiexpert.github.io/site).",
           "Zmiana architektury technicznej – porzucenie przestarzałego WordPressa na rzecz nowoczesnego rozwiązania: statyczna strona z dynamicznym ładowaniem treści z JSON, hash routing, automatyczny deployment via GitHub Actions.",
-          "Nowy design system – implementacja minimalistycznego designu inspirowanego estetyką Virgil Abloh z paletą kolorów #1c1b22/#f3f3f7, interaktywnymi animacjami i responsywnym layoutem.",
+          "Nowy design system – implementacja nowoczesnego, minimalistycznego designu z paletą kolorów #1c1b22/#f3f3f7, interaktywnymi animacjami i responsywnym layoutem.",
           "Open source – otwarcie repozytorium kodu źródłowego na GitHub, umożliwienie współpracy i transparentności rozwoju strony."
         ]
       },

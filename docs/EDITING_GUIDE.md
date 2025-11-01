@@ -6,18 +6,52 @@ Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy pl
 
 ## Pliki danych
 
-### 📄 home.json - Strona główna
+### ⚙️ navigation.json - Konfiguracja nawigacji (NOWE!)
 
-**Nawigacja:**
+**Ten plik kontroluje całą strukturę menu i metadane strony:**
+
 ```json
-"nav": [
-  {
-    "title": "Projekty",
-    "slug": "projekty",
-    "href": "projects.json"
-  }
-]
+{
+  "site": {
+    "name": "Koło Naukowe Systemów Informatycznych E‑XPERT",
+    "short_name": "KNSI E‑XPERT",
+    "tagline": "IT DLA LUDZI",
+    "logo_svg": "<svg>...</svg>"
+  },
+  "sections": [
+    {
+      "id": "home",
+      "title": "Start",
+      "slug": "home",
+      "href": "home.json",
+      "icon": "🏠",
+      "description": "Strona główna z najważniejszymi informacjami o kole",
+      "keywords": ["home", "główna", "start"],
+      "order": 1,
+      "visible": true
+    }
+  ]
+}
 ```
+
+**Pola sekcji:**
+- `id` — unikalny identyfikator (używany w URL hash: `#home`)
+- `title` — nazwa wyświetlana w menu
+- `slug` — przyjazny URL (opcjonalnie)
+- `href` — plik JSON z danymi sekcji
+- `icon` — emoji lub symbol
+- `description` — tooltip i opis dla SEO
+- `keywords` — tablica słów kluczowych
+- `order` — kolejność (1 = pierwszy, 2 = drugi...)
+- `visible` — `true` (widoczna) lub `false` (ukryta)
+
+**Jak dodać nową sekcję do menu:**
+1. Otwórz `data/navigation.json`
+2. Dodaj nowy obiekt do array `sections`
+3. Ustaw odpowiednią wartość `order` aby kontrolować pozycję
+4. Zapisz - menu automatycznie się zaktualizuje!
+
+### 📄 home.json - Strona główna
 
 **Hero section:**
 ```json

@@ -1,5 +1,54 @@
 # Changelog
 
+## [3.10.1] - 2025-01-01
+
+### 🧹 Content Cleanup
+
+#### Usunięte wzmianki
+- Usunięto wszystkie referencje do zewnętrznych inspiracji designerskich
+- Zaktualizowano opisy w README.md, CHANGELOG.md, DESIGN_NOTES.md
+- Poprawiono opisy projektów w projects.json i goals.json
+- Zmieniono komentarze w index.html
+
+#### Rezultat
+- Fokus na własnym, oryginalnym designie
+- Industrial aesthetic jako rdzeń stylistyczny
+- Profesjonalne, uniwersalne nazewnictwo
+
+## [3.10.0] - 2025-01-01
+
+### ⚙️ Navigation Configuration System — Centralized Menu Management
+
+#### 📋 New Configuration File
+- **`data/navigation.json`** — dedicated navigation configuration file
+- **Site metadata** — name, short_name, tagline, logo_svg
+- **Sections array** — complete menu structure with extended metadata
+
+#### 🎯 Section Properties
+Each section now includes:
+- `id` — unique identifier (used in URL hash)
+- `title` — display name in menu
+- `slug` — URL-friendly name
+- `href` — JSON data file for the section
+- `icon` — emoji or symbol for visual identity
+- `description` — tooltip text and SEO description
+- `keywords` — search keywords array
+- `order` — sort order (1, 2, 3...)
+- `visible` — boolean to show/hide in menu
+
+#### 🔄 JavaScript Updates
+- `initNavigation()` now loads `navigation.json` instead of `home.json`
+- Menu dynamically generated from `sections` array
+- Tooltips automatically added to nav links from `description` field
+- Page title uses `tagline` from navigation config
+
+#### ✅ Benefits
+- Easier menu management without touching HTML
+- Add/remove/reorder sections via simple JSON edits
+- SEO-friendly with descriptions and keywords
+- Centralized site structure configuration
+- Better maintainability and scalability
+
 ## [3.8.0] - 2025-11-01
 
 ### 🖼️ Image Gallery — Project Screenshots Display
@@ -155,7 +204,7 @@ animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
 - ✅ **Premium look** — czarno-pomarańczowo-złoty gradient
 - ✅ **Mocny impact** — weight 900 + tight spacing
 - ✅ **Perfect mobile** — wszystkie efekty zachowane
-- ✅ **Virgil Abloh vibes** — minimalistyczny ale z mocnym akcentem
+- ✅ **Minimalistyczny design** — z mocnym akcentem kolorystycznym
 
 ## [3.6.0] - 2024-10-31
 
@@ -246,7 +295,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 
 ### 🎯 Professional Footer — 2025 Edition
 
-#### ✨ Virgil Abloh-Inspired Footer
+#### ✨ Professional Footer Design
 - **Black background** — `background: var(--black)`, `color: var(--white)`
 - **EST. 2015 label** — `position: absolute`, `font-size: 10px`, `letter-spacing: 0.2em`, `opacity: 0.4`
 - **4-column grid** — `grid-template-columns: 2fr 1fr 1fr 1fr` (desktop), 1fr (mobile)
@@ -311,7 +360,7 @@ footer {
 - ✅ **2025 prominent** — duży, wyróżniony rok w ramce
 - ✅ **Full navigation** — wszystkie sekcje w stopce
 - ✅ **Social media** — 4 platformy z hover effects
-- ✅ **Virgil Abloh style** — borders, gaps, typography, inverse hover
+- ✅ **Industrial style** — borders, gaps, typography, inverse hover
 - ✅ **Mobile perfect** — single column, kompaktowe
 
 ## [3.4.2] - 2024-10-31
@@ -478,7 +527,7 @@ nav.menu-open .hamburger::after {
 #### 🎯 Rezultat
 - ✅ **Tekst doskonale widoczny** na pattern
 - ✅ **Glassmorphism** — Modern, trendy
-- ✅ **Orange accent** — Virgil Abloh style
+- ✅ **Orange accent** — industrial style
 - ✅ **Clean & professional** — Bez dziwnych kształtów
 - ✅ **Text glow** — Wyróżnia się perfekcyjnie
 
@@ -509,7 +558,7 @@ nav.menu-open .hamburger::after {
 
 #### 🎯 Visual Impact
 - **Tekst się odcina** — Wyraźnie widoczny na tle pattern
-- **Industrial chic** — Skośne krawędzie w stylu Virgil Abloh
+- **Industrial chic** — Skośne krawędzie dla dynamicznego wyglądu
 - **Modern & dynamic** — Geometryczne formy dodają energii
 - **Professional** — Nie przytłacza, ale przyciąga uwagę
 
@@ -571,7 +620,7 @@ nav.menu-open .hamburger::after {
 - **Modern texture** — Depth bez noise
 - **Performance** — SVG inline (zero HTTP requests)
 - **Accessibility** — Nie przeszkadzają w czytaniu
-- **Virgil Abloh aesthetic** — Industrial texture, minimalistyczna elegancja
+- **Industrial aesthetic** — tekstura, minimalistyczna elegancja
 
 ## [3.1.0] - 2024-10-31
 
@@ -702,7 +751,7 @@ nav.menu-open .hamburger::after {
 
 #### 🎨 Design Philosophy
 - **2025 aesthetic** — Modern, clean, minimalist
-- **Virgil Abloh foundation** — Zachowany industrial design, labels, bold typography
+- **Industrial foundation** — zachowany industrial design, labels, bold typography
 - **Enhanced interactivity** — Więcej hover states, transforms, animations
 - **Better spacing** — Więcej "white space", lepsze proporcje
 - **Accent usage** — Orange jako highlight color
@@ -766,15 +815,15 @@ nav.menu-open .hamburger::after {
 
 ## [2.1.0] - 2024-10-31
 
-### 🎨 Redesign w stylu Virgila Abloha
+### 🎨 Redesign w Industrial Style
 
-- **Nowy design** inspirowany Virgilem Ablohem i Off-White™
+- **Nowy design** z minimalistycznym, industrial aesthetic
 - **Logo SVG** zintegrowane w nawigację
 - **Industrial aesthetic:**
   - 2px gaps w gridach (charakterystyczny element)
   - Bold borders (2px, 3px solid)
   - Czarno-białe kontrasty
-- **Labels i instrukcje** w stylu Virgila:
+- **Labels i instrukcje** w industrial style:
   - "STATEMENT", "ZARZĄD", "O NAS", "LINK"
   - Małe, uppercase, semi-transparent
 - **Typography:**

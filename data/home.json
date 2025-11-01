@@ -10,11 +10,6 @@
         "href": "projects.json"
       },
       {
-        "title": "Statut",
-        "slug": "statut",
-        "href": "constitution.json"
-      },
-      {
         "title": "Cele i misja",
         "slug": "cele",
         "href": "goals.json"
@@ -23,6 +18,11 @@
         "title": "Nasz zespół",
         "slug": "zespol",
         "href": "team.json"
+      },
+      {
+        "title": "Statut",
+        "slug": "statut",
+        "href": "constitution.json"
       },
       {
         "title": "Działalność",

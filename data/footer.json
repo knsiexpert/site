@@ -12,8 +12,8 @@
       { "title": "Projekty", "section": "projects" },
       { "title": "Cele i misja", "section": "goals" },
       { "title": "Zespół", "section": "team" },
-      { "title": "Działalność", "section": "activity" },
-      { "title": "Statut", "section": "constitution" }
+      { "title": "Statut", "section": "constitution" },
+      { "title": "Działalność", "section": "activity" }
     ]
   },
   "contact": {
