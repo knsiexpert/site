@@ -6,7 +6,7 @@
       "name": "Modernizacja Strony Internetowej Koła",
       "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem inspirowanym estetyką Virgil Abloh. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
       "team": [
-        "Wspólny wysiłek zespołów 2023/24 i 2024/25"
+        "Wspólny wysiłek zespołu 2024/25"
       ],
       "year": 2025,
       "achievements": [
@@ -14,8 +14,6 @@
         "Migracja z CMS na statyczną stronę z JSON",
         "Dynamiczny system zarządzania treścią (JSON)",
         "Implementacja hash routing dla lepszej nawigacji",
-        "Nowoczesny design system z paletą #1c1b22/#f3f3f7",
-        "Automatyczne i manualne deployment workflows",
         "Zero kosztów hostingu dzięki GitHub Pages"
       ],
       "technologies": [
@@ -25,6 +23,58 @@
         "GitHub Actions",
         "JSON Data Structure",
         "Hash-based Routing"
+      ],
+      "images": []
+    },
+    {
+      "name": "Modernizacja konta Github",
+      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem inspirowanym estetyką Virgil Abloh. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "team": [
+        "Wspólny wysiłek zespołu 2023/24"
+      ],
+      "year": 2024,
+      "achievements": [
+        "Uporządkowanie i reorganizacja repozytoriów koła na GitHub",
+        "Usunięcie nieaktualnych i nieużywanych repozytoriów",
+        "Standaryzacja nazewnictwa projektów",
+        "Aktualizacja dokumentacji README dla kluczowych repozytoriów",
+        "Archiwizacja starszych projektów zgodnie z dobrymi praktykami",
+        "Wprowadzenie spójnej struktury organizacyjnej konta GitHub"
+      ],
+      "technologies": [
+        "HTML5/CSS3",
+        "Vanilla JavaScript",
+        "GitHub Pages",
+        "GitHub Actions",
+        "JSON Data Structure",
+        "Hash-based Routing"
+      ],
+      "images": []
+    },
+    {
+      "name": "UniGo - Smart Cities Communication Platform",
+      "description": "Platforma komunikacji i współpracy dla Smart Cities, stworzona w odpowiedzi na wyzwania, przed którymi stoją studenci przy wyborze kierunku studiów. UniGo standaryzuje informacje o uczelniach, programach rządowych, stypendiach i oferuje dostęp do danych w czasie rzeczywistym. System wykorzystuje sztuczną inteligencję (OpenAI) do normalizacji danych i dopasowywania kierunków do zainteresowań studentów. Projekt łączy standaryzację danych o uczelniach, algorytm dopasowywania kierunków do zainteresowań użytkownika oraz przyjazny interfejs użytkownika. Badania własne zespołu (50 respondentów) wykazały, że 80% potencjalnych użytkowników chce korzystać z takiego narzędzia, a 60% uważa proces wyszukiwania studiów za skomplikowany. Rozwiązanie adresuje problemy istniejących platform rządowych (ELA, studia.gov.pl), które cierpią na brak standaryzacji, przestarzałe dane i słabą jakość interfejsu.",
+      "team": [
+        "Cornelis Puchowicz (autor koncepcji)",
+        "Łukasz Pisarczyk",
+        "Piotr Jemielita"
+      ],
+      "year": 2023,
+      "achievements": [
+        "Nominacja do finałów AIS Student Chapter Competition 2023",
+        "Kompleksowa analiza problemu wyboru kierunku studiów w Polsce",
+        "Badania własne z 50 respondentami (studenci i licealiści)",
+        "Propozycja standaryzacji danych o kierunkach studiów",
+        "Wykorzystanie AI (OpenAI) do normalizacji danych edukacyjnych",
+        "Algorytm dopasowywania kierunków do zainteresowań użytkowników"
+      ],
+      "technologies": [
+        "OpenAI API",
+        "Web Application",
+        "Data Standardization",
+        "Smart Cities Integration",
+        "Algorithm Design",
+        "User Research & Surveys"
       ],
       "images": []
     },
