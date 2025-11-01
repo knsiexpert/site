@@ -51,6 +51,17 @@
       "visible": true
     },
     {
+      "id": "gallery",
+      "title": "Galeria",
+      "slug": "galeria",
+      "href": "gallery.json",
+      "icon": "📷",
+      "description": "Galeria zdjęć z działalności koła",
+      "keywords": ["galeria", "zdjęcia", "fotografie", "wydarzenia"],
+      "order": 5,
+      "visible": true
+    },
+    {
       "id": "constitution",
       "title": "Statut",
       "slug": "statut",
@@ -58,7 +69,7 @@
       "icon": "📜",
       "description": "Statut koła naukowego - zasady działania",
       "keywords": ["statut", "regulamin", "zasady"],
-      "order": 5,
+      "order": 6,
       "visible": true
     },
     {
@@ -69,7 +80,7 @@
       "icon": "⚡",
       "description": "Działalność koła - spotkania, warsztaty, konkursy",
       "keywords": ["działalność", "wydarzenia", "spotkania"],
-      "order": 6,
+      "order": 7,
       "visible": true
     }
   ]

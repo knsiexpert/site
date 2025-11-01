@@ -498,6 +498,214 @@
             opacity: 0.9;
         }
         
+        /* Carousel - To My */
+        .carousel-section {
+            margin: 120px 0;
+        }
+        
+        .carousel-section .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .carousel-section h2 {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        
+        .carousel-subtitle {
+            font-size: 14px;
+            color: var(--gray);
+            margin-bottom: 60px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-align: left;
+        }
+        
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            overflow: visible;
+            padding: 50px 0;
+        }
+        
+        .carousel-wrapper-inner {
+            overflow: hidden;
+            margin: -50px 0;
+            padding: 50px 0;
+        }
+        
+        /* Navigation buttons */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+        
+        .carousel-nav:hover {
+            background: var(--accent);
+            color: var(--black);
+            opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-nav-prev {
+            left: 10px;
+        }
+        
+        .carousel-nav-next {
+            right: 10px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            will-change: transform;
+        }
+        
+        .carousel-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+            flex-shrink: 0;
+            padding: 0 30px;
+        }
+        
+        .carousel-item {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: visible;
+            background: var(--surface);
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Offset border frame */
+        .carousel-item::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            border: 3px solid var(--black);
+            z-index: 1;
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .carousel-item:hover::before {
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+        }
+        
+        /* Main image container */
+        .carousel-item-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 4px solid var(--black);
+            overflow: hidden;
+            background: var(--black);
+            z-index: 2;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: grayscale(0.1) contrast(1.1);
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+            transform: scale(1);
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0) contrast(1.15);
+        }
+        
+        /* Labels hidden - keeping style only */
+        .carousel-item-label,
+        .carousel-item-number,
+        .carousel-item-code {
+            display: none;
+        }
+        
+        /* Diagonal stripe overlay */
+        .carousel-item-stripe {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--accent) 0px,
+                var(--accent) 10px,
+                transparent 10px,
+                transparent 20px
+            );
+            z-index: 5;
+            opacity: 0.6;
+            transition: opacity 0.4s ease;
+        }
+        
+        .carousel-item:hover .carousel-item-stripe {
+            opacity: 1;
+            animation: stripeMove 20s linear infinite;
+        }
+        
+        @keyframes stripeMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        /* Gradient overlay on hover */
+        .carousel-item-inner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 107, 0, 0) 0%,
+                rgba(255, 107, 0, 0.15) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            pointer-events: none;
+            z-index: 3;
+        }
+        
+        .carousel-item:hover .carousel-item-inner::after {
+            opacity: 1;
+        }
+        
+        
         /* Highlights Grid */
         .highlights-grid {
             display: grid;
@@ -983,6 +1191,179 @@
             color: var(--black);
             transform: rotate(90deg) scale(1.1);
             border-color: var(--white);
+        }
+        
+        /* Lightbox Navigation */
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(28, 27, 34, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 48px;
+            line-height: 1;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10001;
+        }
+        
+        .lightbox-prev {
+            left: 40px;
+        }
+        
+        .lightbox-next {
+            right: 40px;
+        }
+        
+        .lightbox-nav:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            transform: translateY(-50%) scale(1.15);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+        }
+        
+        .lightbox-nav:active {
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .lightbox-nav span {
+            display: block;
+            line-height: 0.8;
+            margin-top: -4px;
+        }
+        
+        /* Lightbox Counter */
+        .lightbox-counter {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(28, 27, 34, 0.9);
+            color: var(--white);
+            padding: 8px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            z-index: 10001;
+        }
+        
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--light-gray);
+            border: 2px solid var(--black);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: 4px;
+            bottom: 4px;
+            border: 2px solid var(--black);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .gallery-item:hover::before {
+            top: -8px;
+            left: -8px;
+            right: 8px;
+            bottom: 8px;
+            opacity: 1;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(0.2);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+        
+        .gallery-item-number {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--black);
+            color: var(--white);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
+            border: 2px solid var(--white);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-number {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28, 27, 34, 0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-item-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            color: var(--white);
+            font-size: 24px;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-item:hover .gallery-item-icon {
+            opacity: 1;
+            transform: scale(1);
         }
         
         @keyframes fadeIn {
@@ -1533,6 +1914,14 @@
             }
         }
         
+        /* Tablet */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 18px;
+            }
+        }
+        
         @media (max-width: 768px) {
             /* Base */
             body {
@@ -1759,6 +2148,76 @@
             .about-card p {
                 font-size: 13px;
                 line-height: 1.7;
+            }
+            
+            /* Carousel */
+            .carousel-section {
+                margin: 80px 0;
+            }
+            
+            .carousel-section .container {
+                padding: 0 15px;
+            }
+            
+            .carousel-subtitle {
+                font-size: 12px;
+                margin-bottom: 40px;
+            }
+            
+            .carousel-wrapper {
+                padding: 30px 0;
+            }
+            
+            .carousel-wrapper-inner {
+                margin: -30px 0;
+                padding: 30px 0;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            
+            .carousel-nav-prev {
+                left: 5px;
+            }
+            
+            .carousel-nav-next {
+                right: 5px;
+            }
+            
+            .carousel-group {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding: 0 15px;
+            }
+            
+            .carousel-item {
+                aspect-ratio: 1/1;
+            }
+            
+            .carousel-item::before {
+                top: -10px;
+                left: -10px;
+                right: 10px;
+                bottom: 10px;
+                border-width: 2px;
+            }
+            
+            .carousel-item:hover::before {
+                top: -12px;
+                left: -12px;
+                right: 12px;
+                bottom: 12px;
+            }
+            
+            .carousel-item-inner {
+                border-width: 3px;
+            }
+            
+            .carousel-item-stripe {
+                height: 6px;
             }
             
             /* Highlights */
@@ -2153,6 +2612,40 @@
                 font-size: 11px;
             }
             
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            
+            .gallery-item-number {
+                width: 28px;
+                height: 28px;
+                font-size: 12px;
+                top: 10px;
+                left: 10px;
+            }
+            
+            .lightbox-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 38px;
+            }
+            
+            .lightbox-prev {
+                left: 15px;
+            }
+            
+            .lightbox-next {
+                right: 15px;
+            }
+            
+            .lightbox-counter {
+                bottom: 25px;
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+            
             .footer-bottom {
                 flex-direction: column;
                 gap: 20px;
@@ -2210,6 +2703,13 @@
         </div>
     </section>
     
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container" id="galleryContent">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+
     <!-- Activity Section -->
     <section id="activity" class="section">
         <div class="container" id="activityContent">
@@ -2290,6 +2790,57 @@
                 </div>
                     ` : ''}
                     
+                    ${data.us && data.us.images && data.us.images.length > 0 ? `
+                        <div class="carousel-section">
+                            <div class="container">
+                                <h2>${data.us.title}</h2>
+                                <p class="carousel-subtitle">${data.us.subtitle}</p>
+                            </div>
+                            <div class="container">
+                                <div class="carousel-wrapper">
+                                    <button class="carousel-nav carousel-nav-prev" onclick="prevGroup()" aria-label="Poprzednia grupa">‹</button>
+                                    <button class="carousel-nav carousel-nav-next" onclick="nextGroup()" aria-label="Następna grupa">›</button>
+                                    <div class="carousel-wrapper-inner">
+                                        <div class="carousel-track" id="carouselTrack">
+                                    ${(() => {
+                                        // Create groups of 3 images
+                                        const groups = [];
+                                        for (let i = 0; i < data.us.images.length; i += 3) {
+                                            groups.push(data.us.images.slice(i, i + 3));
+                                        }
+                                        // Duplicate first group at the end for seamless loop
+                                        groups.push(groups[0]);
+                                        
+                                        return groups.map((group, groupIndex) => `
+                                            <div class="carousel-group" data-group="${groupIndex}">
+                                                ${group.map((image, index) => {
+                                                    const absoluteIndex = (groupIndex * 3 + index) % data.us.images.length;
+                                                    return `
+                                                        <div class="carousel-item">
+                                                            <div class="carousel-item-label">MOMENT</div>
+                                                            <div class="carousel-item-number">${String(absoluteIndex + 1).padStart(2, '0')}</div>
+                                                            <div class="carousel-item-code">KNSI-E-XPERT-${2025}-${String(absoluteIndex + 1).padStart(3, '0')}</div>
+                                                            <div class="carousel-item-inner">
+                                                                <img src="${image}" 
+                                                                     alt="${data.us.title}"
+                                                                     crossorigin="anonymous"
+                                                                     referrerpolicy="no-referrer"
+                                                                     onerror="this.closest('.carousel-item').style.display='none';">
+                                                                <div class="carousel-item-stripe"></div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+                                                }).join('')}
+                                            </div>
+                                        `).join('');
+                                    })()}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ` : ''}
+                    
                     <h2 style="margin-top: 120px;">Nasze osiągnięcia</h2>
                     <div class="highlights-grid">
                         ${data.highlights.map((highlight, index) => `
@@ -2318,6 +2869,125 @@
                 </div>
             </div>
             `;
+            
+            // Initialize carousel if it exists
+            if (data.us && data.us.images && data.us.images.length > 0) {
+                initCarousel(data.us.interval || 5000);
+            }
+        }
+        
+        // Carousel functions for group sliding
+        let carouselInterval;
+        let currentGroupIndex = 0;
+        let totalGroups = 0;
+        
+        function slideToGroup(index, instant = false) {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            const groups = track.querySelectorAll('.carousel-group');
+            if (!groups.length) return;
+            
+            totalGroups = groups.length - 1; // -1 because last group is duplicate of first
+            
+            // Disable transition for instant move
+            if (instant) {
+                track.style.transition = 'none';
+            } else {
+                track.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+            
+            // Calculate transform - each group is 100% width
+            const offset = index * -100;
+            track.style.transform = `translateX(${offset}%)`;
+            
+            // Re-enable transition after instant move
+            if (instant) {
+                setTimeout(() => {
+                    track.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                }, 50);
+            }
+        }
+        
+        function nextGroup() {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            currentGroupIndex++;
+            slideToGroup(currentGroupIndex);
+            
+            // If we reached the duplicate group, wait for animation then jump to real first
+            if (currentGroupIndex === totalGroups) {
+                setTimeout(() => {
+                    currentGroupIndex = 0;
+                    slideToGroup(0, true);
+                }, 800); // Match transition duration
+            }
+            
+            // Reset autoplay timer
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+                startCarouselAutoplay(5000);
+            }
+        }
+        
+        function prevGroup() {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            // If at first group, jump to last real group (not duplicate)
+            if (currentGroupIndex === 0) {
+                currentGroupIndex = totalGroups;
+                slideToGroup(currentGroupIndex, true);
+                setTimeout(() => {
+                    currentGroupIndex--;
+                    slideToGroup(currentGroupIndex);
+                }, 50);
+            } else {
+                currentGroupIndex--;
+                slideToGroup(currentGroupIndex);
+            }
+            
+            // Reset autoplay timer
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+                startCarouselAutoplay(5000);
+            }
+        }
+        
+        function startCarouselAutoplay(interval) {
+            carouselInterval = setInterval(nextGroup, interval);
+        }
+        
+        function initCarousel(interval) {
+            const track = document.getElementById('carouselTrack');
+            if (!track) return;
+            
+            const groups = track.querySelectorAll('.carousel-group');
+            totalGroups = groups.length - 1; // -1 because last group is duplicate
+            
+            if (totalGroups < 1) return;
+            
+            // Start at first group
+            currentGroupIndex = 0;
+            slideToGroup(0, true);
+            
+            // Start autoplay
+            startCarouselAutoplay(interval);
+            
+            // Pause on hover
+            const wrapper = track.closest('.carousel-wrapper');
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', () => {
+                    if (carouselInterval) {
+                        clearInterval(carouselInterval);
+                    }
+                });
+                
+                wrapper.addEventListener('mouseleave', () => {
+                    startCarouselAutoplay(interval);
+                });
+            }
         }
         
         // Render Projects Section
@@ -2378,6 +3048,14 @@
         function openLightbox(imageUrl) {
             const lightbox = document.getElementById('imageLightbox');
             const lightboxImg = document.getElementById('lightboxImg');
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
+            const counter = document.getElementById('lightboxCounter');
+            
+            // Hide navigation for single images
+            prevBtn.style.display = 'none';
+            nextBtn.style.display = 'none';
+            counter.style.display = 'none';
             
             // Reset image and add loading state
             lightboxImg.style.opacity = '0';
@@ -2423,8 +3101,15 @@
         
         // Close lightbox on Escape key
         document.addEventListener('keydown', function(e) {
+            const lightbox = document.getElementById('imageLightbox');
+            const isGallery = galleryImages.length > 0 && lightbox.classList.contains('active');
+            
             if (e.key === 'Escape') {
                 closeLightbox();
+            } else if (isGallery && e.key === 'ArrowLeft') {
+                navigateGallery(-1);
+            } else if (isGallery && e.key === 'ArrowRight') {
+                navigateGallery(1);
             }
         });
         
@@ -2482,6 +3167,103 @@
             `;
         }
         
+        // Render Gallery Section
+        let galleryImages = [];
+        let currentGalleryIndex = 0;
+        
+        async function renderGallery() {
+            const data = await loadJSON('gallery.json');
+            if (!data) return;
+            
+            galleryImages = data.images;
+            
+            const galleryContent = document.getElementById('galleryContent');
+            galleryContent.innerHTML = `
+                <h2>${data.title}</h2>
+                <p style="font-size: 16px; color: var(--gray); margin-bottom: 20px;">${data.description}</p>
+                <div class="gallery-grid">
+                    ${data.images.map((image, index) => `
+                        <div class="gallery-item" onclick="openGalleryLightbox(${index})">
+                            <img src="${image.url}" 
+                                 alt="${image.title}" 
+                                 crossorigin="anonymous"
+                                 referrerpolicy="no-referrer"
+                                 onerror="this.parentElement.style.display='none'">
+                            <div class="gallery-item-number">${image.id}</div>
+                            <div class="gallery-item-overlay"></div>
+                            <div class="gallery-item-icon">🔍</div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
+        
+        function openGalleryLightbox(index) {
+            currentGalleryIndex = index;
+            showGalleryImage();
+        }
+        
+        function showGalleryImage() {
+            const lightbox = document.getElementById('imageLightbox');
+            const img = document.getElementById('lightboxImg');
+            const counter = document.getElementById('lightboxCounter');
+            const prevBtn = document.querySelector('.lightbox-prev');
+            const nextBtn = document.querySelector('.lightbox-next');
+            
+            // Show navigation and counter
+            prevBtn.style.display = 'flex';
+            nextBtn.style.display = 'flex';
+            counter.style.display = 'block';
+            
+            // Set image
+            img.style.opacity = '0';
+            img.src = '';
+            
+            const currentImage = galleryImages[currentGalleryIndex];
+            
+            // Load new image
+            const newImg = new Image();
+            newImg.crossOrigin = 'anonymous';
+            newImg.referrerPolicy = 'no-referrer';
+            
+            newImg.onload = function() {
+                img.src = this.src;
+                img.alt = currentImage.title;
+                setTimeout(() => {
+                    img.style.opacity = '1';
+                }, 10);
+            };
+            
+            newImg.onerror = function() {
+                img.alt = 'Obraz nie może być załadowany';
+                img.style.opacity = '1';
+            };
+            
+            newImg.src = currentImage.url;
+            
+            // Update counter
+            counter.textContent = `${currentGalleryIndex + 1} / ${galleryImages.length}`;
+            
+            // Show lightbox
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Enable/disable nav buttons
+            prevBtn.style.opacity = currentGalleryIndex === 0 ? '0.3' : '1';
+            prevBtn.style.pointerEvents = currentGalleryIndex === 0 ? 'none' : 'auto';
+            nextBtn.style.opacity = currentGalleryIndex === galleryImages.length - 1 ? '0.3' : '1';
+            nextBtn.style.pointerEvents = currentGalleryIndex === galleryImages.length - 1 ? 'none' : 'auto';
+        }
+        
+        function navigateGallery(direction) {
+            const newIndex = currentGalleryIndex + direction;
+            
+            if (newIndex >= 0 && newIndex < galleryImages.length) {
+                currentGalleryIndex = newIndex;
+                showGalleryImage();
+            }
+        }
+        
         // Render Activity Section
         async function renderActivity() {
             const data = await loadJSON('activity.json');
@@ -2492,6 +3274,26 @@
             
             activityContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
+            
+            ${data.content.history ? `
+                <div style="margin-bottom: 50px; padding: 30px; background: var(--light-gray); border-left: 4px solid var(--accent);">
+                    <h3 style="margin-top: 0; margin-bottom: 20px; font-size: 22px;">HISTORIA KOŁA</h3>
+                    <p style="margin-bottom: 15px; line-height: 1.8; color: var(--gray);">
+                        <strong style="color: var(--black);">Katedra:</strong> ${data.content.history.affiliation}
+                    </p>
+                    <p style="margin-bottom: 15px; line-height: 1.8; color: var(--gray);">
+                        <strong style="color: var(--black);">Powstanie (2001):</strong> ${data.content.history.founding}
+                    </p>
+                    <p style="margin-bottom: ${data.content.history.advisors ? '15px' : '0'}; line-height: 1.8; color: var(--gray);">
+                        <strong style="color: var(--black);">Reaktywacja (2012):</strong> ${data.content.history.reactivation}
+                    </p>
+                    ${data.content.history.advisors ? `
+                        <p style="margin-bottom: 0; line-height: 1.8; color: var(--gray);">
+                            <strong style="color: var(--black);">Opiekunowie koła:</strong> ${data.content.history.advisors}
+                        </p>
+                    ` : ''}
+                </div>
+            ` : ''}
             
             <div class="activity-lead">
                     ${data.content.lead}
@@ -2713,6 +3515,7 @@
             await renderProjects();
             await renderGoals();
             await renderTeam();
+            await renderGallery();
             await renderActivity();
             await renderConstitution();
             await renderFooter();
@@ -2738,6 +3541,13 @@
     <!-- Image Lightbox -->
     <div id="imageLightbox" class="image-lightbox" onclick="closeLightbox()">
         <span class="lightbox-close">×</span>
+        <button class="lightbox-nav lightbox-prev" onclick="event.stopPropagation(); navigateGallery(-1)">
+            <span>‹</span>
+        </button>
+        <button class="lightbox-nav lightbox-next" onclick="event.stopPropagation(); navigateGallery(1)">
+            <span>›</span>
+        </button>
+        <div class="lightbox-counter" id="lightboxCounter"></div>
         <img id="lightboxImg" src="" alt="Project image" onclick="event.stopPropagation()">
     </div>
 </body>

@@ -1,5 +1,918 @@
 # Changelog
 
+## [3.15.6] - 2025-01-01
+
+### 💫 Hover Shadow Visible — Increased Padding
+
+#### Zwiększono padding dla pełnego efektu cienia
+
+**Problem:**
+- Box-shadow na hover (30px radius) był częściowo ucięty
+- Offset border na hover (-20px) potrzebował więcej miejsca
+- Artystyczny glow effect nie był w pełni widoczny
+
+**Rozwiązanie:**
+```css
+.carousel-wrapper {
+  padding: 50px 0;  /* było 30px */
+}
+
+.carousel-wrapper-inner {
+  margin: -50px 0;  /* kompensuje padding */
+  padding: 50px 0;
+}
+```
+
+**Kalkulacja przestrzeni:**
+- Offset border na hover: `-20px` (top/left)
+- Box-shadow radius: `30px`
+- **Razem potrzebne:** ~50px przestrzeni
+
+**Mobile:**
+```css
+@media (max-width: 768px) {
+  .carousel-wrapper {
+    padding: 30px 0;  /* było 20px */
+  }
+  
+  .carousel-wrapper-inner {
+    margin: -30px 0;
+    padding: 30px 0;
+  }
+}
+```
+
+**Efekt:**
+- ✅ **Pełny cień na hover** — `box-shadow: 0 0 30px rgba(255, 107, 0, 0.3)` w pełni widoczny
+- ✅ **Offset borders** — -20px (hover) nie są ucięte
+- ✅ **Glow effect** — pomarańczowy blask pełny i wyraźny
+- ✅ **3D depth** — maksymalny efekt głębi
+
+## [3.15.5] - 2025-01-01
+
+### 🎨 Full Artistic Effect — Offset Borders Visible
+
+#### Naprawiono ucięte elementy ::before
+
+**Problem:**
+- Offset borders (::before) były ucięte przez `overflow: hidden`
+- Tracony był artystyczny efekt podwójnej ramki
+- 3D effect nie był w pełni widoczny
+
+**Rozwiązanie - Dual Overflow System:**
+```html
+<div class="carousel-wrapper">          <!-- overflow: visible -->
+  <button class="carousel-nav-prev">   <!-- przyciski na zewnątrz -->
+  <button class="carousel-nav-next">
+  <div class="carousel-wrapper-inner"> <!-- overflow: hidden -->
+    <div class="carousel-track">       <!-- sliding -->
+      <div class="carousel-group">...
+```
+
+**CSS:**
+```css
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: visible;  /* pozwala na widoczność ::before */
+  padding: 30px 0;    /* miejsce na wystające elementy */
+}
+
+.carousel-wrapper-inner {
+  overflow: hidden;   /* ukrywa sliding poza viewport */
+  margin: -30px 0;    /* kompensuje padding */
+  padding: 30px 0;
+}
+
+.carousel-item {
+  overflow: visible;  /* ::before może wystać */
+}
+```
+
+**Efekt:**
+- ✅ **Offset borders w pełni widoczne** — artystyczny efekt 3D zachowany
+- ✅ **Smooth sliding** — overflow: hidden na inner div
+- ✅ **Przyciski nawigacji** — działają poprawnie (poza inner div)
+- ✅ **30px padding** — przestrzeń dla wystających elementów (top: -15px, bottom: 15px)
+- ✅ **Mobile responsive** — 20px padding na mobile
+
+#### Struktura overflow
+| Element | Overflow | Rola |
+|---------|----------|------|
+| `.carousel-wrapper` | visible | Pokazuje ::before |
+| `.carousel-wrapper-inner` | hidden | Ukrywa sliding |
+| `.carousel-item` | visible | ::before może wystać |
+| `.carousel-item::before` | - | Offset border (-15px) |
+
+## [3.15.4] - 2025-01-01
+
+### 🟦 Square Images & No Height Limit — Full Design Visible
+
+#### Zwiększono jeszcze bardziej wysokość i usunięto limit
+
+**Zmieniono aspect ratio na kwadrat:**
+```css
+.carousel-item {
+  aspect-ratio: 1/1;  /* było 4/3, wcześniej 16:9 */
+}
+```
+- **Kwadratowe zdjęcia** — maksymalna wysokość
+- **Większa powierzchnia** — lepszy showcase fotografii
+- **Równe proporcje** — estetyczny wygląd
+
+**Usunięto limit wysokości:**
+```css
+.carousel-wrapper {
+  /* USUNIĘTO: max-height: 650px */
+  overflow: hidden;
+}
+```
+- **Brak ograniczeń** — design się nie ucina
+- **Pełna wysokość** — zdjęcia wyświetlają się w całości
+- **Overflow visible** — offset borders widoczne poza kontenerem
+
+**Zachowane:**
+- ✅ **overflow: visible** na `.carousel-item` — offset borders nie są ucięte
+- ✅ **Wszystkie efekty stylu** — double borders, stripes, gradients
+- ✅ **Responsywność** — działa na desktop i mobile
+
+#### Progresja wysokości
+| Wersja | Aspect Ratio | Max Height | Wysokość (dla width 400px) |
+|--------|--------------|------------|----------------------------|
+| 3.15.0 | 16:9 | 500px | ~225px |
+| 3.15.3 | 4:3 | 650px | ~300px |
+| 3.15.4 | 1:1 | brak | ~400px |
+
+## [3.15.3] - 2025-01-01
+
+### 📐 Taller Images & Clean Style — Focus on Photos
+
+#### Zwiększono wysokość i usunięto napisy
+
+**Zmieniono aspect ratio:**
+```css
+.carousel-item {
+  aspect-ratio: 4/3;  /* było 16:9 */
+}
+```
+- **Wyższe zdjęcia** — lepszy format dla portretowych kadrów
+- **Lekko przycięte boki** — object-fit: cover zapewnia focus na centrum
+
+**Zwiększono max-height:**
+```css
+.carousel-wrapper {
+  max-height: 650px;  /* było 500px */
+}
+```
+
+**Usunięto wszystkie napisy:**
+```css
+.carousel-item-label,    /* "MOMENT" */
+.carousel-item-number,   /* Numery 01, 02, 03 */
+.carousel-item-code {    /* KNSI-E-XPERT-2025-XXX */
+  display: none;
+}
+```
+
+**Zachowane elementy stylu:**
+- ✅ **Double border frames** — offset shadow border
+- ✅ **Diagonal stripes** — animowane paski na dole
+- ✅ **Gradient overlays** — pomarańczowy gradient na hover
+- ✅ **Image zoom** — scale(1.05) na hover
+- ✅ **Smooth transitions** — wszystkie animacje
+
+#### Efekt
+- **Czystsze zdjęcia** — bez rozpraszających tekstów
+- **Więcej przestrzeni** — wyższe obrazy (4:3)
+- **Focus na treść** — zdjęcia w centrum uwagi
+- **Zachowany styl** — wszystkie fancy efekty pozostają
+
+## [3.15.2] - 2025-01-01
+
+### ⬅️➡️ Navigation Controls — Manual Group Switching
+
+#### Dodano przyciski nawigacji
+Użytkownik może teraz manualnie przełączać grupy zdjęć:
+
+**Przyciski:**
+```html
+<button class="carousel-nav carousel-nav-prev" onclick="prevGroup()">‹</button>
+<button class="carousel-nav carousel-nav-next" onclick="nextGroup()">›</button>
+```
+
+**Styling:**
+```css
+.carousel-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 20px;
+  opacity: 0.8;
+  z-index: 20;
+}
+
+.carousel-nav:hover {
+  background: var(--accent);
+  color: var(--black);
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+```
+
+**Funkcje JavaScript:**
+```javascript
+function prevGroup() {
+  if (currentGroupIndex === 0) {
+    // Jump to last group for seamless backward loop
+    currentGroupIndex = totalGroups;
+    slideToGroup(currentGroupIndex, true);
+    setTimeout(() => {
+      currentGroupIndex--;
+      slideToGroup(currentGroupIndex);
+    }, 50);
+  } else {
+    currentGroupIndex--;
+    slideToGroup(currentGroupIndex);
+  }
+  // Reset autoplay timer
+  clearInterval(carouselInterval);
+  startCarouselAutoplay(5000);
+}
+
+function nextGroup() {
+  currentGroupIndex++;
+  slideToGroup(currentGroupIndex);
+  
+  if (currentGroupIndex === totalGroups) {
+    // Jump to first group for seamless forward loop
+    setTimeout(() => {
+      currentGroupIndex = 0;
+      slideToGroup(0, true);
+    }, 800);
+  }
+  // Reset autoplay timer
+  clearInterval(carouselInterval);
+  startCarouselAutoplay(5000);
+}
+```
+
+#### Funkcjonalność
+- **Przycisk lewo (‹)**: Przechodzi do poprzedniej grupy
+- **Przycisk prawo (›)**: Przechodzi do następnej grupy
+- **Infinite loop**: Działa w obie strony bez końca
+- **Auto-reset timer**: Po manualnej zmianie timer autoplay resetuje się
+- **Hover effect**: Przyciski zmieniają kolor na pomarańczowy
+- **Scale animation**: Powiększenie o 10% na hover
+
+#### Mobile
+```css
+@media (max-width: 768px) {
+  .carousel-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  
+  .carousel-nav-prev { left: 5px; }
+  .carousel-nav-next { right: 5px; }
+}
+```
+
+## [3.15.1] - 2025-01-01
+
+### 🔧 Carousel Display Fix
+
+#### Naprawiono wyświetlanie 3 zdjęć obok siebie
+- **Usunięto gap z track** — grupy stykają się idealnie
+- **Padding w grupach** — 30px padding zapewnia odstępy
+- **Uproszczony transform** — `translateX(${offset}%)` bez dodatkowych kalkulacji
+- **width: 100%** w grupach zamiast min-width
+- **will-change: transform** dla lepszej wydajności
+
+```css
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  /* USUNIĘTO gap: 30px */
+}
+
+.carousel-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;  /* zamiast min-width: 100% */
+  flex-shrink: 0;
+  padding: 0 30px;  /* DODANO - spacing wewnątrz grupy */
+}
+```
+
+```javascript
+// Uproszczony transform bez gap compensation
+const offset = index * -100;
+track.style.transform = `translateX(${offset}%)`;
+```
+
+## [3.15.0] - 2025-01-01
+
+### 🎠 Infinite Sliding Carousel — Grupa po grupa
+
+#### 🔄 Kompletna zmiana mechanizmu karuzeli
+Przejście z pojedynczych zdjęć fade na przesuwającą się karuzelę grup:
+- **Grupy po 3 zdjęcia obok siebie** — zmienia się cała grupa (3 zdjęcia równolegle), nie pojedyncze zdjęcia
+- **Sliding effect** — przesuwanie zamiast fade over
+- **Infinite loop** — nieskończona pętla z bezszwowym powrotem do początku
+- **Auto-slide** — automatyczne przesuwanie co 5 sekund
+- **16:9 aspect ratio** — zachowany horyzontalny format
+- **Max height 500px** — kompaktowa sekcja
+- **Left-aligned headers** — nagłówki wyrównane do lewej (jak reszta strony)
+
+#### 🎠 Sliding Carousel Mechanism
+```javascript
+function slideToGroup(index, instant = false) {
+  const offset = index * -100;
+  track.style.transform = `translateX(calc(${offset}% - ${index * 30}px))`;
+}
+
+function nextGroup() {
+  currentGroupIndex++;
+  slideToGroup(currentGroupIndex);
+  
+  // Seamless loop - jump to first after showing duplicate
+  if (currentGroupIndex === totalGroups) {
+    setTimeout(() => {
+      currentGroupIndex = 0;
+      slideToGroup(0, true); // instant, no transition
+    }, 800);
+  }
+}
+```
+
+#### ♾️ Infinite Loop Implementation
+```html
+<!-- Groups structure -->
+<div class="carousel-track">
+  <div class="carousel-group"><!-- Group 1: Images 1,2,3 --></div>
+  <div class="carousel-group"><!-- Group 2: Images 4,5,6 --></div>
+  <div class="carousel-group"><!-- Group 3: Images 7,8,9 --></div>
+  <div class="carousel-group"><!-- Duplicate Group 1 for seamless loop --></div>
+</div>
+```
+- **Duplicate first group** — dodana na końcu
+- **Instant jump** — po pokazaniu duplikatu wraca do prawdziwej pierwszej
+- **No visual glitch** — użytkownik nie widzi przeskoku
+
+#### 🏷️ Premium Design Elements (przywrócone)
+**"MOMENT" Labels**:
+```css
+.carousel-item-label {
+  top: -30px;
+  left: -5px;
+  background: var(--black);
+  padding: 6px 16px;
+}
+.carousel-item-label::before { content: '"'; }
+.carousel-item-label::after { content: '"'; }
+```
+
+**Numbered Tags**:
+```css
+.carousel-item-number {
+  width: 50px;
+  height: 50px;
+  background: var(--accent);
+  bottom: -5px;
+  right: -5px;
+}
+```
+
+**Code Labels**:
+```html
+<div class="carousel-item-code">KNSI-E-XPERT-2025-001</div>
+```
+
+**Diagonal Stripes**:
+```css
+.carousel-item-stripe {
+  background: repeating-linear-gradient(45deg, ...);
+  animation: stripeMove 20s linear infinite;
+}
+```
+
+**Double Border Frame**:
+```css
+.carousel-item::before {
+  /* Offset border */
+  top: -15px; left: -15px; right: 15px; bottom: 15px;
+}
+.carousel-item-inner {
+  /* Main border */
+  border: 4px solid var(--black);
+}
+```
+
+#### 📐 Layout & Formatting
+```css
+.carousel-section h2 {
+  text-align: left; /* wyrównanie do lewej */
+}
+
+.carousel-wrapper {
+  max-height: 500px; /* ograniczenie wysokości sekcji */
+}
+
+.carousel-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 zdjęcia obok siebie */
+  gap: 30px;
+  min-width: 100%; /* grupa zajmuje całą szerokość */
+}
+
+.carousel-item {
+  aspect-ratio: 16/9;
+  overflow: visible; /* dla offset border */
+}
+```
+- **3 kolumny w grupie**: Każda grupa pokazuje 3 zdjęcia równolegle
+- **Max height 500px**: Kompaktowa sekcja
+- **Left-aligned headers**: Spójność z resztą strony
+- **Horyzontalny format 16:9**: Nie ucina boków zdjęć
+- **Responsive**: Automatyczne dostosowanie wysokości
+
+#### 💫 Smooth Transitions
+```css
+.carousel-track {
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+```
+- **0.8s duration** — wystarczająco długie dla płynności
+- **cubic-bezier** — premium easing
+- **Gap compensation** — `calc(${offset}% - ${index * 30}px)`
+
+#### 🎯 Auto-play & Controls
+- **5 seconds interval** — dłuższy dla komfortu oglądania
+- **Pause on hover** — użytkownik może zatrzymać
+- **Automatic restart** — po opuszczeniu myszką
+- **Infinite loop** — nigdy się nie kończy
+
+#### 📱 Mobile Experience
+```css
+@media (max-width: 768px) {
+  .carousel-group {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+}
+```
+- **Vertical scroll** — każde zdjęcie osobno
+- **50px gap** — większe odstępy
+- **Zachowane efekty** — wszystkie etykiety i animacje
+- **Ukryte cudzysłowy** — przy tytule sekcji
+
+#### 📏 Porównanie mechanizmów
+| Element | 3.13.0 | 3.13.1 | 3.14.0 | 3.15.0 |
+|---------|--------|--------|--------|--------|
+| Mechanizm | Full carousel | Random fade | Static grid | Sliding groups |
+| Zmiana | Slide | Single fade | No change | Group slide |
+| Loop | Manual | Random | - | Infinite auto |
+| Transition | Slide | Fade 1.5s | - | Slide 0.8s |
+| Display | 1 image | 4 images | 3 images | 3 images |
+| Format | Full width | Square | 16:9 | 16:9 |
+| Etykiety | Dots, counter | None | None | Labels, numbers, codes |
+| Auto-play | Yes | Yes | No | Yes (groups) |
+
+#### 🎨 Design Philosophy
+**Industrial/Premium Style:**
+- ✅ Offset border frames
+- ✅ Quotation marks
+- ✅ Bold typography labels
+- ✅ Numbered elements
+- ✅ Diagonal animated stripes
+- ✅ Code identifiers
+- ✅ Gradient overlays
+- ✅ Smooth transitions
+
+**UX Improvements:**
+- ✅ Group sliding (easier to follow)
+- ✅ Infinite loop (never ends)
+- ✅ Longer interval (5s vs 4s)
+- ✅ Pause on hover
+- ✅ 16:9 format (no cropping)
+
+## [3.14.0] - 2025-01-01
+
+### 🎨 Premium Gallery "To My" — Clean & Minimalist
+
+#### 🔄 Redesign na minimalistyczną galerię
+Sekcja "To My" przekształcona na czystą, elegancką galerię bez rozpraszających elementów:
+- **3 kolumny** zamiast 4 (desktop) — więcej przestrzeni dla każdego zdjęcia
+- **1 kolumna** na mobile — pełna uwaga na każdym zdjęciu
+- **16:9 aspect ratio** — horyzontalny format, pełne zdjęcia bez ucięć boków
+- **30px gap** — optymalny spacing między obrazami
+- **9 zdjęć** w puli (dodano 1 nowe)
+
+#### 📐 Aspect Ratio — Horizontal Format
+```css
+.carousel-item {
+  aspect-ratio: 16/9;  /* Horyzontalny format */
+  overflow: hidden;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+```
+- **16:9 format**: Zachowuje pełną szerokość zdjęć
+- **No cropping**: Nie ucina boków obrazów
+- **Responsive**: Automatyczne dostosowanie wysokości
+- **object-fit: cover**: Wypełnia kontener bez zniekształceń
+
+#### 🖼️ Clean Design — Bez zasłaniających elementów
+```html
+<div class="carousel-item">
+  <div class="carousel-item-inner">
+    <img src="..." alt="..." />
+  </div>
+</div>
+```
+- **Usunięte**: Etykiety, numery, kody
+- **Czysty widok**: Tylko zdjęcie
+- **No overlays**: Brak tekstów zasłaniających obraz
+- **Focus on content**: Pełna uwaga na fotografiach
+
+#### 🎨 Minimalist Border System
+```css
+.carousel-item {
+  border: 3px solid var(--black);
+  box-shadow: 0 10px 40px rgba(28, 27, 34, 0.15);
+}
+
+.carousel-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(28, 27, 34, 0.25);
+}
+```
+- **Single border**: Prosta 3px ramka
+- **Hover effect**: Zmiana koloru na pomarańczowy
+- **Lift animation**: translateY(-8px) na hover
+- **Shadow enhancement**: Pogłębienie cienia przy hover
+
+#### 🔍 Image Effects
+```css
+.carousel-item img {
+  filter: grayscale(0.15) contrast(1.05);
+  transform: scale(1);
+  transition: opacity 1.5s ease-in-out, 
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+              filter 0.4s ease;
+}
+
+.carousel-item:hover img {
+  transform: scale(1.08);
+  filter: grayscale(0) contrast(1.1);
+}
+```
+- **Lekki grayscale**: 15% dla spójności
+- **Zoom on hover**: scale(1.08) — delikatne powiększenie
+- **Smooth animations**: cubic-bezier dla premium feel
+- **Fade transition**: 1.5s dla spokojnej zmiany
+
+#### 📱 Mobile Experience
+```css
+@media (max-width: 768px) {
+  .carousel-container {
+    grid-template-columns: 1fr;  /* 1 kolumna */
+    gap: 40px;
+  }
+  
+  .carousel-item {
+    aspect-ratio: 16/9;  /* Zachowane 16:9 */
+    border-width: 2px;
+  }
+}
+```
+- **Pełna szerokość**: każde zdjęcie zajmuje cały ekran
+- **40px gap**: przestrzeń między zdjęciami
+- **Zachowany aspect ratio**: 16:9 również na mobile
+- **Thinner border**: 2px zamiast 3px
+
+#### 🎯 Random Rotation (zachowane)
+- **Smart algorithm**: Unika duplikatów
+- **Smooth fade**: 1.5s opacity transition
+- **Random slots**: Losowy wybór pozycji
+- **Random images**: Losowy obraz z puli 9
+- **Auto-play**: Co 4 sekundy
+- **Pause on hover**: Zatrzymanie przy najechaniu
+
+#### 📏 Porównanie z poprzednimi wersjami
+| Element | 3.13.0 | 3.13.1 | 3.14.0 |
+|---------|--------|--------|--------|
+| Kolumny (desktop) | 1 (carousel) | 4 | 3 |
+| Kolumny (mobile) | 1 | 2 | 1 |
+| Format | Full width | Square | 16:9 horizontal |
+| Wysokość | 675px | 250px | auto (16:9) |
+| Gap | - | 2px | 30px |
+| Liczba zdjęć | 8 | 8 | 9 |
+| Style | Carousel | Compact grid | Clean gallery |
+| Etykiety | Counter, dots | - | None |
+| Animacje | Slide | Fade | Fade + lift |
+| Border | Single | None | Single with hover |
+
+#### 🎨 Design Philosophy
+**Minimalist Principles:**
+- ✅ Clean design bez rozpraszaczy
+- ✅ Focus na treści (zdjęcia)
+- ✅ Prosty border system
+- ✅ Subtle hover effects
+- ✅ Optimal spacing
+- ✅ Horizontal format (16:9)
+- ✅ No text overlays
+- ✅ Smooth animations
+
+## [3.13.1] - 2025-01-01
+
+### 🎨 Grid "To My" — 4 zdjęcia w rzędzie z losową rotacją
+
+#### 🔄 Zmiana layoutu
+Karuzela przekształcona z pojedynczego dużego obrazu na grid 4 obrazów obok siebie:
+- **Desktop**: 4 obrazy w jednym rzędzie (250px wysokości każdy)
+- **Mobile**: 2 obrazy w rzędzie (150px wysokości każdy)
+- **Compact**: Znacznie niższa sekcja (poprzednio aspect-ratio 16:9)
+
+#### 🔀 Losowa rotacja obrazów
+- **Random slots**: Co 4 sekundy losowo wybierany jest jeden z 4 slotów
+- **Random images**: Wybrany slot otrzymuje nowe losowe zdjęcie z puli 8
+- **Smart selection**: Algorytm unika wyświetlania obecnie pokazywanych obrazów
+- **Smooth fade**: Płynne przejście opacity (1.2s) podczas zmiany
+
+#### 🎨 Nowy design
+```css
+.carousel-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 kolumny */
+  gap: 2px;  /* minimalne odstępy */
+  background: var(--black);  /* separator */
+}
+
+.carousel-item {
+  height: 250px;  /* fixed height */
+  background: var(--light-gray);
+}
+
+.carousel-item img {
+  object-fit: cover;
+  filter: grayscale(0.2);
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.carousel-item img.active {
+  opacity: 1;
+}
+```
+
+#### 🔧 Nowy JavaScript
+```javascript
+- getRandomImage() — wybiera losowy obraz z puli (unika duplikatów)
+- changeRandomImage() — zmienia losowy slot na nowy obraz
+- initCarousel(interval) — inicjalizacja z auto-play
+- Pause/Resume on hover (zachowane)
+```
+
+#### 📱 Mobile responsywność
+```css
+@media (max-width: 768px) {
+  .carousel-container {
+    grid-template-columns: repeat(2, 1fr);  /* 2 kolumny */
+  }
+  .carousel-item {
+    height: 150px;
+  }
+}
+```
+
+#### ❌ Usunięte elementy
+- Wskaźniki (dots) — nie są już potrzebne
+- Licznik (counter) — nie ma sensu przy losowej zmianie
+- Slajdy — zastąpione fixed grid
+
+#### ✅ Zachowane funkcje
+- **Pause on hover** — zatrzymanie podczas najechania
+- **Auto-play** — automatyczna zmiana co 4 sekundy
+- **Fade effect** — płynne przejścia
+- **Error handling** — ukrywanie niepoprawnych obrazów
+- **Grayscale filter** — spójność z resztą strony
+- **Hover enhancement** — usunięcie grayscale przy hover
+
+#### 📏 Porównanie wymiarów
+| Element | Poprzednio (3.13.0) | Teraz (3.13.1) |
+|---------|---------------------|----------------|
+| Desktop width | 1200px max | 1200px max |
+| Desktop height | ~675px (16:9) | 250px (fixed) |
+| Mobile height | ~900px (4:3) | 300px (2×150px) |
+| Liczba widocznych | 1 obraz | 4 obrazy (desktop), 2 (mobile) |
+| Zmiana | sekwencyjna | losowa |
+
+## [3.13.0] - 2025-01-01
+
+### 🎠 Karuzela "To My" — Photo Carousel on Homepage
+
+#### ✨ Nowa sekcja w home.json
+Dodana sekcja `us` z 8 wybranymi zdjęciami z galerii:
+```json
+"us": {
+  "title": "To My",
+  "subtitle": "Zdjęcia z naszej działalności",
+  "images": [8 URLs],
+  "interval": 4000
+}
+```
+
+#### 🎬 Automatyczna karuzela z fade effect
+- **Fade transitions** — płynne przejścia opacity (1.5s ease-in-out)
+- **Auto-play** — automatyczna zmiana co 4 sekundy
+- **Pause on hover** — zatrzymanie podczas najechania myszką
+- **Infinite loop** — cykliczne przechodzenie przez wszystkie zdjęcia
+
+#### 🖱️ Interaktywne elementy
+- **Wskaźniki (dots)** — 8 kropek na dole do manualnej nawigacji
+- **Licznik** — "1 / 8" w prawym górnym rogu
+- **Active states** — pomarańczowa kropka dla aktywnego slajdu
+- **Hover effects** — animacje scale na kropkach
+
+#### 🎨 Design
+- **Kontener**: 3px czarna ramka, cień, aspect-ratio 16:9
+- **Background**: szare tło podczas ładowania
+- **Wskaźniki**: białe z pomarańczowym akcentem dla aktywnego
+- **Licznik**: ciemne tło z blur backdrop
+- **Grayscale filter**: lekki (0.15) dla spójności z galerią
+
+#### 📱 Responsywność
+- **Desktop**: max-width 1200px, aspect-ratio 16:9, 3px border
+- **Mobile**: aspect-ratio 4:3, 2px border, mniejsze wskaźniki
+
+#### 🔧 JavaScript funkcje
+```javascript
+- initCarousel(interval) — inicjalizacja z auto-play
+- goToSlide(index) — przejście do konkretnego slajdu
+- nextSlide() — następny slajd (cyklicznie)
+- startCarouselAutoplay(interval) — start auto-play
+- Pause/Resume on hover events
+```
+
+#### 📍 Pozycja na stronie
+Karuzela "To My" umieszczona między sekcjami:
+1. Stats (statystyki)
+2. About (O nas)
+3. **Us (To My)** ← NOWA KARUZELA
+4. Highlights (Nasze osiągnięcia)
+
+#### 📸 Wybrane zdjęcia
+8 zdjęć z galerii (IDs: 1, 4, 7, 10, 13, 16, 19, 22):
+- Różnorodne momenty z działalności koła
+- Wydarzenia, spotkania, warsztaty
+- Reprezentatywne dla społeczności E-XPERT
+
+## [3.12.1] - 2025-01-01
+
+### 👨‍🏫 Opiekunowie Koła — Rozszerzenie Historii
+
+#### 📚 Dodane informacje o opiekunach
+- **Prof. Michał Kuciapski** — opiekun koła w latach wcześniejszych
+- **mgr Piotr Porzuczek** — przejął opiekę nad kołem w 2020 roku
+
+#### 📝 Zmiany w plikach
+- `data/activity.json` — dodane pole `advisors` w sekcji `history`
+- `index.html` — renderowanie informacji o opiekunach jako 4. punkt w historii
+
+#### 🎨 Wizualizacja
+- **Label:** "Opiekunowie koła:"
+- **Treść:** Chronologiczny opis zmian opiekuna
+- **Styl:** Spójna z pozostałymi punktami historii (bold label, gray text)
+
+## [3.12.0] - 2025-01-01
+
+### 📜 Historia Koła — Poprawki i Rozszerzenie
+
+#### 📅 Poprawione daty
+- **2007 → 2001** — koło powstało w styczniu 2001 roku
+- **Reaktywacja** — 2012 rok (studenci Informatyki i Ekonometrii)
+- **24+ lat działalności** — zaktualizowane w statystykach (2001-2025)
+- **Copyright** — © 2001–2025 KNSI E-XPERT (wcześniej 2007–2025)
+
+#### 📖 Historia koła w `activity.json`
+Dodana nowa sekcja `history` z trzema kluczowymi informacjami:
+
+**Katedra:**
+- Koło działa przy Katedrze Informatyki Ekonomicznej Wydziału Zarządzania Uniwersytetu Gdańskiego
+
+**Powstanie (2001):**
+- Styczeń 2001 roku — grupa studentów chcących rozwinąć wiedzę z informatyki w biznesie
+- Po kilku latach intensywnej działalności koło przestało funkcjonować
+
+**Reaktywacja (2012):**
+- Studenci Informatyki i Ekonometrii z kilku roczników reaktywowali koło
+- Tworzą zgrane grupy mimo różnic w wiedzy i doświadczeniu
+- Pracują nad kilkoma projektami jednocześnie
+
+#### 🎨 Wizualizacja historii
+- **Box design** — szare tło, pomarańczowy border-left (4px)
+- **Typography** — nagłówek "HISTORIA KOŁA" (22px)
+- **Struktura** — 3 paragrafy z bold labels: Katedra, Powstanie, Reaktywacja
+- **Spacing** — 50px margin-bottom, 30px padding
+
+#### 📊 Zmienione pliki
+- `data/footer.json` — copyright 2001–2025
+- `data/home.json` — "24+ Lat działalności" + "Od 2001"
+- `data/activity.json` — dodana sekcja `history`
+- `docs/CHANGELOG.md` — aktualizacje dat w dokumentacji
+- `index.html` — renderowanie nowej sekcji historii
+
+#### 💡 Rezultat
+- ✅ **Dokładna historia** — kompletna timeline od 2001
+- ✅ **Kontekst** — informacja o Katedrze i Wydziale
+- ✅ **Przejrzystość** — jasny podział na powstanie i reaktywację
+- ✅ **Wizualny akcent** — wyróżniony box na początku sekcji
+
+## [3.11.1] - 2025-01-01
+
+### 🔧 Footer Navigation Update
+
+#### Dodane
+- **Galeria w stopce** — link do galerii dodany do sekcji nawigacji w stopce
+- **Poprawna kolejność** — Galeria przed Statutem (5. pozycja)
+
+#### Kolejność nawigacji
+1. Start
+2. Projekty
+3. Cele i misja
+4. Zespół
+5. **Galeria** 📷 (nowy)
+6. Statut
+7. Działalność
+
+## [3.11.0] - 2025-01-01
+
+### 📷 Gallery System — Professional Photo Gallery
+
+#### ✨ New Gallery Section
+- **`data/gallery.json`** — 26 zdjęć z działalności koła
+- **Grid layout** — 4 kolumny (desktop), 2 (tablet), 1 (mobile)
+- **Industrial styling** — bordered grid z numbered tags
+- **Hover effects** — zoom, grayscale removal, overlay, icon
+
+#### 🖼️ Enhanced Lightbox
+- **Navigation buttons** — okrągłe przyciski ‹ › po bokach
+- **Counter display** — "5 / 26" na dole lightboxa
+- **Keyboard navigation** — Arrow Left/Right dla nawigacji
+- **Smooth transitions** — fade in/out, disable buttons at ends
+- **Conditional UI** — przyciski widoczne tylko w galerii
+
+#### 🎨 Visual Design
+- **Gallery Grid**:
+  - 4 kolumny z 20px gap (desktop)
+  - 2 kolumny z 18px gap (tablet)
+  - 1 kolumna z 16px gap (mobile)
+  - aspect-ratio 4:3 dla wszystkich obrazów
+- **Hover Effects**:
+  - Offset border animation (-8px)
+  - Image scale (1.08)
+  - Grayscale filter (0.2 → 0)
+  - Gradient overlay z bottom
+  - Zoom icon (🔍) fade in
+- **Numbered Tags**:
+  - 32x32px czarne kwadraty z białym borderem
+  - Orange background on hover
+  - Transform scale(1.1) on hover
+
+#### 🚀 Technical Implementation
+```javascript
+- renderGallery() — renders grid from JSON
+- openGalleryLightbox(index) — opens at specific image
+- showGalleryImage() — displays image with nav/counter
+- navigateGallery(direction) — moves +1 or -1
+- Keyboard: ArrowLeft, ArrowRight, Escape
+```
+
+#### 📱 Responsive Behavior
+- **Desktop**: 4-column grid, 60px nav buttons, 40px spacing
+- **Tablet**: 2-column grid
+- **Mobile**: 1-column grid, 50px nav buttons, 15px spacing
+- **Lightbox**: adaptive padding, smaller counters on mobile
+
+#### 🔗 Navigation
+- Added to `navigation.json` as section 5
+- Icon: 📷
+- Order: Home → Projects → Goals → Team → **Gallery** → Constitution → Activity
+
 ## [3.10.1] - 2025-01-01
 
 ### 🧹 Content Cleanup
@@ -220,7 +1133,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
     "name": "...",
     "description": "...",
     "year": "2025",
-    "established": "EST. 2007"
+    "established": "EST. 2001"
   },
   "navigation": {
     "title": "Nawigacja",
@@ -261,7 +1174,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 - GitHub (GH), Facebook (FB), LinkedIn (IN), Instagram (IG)
 
 **Bottom:**
-- Copyright: "© 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
+- Copyright: "© 2001–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA"
 - Credits: OPEN SOURCE, GITHUB PAGES
 
 #### 🚀 Korzyści
@@ -326,7 +1239,7 @@ Wszystkie dane stopki przeniesione do JSON dla łatwej edycji i utrzymania.
 
 #### 🎯 Footer Bottom
 - **Border-top** — `2px solid rgba(255, 255, 255, 0.2)`
-- **Copyright** — © 2007–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
+- **Copyright** — © 2001–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI
 - **Credits** — OPEN SOURCE + GITHUB PAGES links
 - **Opacity** — 0.6 dla subtelności
 

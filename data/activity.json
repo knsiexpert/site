@@ -2,6 +2,12 @@
   "title": "Działalność",
   "slug": "dzialalnosc",
   "content": {
+    "history": {
+      "affiliation": "Koło działa przy Katedrze Informatyki Ekonomicznej Wydziału Zarządzania Uniwersytetu Gdańskiego.",
+      "founding": "Powstało na początku stycznia 2001 roku dzięki grupie studentów naszego Wydziału, którzy chcieli rozwinąć swoją wiedzę z zakresu informatyki w biznesie. Niestety po kilku latach intensywnej działalności zabrakło ludzi na tyle odważnych aby kontynuować działalność E-xperta. Koło przestało funkcjonować.",
+      "reactivation": "W 2012 roku studenci kierunku Informatyka i Ekonometria postanowili je reaktywować. Są oni z kilku roczników, ale mimo różnic w wiedzy, doświadczeniu i chęci tworzą zgrane grupy. Nie boją się wyzwań ani trudności. Aktualnie robią kilka projektów jednocześnie, z których każdy jest okazją do poszerzania horyzontów. Nie marnują czasu.",
+      "advisors": "Opiekę nad kołem sprawował Profesor Michał Kuciapski. W 2020 roku funkcję opiekuna przejął Magister Piotr Porzuczek."
+    },
     "lead": "Koło Naukowe Systemów Informatycznych E-xpert działa na Uniwersytecie Gdańskim (Wydział Zarządzania). Głównym celem jest pogłębianie wiedzy z zakresu technologii informatycznych i metodyk zarządzania projektami IT oraz realizacja praktycznych projektów i szkoleń.",
     "activities": [
       "Udział w konkursach (Imagine Cup, AIS Student Chapter) — coroczny udział co najmniej w jednym konkursie.",

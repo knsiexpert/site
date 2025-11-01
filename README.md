@@ -1,8 +1,76 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.10.1** | Premium 2025 Design — Navigation Configuration System
+**Wersja: 3.15.6** | Infinite Sliding Carousel 2025 — Full Effects Visible
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.15.6
+
+- 💫 **Cień na hover widoczny** — zwiększono padding do 50px
+- ✨ **Box-shadow nie ucięty** — pełny efekt glow (30px radius)
+- 🔲 **Offset borders na hover** — -20px offset w pełni widoczny
+- 🎨 **Wszystkie efekty działają** — żaden artystyczny element nie jest ukryty
+- 📦 **Dual overflow system** — outer visible, inner hidden
+- 🟦 **1:1 Aspect Ratio** — kwadratowe zdjęcia
+
+## ✨ Nowe w wersji 3.15.2
+
+- ⬅️➡️ **Navigation Buttons** — przyciski lewo/prawo do manualnej nawigacji
+- 🖱️ **Manual Control** — kliknij aby przełączyć grupę
+- 🔄 **Auto-reset Timer** — timer resetuje się po manualnej zmianie
+- 🎨 **Styled Buttons** — czarne przyciski z hover effect (pomarańczowe)
+- 📱 **Mobile Optimized** — mniejsze przyciski (40px) na mobile
+- ♾️ **Seamless Loop** — działa w obie strony (forward/backward)
+
+## ✨ Nowe w wersji 3.15.0
+
+- 🎠 **Sliding Carousel** — przesuwana karuzela grup po 3 zdjęcia obok siebie
+- ♾️ **Infinite Loop** — nieskończona pętla, bezszwowy powrót do początku
+- 📐 **16:9 Aspect Ratio** — horyzontalny format bez ucięć boków
+- 📏 **Max Height 500px** — kompaktowa sekcja
+- 📍 **Left-aligned Headers** — nagłówki wyrównane do lewej jak w reszcie strony
+- 🏷️ **Premium Labels** — "MOMENT" etykiety z cudzysłowami
+- 🔢 **Numbered Tags** — duże pomarańczowe numery (50×50px)
+- 📟 **Code Labels** — identyfikatory "KNSI-E-XPERT-2025-XXX"
+- 🌊 **Diagonal Stripes** — animowane paski na dole obrazów
+- 🔲 **Double Border Frames** — offset border z efektem hover
+- 🎭 **Gradient Overlays** — pomarańczowy gradient na hover
+- 🔍 **Image Zoom** — scale(1.05) transform przy hover
+- 💫 **Smooth Slide** — 0.8s cubic-bezier transition
+- ⏱️ **Auto-slide** — automatyczna zmiana co 5 sekund
+- ⏸️ **Pause on Hover** — zatrzymanie podczas najechania
+- 📷 **9 zdjęć** — 3 grupy po 3 zdjęcia
+- 📱 **Mobile Responsive** — 1 kolumna vertical scroll
+
+## ✨ Nowe w wersji 3.13.0
+
+- 🎠 **Karuzela "To My"** — automatyczna karuzela ze zdjęciami z działalności
+- 🎬 **Fade Effect** — płynne przejścia między zdjęciami (1.5s)
+- 🖱️ **Interaktywne wskaźniki** — kropki do manualnej nawigacji
+- ⏱️ **Auto-play** — automatyczna zmiana co 4 sekundy
+- ⏸️ **Pause on Hover** — zatrzymanie podczas najechania myszką
+- 🔢 **Licznik** — "1 / 8" pokazujący aktualny slajd
+- 📷 **8 wybranych zdjęć** — najlepsze momenty z galerii
+- 📱 **Fully Responsive** — aspect ratio 16:9 (desktop), 4:3 (mobile)
+
+## ✨ Nowe w wersji 3.12.0
+
+- 📅 **Poprawione daty** — koło powstało w 2001, reaktywacja w 2012
+- 📜 **Historia koła** — nowa sekcja w Działalności z pełną historią
+- 🏛️ **Katedra** — informacja o Katedrze Informatyki Ekonomicznej
+- 🔢 **24+ lat działalności** — zaktualizowane statystyki (2001-2025)
+- ©️ **Copyright** — poprawiony na © 2001–2025
+
+## ✨ Nowe w wersji 3.11.0
+
+- 📷 **Gallery System** — pełnoprawna galeria zdjęć z `gallery.json`
+- 🖼️ **Grid Layout** — 4 kolumny (desktop), 2 (tablet), 1 (mobile)
+- ⬅️➡️ **Navigation** — strzałki poprzedni/następny w lightboxie
+- 🔢 **Counter** — licznik "5 / 26" pokazujący pozycję
+- ⌨️ **Keyboard** — strzałki lewo/prawo, Escape do zamknięcia
+- 🎨 **Industrial Style** — offset border effect, numbered tags
+- 🔍 **Zoom Icon** — ikona lupy na hover
+- 📱 **Fully Responsive** — działa idealnie na wszystkich urządzeniach
 
 ## ✨ Nowe w wersji 3.10.0
 

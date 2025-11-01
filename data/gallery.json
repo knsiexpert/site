@@ -1,0 +1,163 @@
+{
+  "title": "Galeria",
+  "description": "Zdjęcia z działalności koła naukowego",
+  "images": [
+    {
+      "id": 1,
+      "url": "https://i.imgur.com/KbCxaWl.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 2,
+      "url": "https://i.imgur.com/XirvXmJ.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 3,
+      "url": "https://i.imgur.com/JH7C0Yt.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 4,
+      "url": "https://i.imgur.com/cMbL4Zv.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 5,
+      "url": "https://i.imgur.com/56nkVIf.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 6,
+      "url": "https://i.imgur.com/sBlxUuS.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 7,
+      "url": "https://i.imgur.com/kTqJvzR.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 8,
+      "url": "https://i.imgur.com/MNa0Pfh.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 9,
+      "url": "https://i.imgur.com/APBdSnN.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 10,
+      "url": "https://i.imgur.com/g8piQkb.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 11,
+      "url": "https://i.imgur.com/GQx8slP.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 12,
+      "url": "https://i.imgur.com/uPWzfHw.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 13,
+      "url": "https://i.imgur.com/oeWjiYh.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 14,
+      "url": "https://i.imgur.com/YCRakIN.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 15,
+      "url": "https://i.imgur.com/i8usHzY.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 16,
+      "url": "https://i.imgur.com/HFihwiH.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 17,
+      "url": "https://i.imgur.com/eRzMQlX.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 18,
+      "url": "https://i.imgur.com/RlJfdNE.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 19,
+      "url": "https://i.imgur.com/gyHGyJ1.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 20,
+      "url": "https://i.imgur.com/0YF00jz.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 21,
+      "url": "https://i.imgur.com/zmE5wNZ.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 22,
+      "url": "https://i.imgur.com/dPTYUzW.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 23,
+      "url": "https://i.imgur.com/x2Ir37Q.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 24,
+      "url": "https://i.imgur.com/KYmjmcf.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 25,
+      "url": "https://i.imgur.com/n9tpBPd.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    },
+    {
+      "id": 26,
+      "url": "https://i.imgur.com/fbdrY0Y.jpeg",
+      "title": "KNSI E-XPERT",
+      "description": "Działalność koła"
+    }
+  ]
+}
+
