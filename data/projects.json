@@ -88,6 +88,28 @@
       ]
     },
     {
+      "name": "CyberWatch",
+      "description": "System rozpoznawania aktów cyberprzemocy, takich jak hejt, stalking czy rozpowszechnianie fałszywych informacji. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson i technologii REST. Projekt zdobył III miejsce w konkursie IBM Bright ICT (Indiana University, 2016) oraz wyróżnienie za efektywne wykorzystanie IBM Bluemix Cloud.",
+      "team": [
+        "Kamil Wojewski (lider)",
+        "Damian Kisielewski",
+        "Maciej Kwapiński",
+        "Szymon Nagórski",
+        "Hubert Kisielewski"
+      ],
+      "year": 2016,
+      "images": [
+        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
+      ]
+    },
+    {
+      "name": "Unity",
+      "description": "Aplikacja webowa autorstwa Piotra Małeckiego umożliwiająca monitorowanie opinii na temat osób i organizacji w Internecie. Analizuje stosunek opinii pozytywnych i negatywnych oraz trendy w czasie. Zintegrowana z IBM Bluemix i Alchemy API, zdobyła wyróżnienie za najbardziej innowacyjne zastosowanie chmury IBM w konkursie IBM Bright ICT.",
+      "team": ["Piotr Małecki"],
+      "year": 2016,
+      "images": []
+    },
+    {
       "name": "SafeWatch",
       "description": "Innowacyjna aplikacja mobilna umożliwiająca wezwanie pomocy w sytuacji zagrożenia za pomocą gestów (np. trzykrotne stuknięcie w smartwatch). Dane o miejscu i czasie zdarzenia trafiają na serwer i mogą być udostępniane służbom. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition 2015 na University of Alabama.",
       "team": [
@@ -109,28 +131,6 @@
         "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/zdjgrup.png",
         "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/patent.jpg"
       ]
-    },
-    {
-      "name": "CyberWatch",
-      "description": "System rozpoznawania aktów cyberprzemocy, takich jak hejt, stalking czy rozpowszechnianie fałszywych informacji. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson i technologii REST. Projekt zdobył III miejsce w konkursie IBM Bright ICT (Indiana University, 2016) oraz wyróżnienie za efektywne wykorzystanie IBM Bluemix Cloud.",
-      "team": [
-        "Kamil Wojewski (lider)",
-        "Damian Kisielewski",
-        "Maciej Kwapiński",
-        "Szymon Nagórski",
-        "Hubert Kisielewski"
-      ],
-      "year": 2016,
-      "images": [
-        "https://web.archive.org/web/20240910052250im_/https://e-xpert.pl/wp-content/uploads/2016/10/plugin.png"
-      ]
-    },
-    {
-      "name": "Unity",
-      "description": "Aplikacja webowa autorstwa Piotra Małeckiego umożliwiająca monitorowanie opinii na temat osób i organizacji w Internecie. Analizuje stosunek opinii pozytywnych i negatywnych oraz trendy w czasie. Zintegrowana z IBM Bluemix i Alchemy API, zdobyła wyróżnienie za najbardziej innowacyjne zastosowanie chmury IBM w konkursie IBM Bright ICT.",
-      "team": ["Piotr Małecki"],
-      "year": 2016,
-      "images": []
     },
     {
       "name": "Your Guard",
