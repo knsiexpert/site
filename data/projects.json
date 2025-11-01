@@ -4,7 +4,7 @@
   "projects": [
     {
       "name": "Modernizacja Strony Internetowej Koła",
-      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem inspirowanym estetyką Virgil Abloh. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
       "team": [
         "Wspólny wysiłek zespołu 2024/25"
       ],
@@ -30,7 +30,7 @@
     },
     {
       "name": "Modernizacja konta Github",
-      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem inspirowanym estetyką Virgil Abloh. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
       "team": [
         "Wspólny wysiłek zespołu 2023/24"
       ],

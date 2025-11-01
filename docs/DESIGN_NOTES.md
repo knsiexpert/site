@@ -1,8 +1,8 @@
-# Design Notes — Virgil Abloh Inspired
+# Design Notes — Industrial Aesthetic
 
 ## 🎨 Koncepcja Designu
 
-Strona została przeprojektowana w stylu **Virgila Abloha** — minimalistycznym, funkcjonalnym i z charakterem. Design łączy industrial aesthetic z nowoczesnym minimalizmem.
+Strona została przeprojektowana w minimalistycznym, funkcjonalnym stylu z charakterem. Design łączy industrial aesthetic z nowoczesnym minimalizmem.
 
 ## Kluczowe Elementy Stylu
 
@@ -32,7 +32,7 @@ Strona została przeprojektowana w stylu **Virgila Abloha** — minimalistycznym
   - Box shadows dla depth
   - Smooth transitions z `cubic-bezier(0.4, 0, 0.2, 1)`
 
-### 4. **Labels & Instructions** (signature Virgil)
+### 4. **Labels & Instructions** (industrial style)
 - Małe etykiety w górnych rogach: "ZARZĄD", "STATEMENT", "O NAS", "LINK"
 - `font-size: 8-10px`
 - `letter-spacing: 0.2em`
@@ -98,7 +98,7 @@ Strona została przeprojektowana w stylu **Virgila Abloha** — minimalistycznym
 - Border 2px wokół całego artykułu
 - Padding: 50px
 
-## Charakterystyczne cechy Virgila Abloha
+## Charakterystyczne cechy industrial design
 
 ✅ **"Cudzysłowy"** — już są w tytułach  
 ✅ **Labels/Instructions** — dodane wszędzie  
@@ -162,5 +162,5 @@ transition: all 0.2s  /* Szybkie, minimalne */
 
 ---
 
-**"DESIGN IS HONEST"** — Virgil Abloh
+**"DESIGN IS HONEST"**
 
