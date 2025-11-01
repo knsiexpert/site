@@ -16,7 +16,19 @@
             --white: #f3f3f7;
             --gray: #808080;
             --light-gray: #e8e8ed;
+            
+            /* Accent colors - change these to change the main color theme */
             --accent: #ff6b00;
+            --accent-rgb: 255, 107, 0;
+            --accent-light: #ff8c00;
+            --accent-lighter: #ffa500;
+            
+            /* Gradients using accent colors */
+            --gradient-primary: linear-gradient(90deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
+            --gradient-hero: linear-gradient(135deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
+            --gradient-text: linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            --gradient-underline: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 50%, var(--accent-lighter) 100%);
+            
             --border: 1px;
             --surface: #ffffff;
             --pattern-light: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f3f3f7' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -110,10 +122,7 @@
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, 
-                #1c1b22 0%, 
-                #ff6b00 50%, 
-                #ffa500 100%);
+            background: var(--gradient-primary);
             background-size: 200% auto;
             animation: navGradientShift 6s ease-in-out infinite;
             opacity: 0.8;
@@ -144,15 +153,15 @@
             border-radius: 50%;
             padding: 6px;
             background: linear-gradient(var(--white), var(--white)) padding-box,
-                        linear-gradient(135deg, #1c1b22 0%, #ff6b00 50%, #ffa500 100%) border-box;
-            box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3),
+                        var(--gradient-hero) border-box;
+            box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.3),
                         0 2px 10px rgba(255, 140, 0, 0.2);
         }
         
         .logo svg:hover {
             animation-play-state: paused;
             transform: scale(1.1) rotateY(180deg);
-            box-shadow: 0 6px 30px rgba(255, 107, 0, 0.5),
+            box-shadow: 0 6px 30px rgba(var(--accent-rgb), 0.5),
                         0 3px 15px rgba(255, 140, 0, 0.3);
         }
         
@@ -233,7 +242,7 @@
             right: -10%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(255, 107, 0, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(var(--accent-rgb), 0.08) 0%, transparent 70%);
             opacity: 0.6;
             pointer-events: none;
             animation: float 20s ease-in-out infinite;
@@ -258,7 +267,7 @@
             border-left: 5px solid var(--accent);
             box-shadow: 
                 0 30px 80px rgba(28, 27, 34, 0.2),
-                0 10px 30px rgba(255, 107, 0, 0.1);
+                0 10px 30px rgba(var(--accent-rgb), 0.1);
         }
         
         .hero h1 {
@@ -271,17 +280,12 @@
             position: relative;
             display: inline-block;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', 'Arial Black', sans-serif;
-            background: linear-gradient(135deg, 
-                #1c1b22 0%, 
-                #1c1b22 40%, 
-                #ff6b00 60%, 
-                #ff8c00 80%, 
-                #ffa500 100%);
+            background: var(--gradient-text);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             text-shadow: none;
-            filter: drop-shadow(0 4px 12px rgba(255, 107, 0, 0.3))
+            filter: drop-shadow(0 4px 12px rgba(var(--accent-rgb), 0.3))
                     drop-shadow(0 2px 4px rgba(28, 27, 34, 0.2));
             animation: gradientShift 8s ease-in-out infinite;
             background-size: 200% auto;
@@ -303,15 +307,12 @@
             left: 0;
             width: 140px;
             height: 6px;
-            background: linear-gradient(90deg, 
-                #ff6b00 0%, 
-                #ff8c00 50%, 
-                #ffa500 100%);
+            background: var(--gradient-underline);
             border-radius: 3px;
             animation: slideIn 0.8s ease-out, pulse 2s ease-in-out infinite;
             box-shadow: 
-                0 2px 15px rgba(255, 107, 0, 0.6),
-                0 4px 25px rgba(255, 107, 0, 0.3);
+                0 2px 15px rgba(var(--accent-rgb), 0.6),
+                0 4px 25px rgba(var(--accent-rgb), 0.3);
         }
         
         @keyframes pulse {
@@ -633,7 +634,7 @@
             right: 20px;
             bottom: 20px;
             border-color: var(--accent);
-            box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+            box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.3);
         }
         
         /* Main image container */
@@ -708,8 +709,8 @@
             bottom: 0;
             background: linear-gradient(
                 135deg,
-                rgba(255, 107, 0, 0) 0%,
-                rgba(255, 107, 0, 0.15) 100%
+                rgba(var(--accent-rgb), 0) 0%,
+                rgba(var(--accent-rgb), 0.15) 100%
             );
             opacity: 0;
             transition: opacity 0.6s ease;
@@ -968,7 +969,7 @@
             height: 4px;
             background: linear-gradient(90deg, var(--accent), var(--black));
             border-radius: 2px;
-            box-shadow: 0 2px 8px rgba(255, 107, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(var(--accent-rgb), 0.3);
         }
         
         h3 {
@@ -1109,7 +1110,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, transparent 0%, rgba(255, 107, 0, 0.1) 100%);
+            background: linear-gradient(135deg, transparent 0%, rgba(var(--accent-rgb), 0.1) 100%);
             opacity: 0;
             transition: opacity 0.3s ease;
             pointer-events: none;
@@ -1249,7 +1250,7 @@
             color: var(--black);
             border-color: var(--white);
             transform: translateY(-50%) scale(1.15);
-            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.4);
+            box-shadow: 0 8px 20px rgba(var(--accent-rgb), 0.4);
         }
         
         .lightbox-nav:active {
@@ -2829,10 +2830,17 @@
                                     <div class="carousel-wrapper-inner">
                                         <div class="carousel-track" id="carouselTrack">
                                     ${(() => {
-                                        // Create groups of 6 images (2 rows x 3 columns)
+                                        // Use only 3 images on mobile, all images on desktop
+                                        const isMobile = window.innerWidth <= 768;
+                                        const imagesToUse = isMobile ? data.us.images.slice(0, 3) : data.us.images;
+                                        
+                                        // Create groups of 6 images (2 rows x 3 columns) on desktop
+                                        // On mobile, display 3 images in 1 row
                                         const groups = [];
-                                        for (let i = 0; i < data.us.images.length; i += 6) {
-                                            groups.push(data.us.images.slice(i, i + 6));
+                                        const itemsPerGroup = isMobile ? 3 : 6;
+                                        
+                                        for (let i = 0; i < imagesToUse.length; i += itemsPerGroup) {
+                                            groups.push(imagesToUse.slice(i, i + itemsPerGroup));
                                         }
                                         // Duplicate first group at the end for seamless loop
                                         groups.push(groups[0]);
@@ -2840,7 +2848,7 @@
                                         return groups.map((group, groupIndex) => `
                                             <div class="carousel-group" data-group="${groupIndex}">
                                                 ${group.map((image, index) => {
-                                                    const absoluteIndex = (groupIndex * 6 + index) % data.us.images.length;
+                                                    const absoluteIndex = (groupIndex * itemsPerGroup + index) % imagesToUse.length;
                                                     return `
                                                         <div class="carousel-item">
                                                             <div class="carousel-item-label">MOMENT</div>
@@ -3148,6 +3156,12 @@
             goalsContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
             
+            ${data.intro ? `
+                <p style="font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 60px; text-align: justify; letter-spacing: -0.01em; max-width: 1000px;">
+                    ${data.intro}
+                </p>
+            ` : ''}
+            
             <div class="timeline">
                     ${data.content.years.map(yearData => `
                 <div class="timeline-item">
@@ -3342,7 +3356,7 @@
                                 return `
                                     <a href="${partner.url}" target="_blank" rel="noopener noreferrer" 
                                        style="${baseStyle} text-decoration: none; cursor: pointer;"
-                                       onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--accent)'; this.style.color='var(--black)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(255,107,0,0.3)';"
+                                       onmouseover="this.style.borderColor='var(--accent)'; this.style.background='var(--accent)'; this.style.color='var(--black)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 16px rgba(var(--accent-rgb), 0.3)';"
                                        onmouseout="this.style.borderColor='var(--black)'; this.style.background='var(--black)'; this.style.color='var(--white)'; this.style.transform='translateY(0)'; this.style.boxShadow='none';">
                                         ${partner.name}
                                     </a>
@@ -3626,8 +3640,93 @@
             lastScrollTop = scrollTop;
         });
         
+        // Theme system
+        const themes = {
+            orange: {
+                accent: '#ff6b00',
+                accentRgb: '255, 107, 0',
+                accentLight: '#ff8c00',
+                accentLighter: '#ffa500'
+            },
+            blue: {
+                accent: '#0066ff',
+                accentRgb: '0, 102, 255',
+                accentLight: '#3399ff',
+                accentLighter: '#66b3ff'
+            },
+            green: {
+                accent: '#00cc66',
+                accentRgb: '0, 204, 102',
+                accentLight: '#00e673',
+                accentLighter: '#33ff99'
+            },
+            purple: {
+                accent: '#9933ff',
+                accentRgb: '153, 51, 255',
+                accentLight: '#b366ff',
+                accentLighter: '#cc99ff'
+            },
+            red: {
+                accent: '#ff3333',
+                accentRgb: '255, 51, 51',
+                accentLight: '#ff5555',
+                accentLighter: '#ff8888'
+            }
+        };
+        
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            if (!theme) return;
+            
+            const root = document.documentElement;
+            
+            // Apply color variables
+            root.style.setProperty('--accent', theme.accent);
+            root.style.setProperty('--accent-rgb', theme.accentRgb);
+            root.style.setProperty('--accent-light', theme.accentLight);
+            root.style.setProperty('--accent-lighter', theme.accentLighter);
+            
+            // Update gradients
+            root.style.setProperty('--gradient-primary', 
+                `linear-gradient(90deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-hero', 
+                `linear-gradient(135deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text', 
+                `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-underline', 
+                `linear-gradient(90deg, ${theme.accent} 0%, ${theme.accentLight} 50%, ${theme.accentLighter} 100%)`);
+            
+            // Save theme to localStorage
+            localStorage.setItem('selectedTheme', themeName);
+            
+            console.log(`Theme changed to: ${themeName}`);
+        }
+        
+        function initTheme() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const themeParam = urlParams.get('theme');
+            
+            if (themeParam && themes[themeParam]) {
+                applyTheme(themeParam);
+                return;
+            }
+            
+            // Check localStorage
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme && themes[savedTheme]) {
+                applyTheme(savedTheme);
+                return;
+            }
+            
+            // Default theme is already in CSS (orange)
+        }
+        
         // Initialize app
         async function init() {
+            // Apply theme first
+            initTheme();
+            
             await initNavigation();
             await renderHome();
             await renderProjects();
