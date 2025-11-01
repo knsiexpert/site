@@ -1,16 +1,28 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.7.1** | Premium 2025 Design — Animated Gradient Navigation & Hero
+**Wersja: 3.9.0** | Premium 2025 Design — Virgil Abloh Style Gallery
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z designem inspirowanym Virgil Abloh.
 
-## ✨ Nowe w wersji 3.7.1
+## ✨ Nowe w wersji 3.9.0
 
-- 🎨 **Gradient Navigation Logo** — animowany gradient na tekście "KNSI E-XPERT" w nawigacji
-- 🌟 **Smooth Animation** — 10s continuous gradient shift
-- 💫 **Hover Effects** — elevated drop-shadow & micro-animation
-- 💪 **Ultra-bold Typography** — font-weight: 800, refined spacing
-- ✅ **Professional Look** — jednolity styl z hero, mega profesjonalnie
+- 🎨 **Virgil Abloh Style Images** — industrial aesthetic z etykietami "IMAGE"
+- 🔲 **Double Border Frame** — offset shadow border effect
+- 🔢 **Numbered Tags** — pomarańczowe numery na każdym obrazku
+- ➡️ **Diagonal Arrow Indicator** — ikona strzałki w rogu (45° rotation)
+- 🎭 **Diagonal Stripe Overlay** — repeating pattern na dole obrazka
+- 🎬 **Advanced Hover States** — inverse colors, transforms, scale effects
+- 📷 **Grayscale Filter** — 30% grayscale, full color on hover
+- ⚡ **Label Animations** — "IMAGE" label z offset transform
+
+## 🔥 Wersja 3.8.1
+
+- 🎨 **Refined Gallery Design** — single images limited to 500px width, more elegant
+- 🖼️ **Improved Image Loading** — crossorigin + referrerpolicy for imgur compatibility
+- 💫 **Enhanced Lightbox** — zoom animations, blur backdrop, circular close button
+- ⚡ **Error Handling** — graceful fallback for unavailable images
+- 🎯 **Better Aesthetics** — subtle shadows, "PODGLĄD" label on hover
+- ⌨️ **Keyboard Support** — press Escape to close lightbox
 
 ## 🔥 Wersja 3.7.0
 
@@ -45,23 +57,22 @@ site/
 
 Strona wymaga serwera HTTP (pliki JSON nie mogą być ładowane bezpośrednio z systemu plików).
 
-**Opcja 1: NPM (zalecane)**
+**Opcja 1: NPM (zalecane)** ✨
 ```bash
 npm install  # tylko pierwszy raz
-npm start
+npm start    # automatycznie otwiera przeglądarkę
 ```
 
-**Opcja 2: Python 3**
+**Opcja 2: npx (bez instalacji)**
+```bash
+npx http-server -p 8000 -o
+```
+
+**Opcja 3: Python 3**
 ```bash
 python -m http.server 8000
+# Następnie otwórz: http://localhost:8000
 ```
-
-**Opcja 3: Node.js (npx)**
-```bash
-npx http-server -p 8000
-```
-
-Następnie otwórz: `http://localhost:8000`
 
 ### Edycja treści
 
@@ -94,7 +105,7 @@ Strona wykorzystuje hash routing — każda sekcja ma własny adres URL:
 ### Przykład użycia:
 ```html
 <!-- Link do zespołu -->
-<a href="https://yoursite.github.io/knmiexpert/#team">Nasz zespół</a>
+<a href="https://knsiexpert.github.io/site/#team">Nasz zespół</a>
 ```
 
 ## 🌐 Deployment na GitHub Pages
@@ -105,7 +116,7 @@ Strona wykorzystuje hash routing — każda sekcja ma własny adres URL:
 git init
 git add .
 git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR_USERNAME/knmiexpert.git
+git remote add origin https://github.com/knsiexpert/site.git
 git push -u origin main
 ```
 
@@ -125,7 +136,7 @@ npm run deploy
 
 ### Szczegóły
 
-Zobacz pełną instrukcję: [DEPLOYMENT.md](DEPLOYMENT.md)
+Zobacz pełną instrukcję: [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)
 
 ### Własna domena
 
@@ -146,7 +157,7 @@ Strona wykorzystuje design inspirowany **Virgilem Ablohem** — minimalizmem, in
 - **Numbering system** (01, 02, 03...) w kartach
 - **Logo SVG** zintegrowane w nawigację
 
-Więcej szczegółów: [DESIGN_NOTES.md](DESIGN_NOTES.md)
+Więcej szczegółów: [docs/DESIGN_NOTES.md](docs/DESIGN_NOTES.md)
 
 ### Kolory
 

@@ -234,7 +234,12 @@ Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy pl
 Po edycji plików JSON:
 
 1. Zapisz plik
-2. Przetestuj lokalnie: `python -m http.server 8000`
+2. Przetestuj lokalnie:
+   ```bash
+   npm start
+   # lub: npx http-server -p 8000 -o
+   # lub: python -m http.server 8000
+   ```
 3. Otwórz http://localhost:8000 i sprawdź zmiany
 4. Jeśli wszystko działa:
    ```bash

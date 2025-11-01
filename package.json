@@ -1,18 +1,18 @@
 {
   "name": "knsi-e-xpert-website",
-  "version": "3.7.1",
+  "version": "3.9.0",
   "description": "KNSI E-XPERT — IT DLA LUDZI. Strona Koła Naukowego Systemów Informatycznych E-XPERT",
-  "homepage": "https://pporzuczek.github.io/knmiexpert",
+  "homepage": "https://knsiexpert.github.io/site",
   "scripts": {
-    "start": "python -m http.server 8000",
-    "dev": "python -m http.server 8000",
+    "start": "npx http-server -p 8000 -o",
+    "dev": "npx http-server -p 8000 -o",
     "predeploy": "echo Preparing for deployment...",
     "deploy": "gh-pages -d .",
     "deploy:clean": "gh-pages -d . --remove \"*.md\" --add"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pporzuczek/knmiexpert.git"
+    "url": "git+https://github.com/knsiexpert/site.git"
   },
   "keywords": [
     "knsi",
@@ -25,10 +25,11 @@
   "author": "KNSI E-XPERT",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pporzuczek/knmiexpert/issues"
+    "url": "https://github.com/knsiexpert/site/issues"
   },
   "devDependencies": {
-    "gh-pages": "^6.1.0"
+    "gh-pages": "^6.1.0",
+    "http-server": "^14.1.1"
   },
   "engines": {
     "node": ">=14.0.0",

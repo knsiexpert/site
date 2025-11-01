@@ -79,15 +79,20 @@ A:
 4. Stwórz funkcję renderującą w JavaScript
 
 **Q: Strona nie ładuje danych lokalnie?**
-A: Musisz użyć serwera HTTP (nie można otworzyć pliku bezpośrednio z systemu plików). Użyj: `python -m http.server 8000`
+A: Musisz użyć serwera HTTP (nie można otworzyć pliku bezpośrednio z systemu plików). Użyj: 
+```bash
+npm start
+# lub: npx http-server -p 8000 -o
+# lub: python -m http.server 8000
+```
 
 ## 📞 Kontakt
 
 W razie pytań lub problemów:
 - Opiekun koła: **Piotr Porzuczek**
-- Repozytorium: [GitHub](https://github.com)
+- Repozytorium: [GitHub](https://github.com/knsiexpert/site)
 
 ---
 
-**Ostatnia aktualizacja:** 31 października 2024
+**Ostatnia aktualizacja:** 1 listopada 2025
 

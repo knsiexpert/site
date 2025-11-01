@@ -5,12 +5,12 @@
 ### Development
 
 ```bash
-# Uruchom lokalny serwer (Python)
+# Uruchom lokalny serwer (npx http-server)
 npm start
 # lub
 npm run dev
 
-# Otwórz: http://localhost:8000
+# Automatycznie otwiera przeglądarkę na: http://localhost:8000
 ```
 
 ### Deployment
@@ -29,8 +29,9 @@ npm run deploy:clean
 ## Jak to działa?
 
 ### `npm start` / `npm run dev`
-- Uruchamia Python HTTP server na porcie 8000
-- Wymaga Python 3 w systemie
+- Uruchamia npx http-server na porcie 8000
+- Automatycznie otwiera przeglądarkę (flaga `-o`)
+- Nie wymaga instalacji zależności (npx pobiera na bieżąco)
 - Przydatne do lokalnego testowania
 
 ### `npm run deploy`

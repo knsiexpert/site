@@ -20,7 +20,7 @@ git commit -m "Initial commit - KNSI E-XPERT website"
 ### 2. Utworzenie repozytorium na GitHub
 
 1. Przejdź na https://github.com/new
-2. Nazwa repozytorium: `knmiexpert` (lub dowolna inna)
+2. Nazwa repozytorium: `site` (lub dowolna inna)
 3. Ustaw jako **Public**
 4. **Nie** dodawaj README, .gitignore ani licencji (już mamy lokalne)
 5. Kliknij "Create repository"
@@ -28,8 +28,8 @@ git commit -m "Initial commit - KNSI E-XPERT website"
 ### 3. Połączenie z GitHub
 
 ```bash
-# Dodaj remote (zastąp YOUR_USERNAME swoim nickiem)
-git remote add origin https://github.com/YOUR_USERNAME/knmiexpert.git
+# Dodaj remote (przykład dla organizacji knsiexpert)
+git remote add origin https://github.com/knsiexpert/site.git
 
 # Ustaw główną gałąź
 git branch -M main
@@ -51,7 +51,7 @@ git push -u origin main
 Od teraz przy każdym `git push` do `main`:
 - GitHub Actions automatycznie zbuduje i wdroży stronę
 - Zobacz status w zakładce **Actions** na GitHub
-- Strona będzie dostępna pod: `https://YOUR_USERNAME.github.io/knmiexpert/`
+- Strona będzie dostępna pod: `https://knsiexpert.github.io/site/`
 
 ---
 
@@ -191,11 +191,14 @@ Jeśli masz domenę e-xpert.pl:
 Zawsze testuj zmiany lokalnie przed wdrożeniem:
 
 ```bash
-# Python
-python -m http.server 8000
+# NPM (zalecane) - automatycznie otwiera przeglądarkę
+npm start
 
-# Lub Node.js
-npx http-server -p 8000
+# Lub npx (bez instalacji)
+npx http-server -p 8000 -o
+
+# Lub Python
+python -m http.server 8000
 ```
 
 Następnie otwórz: http://localhost:8000
