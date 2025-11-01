@@ -28,8 +28,12 @@
       "research": "Prace badawcze nad metodykami zarządzania projektami IT, implementacją nowych technologii oraz przygotowywanie publikacji naukowych."
     },
     "industry_collaboration": {
-      "description": "Koło współpracowało z wieloma firmami z branży IT, dzięki czemu nasi członkowie zdobywali praktyczne doświadczenie poprzez staże, projekty i warsztaty.",
+      "description": "Koło współpracowało z wieloma firmami z branży IT oraz Uniwersytetem Gdańskim, dzięki czemu nasi członkowie zdobywali praktyczne doświadczenie poprzez staże, projekty i warsztaty.",
       "partners": [
+        {
+          "name": "Uniwersytet Gdański",
+          "url": "https://ug.edu.pl"
+        },
         {
           "name": "Madkom",
           "url": "https://madkom.pl"

@@ -1,5 +1,343 @@
 # Changelog
 
+## [3.20.3] - 2025-01-01
+
+### 🔧 404.html Localhost Fix
+
+#### Automatyczna detekcja base path w 404.html
+
+**Problem:**
+Plik `404.html` miał hardcoded base path `/site/` dla GitHub Pages, co powodowało błędne przekierowania lokalnie:
+
+```
+Lokalnie: http://localhost:8000/activity
+Przekierowywało na: http://localhost:8000/site/index.html?redirect=%2Factivity
+```
+
+**Kod PRZED:**
+```javascript
+// 404.html - hardcoded basePath
+const path = window.location.pathname;
+const basePath = '/site'; // Problem: zawsze /site/
+
+if (path !== basePath + '/' && path !== basePath + '/index.html') {
+    window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(path));
+}
+```
+
+**Kod PO:**
+```javascript
+// 404.html - automatyczna detekcja
+const path = window.location.pathname;
+
+// Wykrywa czy jest /site/ w ścieżce
+const basePath = path.includes('/site/') ? '/site' : '';
+
+// Sprawdza czy nie jest już na index.html
+const isIndex = path === basePath + '/' || path === basePath + '/index.html';
+
+if (!isIndex) {
+    window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(path));
+}
+```
+
+**Jak to działa teraz:**
+
+| Środowisko | URL | Wykryty basePath | Przekierowanie |
+|------------|-----|------------------|----------------|
+| **Localhost** | `http://localhost:8000/activity` | `` (pusty) | `/index.html?redirect=%2Factivity` |
+| **GitHub Pages** | `https://knsiexpert.github.io/site/projekty` | `/site` | `/site/index.html?redirect=%2Fsite%2Fprojekty` |
+
+**Efekt:**
+- ✅ **Localhost działa** — nie dodaje `/site/` lokalnie
+- ✅ **GitHub Pages działa** — dodaje `/site/` na produkcji
+- ✅ **Automatyczna detekcja** — wykrywa środowisko po URL
+- ✅ **Uniwersalne rozwiązanie** — działa wszędzie
+
+## [3.20.2] - 2025-01-01
+
+### 🐛 Routing Bugfix
+
+#### Naprawiono SyntaxError w funkcji initNavigation()
+
+**Problem:**
+```
+Uncaught SyntaxError: Identifier 'basePath' has already been declared (at (index):3518:19)
+```
+
+W funkcji `initNavigation()` zmienna `basePath` była deklarowana dwukrotnie w tym samym zakresie:
+
+```javascript
+// PRZED - błąd
+async function initNavigation() {
+    // ...
+    
+    // Linia 3505 - pierwsza deklaracja
+    const basePath = getBasePath();
+    logoContainer.innerHTML = `...`;
+    
+    // Linia 3518 - druga deklaracja (BŁĄD!)
+    const basePath = getBasePath();
+    navLinks.innerHTML = `...`;
+}
+```
+
+**Rozwiązanie:**
+Usunięto drugą deklarację `const basePath`, używając tej samej zmiennej:
+
+```javascript
+// PO - poprawione
+async function initNavigation() {
+    // ...
+    
+    // Tylko jedna deklaracja
+    const basePath = getBasePath();
+    logoContainer.innerHTML = `...`;
+    
+    // Używa tej samej zmiennej
+    navLinks.innerHTML = visibleSections.map(section => {
+        const href = section.id === 'home' ? basePath + '/' : basePath + '/' + section.id;
+        // ...
+    });
+}
+```
+
+**Efekt:**
+- ✅ SyntaxError naprawiony
+- ✅ Routing działa poprawnie
+- ✅ Nawigacja renderuje się bez błędów
+- ✅ Zmienna `basePath` zadeklarowana tylko raz w zakresie funkcji
+
+## [3.20.1] - 2025-01-01
+
+### 🖱️ UX Improvements & Content Updates
+
+#### Poprawki UX, styling i aktualizacja treści
+
+**Zmiany:**
+
+### 1. Cursor styling dla paragrafów
+
+```css
+p {
+    cursor: default;
+}
+```
+
+**Dlaczego:**
+Domyślny kursor `text` dla paragrafów może sugerować, że tekst jest edytowalny. `cursor: default` jest bardziej odpowiedni dla statycznych treści.
+
+### 2. Ukryte style zaznaczenia tekstu
+
+```css
+::selection {
+    background: transparent;
+    color: inherit;
+}
+
+::-moz-selection {
+    background: transparent;
+    color: inherit;
+}
+```
+
+**Efekt:**
+Zaznaczenie tekstu nie zmienia koloru tła ani tekstu, co daje czystszy wygląd i bardziej minimalistyczne doświadczenie.
+
+### 3. Uniwersytet Gdański w współpracy
+
+**Zmiany w `data/activity.json`:**
+
+```json
+{
+  "industry_collaboration": {
+    "description": "Koło współpracowało z wieloma firmami z branży IT oraz Uniwersytetem Gdańskim...",
+    "partners": [
+      {
+        "name": "Uniwersytet Gdański",
+        "url": "https://ug.edu.pl"
+      },
+      {
+        "name": "Madkom",
+        "url": "https://madkom.pl"
+      },
+      // ... pozostali partnerzy
+    ]
+  }
+}
+```
+
+**Efekt:**
+Uniwersytet Gdański pojawia się jako pierwszy partner na liście współpracy, podkreślając akademicką afiliację koła.
+
+### 4. Tytuł "GALERIA" w stylu pozostałych sekcji
+
+**Zmiana w `index.html`:**
+
+```javascript
+// PRZED
+<h2>${data.title}</h2>
+
+// PO
+<h2>"${data.title.toUpperCase()}"</h2>
+```
+
+**Efekt:**
+```
+PRZED: Galeria
+PO:    "GALERIA"
+```
+
+Tytuł galerii jest teraz spójny z innymi sekcjami jak "DZIAŁALNOŚĆ", "PROJEKTY", itp.
+
+**Podsumowanie zmian:**
+- ✅ Lepszy UX — właściwy kursor dla paragrafów
+- ✅ Minimalistyczne zaznaczenie — transparentne selection
+- ✅ Kompletna lista partnerów — z Uniwersytetem Gdańskim
+- ✅ Spójny styling — wszystkie tytuły sekcji w tym samym stylu
+
+## [3.20.0] - 2025-01-01
+
+### 🔗 Clean URLs without Hashtags
+
+#### Routing bez hashtagów używając History API
+
+**Problem:**
+Strona używała hash-based routingu (`/#home`, `/#projekty`), co jest nieatrakcyjne wizualnie i mniej przyjazne dla SEO.
+
+**Rozwiązanie:**
+Implementacja routingu opartego na History API z czystymi URL-ami i plikiem 404.html dla GitHub Pages.
+
+**Główne zmiany:**
+
+### 1. Nowe funkcje routingu w `index.html`
+
+```javascript
+// Funkcja wykrywająca base path (dla GitHub Pages subdirectory)
+function getBasePath() {
+    const path = window.location.pathname;
+    if (path.includes('/site/')) {
+        return '/site';
+    }
+    return '';
+}
+
+// Nowa funkcja showSection z History API
+function showSection(sectionId, addToHistory = true) {
+    const basePath = getBasePath();
+    const newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
+    
+    // Użycie pushState zamiast hash
+    if (addToHistory && window.location.pathname !== newPath) {
+        history.pushState({ section: sectionId }, '', newPath);
+    }
+    
+    // ... reszta logiki
+}
+
+// Nowa funkcja handleRouteChange (zamiast handleHashChange)
+function handleRouteChange() {
+    const basePath = getBasePath();
+    let path = window.location.pathname;
+    
+    // Obsługa przekierowania z 404.html
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirect = urlParams.get('redirect');
+    if (redirect) {
+        path = redirect;
+        const cleanPath = redirect === basePath + '/' || redirect === '/' ? basePath + '/' : redirect;
+        history.replaceState({ section: path }, '', cleanPath);
+    }
+    
+    // Parsowanie ścieżki
+    if (basePath && path.startsWith(basePath)) {
+        path = path.substring(basePath.length);
+    }
+    path = path.replace(/^\/|\/$/g, '');
+    
+    const sectionId = path || 'home';
+    showSection(sectionId, false);
+}
+```
+
+### 2. Zmiana listenerów
+
+```javascript
+// PRZED
+window.addEventListener('hashchange', handleHashChange);
+handleHashChange();
+
+// PO
+window.addEventListener('popstate', handleRouteChange);
+handleRouteChange();
+```
+
+### 3. Zmiana linków nawigacyjnych
+
+```javascript
+// PRZED
+<a href="#${section.id}">${section.title}</a>
+
+// PO
+const href = section.id === 'home' ? basePath + '/' : basePath + '/' + section.id;
+<a href="${href}" onclick="event.preventDefault(); showSection('${section.id}');">${section.title}</a>
+```
+
+### 4. Nowy plik `404.html` dla GitHub Pages
+
+```html
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        const path = window.location.pathname;
+        const basePath = '/site';
+        
+        if (path !== basePath + '/' && path !== basePath + '/index.html') {
+            window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(path));
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
+```
+
+**Jak to działa:**
+
+1. **Użytkownik klika link** → `event.preventDefault()` zatrzymuje domyślne zachowanie
+2. **`showSection()` jest wywoływane** → zmienia URL przez `history.pushState()`
+3. **Sekcja jest pokazywana** → bez przeładowania strony
+4. **Przyciski wstecz/naprzód** → obsługiwane przez `popstate` event
+5. **Bezpośredni link (np. `/site/projekty`)** → GitHub Pages pokazuje 404.html
+6. **404.html przekierowuje** → do `index.html?redirect=/site/projekty`
+7. **`handleRouteChange()` czyta redirect** → czyści URL i pokazuje sekcję
+
+**Przykłady URL:**
+
+| Sekcja | PRZED | PO |
+|--------|-------|-----|
+| Start | `https://knsiexpert.github.io/site/#home` | `https://knsiexpert.github.io/site/` |
+| Projekty | `https://knsiexpert.github.io/site/#projekty` | `https://knsiexpert.github.io/site/projekty` |
+| Galeria | `https://knsiexpert.github.io/site/#galeria` | `https://knsiexpert.github.io/site/galeria` |
+| Statut | `https://knsiexpert.github.io/site/#statut` | `https://knsiexpert.github.io/site/statut` |
+
+**Efekt:**
+- ✅ **Czyste URL-e** — brak `#` w adresach
+- ✅ **SEO friendly** — wyszukiwarki lepiej indeksują czyste URL-e
+- ✅ **Lepszy UX** — można kopiować i udostępniać ładne linki
+- ✅ **Przyciski przeglądarki** — wstecz/naprzód działają poprawnie
+- ✅ **Bezpośrednie linki** — działa dzięki 404.html
+- ✅ **Base path support** — działa w podkatalogach GitHub Pages
+
+**Kompatybilność:**
+- ✅ Chrome/Edge/Firefox/Safari (wszystkie nowoczesne przeglądarki)
+- ✅ GitHub Pages (wymaga pliku 404.html)
+- ✅ Localhost (działa z http-server)
+
 ## [3.19.3] - 2025-01-01
 
 ### 📏 Achievements Cards Alignment

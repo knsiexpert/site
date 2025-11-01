@@ -39,6 +39,21 @@
             font-weight: 400;
         }
         
+        p {
+            cursor: default;
+        }
+        
+        /* Hide text selection styles */
+        ::selection {
+            background: transparent;
+            color: inherit;
+        }
+        
+        ::-moz-selection {
+            background: transparent;
+            color: inherit;
+        }
+        
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -3190,7 +3205,7 @@
             
             const galleryContent = document.getElementById('galleryContent');
             galleryContent.innerHTML = `
-                <h2>${data.title}</h2>
+                <h2>"${data.title.toUpperCase()}"</h2>
                 <p style="font-size: 16px; color: var(--gray); margin-bottom: 20px;">${data.description}</p>
                 <div class="gallery-grid">
                     ${data.images.map((image, index) => `
@@ -3429,9 +3444,11 @@
                     <div class="footer-section">
                         <h4>${data.navigation.title}</h4>
                         <ul class="footer-links">
-                            ${data.navigation.links.map(link => `
-                                <li><a href="#${link.section}" onclick="showSection('${link.section}'); return false;">${link.title}</a></li>
-                            `).join('')}
+                            ${data.navigation.links.map(link => {
+                                const basePath = getBasePath();
+                                const href = link.section === 'home' ? basePath + '/' : basePath + '/' + link.section;
+                                return `<li><a href="${href}" onclick="event.preventDefault(); showSection('${link.section}');">${link.title}</a></li>`;
+                            }).join('')}
                         </ul>
                     </div>
                     
@@ -3457,9 +3474,14 @@
                 <div class="footer-bottom">
                     <p>${data.bottom.copyright}</p>
                     <div class="footer-credits">
-                        ${data.bottom.credits.map(credit => `
-                            <a href="${credit.url}"${credit.external ? ' target="_blank" rel="noopener"' : ' onclick="showSection(\'home\'); return false;"'}>${credit.title}</a>
-                        `).join('')}
+                        ${data.bottom.credits.map(credit => {
+                            if (credit.external) {
+                                return `<a href="${credit.url}" target="_blank" rel="noopener">${credit.title}</a>`;
+                            } else {
+                                const basePath = getBasePath();
+                                return `<a href="${basePath}/" onclick="event.preventDefault(); showSection('home');">${credit.title}</a>`;
+                            }
+                        }).join('')}
                     </div>
                 </div>
             `;
@@ -3480,8 +3502,9 @@
             document.title = navData.site.name + ' — ' + navData.site.tagline;
             
             // Add SVG logo with home link
+            const basePath = getBasePath();
             logoContainer.innerHTML = `
-                <a href="#home" style="display: flex; align-items: center; gap: 20px; text-decoration: none; color: inherit;">
+                <a href="${basePath}/" onclick="event.preventDefault(); showSection('home');" style="display: flex; align-items: center; gap: 20px; text-decoration: none; color: inherit;">
                     ${navData.site.logo_svg}
                     <span class="logo-text">${navData.site.short_name}</span>
                 </a>
@@ -3493,16 +3516,31 @@
                 .sort((a, b) => a.order - b.order);
             
             navLinks.innerHTML = visibleSections.map(section => {
-                return `<li><a href="#${section.id}" title="${section.description}">${section.title}</a></li>`;
+                const href = section.id === 'home' ? basePath + '/' : basePath + '/' + section.id;
+                return `<li><a href="${href}" onclick="event.preventDefault(); showSection('${section.id}');" title="${section.description}">${section.title}</a></li>`;
             }).join('');
         }
         
-        // Show section
-        function showSection(sectionId) {
-            // Update hash without triggering hashchange
-            if (window.location.hash !== '#' + sectionId) {
-                history.pushState(null, null, '#' + sectionId);
+        // Get base path (for GitHub Pages subdirectory support)
+        function getBasePath() {
+            const path = window.location.pathname;
+            // For GitHub Pages: /site/
+            if (path.includes('/site/')) {
+                return '/site';
             }
+            return '';
+        }
+        
+        // Show section
+        function showSection(sectionId, addToHistory = true) {
+            const basePath = getBasePath();
+            const newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
+            
+            // Update URL without triggering popstate
+            if (addToHistory && window.location.pathname !== newPath) {
+                history.pushState({ section: sectionId }, '', newPath);
+            }
+            
             // Hide all sections
             const sections = document.querySelectorAll('.section');
             sections.forEach(section => {
@@ -3513,8 +3551,6 @@
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active');
-                // Scroll to top of page when changing sections
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
             
             // Close mobile menu if open
@@ -3527,7 +3563,9 @@
             const navLinks = document.querySelectorAll('.nav-links a');
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + sectionId) {
+                const linkPath = link.getAttribute('href');
+                const linkSection = linkPath === basePath + '/' ? 'home' : linkPath.replace(basePath + '/', '');
+                if (linkSection === sectionId) {
                     link.classList.add('active');
                 }
             });
@@ -3539,13 +3577,33 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
-        // Handle hash change
-        function handleHashChange() {
-            let hash = window.location.hash.slice(1); // Remove #
-            if (!hash || hash === '') {
-                hash = 'home';
+        // Handle route change
+        function handleRouteChange() {
+            const basePath = getBasePath();
+            let path = window.location.pathname;
+            
+            // Check for redirect parameter from 404.html
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (redirect) {
+                path = redirect;
+                // Clean URL by replacing the current state
+                const cleanPath = redirect === basePath + '/' || redirect === '/' ? basePath + '/' : redirect;
+                history.replaceState({ section: path }, '', cleanPath);
             }
-            showSection(hash);
+            
+            // Remove base path if present
+            if (basePath && path.startsWith(basePath)) {
+                path = path.substring(basePath.length);
+            }
+            
+            // Remove leading and trailing slashes
+            path = path.replace(/^\/|\/$/g, '');
+            
+            // Default to home if empty
+            const sectionId = path || 'home';
+            
+            showSection(sectionId, false);
         }
         
         function toggleMenu() {
@@ -3580,11 +3638,11 @@
             await renderConstitution();
             await renderFooter();
             
-            // Set up hash routing
-            window.addEventListener('hashchange', handleHashChange);
+            // Set up routing
+            window.addEventListener('popstate', handleRouteChange);
             
-            // Handle initial hash
-            handleHashChange();
+            // Handle initial route
+            handleRouteChange();
         }
         
         // Load data when page loads

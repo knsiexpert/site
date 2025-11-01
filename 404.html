@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages SPA redirect
+        // This script takes the current page path and redirects to index.html
+        // with the path as a query parameter that index.html will use to 
+        // show the correct section
+        
+        const path = window.location.pathname;
+        
+        // Detect base path automatically
+        // For GitHub Pages: /site/, for localhost: /
+        const basePath = path.includes('/site/') ? '/site' : '';
+        
+        // Check if we're not already on index.html
+        const isIndex = path === basePath + '/' || path === basePath + '/index.html';
+        
+        // Redirect to index.html, preserving the path
+        if (!isIndex) {
+            window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(path));
+        }
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
+

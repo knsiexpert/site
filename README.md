@@ -1,8 +1,35 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.19.3** | Achievements Cards Alignment
+**Wersja: 3.20.3** | 404.html Localhost Fix
 
 Strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem.
+
+## ✨ Nowe w wersji 3.20.3
+
+- 🔧 **404.html poprawiony** — automatyczna detekcja base path
+- 💻 **Localhost działa** — przekierowania działają lokalnie i na GitHub Pages
+- ✅ **Uniwersalne rozwiązanie** — wykrywa `/site/` lub `/` automatycznie
+
+## ✨ Nowe w wersji 3.20.2
+
+- 🐛 **Poprawka błędu** — usunięto duplikowaną deklarację zmiennej `basePath`
+- ✅ **SyntaxError naprawiony** — funkcja `initNavigation()` działa poprawnie
+
+## ✨ Nowe w wersji 3.20.1
+
+- 🖱️ **Cursor styling** — paragrafów mają teraz `cursor: default`
+- 🎨 **Ukryte zaznaczenie** — transparentne style `::selection` dla lepszego UX
+- 🏛️ **Uniwersytet Gdański** — dodany jako partner współpracy w działalności
+- 🔤 **"GALERIA"** — tytuł w stylu reszty (wielkie litery z apostrofami)
+
+## ✨ Nowe w wersji 3.20.0
+
+- 🔗 **Czyste URL-e** — brak hashtagów, routing używa History API
+- 📍 **Przyjazne linki** — `/projekty` zamiast `/#projekty`
+- 🔄 **404.html dla GitHub Pages** — prawidłowe przekierowania dla SPA
+- 🌐 **SEO friendly** — lepsze URLs dla wyszukiwarek
+- ⚡ **Popstate API** — nowoczesny routing z przyciskami wstecz/naprzód przeglądarki
+- 🎯 **Base path support** — działa w podkatalogach (np. `/site/`)
 
 ## ✨ Nowe w wersji 3.19.3
 
