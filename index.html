@@ -1096,7 +1096,7 @@
             text-transform: none;
             letter-spacing: -0.025em;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1;
             position: relative;
             padding-bottom: 25px;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif;
@@ -1105,6 +1105,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         h2::after {
@@ -3639,9 +3642,11 @@
                         </div>
                     ` : ''}
                     
-                    <h2 style="margin-top: 120px;">Nasze osiągnięcia</h2>
-                    <div class="highlights-grid">
-                        ${data.highlights.map((highlight, index) => `
+                    ${data.highlights ? `
+                        <h2>${data.highlights.title}</h2>
+                        <p style="font-size: 18px; margin-bottom: 80px; line-height: 1.8;">${data.highlights.lead}</p>
+                        <div class="highlights-grid">
+                            ${data.highlights.items.map((highlight, index) => `
                             <div class="highlight-card" data-index="${String(index + 1).padStart(2, '0')}">
                                 <h3>${highlight.title}</h3>
                                 <p>${highlight.text}</p>
@@ -3662,8 +3667,9 @@
             </div>
                                 ` : ''}
                 </div>
-                        `).join('')}
-                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
             </div>
             `;
             
