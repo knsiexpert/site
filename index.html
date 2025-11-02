@@ -162,7 +162,7 @@
             display: flex;
             gap: 12px;
             align-items: center;
-            z-index: 10;
+            z-index: 999;
         }
         
         .theme-btn {
@@ -1096,7 +1096,7 @@
             text-transform: none;
             letter-spacing: -0.025em;
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1;
             position: relative;
             padding-bottom: 25px;
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', 'Helvetica Neue', sans-serif;
@@ -1105,6 +1105,9 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         h2::after {
@@ -2241,6 +2244,10 @@
                 border-bottom: 1px solid var(--black);
             }
             
+            .dark-mode .nav-links {
+                background: var(--black);
+            }
+
             .nav-links a {
                 padding: 12px 0;
                 font-size: 11px;
@@ -2443,8 +2450,8 @@
             
             .carousel-group {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto;
-                gap: 50px;
+                grid-template-rows: repeat(3, 1fr);
+                gap: 30px;
                 padding: 0 15px;
             }
             
@@ -3590,12 +3597,12 @@
                                     <div class="carousel-wrapper-inner">
                                         <div class="carousel-track" id="carouselTrack">
                                     ${(() => {
-                                        // Use only 3 images on mobile, all images on desktop
+                                        // Use all images on both mobile and desktop
                                         const isMobile = window.innerWidth <= 768;
-                                        const imagesToUse = isMobile ? data.us.images.slice(0, 3) : data.us.images;
+                                        const imagesToUse = data.us.images;
                                         
                                         // Create groups of 6 images (2 rows x 3 columns) on desktop
-                                        // On mobile, display 3 images in 1 row
+                                        // On mobile, display 3 images in 1 row per group
                                         const groups = [];
                                         const itemsPerGroup = isMobile ? 3 : 6;
                                         
@@ -3635,9 +3642,11 @@
                         </div>
                     ` : ''}
                     
-                    <h2 style="margin-top: 120px;">Nasze osiągnięcia</h2>
-                    <div class="highlights-grid">
-                        ${data.highlights.map((highlight, index) => `
+                    ${data.highlights ? `
+                        <h2>${data.highlights.title}</h2>
+                        <p style="font-size: 18px; margin-bottom: 80px; line-height: 1.8;">${data.highlights.lead}</p>
+                        <div class="highlights-grid">
+                            ${data.highlights.items.map((highlight, index) => `
                             <div class="highlight-card" data-index="${String(index + 1).padStart(2, '0')}">
                                 <h3>${highlight.title}</h3>
                                 <p>${highlight.text}</p>
@@ -3658,8 +3667,9 @@
             </div>
                                 ` : ''}
                 </div>
-                        `).join('')}
-                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
             </div>
             `;
             
