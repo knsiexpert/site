@@ -1,5 +1,5 @@
 {
-  "title": "Zrealizowane cele koła",
+  "title": "Zrealizowane cele",
   "intro": "Od początku swojego istnienia w 2001 roku, misją Koła Naukowego Systemów Informatycznych E-XPERT jest połączenie wiedzy z praktyką – stworzenie miejsca, w którym studenci nie tylko uczą się o technologiach, ale sami je budują. Jako część międzynarodowej organizacji Association for Information Systems Student Chapters, realizujemy projekty łączące technologię z odpowiedzialnością społeczną, zdobywamy międzynarodowe wyróżnienia i rozwijamy kulturę współpracy. Nasze działania to nie tylko kod – to sposób rozumienia świata i zmieniania go na lepsze poprzez innowacje, które odpowiadają na realne potrzeby społeczne i technologiczne.",
   "content": {
     "years": [
@@ -10,6 +10,10 @@
           "Zmiana architektury technicznej – porzucenie przestarzałego WordPressa na rzecz nowoczesnego rozwiązania: statyczna strona z dynamicznym ładowaniem treści z JSON, hash routing, automatyczny deployment via GitHub Actions.",
           "Nowy design system – implementacja nowoczesnego, minimalistycznego designu z paletą kolorów #1c1b22/#f3f3f7, interaktywnymi animacjami i responsywnym layoutem.",
           "Open source – otwarcie repozytorium kodu źródłowego na GitHub, umożliwienie współpracy i transparentności rozwoju strony."
+        ],
+        "images": [
+          "https://i.imgur.com/xuToeWZ.jpeg",
+          "https://i.imgur.com/smEFjWc.jpeg"
         ]
       },
       {
@@ -19,13 +23,23 @@
           "Badania i analiza procesu wyboru kierunku studiów w Polsce – kompleksowe badania z 50 respondentami oraz analiza istniejących rozwiązań rządowych (ELA, studia.gov.pl).",
           "Wykorzystanie sztucznej inteligencji (OpenAI) do standaryzacji i normalizacji danych edukacyjnych o kierunkach studiów.",
           "Propozycja nowego standardu danych o uczelniach – algorytm dopasowywania kierunków do zainteresowań studentów i interfejs użytkownika dla Smart Cities."
+        ],
+        "images": [
+          "https://i.imgur.com/wmyUNGB.png",
+          "https://i.imgur.com/9KpbNhg.png" 
         ]
       },
       {
         "year": "2021/22",
         "projects": [
           "Zespół Social Monitor (Justyna Krotoszyńska, Kajetan Warmbier, Kacper Jach) – aplikacja wspierająca osoby mające problemy z poruszaniem się po platformach społecznościowych; finał konkursu AIS Student Chapters Annual Competition 2022.",
-          "Aktualizacja strony – wdrożenie nowego szablonu WordPress oraz integracja z systemem rezerwacji."
+          "Aktualizacja strony – wdrożenie nowego szablonu WordPress oraz integracja z systemem rezerwacji.",
+          "Warszaty z firmą Bright Inventions - UX Expert Figma - Joanna Cieszyńska"
+        ],
+        "images": [
+          "https://i.imgur.com/d8kaoxa.png",
+          "https://i.imgur.com/9iG0SZg.png",
+          "https://i.imgur.com/LTmBfuX.png"
         ]
       },
       {
@@ -33,9 +47,12 @@
         "projects": [
           "Talk_to – aplikacja służąca do nawiązywania kontaktów; II miejsce w finale konkursu AIS Student Chapters Annual Competition 2021.",
           "Seria warsztatów 'Ready, set learn!' (prowadzenie: Weronika Jóźwiak, zespół LIDER). Tematy: stres, Agile, design thinking, analiza danych w R, młodzi w biznesie.",
-          "Aplikacje mobilne planu zajęć – faza aktywnego developmentu.",
-          "Warsztaty z JavaScript i NodeJS – cykliczne, otwarte zajęcia dla studentów UG.",
+          "Szczegóły serii 'Ready, set learn!': 21.04 18:00 – Patrycja Chwiłkowska „How to deal with stress?”; 23.04 18:00 – Katarzyna Łukasiewicz „Agile is the New Black”; 24.04 10:00 – Hubert Kołcz „Design Thinking”; 26.04 18:00 – dr Arkadiusz Kozłowski „R Markdown – analiza i prezentacja wyników”; 28.04 18:00 – Mikołaj Ostrowski „Why are young people needed in business?”",
           "Aktualizacja składu koła."
+        ],
+        "images": [
+          "https://i.imgur.com/betpY7x.png",
+          "https://i.imgur.com/7mcvCPy.png"
         ]
       },
       {
@@ -47,7 +64,12 @@
           "Udział w eliminacjach konkursu Czerwonej Róży 2019.",
           "Szkolenia z C# i Excela we współpracy z firmą zewnętrzną.",
           "Warsztaty State Street – prelekcje w siedzibie TITANIUM Tower, prezentacja 'Pomysły na biznes'.",
-          "Targi Akademia 2019 – prezentacja GitHub przez członków Koła."
+          "Targi Akademia 2019 – prezentacja GitHub przez członków Koła.",
+          "Aplikacje mobilne planu zajęć – faza aktywnego developmentu.",
+          "Plan cyklu otwartych warsztatów JavaScript/NodeJS dla studentów UG."
+        ],
+        "images": [
+          "https://i.imgur.com/x2Ir37Q.jpeg"
         ]
       },
       {
@@ -55,7 +77,28 @@
         "projects": [
           "Projekt Eris – 'Intelligent baby monitor system' (Paweł Stożyński, Adam Ostrowski, Krzysztof Orłowski) – III miejsce w AIS Student Chapters Annual Competition 2018 (Software Innovation Challenge).",
           "Udział w konkursie Czerwonej Róży 2018 – najlepsze koło naukowe Pomorza.",
-          "Warsztaty React.js – prowadzenie: Adam Marczyk, Neoteric SP. ZOO (26.01.2018)."
+          "Warsztaty React.js – prowadzenie: Adam Marczyk, Neoteric SP. ZOO (26.01.2018).",
+          "Wyróżnienie „Outstanding Community 2018” dla społeczności PLAIS/AIS (UG).",
+          "Szkolenia wewnętrzne (X 2018 – I 2019): C# i Excel; wręczenie nagród (czerwiec 2019).",
+          "Reprezentacja koła w eliminacjach do Konkursu Czerwonej Róży 2019 (Agata Ziółkowska, Hubert Kołcz).",
+          "Warsztaty i wizyty w State Street (TITANIUM Tower) oraz prelekcja „Pomysł na biznes…” (ARGON Tower).",
+          "Prezentacja Git/GitHub na Targach Akademia 19.03.2019."
+        ],
+        "images": [
+          "https://i.imgur.com/t3FM5fM.png",
+          "https://i.imgur.com/i5dvdA7.jpeg"
+        ]
+      },
+      {
+        "year": "2017/18",
+        "projects": [
+          "Reprezentowanie UG na posiedzeniu plenarnym BEREC (UKE) – prezentacja prototypu zespołu Eris „Intelligent baby monitor system”.",
+          "Udział w eliminacjach uczelnianych do konkursu Czerwonej Róży 2018.",
+          "III miejsce w AIS Student Chapters Annual Competition (Software Innovation Challenge) – projekt „Intelligent baby monitor system” (13.04.2018)."
+        ],
+        "images": [
+          "https://i.imgur.com/0Fc9ymu.jpeg",
+          "https://i.imgur.com/NumZADj.jpeg"
         ]
       },
       {
@@ -65,6 +108,13 @@
           "Rozszerzenie do przeglądarek monitorujące bezpieczeństwo odwiedzanych witryn.",
           "Współorganizacja konferencji 'ŻAK' – warsztaty dla licealistów nt. bezpieczeństwa w Internecie.",
           "Warsztaty z technologii Ionic – prowadzenie: Marcin Nowacki, Tomasz Hencel (Neoteric)."
+        ],
+        "images": [
+          "https://i.imgur.com/ghQjCtd.jpeg",
+          "https://i.imgur.com/Wl1cKQ6.jpeg",
+          "https://i.imgur.com/CBxO29O.jpeg",
+          "https://i.imgur.com/9jvhvtY.jpeg",
+          "https://i.imgur.com/NwlA9FK.jpeg"
         ]
       },
       {
@@ -77,7 +127,14 @@
           "Nagroda 'Best New AIS Student Chapter 2015–2016'.",
           "Aplikacja mobileWZR – zarządzanie planem zajęć w metodologii Scrum (Android).",
           "Współpraca z MadKom – warsztaty o Scrum i oferty pracy.",
-          "Wygrana w konkursie kół naukowych (Sopot, 70-lecie SOIE) – 1. miejsce i nagroda 7000 zł."
+          "Wygrana w konkursie kół naukowych (Sopot, 70-lecie SOIE) – 1. miejsce i nagroda 7000 zł.",
+          "Przeprojektowanie i dostosowanie witryny koła do urządzeń mobilnych."
+        ],
+        "images": [
+          "https://i.imgur.com/Jojhbh8.png",
+          "https://i.imgur.com/3WXkUC7.jpeg",
+          "https://i.imgur.com/vqC0BUy.jpeg",
+          "https://i.imgur.com/iZY5nA0.jpeg"
         ]
       },
       {
@@ -85,7 +142,12 @@
         "projects": [
           "Projekt SafeWatch – III miejsce w AIS Student Chapters Annual Competition 2015.",
           "Zgłoszenie wniosku patentowego 'SafeWatch' – system wezwania pomocy za pomocą gestów.",
-          "Publikacja: artykuł w monografii ICIM 2015 'Assessment of the Scrum Approach for Mobile Application Development Projects'."
+          "Publikacja: artykuł w monografii ICIM 2015 'Assessment of the Scrum Approach for Mobile Application Development Projects'.",
+          "Projekt 'Znajdź pracę z E-xpertem' – promocja ofert pracy/praktyk/staży w mediach społecznościowych."
+        ],
+        "images": [
+          "https://i.imgur.com/8APJRCa.jpeg",
+          "https://i.imgur.com/hULmDmo.png"
         ]
       },
       {
@@ -93,6 +155,9 @@
         "projects": [
           "Projekt 'Znajdź pracę z E-xpertem' – promocja ofert pracy i staży w mediach społecznościowych dla studentów UG.",
           "Rozpoczęcie oficjalnego fanpage'u na Facebooku - https://www.facebook.com/knsiexpert"
+        ],
+        "images": [
+          "https://i.imgur.com/yXwYHQO.jpeg"
         ]
       }
     ]
