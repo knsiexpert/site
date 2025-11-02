@@ -162,7 +162,7 @@
             display: flex;
             gap: 12px;
             align-items: center;
-            z-index: 10;
+            z-index: 999;
         }
         
         .theme-btn {
@@ -2241,6 +2241,10 @@
                 border-bottom: 1px solid var(--black);
             }
             
+            .dark-mode .nav-links {
+                background: var(--black);
+            }
+
             .nav-links a {
                 padding: 12px 0;
                 font-size: 11px;
@@ -2443,8 +2447,8 @@
             
             .carousel-group {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto;
-                gap: 50px;
+                grid-template-rows: repeat(3, 1fr);
+                gap: 30px;
                 padding: 0 15px;
             }
             
@@ -3590,12 +3594,12 @@
                                     <div class="carousel-wrapper-inner">
                                         <div class="carousel-track" id="carouselTrack">
                                     ${(() => {
-                                        // Use only 3 images on mobile, all images on desktop
+                                        // Use all images on both mobile and desktop
                                         const isMobile = window.innerWidth <= 768;
-                                        const imagesToUse = isMobile ? data.us.images.slice(0, 3) : data.us.images;
+                                        const imagesToUse = data.us.images;
                                         
                                         // Create groups of 6 images (2 rows x 3 columns) on desktop
-                                        // On mobile, display 3 images in 1 row
+                                        // On mobile, display 3 images in 1 row per group
                                         const groups = [];
                                         const itemsPerGroup = isMobile ? 3 : 6;
                                         
