@@ -4989,7 +4989,7 @@
             const projectsContent = document.getElementById('projectsContent');
             projectsContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
-                <p style="font-size: 18px; margin-bottom: 80px; line-height: 1.8;">
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 60px; opacity: 0.9; max-width: 900px;">
                     ${data.intro}
                 </p>
                 
@@ -5322,6 +5322,12 @@
             
             activityContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
+                
+                ${data.intro ? `
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 60px; margin-top: 20px; opacity: 0.9; max-width: 900px;">
+                    ${data.intro}
+                </p>
+                ` : ''}
             
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 40px;">
                 <div>
@@ -5427,7 +5433,7 @@
             const constitutionContent = document.getElementById('constitutionContent');
             constitutionContent.innerHTML = `
                 <h2>"${data.title.split(' ').slice(-1)[0].toUpperCase()}"</h2>
-            <p style="font-size: 18px; margin-bottom: 60px;">
+            <p style="font-size: 16px; line-height: 1.8; margin-bottom: 60px; opacity: 0.9; max-width: 900px;">
                     ${data.title}<br>
                     ${data.content.intro.institution}, ${data.content.intro.location}<br>
                     ${data.content.intro.date}
