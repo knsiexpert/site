@@ -3972,6 +3972,25 @@
             color: var(--black);
         }
         
+        .team-supervisor {
+            background: var(--light-gray);
+            padding: 30px;
+            border: 2px solid var(--black);
+            margin: 30px 0;
+        }
+        
+        .supervisor-info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .supervisor-link-subtle:hover {
+            border-bottom-color: var(--accent);
+            opacity: 0.8;
+        }
+        
         .recruitment-gallery {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -4169,6 +4188,15 @@
                 gap: 15px;
             }
             
+            .team-supervisor {
+                padding: 20px;
+            }
+            
+            .supervisor-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
             .signature-projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -4234,6 +4262,20 @@
             background: #252530;
             border-color: #3d3d45;
             color: var(--white);
+        }
+        
+        .dark-mode .team-supervisor {
+            background: #252530;
+            border-color: #3d3d45;
+        }
+        
+        .dark-mode .supervisor-link-subtle {
+            color: var(--accent);
+        }
+        
+        .dark-mode .supervisor-link-subtle:hover {
+            border-bottom-color: var(--white);
+            opacity: 1;
         }
         
         .dark-mode .recruitment-list li:hover,
@@ -5118,9 +5160,42 @@
             if (!data) return;
             
             const teamContent = document.getElementById('teamContent');
+            
+            // Handle both old (string) and new (object) supervisor format
+            const supervisorName = typeof data.content.supervisor === 'string' 
+                ? data.content.supervisor 
+                : data.content.supervisor.name;
+            const supervisorRole = typeof data.content.supervisor === 'object' 
+                ? data.content.supervisor.role 
+                : 'Opiekun koła';
+            const supervisorWebsite = typeof data.content.supervisor === 'object' 
+                ? data.content.supervisor.website 
+                : null;
+            
             teamContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
-                <p style="font-size: 18px; margin-bottom: 40px;">Opiekun: <strong>${data.content.supervisor}</strong></p>
+                
+                ${data.description ? `
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 30px; opacity: 0.9; max-width: 900px;">
+                    ${data.description}
+                </p>
+                ` : ''}
+                
+                <div class="team-supervisor">
+                    <div class="supervisor-info">
+                        <span style="opacity: 0.7;">${supervisorRole}:</span>
+                        ${supervisorWebsite ? `
+                        <a href="${supervisorWebsite}" 
+                           target="_blank" 
+                           class="supervisor-link-subtle"
+                           style="font-size: 18px; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; margin-left: 8px;">
+                            ${supervisorName}
+                        </a>
+                        ` : `
+                        <strong style="font-size: 18px; margin-left: 8px; color: var(--accent);">${supervisorName}</strong>
+                        `}
+                    </div>
+                </div>
                 
                 ${data.content.years.map(yearData => `
             <div class="team-year-section">
