@@ -82,6 +82,17 @@
       "keywords": ["działalność", "wydarzenia", "spotkania"],
       "order": 7,
       "visible": true
+    },
+    {
+      "id": "recruitment",
+      "title": "Rekrutacja",
+      "slug": "rekrutacja",
+      "href": "recruitment.json",
+      "icon": "🚀",
+      "description": "Dołącz do E-XPERT - rekrutacja do koła naukowego",
+      "keywords": ["rekrutacja", "dołącz", "aplikuj", "formularz"],
+      "order": 8,
+      "visible": true
     }
   ]
 }

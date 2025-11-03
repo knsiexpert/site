@@ -14,7 +14,8 @@
       { "title": "Zespół", "section": "team" },
       { "title": "Galeria", "section": "gallery" },
       { "title": "Statut", "section": "constitution" },
-      { "title": "Działalność", "section": "activity" }
+      { "title": "Działalność", "section": "activity" },
+      { "title": "Rekrutacja", "section": "recruitment" }
     ]
   },
   "contact": {
