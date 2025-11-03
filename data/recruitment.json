@@ -1,6 +1,15 @@
 {
   "title": "Rekrutacja",
   "form_url": "https://docs.google.com/forms/d/1T6YJLBix70wtn5a2HR4iMXKLijF_mlFsMpJxwRRs9iY/edit",
+  "meeting": {
+    "show_meeting": false,
+    "title": "Spotkanie Rekrutacyjne",
+    "date": "15 listopada 2025",
+    "time": "18:00",
+    "location": "Online (Microsoft Teams)",
+    "description": "Zapraszamy na spotkanie rekrutacyjne! Poznasz zespół, dowiesz się więcej o projektach i będziesz mógł zadać pytania.",
+    "meeting_url": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
+  },
   "hero": {
     "headline": "Dołącz do E-XPERT",
     "subheadline": "Koło Naukowe Systemów Informatycznych Uniwersytetu Gdańskiego – łączymy wiedzę z praktyką i budujemy realne rozwiązania."
@@ -113,7 +122,7 @@
     ]
   },
   "requirements": {
-    "time_commitment": "Średnio 4–6 h tygodniowo (elastycznie, w zależności od sprintu i roli).",
+    "time_commitment": "W zależności od roli i chęci, nie narzucamy sztywnych ram czasowych. Każdy decyduje, ile chce się zaangażować.",
     "communication": "Microsoft Teams i Discord – główne kanały komunikacji.",
     "collaboration": "Praca w zespołach projektowych, code review, issue tracking na GitHubie.",
     "ethics": "Szacunek, otwartość, odpowiedzialność za zadania – uczymy się i dowozimy razem."
@@ -140,6 +149,11 @@
     "Figma (UX/UI)",
     "MS Teams, Discord",
     "CI/CD (GitHub Actions), podstawy Docker"
+  ],
+  "gallery_images": [
+    "https://i.imgur.com/56nkVIf.jpeg",
+    "https://i.imgur.com/GQx8slP.jpeg",
+    "https://i.imgur.com/uPWzfHw.jpeg"
   ],
   "partners": [
     { "name": "Uniwersytet Gdański", "url": "https://ug.edu.pl" },

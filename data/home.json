@@ -41,7 +41,8 @@
     "subtitle": "Studenckie projekty, realne wdrożenia i międzynarodowe wyróżnienia (AIS SC). Dołącz, ucz się i buduj z nami.",
     "cta": {
       "label": "Dołącz do nas",
-      "href": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
+      "href": "recruitment",
+      "target": "_self"
     }
   },
   "highlights": {

@@ -3502,6 +3502,101 @@
             opacity: 0.85;
         }
         
+        .meeting-alert {
+            position: relative;
+            margin: -40px 0 80px 0;
+            padding: 45px 50px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border: 4px solid var(--black);
+            box-shadow: 0 15px 50px rgba(var(--accent-rgb), 0.4);
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 15px 50px rgba(var(--accent-rgb), 0.4);
+            }
+            50% { 
+                box-shadow: 0 15px 60px rgba(var(--accent-rgb), 0.6);
+            }
+        }
+        
+        .meeting-alert-badge {
+            position: absolute;
+            top: -14px;
+            left: 30px;
+            background: var(--black);
+            color: var(--white);
+            padding: 6px 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        .meeting-alert-content h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: var(--white);
+            font-weight: 700;
+        }
+        
+        .meeting-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .meeting-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--black);
+            font-size: 15px;
+            color: var(--black);
+        }
+        
+        .meeting-icon {
+            font-size: 20px;
+        }
+        
+        .meeting-detail strong {
+            margin-right: 5px;
+        }
+        
+        .meeting-description {
+            font-size: 17px;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: var(--white);
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-left: 3px solid var(--white);
+        }
+        
+        .meeting-cta {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            border: 3px solid var(--black);
+            font-size: 16px;
+            padding: 16px 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .meeting-cta:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
         .recruitment-intro {
             margin-bottom: 80px;
         }
@@ -3702,6 +3797,12 @@
             letter-spacing: 0.03em;
             transition: all 0.3s ease;
         }
+
+        .dark-mode .skill-tag {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--white);
+        }
         
         .track-card:hover .skill-tag {
             background: var(--white);
@@ -3871,6 +3972,91 @@
             color: var(--black);
         }
         
+        .recruitment-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .recruitment-gallery-item {
+            position: relative;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+            background: var(--light-gray);
+            border: 2px solid var(--black);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .recruitment-gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: 4px;
+            bottom: 4px;
+            border: 2px solid var(--black);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .recruitment-gallery-item:hover::before {
+            top: -8px;
+            left: -8px;
+            right: 8px;
+            bottom: 8px;
+            opacity: 1;
+            border-color: var(--accent);
+        }
+        
+        .recruitment-gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(0.2);
+        }
+        
+        .recruitment-gallery-item:hover img {
+            transform: scale(1.08);
+            filter: grayscale(0);
+        }
+        
+        .recruitment-gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(28, 27, 34, 0.8) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .recruitment-gallery-item:hover .recruitment-gallery-overlay {
+            opacity: 1;
+        }
+        
+        .recruitment-gallery-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            color: var(--white);
+            font-size: 24px;
+            z-index: 2;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .recruitment-gallery-item:hover .recruitment-gallery-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
         .recruitment-footer {
             text-align: center;
             padding: 80px 40px;
@@ -3938,6 +4124,50 @@
                 margin-bottom: 30px;
             }
             
+            
+            .meeting-alert {
+                margin: 20px 0 40px 0;
+                padding: 30px 20px;
+            }
+            
+            .meeting-alert-badge {
+                top: -12px;
+                left: 20px;
+                font-size: 9px;
+                padding: 5px 15px;
+            }
+            
+            .meeting-alert-content h3 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            
+            .meeting-details {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .meeting-detail {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            
+            .meeting-description {
+                font-size: 15px;
+                padding: 15px;
+            }
+            
+            .meeting-cta {
+                width: 100%;
+                text-align: center;
+                padding: 14px 30px;
+                font-size: 14px;
+            }
+            
+            .recruitment-gallery {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
             
             .signature-projects-grid {
                 grid-template-columns: 1fr;
@@ -4031,6 +4261,41 @@
             background: #2d2d35;
         }
         
+        .dark-mode .recruitment-gallery-item {
+            background: #2d2d35;
+            border-color: #3d3d45;
+        }
+        
+        .dark-mode .recruitment-gallery-item:hover {
+            border-color: var(--accent);
+        }
+        
+        .dark-mode .meeting-alert {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-color: var(--accent);
+        }
+        
+        .dark-mode .meeting-alert-badge {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .dark-mode .meeting-detail {
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .dark-mode .meeting-cta {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+        
+        .dark-mode .meeting-cta:hover {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        
         .dark-mode .recruitment-footer {
             background: #16151b;
             border-color: #3d3d45;
@@ -4117,6 +4382,195 @@
                 transform: translateX(-50%);
                 padding: 14px 30px;
                 font-size: 14px;
+            }
+        }
+        
+        /* Mini Meeting Alert (Fixed) */
+        .mini-meeting-alert {
+            position: fixed;
+            top: 90px;
+            left: 40px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border: 3px solid var(--black);
+            box-shadow: 0 8px 30px rgba(var(--accent-rgb), 0.5);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            padding: 15px 30px;
+            max-width: 700px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .mini-meeting-alert.show {
+            animation: slideInDown 0.3s ease-out;
+        }
+        
+        .mini-meeting-alert.hide {
+            animation: slideOutUp 0.3s ease-out;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideOutUp {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            @keyframes slideInDown {
+                from {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(100px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+            }
+            
+            @keyframes slideOutUp {
+                from {
+                    opacity: 1;
+                    transform: translateX(-50%) translateY(0);
+                }
+                to {
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(100px);
+                }
+            }
+        }
+        
+        .mini-meeting-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .mini-meeting-badge {
+            background: var(--black);
+            color: var(--white);
+            padding: 6px 14px;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        
+        .mini-meeting-info {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+        
+        .mini-meeting-date::before {
+            content: '📅 ';
+        }
+        
+        .mini-meeting-time::before {
+            content: '🕐 ';
+        }
+        
+        .mini-meeting-cta {
+            display: inline-block;
+            background: var(--black);
+            color: var(--white);
+            padding: 12px 30px;
+            border: 2px solid var(--black);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .mini-meeting-cta:hover {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+            transform: scale(1.05);
+        }
+        
+        /* Dark mode for mini meeting alert */
+        .dark-mode .mini-meeting-alert {
+            border-color: var(--accent);
+        }
+        
+        .dark-mode .mini-meeting-badge {
+            background: var(--white);
+            color: var(--black);
+        }
+        
+        .dark-mode .mini-meeting-cta {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+        
+        .dark-mode .mini-meeting-cta:hover {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--black);
+        }
+        
+        /* Responsive mini meeting alert */
+        @media (max-width: 768px) {
+            .mini-meeting-alert {
+                top: auto;
+                bottom: 90px;
+                left: 50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                gap: 10px;
+                padding: 10px 15px;
+                width: 92%;
+            }
+            
+            .mini-meeting-content {
+                flex-direction: row;
+                gap: 10px;
+                text-align: left;
+                width: auto;
+            }
+            
+            .mini-meeting-badge {
+                font-size: 7px;
+                padding: 4px 8px;
+                display: none;
+            }
+            
+            .mini-meeting-info {
+                flex-direction: row;
+                gap: 10px;
+                font-size: 11px;
+            }
+            
+            .mini-meeting-cta {
+                width: auto;
+                text-align: center;
+                padding: 8px 16px;
+                font-size: 11px;
             }
         }
     </style>
@@ -4239,7 +4693,8 @@
                     <h1>${data.hero.title}</h1>
                     <p class="subtitle">${data.hero.subtitle}</p>
                     <a href="${data.hero.cta.href}" 
-                       target="_blank" 
+                       ${data.hero.cta.target ? `target="${data.hero.cta.target}"` : ''} 
+                       ${data.hero.cta.href.startsWith('#') || data.hero.cta.href === 'recruitment' ? `onclick="event.preventDefault(); showSection('${data.hero.cta.href.replace('#', '')}');"` : ''}
                        class="cta-button">${data.hero.cta.label}</a>
                 </div>
             </div>
@@ -4951,6 +5406,35 @@
                     </div>
                 </div>
                 
+                ${data.meeting && data.meeting.show_meeting ? `
+                <div class="container">
+                    <div class="meeting-alert">
+                        <div class="meeting-alert-badge">NADCHODZĄCE SPOTKANIE</div>
+                        <div class="meeting-alert-content">
+                            <h3>${data.meeting.title}</h3>
+                            <div class="meeting-details">
+                                <div class="meeting-detail">
+                                    <span class="meeting-icon">📅</span>
+                                    <strong>Data:</strong> ${data.meeting.date}
+                                </div>
+                                <div class="meeting-detail">
+                                    <span class="meeting-icon">🕐</span>
+                                    <strong>Czas:</strong> ${data.meeting.time}
+                                </div>
+                                <div class="meeting-detail">
+                                    <span class="meeting-icon">📍</span>
+                                    <strong>Miejsce:</strong> ${data.meeting.location}
+                                </div>
+                            </div>
+                            <p class="meeting-description">${data.meeting.description}</p>
+                            <a href="${data.meeting.meeting_url}" target="_blank" class="cta-button meeting-cta">
+                                Dołącz do spotkania
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+                
                 <div class="container">
                     <div class="recruitment-intro">
                         <p style="font-size: 18px; line-height: 1.8; margin-bottom: 60px;">
@@ -4983,6 +5467,26 @@
                         `).join('')}
                     </div>
                 </div>
+                
+                ${data.gallery_images && data.gallery_images.length > 0 ? `
+                <div class="recruitment-section">
+                    <h3>To My</h3>
+                    <p style="font-size: 16px; margin-bottom: 30px; opacity: 0.8;">Zdjęcia z naszej działalności</p>
+                    <div class="recruitment-gallery">
+                        ${data.gallery_images.map((imageUrl, index) => `
+                            <div class="recruitment-gallery-item" onclick="openRecruitmentImage('${imageUrl}')">
+                                <img src="${imageUrl}" 
+                                     alt="KNSI E-XPERT - Działalność koła" 
+                                     crossorigin="anonymous"
+                                     referrerpolicy="no-referrer"
+                                     onerror="this.parentElement.style.display='none'">
+                                <div class="recruitment-gallery-overlay"></div>
+                                <div class="recruitment-gallery-icon">🔍</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
                 
                 <div class="recruitment-section">
                     <h3>Ścieżki rozwoju</h3>
@@ -5139,8 +5643,80 @@
             // Setup floating recruitment CTA
             setupFloatingRecruitmentCTA(data.form_url);
             
+            // Setup mini meeting alert if meeting is active
+            if (data.meeting && data.meeting.show_meeting) {
+                setupMiniMeetingAlert(data.meeting);
+            }
+            
             // Update animation colors after recruitment is rendered
             setTimeout(() => updateAnimationColors(), 200);
+        }
+        
+        // Open recruitment image in lightbox
+        function openRecruitmentImage(imageUrl) {
+            openLightbox(imageUrl);
+        }
+        
+        // Setup Mini Meeting Alert
+        function setupMiniMeetingAlert(meetingData) {
+            const miniAlert = document.getElementById('miniMeetingAlert');
+            const mainAlert = document.querySelector('.meeting-alert');
+            const recruitmentSection = document.getElementById('recruitment');
+            
+            if (!miniAlert || !mainAlert) return;
+            
+            // Set data
+            const miniDate = miniAlert.querySelector('.mini-meeting-date');
+            const miniTime = miniAlert.querySelector('.mini-meeting-time');
+            const miniCTA = document.getElementById('miniMeetingCTA');
+            
+            if (miniDate) miniDate.textContent = meetingData.date;
+            if (miniTime) miniTime.textContent = meetingData.time;
+            if (miniCTA) miniCTA.href = meetingData.meeting_url;
+            
+            let isMiniVisible = false;
+            
+            // Handle scroll to show/hide mini alert
+            function handleMiniAlert() {
+                // Only show on recruitment page
+                if (!recruitmentSection.classList.contains('active')) {
+                    if (isMiniVisible) {
+                        miniAlert.style.display = 'none';
+                        isMiniVisible = false;
+                    }
+                    return;
+                }
+                
+                const mainAlertRect = mainAlert.getBoundingClientRect();
+                const isMainAlertVisible = mainAlertRect.top < window.innerHeight && mainAlertRect.bottom > 0;
+                
+                if (!isMainAlertVisible && !isMiniVisible) {
+                    // Show mini alert
+                    miniAlert.style.display = 'flex';
+                    miniAlert.classList.add('show');
+                    miniAlert.classList.remove('hide');
+                    isMiniVisible = true;
+                } else if (isMainAlertVisible && isMiniVisible) {
+                    // Hide mini alert
+                    miniAlert.classList.add('hide');
+                    miniAlert.classList.remove('show');
+                    setTimeout(() => {
+                        if (mainAlertRect.top < window.innerHeight && mainAlertRect.bottom > 0) {
+                            miniAlert.style.display = 'none';
+                            isMiniVisible = false;
+                        }
+                    }, 300);
+                }
+            }
+            
+            // Add scroll listener
+            window.addEventListener('scroll', handleMiniAlert);
+            
+            // Make handleMiniAlert globally accessible for manual updates
+            window.updateMiniMeetingAlert = handleMiniAlert;
+            
+            // Check on page load
+            setTimeout(handleMiniAlert, 100);
         }
         
         // Setup Floating Recruitment CTA
@@ -5192,6 +5768,9 @@
             
             // Add scroll listener
             window.addEventListener('scroll', handleFloatingCTA);
+            
+            // Make handleFloatingCTA globally accessible for manual updates
+            window.updateFloatingRecruitmentCTA = handleFloatingCTA;
             
             // Check on page load
             setTimeout(handleFloatingCTA, 100);
@@ -5360,6 +5939,16 @@
             // Update animation colors when showing home or recruitment section
             if (sectionId === 'home' || sectionId === 'recruitment') {
                 setTimeout(() => updateAnimationColors(), 100);
+            }
+            
+            // Update mini meeting alert visibility when changing sections
+            if (window.updateMiniMeetingAlert) {
+                setTimeout(() => window.updateMiniMeetingAlert(), 100);
+            }
+            
+            // Update floating recruitment CTA visibility when changing sections
+            if (window.updateFloatingRecruitmentCTA) {
+                setTimeout(() => window.updateFloatingRecruitmentCTA(), 100);
             }
             
             // Scroll to top
@@ -5701,5 +6290,19 @@
     <a href="#" id="floatingRecruitmentCTA" class="floating-recruitment-cta" style="display: none;">
         Aplikuj
     </a>
+    
+    <!-- Mini Meeting Alert (Fixed) -->
+    <div id="miniMeetingAlert" class="mini-meeting-alert" style="display: none;">
+        <div class="mini-meeting-content">
+            <div class="mini-meeting-badge">NADCHODZĄCE SPOTKANIE</div>
+            <div class="mini-meeting-info">
+                <span class="mini-meeting-date"></span>
+                <span class="mini-meeting-time"></span>
+            </div>
+        </div>
+        <a href="#" id="miniMeetingCTA" class="mini-meeting-cta" target="_blank">
+            Dołącz
+        </a>
+    </div>
 </body>
 </html>
