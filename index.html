@@ -5228,7 +5228,7 @@
             const galleryContent = document.getElementById('galleryContent');
             galleryContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
-                <p style="font-size: 16px; color: var(--gray); margin-bottom: 20px;">${data.description}</p>
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 40px; opacity: 0.9; max-width: 900px;">${data.description}</p>
                 <div class="gallery-grid">
                     ${data.images.map((image, index) => `
                         <div class="gallery-item" onclick="openGalleryLightbox(${index})">
