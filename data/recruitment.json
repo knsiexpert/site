@@ -1,0 +1,184 @@
+{
+  "title": "Rekrutacja",
+  "form_url": "https://docs.google.com/forms/d/1T6YJLBix70wtn5a2HR4iMXKLijF_mlFsMpJxwRRs9iY/edit",
+  "hero": {
+    "headline": "Dołącz do E-XPERT",
+    "subheadline": "Koło Naukowe Systemów Informatycznych Uniwersytetu Gdańskiego – łączymy wiedzę z praktyką i budujemy realne rozwiązania."
+  },
+  "lead": "Szukamy osób, które chcą tworzyć oprogramowanie, startować w międzynarodowych konkursach AIS/Imagine Cup, prowadzić badania i współpracować z branżą IT. Jeśli chcesz działać w zespole, który zamiast mówić o technologii – po prostu ją wdraża, jesteś we właściwym miejscu.",
+  "what_we_do": [
+    "Budujemy aplikacje i systemy: od web i mobile po rozwiązania AI/ML i analitykę danych.",
+    "Startujemy w konkursach (AIS Student Chapter Competitions, Imagine Cup) – co roku przynajmniej jeden projekt.",
+    "Prowadzimy badania nad metodykami zarządzania projektami IT i publikujemy wyniki.",
+    "Organizujemy warsztaty i szkolenia (JavaScript, Node.js, R, Excel, Agile, Design Thinking) – od studentów dla studentów i z partnerami z branży.",
+    "Realizujemy projekty dla Wydziału i Uniwersytetu (np. modernizacja witryny, narzędzia wspierające dydaktykę)."
+  ],
+  "signature_projects": [
+    {
+      "name": "SafeWatch",
+      "description": "Aplikacja ratująca życie – wezwanie pomocy gestem zegarka.",
+      "achievements": ["III miejsce w AIS Student Chapter Competition", "Ochrona patentowa"]
+    },
+    {
+      "name": "CyberWatch",
+      "description": "System wykrywania cyberprzemocy i niepożądanych wzorców w sieci.",
+      "achievements": ["Projekt społecznie użyteczny, rozwijany w ramach działań Koła"]
+    },
+    {
+      "name": "Unity",
+      "description": "Narzędzie do monitorowania opinii w Internecie i analizy sentymentu.",
+      "achievements": ["Wykorzystanie technik przetwarzania języka naturalnego"]
+    },
+    {
+      "name": "Eris",
+      "description": "Intelligent Baby Monitor System – inteligentny monitoring.",
+      "achievements": ["Przykład projektu IoT/edge + analityka"]
+    },
+    {
+      "name": "Apollo",
+      "description": "Aplikacja ograniczająca marnowanie żywności.",
+      "achievements": ["Komponenty społecznego impactu, integracje API"]
+    },
+    {
+      "name": "SocialMonitor",
+      "description": "Wtyczka ukrywająca liczbę reakcji w social media, by redukować presję popularności.",
+      "achievements": ["Doceniony za walor społeczny w konkursach AIS"]
+    },
+    {
+      "name": "UniGo",
+      "description": "Platforma AI do wyboru kierunku studiów (Smart Cities) – standaryzacja i analiza danych edukacyjnych.",
+      "achievements": ["Wyróżnienie w międzynarodowym konkursie AIS"]
+    },
+    {
+      "name": "Strona E-XPERT (GitHub Pages)",
+      "description": "Migracja z CMS do modelu open source – nowoczesna, spójna i społecznościowa tożsamość Koła.",
+      "achievements": ["Współpraca zespołów 2023/24 i 2024/25, automatyzacja i wersjonowanie"]
+    }
+    ],
+  "tracks": [
+    {
+      "id": "dev",
+      "name": "Software Development",
+      "description": "Frontend, backend, full-stack, mobile.",
+      "skills": ["JavaScript/TypeScript", "Node.js", "React/Vue", "REST/GraphQL", "Testy i CI/CD"]
+    },
+    {
+      "id": "data_ai",
+      "name": "Data & AI",
+      "description": "Analityka danych, NLP, klasyfikacja, rekomendacje.",
+      "skills": ["Python/R", "Pandas/NumPy", "Modelowanie ML", "ETL", "Wizualizacja danych"]
+    },
+    {
+      "id": "ux_product",
+      "name": "Product & UX",
+      "description": "Badania, prototypowanie, dostępność, analiza wymagań.",
+      "skills": ["Design Thinking", "Figma", "Prototypy i testy", "Analityka produktowa"]
+    },
+    {
+      "id": "pm_agile",
+      "name": "Project Management & Agile",
+      "description": "Planowanie, scrum/kanban, jakość i ryzyka, dokumentacja.",
+      "skills": ["User stories", "Roadmapy i backlog", "Stand-upy i retro", "Mierniki projektu"]
+    },
+    {
+      "id": "infra",
+      "name": "DevOps & Infra",
+      "description": "Automatyzacja, CI/CD, monitoring, wydajność.",
+      "skills": ["Docker", "GitHub Actions", "Akamai/CDN podstawy", "Monitoring i logowanie"]
+    },
+    {
+      "id": "comms",
+      "name": "Growth & Community",
+      "description": "Promocja, social media, eventy, partnerstwa.",
+      "skills": ["Copywriting", "Social media", "Organizacja warsztatów/konferencji", "Współpraca z partnerami"]
+    }
+  ],
+  "benefits": [
+    "Realne projekty i portfolio widoczne publicznie (GitHub Pages, repozytoria).",
+    "Doświadczenie konkursowe (AIS, Imagine Cup) – feedback międzynarodowych jurorów.",
+    "Mentoring i wymiana wiedzy – warsztaty prowadzone przez członków i partnerów.",
+    "Kontakty z branżą (UG, Madkom, Neoteric, Bright Inventions, Staples Solutions).",
+    "Elastyczność – łączymy obowiązki studenckie z projektami w sprintach.",
+    "Wkład w rozwiązania dla społeczności akademickiej i realny wpływ."
+  ],
+  "who_we_look_for": {
+    "profile": [
+      "Studenci i studentki zainteresowani praktycznym IT (dowolny rok i kierunek pokrewny).",
+      "Osoby nastawione na naukę przez działanie i pracę zespołową.",
+      "Entuzjaści technologii, analizy danych, UX, zarządzania projektami lub rozwoju społeczności."
+    ],
+    "nice_to_have": [
+      "Podstawy Git/GitHub, znajomość jednego z obszarów: JS/TS, Python/R, SQL, Figma, Scrum.",
+      "Gotowość do regularnych spotkań i pracy w krótkich iteracjach."
+    ]
+  },
+  "requirements": {
+    "time_commitment": "Średnio 4–6 h tygodniowo (elastycznie, w zależności od sprintu i roli).",
+    "communication": "Microsoft Teams i Discord – główne kanały komunikacji.",
+    "collaboration": "Praca w zespołach projektowych, code review, issue tracking na GitHubie.",
+    "ethics": "Szacunek, otwartość, odpowiedzialność za zadania – uczymy się i dowozimy razem."
+  },
+  "how_to_apply": {
+    "steps": [
+      "Wypełnij formularz rekrutacyjny (link na górze strony).",
+      "Otrzymasz zaproszenie na krótką rozmowę/spotkanie projektowe.",
+      "Wybierz ścieżkę (track) i dołącz do zespołu projektowego.",
+      "Startujemy z pierwszym spotkaniem organizacyjnym!"
+    ],
+    "selection_notes": "Nie wymagamy komercyjnego doświadczenia – liczy się motywacja i chęć rozwoju.",
+    "privacy_note": "Dane z formularza służą wyłącznie do procesu rekrutacji do Koła na UG."
+  },
+  "commitment": {
+    "mode": "hybrydowo",
+    "meetings": "Krótki weekly na Teams + asynchronicznie na Discordzie i w GitHub Issues/Projects.",
+    "events": "Warsztaty i szkolenia w cyklu semestralnym; udział w konkursach zależnie od kalendarza AIS/Imagine Cup."
+  },
+  "tools_and_stack": [
+    "GitHub / GitHub Pages",
+    "JavaScript/TypeScript, Node.js, React/Vue",
+    "Python/R (data, ML)",
+    "Figma (UX/UI)",
+    "MS Teams, Discord",
+    "CI/CD (GitHub Actions), podstawy Docker"
+  ],
+  "partners": [
+    { "name": "Uniwersytet Gdański", "url": "https://ug.edu.pl" },
+    { "name": "Madkom", "url": "https://madkom.pl" },
+    { "name": "Neoteric", "url": "https://neoteric.eu" },
+    { "name": "Bright Inventions", "url": "https://brightinventions.pl" },
+    { "name": "Staples Solutions" }
+  ],
+  "faq": [
+    {
+      "q": "Czy muszę mieć doświadczenie komercyjne?",
+      "a": "Nie. Wystarczy motywacja, podstawy wybranego obszaru i chęć do nauki w projektach."
+    },
+    {
+      "q": "Czy muszę być z Wydziału Zarządzania?",
+      "a": "Musisz być studentem UG i mieć gotowość do udziału w projektach E-XPERT."
+    },
+    {
+      "q": "Czy udział jest płatny?",
+      "a": "Nie. Koło działa non-profit; czasem pojawiają się nagrody konkursowe lub wsparcie partnerów."
+    },
+    {
+      "q": "Czy mogę łączyć kilka ścieżek (np. Dev + UX)?",
+      "a": "Tak – zachęcamy do interdyscyplinarności."
+    }
+  ],
+  "contact": {
+    "email": "knexpert2023@gmail.com",
+    "channels": ["Microsoft Teams (po dołączeniu)", "Discord (zaproszenie po formularzu)"],
+    "note": "Najpierw wypełnij formularz – dzięki temu szybciej dobierzemy zespół i rolę."
+  },
+  "legal": {
+    "gdpr": "Twoje dane przetwarzamy wyłącznie na potrzeby rekrutacji do E-XPERT i komunikacji związanej z Kołem. Administratorem danych jest Uniwersytet Gdański.",
+    "consent_required": true
+  },
+  "meta": {
+    "language": "pl",
+    "updated": "2025-11-03",
+    "organization": "Koło Naukowe Systemów Informatycznych E-XPERT",
+    "affiliation": "Katedra Informatyki Ekonomicznej, Wydział Zarządzania, Uniwersytet Gdański"
+  }
+}

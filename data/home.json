@@ -28,6 +28,11 @@
         "title": "Działalność",
         "slug": "dzialalnosc",
         "href": "activity.json"
+      },
+      {
+        "title": "Rekrutacja",
+        "slug": "rekrutacja",
+        "href": "recruitment.json"
       }
     ]
   },

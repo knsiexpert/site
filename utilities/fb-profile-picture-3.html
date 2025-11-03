@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KNSI E‑XPERT — Avatar Glow 1000×1000</title>
+<style>
+  :root {
+    --bg:#080a0c;
+    --ink:#eafff4;
+    --accent:#2ee7a6;
+    --accent-2:#48ffb2;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;background:var(--bg);font-family:ui-sans-serif,system-ui,Segoe UI,Roboto,Arial}
+  .frame{
+    width:1000px;height:1000px;margin:0 auto;display:grid;place-items:center;
+    position:relative;isolation:isolate;border-radius:32px;overflow:hidden;
+    background:
+      radial-gradient(1000px 1000px at 75% 20%, rgba(46,231,166,.12), transparent 60%),
+      radial-gradient(800px 800px at 15% 80%, rgba(72,255,178,.1), transparent 60%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 2px, transparent 2px 40px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 2px, transparent 2px 40px),
+      linear-gradient(180deg, #090c0f, #0d1217);
+    outline:1px solid rgba(255,255,255,.06);
+    box-shadow:0 30px 120px rgba(0,0,0,.6), inset 0 0 0 1px rgba(72,255,178,.08);
+  }
+  .logo-wrap{position:relative;display:grid;place-items:center;width:88%;filter:drop-shadow(0 0 35px rgba(72,255,178,.8)) drop-shadow(0 0 80px rgba(46,231,166,.6));animation:pulse 3s ease-in-out infinite alternate;}
+  @keyframes pulse{from{filter:drop-shadow(0 0 30px rgba(72,255,178,.6)) drop-shadow(0 0 60px rgba(46,231,166,.3));transform:scale(0.98);}to{filter:drop-shadow(0 0 70px rgba(72,255,178,.9)) drop-shadow(0 0 130px rgba(46,231,166,.7));transform:scale(1.02);}}
+  svg{width:100%;height:auto;display:block;color:var(--accent-2);} 
+  svg [fill]{fill:currentColor !important;} 
+  .glow{position:absolute;inset:0;filter:blur(80px);z-index:-1;background:
+      radial-gradient(500px 400px at 50% 60%, rgba(46,231,166,.35), transparent 60%),
+      radial-gradient(400px 300px at 45% 40%, rgba(0,255,170,.25), transparent 60%);
+  }
+  .ring{position:absolute;inset:6%;border-radius:28px;box-shadow:0 0 0 3px rgba(72,255,178,.35),inset 0 0 100px rgba(46,231,166,.3);pointer-events:none;animation:ringGlow 6s ease-in-out infinite alternate;}
+  @keyframes ringGlow{from{box-shadow:0 0 0 3px rgba(72,255,178,.3),inset 0 0 80px rgba(46,231,166,.2);}to{box-shadow:0 0 0 5px rgba(72,255,178,.5),inset 0 0 140px rgba(46,231,166,.4);}}
+</style>
+</head>
+<body>
+  <main class="frame">
+    <div class="logo-wrap">
+      <svg  style=" transform: scale(1.5); right: 20px; position: absolute;" xmlns="http://www.w3.org/2000/svg" viewBox="-30 0 740 380"><g transform="translate(-162 -143)"><path fill="currentColor" d="M504 447l-1 1h-2l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-1 1v1l-4 4v1l-1 1v1l-1 1v1l-1 1v2l-1 1v2l-1 1v15l1 1v2l1 1v2l1 1v1l1 1v1l1 1v1l3 3v1l4 4h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h6l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l7-7v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-2-2h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM614 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v2l-1 1v2l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l3 3h1l2 2h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-4l-1-1ZM404 416l-1 1h-4l-1 1h-1l-1 1h-1l-1 1h-1l-6 6v1l-2 2v1l-1 1v3l-1 1v10l1 1v2l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l2-2h1l3-3v-1l2-2v-1l1-1v-1l1-1v-2l1-1v-9l-1-1v-3l-1-1v-1l-1-1v-1l-1-1v-1l-5-5h-1l-2-2h-1l-1-1h-2l-1-1h-3l-1-1ZM659 292l-1 1h-3l-1 1h-2l-1 1h-1l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v6l1 1v4l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l3 3h1l1 1h1l1 1h2l1 1h2l1 1h5l1 1h4l1-1h6l1-1h2l1-1h2l1-1h1l1-1h1l3-3h1l6-6v-1l2-2v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-10l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-1-1v-1l-2-2v-1l-8-8h-1l-1-1h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM351 292l-1 1h-3l-1 1h-1l-1 1h-2l-2 2h-1l-1 1h-1l-8 8v1l-2 2v1l-1 1v1l-1 1v2l-1 1v2l-1 1v5l-1 1v5l1 1v5l1 1v2l1 1v2l1 1v1l1 1v1l3 3v1l5 5h1l2 2h1 l2 2h1l1 1h2l1 1h2l1 1h5l1 1h5l1-1h5l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-3l1-1v-11l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-3-3v-1l-2-2h-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1ZM450 261l-1 1h-1l-1 1v1l-1 1v8l1 1v1l1 1v1l3 3v1l13 13v1l15 15v1l15 15v1l1 1v6l-6 6v1l-5 5v1l-6 6v1l-5 5v1l-5 5v1l-6 6v1l-5 5v1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v4l1 1v1l2 2h1l1 1h61l1-1h49l1 1v-21h-75l-1-1v-4l1-1v-1l5-5v-1l5-5v-1l5-5v-1l4-4v-1l5-5v-1l4-4v-1l3-3v-1l1-1v-1l1-1v-5l-1-1v-1l-1-1v-1l-2-2v-1l-7-7v-1l-8-8v-1l-9-9v-1l-8-8v-4l1-1h77v-20ZM611 193l-1 1h-2l-1 1h-1l-1 1h-1l-1 1h-1l-4 4v1l-2 2v1l-1 1v1l-1 1v2l-1 1v9l1 1v3l1 1v1l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h11l1-1h2l1-1h1l1-1h1l1-1h1l5-5v-1l1-1v-1l1-1v-1l1-1v-3l1-1v-8l-1-1v-3l-1-1v-1l-1-1v-1l-2-2v-1l-3-3h-1l-2-2h-1l-1-1h-1l-1-1h-2l-1-1ZM401 193l-1 1h-2l-1 1h-1l-1 1h-1l-2 2h-1l-2 2v1l-3 3v1l-1 1v2l-1 1v2l-1 1v8l1 1v2l1 1v2l1 1v1l2 2v1l4 4h1l1 1h1l1 1h1l1 1h2l1 1h12l1-1h2l1-1h1l1-1h1l7-7v-1l1-1v-1l1-1v-1l1-1v-5l1-1v-2l-1-1v-4l-1-1v-2l-1-1v-1l-1-1v-1l-6-6h-1l-2-2h-1l-1-1h-3l-1-1ZM504 143l-1 1h-3l-1 1h-1l-1 1h-1l-1 1h-1l-1 1h-1l-4 4h-1l-2 2v1l-3 3v1l-1 1v1l-1 1v1l-1 1v1l-1 1v3l-1 1v15l1 1v3l1 1v1l1 1v2l2 2v1l2 2v1l5 5h1l2 2h1l2 2h1l1 1h2l1 1h2l1 1h4l1 1h7l1-1h4l1-1h2l1-1h2l1-1h1l1-1h1l2-2h1l8-8v-1l1-1v-1l1-1v-1l1-1v-1l1-1v-2l1-1v-4l1-1v-9l-1-1v-3l-1-1v-2l-1-1v-2l-1-1v-1l-2-2v-1l-2-2v-1l-4-4h-1l-3-3h-1l-1-1h-1l-1-1h-1l-1-1h-2l-1-1h-3l-1-1Z"/></g></svg>
+    </div>
+    <div class="glow"></div>
+    <div class="ring"></div>
+  </main>
+</body>
+</html>
