@@ -1703,6 +1703,13 @@
             font-size: 14px;
             line-height: 2;
             letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .team-board p:hover {
+            color: var(--accent);
+            padding-left: 10px;
         }
         
         .team-members {
@@ -1721,6 +1728,7 @@
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid var(--light-gray);
+            cursor: pointer;
         }
         
         .member-tag:hover {
@@ -1729,6 +1737,43 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 15px rgba(28, 27, 34, 0.1);
             border-color: var(--black);
+        }
+        
+        /* Highlighted member */
+        .member-tag.highlighted {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.6), 0 0 60px rgba(var(--accent-rgb), 0.4);
+            animation: pulseGlow 2s ease-in-out infinite;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .team-board p.highlighted {
+            color: var(--accent);
+            font-weight: 700;
+            position: relative;
+            padding-left: 20px;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        
+        .team-board p.highlighted::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.6), 0 0 60px rgba(var(--accent-rgb), 0.4);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(var(--accent-rgb), 0.8), 0 0 80px rgba(var(--accent-rgb), 0.6);
+            }
         }
         
         /* Constitution */
@@ -3433,6 +3478,20 @@
                 color: #1c1b22;
                 border-color: var(--accent);
             }
+            
+            .member-tag.highlighted {
+                background: var(--accent);
+                color: #1c1b22;
+                border-color: var(--accent);
+            }
+            
+            .team-board p.highlighted {
+                color: var(--accent);
+            }
+            
+            .team-board p.highlighted::before {
+                color: var(--accent);
+            }
         }
 
         .section.active {
@@ -4427,6 +4486,163 @@
             }
         }
         
+        /* Scroll to Top Button - Modern 2025 Design */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 998;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 8px 32px rgba(var(--accent-rgb), 0.35),
+                0 4px 12px rgba(0, 0, 0, 0.15),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8) translateY(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .scroll-to-top::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--accent-lighter), var(--accent));
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+        
+        .scroll-to-top:hover {
+            transform: scale(1.1) translateY(-5px) rotate(-5deg);
+            box-shadow: 
+                0 12px 48px rgba(var(--accent-rgb), 0.5),
+                0 8px 24px rgba(0, 0, 0, 0.2),
+                inset 0 -2px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .scroll-to-top:hover::before {
+            opacity: 1;
+        }
+        
+        .scroll-to-top:active {
+            transform: scale(0.95) translateY(-2px);
+            transition: all 0.1s ease;
+        }
+        
+        .scroll-to-top svg {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+        
+        .scroll-to-top:hover svg {
+            transform: translateY(-3px);
+        }
+        
+        .scroll-to-top:active svg {
+            transform: translateY(-1px);
+        }
+        
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+            animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .scroll-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8) translateY(20px);
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(40px) rotate(-15deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-5px) rotate(5deg);
+            }
+            70% {
+                transform: scale(0.95) translateY(2px) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+        
+        /* Floating glow animation */
+        @keyframes floatGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 8px 32px rgba(var(--accent-rgb), 0.35),
+                    0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+            50% {
+                box-shadow: 
+                    0 12px 40px rgba(var(--accent-rgb), 0.45),
+                    0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+        }
+        
+        .scroll-to-top.show {
+            animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), floatGlow 3s ease-in-out infinite 1s;
+        }
+        
+        /* Dark mode for scroll to top */
+        .dark-mode .scroll-to-top {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            box-shadow: 
+                0 8px 32px rgba(var(--accent-rgb), 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .dark-mode .scroll-to-top::before {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-lighter));
+        }
+        
+        .dark-mode .scroll-to-top:hover {
+            box-shadow: 
+                0 12px 48px rgba(var(--accent-rgb), 0.6),
+                0 8px 24px rgba(0, 0, 0, 0.4),
+                inset 0 -2px 12px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Responsive scroll to top */
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                border-radius: 14px;
+            }
+            
+            .scroll-to-top::before {
+                border-radius: 14px;
+            }
+        }
+        
         /* Mini Meeting Alert (Fixed) */
         .mini-meeting-alert {
             position: fixed;
@@ -5155,11 +5371,26 @@
         }
         
         // Render Team Section
+        // Helper function to normalize names to URL-friendly slugs
+        function nameToSlug(name) {
+            return name.toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+                .replace(/ł/g, 'l')
+                .replace(/[^a-z0-9\s-]/g, '')
+                .trim()
+                .replace(/\s+/g, '-');
+        }
+        
         async function renderTeam() {
             const data = await loadJSON('team.json');
             if (!data) return;
             
             const teamContent = document.getElementById('teamContent');
+            
+            // Get member parameter from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const highlightMember = urlParams.get('member');
             
             // Handle both old (string) and new (object) supervisor format
             const supervisorName = typeof data.content.supervisor === 'string' 
@@ -5201,18 +5432,57 @@
             <div class="team-year-section">
                         <h3>${yearData.year}</h3>
                 <div class="team-board">
-                            ${yearData.board.map(boardMember => `
-                                <p><strong>${boardMember.split(' – ')[0]}</strong> — ${boardMember.split(' – ')[1]}</p>
-                            `).join('')}
+                            ${yearData.board.map(boardMember => {
+                                const memberName = boardMember.split(' – ')[0];
+                                const memberSlug = nameToSlug(memberName);
+                                const isHighlighted = highlightMember && memberSlug === highlightMember;
+                                return `<p class="${isHighlighted ? 'highlighted' : ''}" data-member="${memberSlug}"><strong>${memberName}</strong> — ${boardMember.split(' – ')[1]}</p>`;
+                            }).join('')}
                 </div>
                 <div class="team-members">
-                            ${yearData.members.map(member => `
-                                <span class="member-tag">${member}</span>
-                            `).join('')}
+                            ${yearData.members.map(member => {
+                                const memberSlug = nameToSlug(member);
+                                const isHighlighted = highlightMember && memberSlug === highlightMember;
+                                return `<span class="member-tag ${isHighlighted ? 'highlighted' : ''}" data-member="${memberSlug}">${member}</span>`;
+                            }).join('')}
                 </div>
             </div>
                 `).join('')}
             `;
+            
+            // Scroll to highlighted member if exists
+            if (highlightMember) {
+                setTimeout(() => {
+                    const highlightedElement = teamContent.querySelector('.highlighted');
+                    if (highlightedElement) {
+                        // First scroll to team section, then to the member
+                        const teamSection = document.getElementById('team');
+                        if (teamSection) {
+                            teamSection.scrollIntoView({ behavior: 'auto' });
+                        }
+                        // Then scroll to the highlighted member
+                        setTimeout(() => {
+                            highlightedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 100);
+                    }
+                }, 200);
+            }
+            
+            // Add click handlers to member tags to update URL
+            const memberTags = teamContent.querySelectorAll('.member-tag, .team-board p');
+            memberTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    const memberSlug = tag.getAttribute('data-member');
+                    if (memberSlug) {
+                        const basePath = getBasePath();
+                        const newUrl = basePath + '/team?member=' + memberSlug;
+                        
+                        // Update URL and re-render
+                        history.pushState({ section: 'team', member: memberSlug }, '', newUrl);
+                        renderTeam();
+                    }
+                });
+            });
         }
         
         // Render Gallery Section
@@ -5857,6 +6127,59 @@
             setTimeout(handleFloatingCTA, 100);
         }
         
+        // Setup Scroll to Top Button
+        function setupScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (!scrollToTopBtn) return;
+            
+            let isVisible = false;
+            let scrollTimeout;
+            
+            // Show/hide button based on scroll position
+            function handleScroll() {
+                // Clear previous timeout
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+                
+                // Debounce scroll check for better performance
+                scrollTimeout = setTimeout(() => {
+                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    const shouldShow = scrollPosition > 300;
+                    
+                    if (shouldShow && !isVisible) {
+                        scrollToTopBtn.classList.add('show');
+                        scrollToTopBtn.classList.remove('hide');
+                        isVisible = true;
+                    } else if (!shouldShow && isVisible) {
+                        scrollToTopBtn.classList.add('hide');
+                        scrollToTopBtn.classList.remove('show');
+                        isVisible = false;
+                    }
+                }, 50);
+            }
+            
+            // Scroll to top when button is clicked
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Add click animation
+                scrollToTopBtn.style.transform = 'scale(0.9) translateY(-2px)';
+                setTimeout(() => {
+                    scrollToTopBtn.style.transform = '';
+                }, 150);
+            });
+            
+            // Add scroll listener with passive flag for better performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Check on page load
+            setTimeout(handleScroll, 100);
+        }
+        
         // Render footer
         async function renderFooter() {
             const data = await loadJSON('footer.json');
@@ -5978,10 +6301,17 @@
         // Show section
         function showSection(sectionId, addToHistory = true) {
             const basePath = getBasePath();
-            const newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
+            let newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
+            
+            // Preserve query string if navigating to the same section
+            const currentPath = window.location.pathname.replace(/^\/|\/$/g, '');
+            const currentSection = currentPath.replace(basePath, '').replace(/^\//, '') || 'home';
+            if (currentSection === sectionId && window.location.search) {
+                newPath += window.location.search;
+            }
             
             // Update URL without triggering popstate
-            if (addToHistory && window.location.pathname !== newPath) {
+            if (addToHistory && (window.location.pathname !== newPath.split('?')[0] || window.location.search !== (newPath.includes('?') ? '?' + newPath.split('?')[1] : ''))) {
                 history.pushState({ section: sectionId }, '', newPath);
             }
             
@@ -6032,23 +6362,47 @@
                 setTimeout(() => window.updateFloatingRecruitmentCTA(), 100);
             }
             
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Re-render team section if member parameter is present
+            let skipScrollToTop = false;
+            if (sectionId === 'team') {
+                const urlParams = new URLSearchParams(window.location.search);
+                const memberParam = urlParams.get('member');
+                if (memberParam) {
+                    // Re-render team to highlight the member
+                    setTimeout(() => renderTeam(), 100);
+                    skipScrollToTop = true; // Let renderTeam handle scrolling to highlighted member
+                }
+            }
+            
+            // Scroll to top (unless we're highlighting a team member)
+            if (!skipScrollToTop) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
         
         // Handle route change
         function handleRouteChange() {
             const basePath = getBasePath();
             let path = window.location.pathname;
+            let queryString = window.location.search;
             
             // Check for redirect parameter from 404.html
             const urlParams = new URLSearchParams(window.location.search);
             const redirect = urlParams.get('redirect');
             if (redirect) {
-                path = redirect;
+                // Split path and query string from redirect parameter
+                const [redirectPath, redirectQuery] = redirect.includes('?') 
+                    ? [redirect.split('?')[0], '?' + redirect.split('?')[1]]
+                    : [redirect, ''];
+                
+                path = redirectPath;
+                queryString = redirectQuery;
+                
                 // Clean URL by replacing the current state
-                const cleanPath = redirect === basePath + '/' || redirect === '/' ? basePath + '/' : redirect;
-                history.replaceState({ section: path }, '', cleanPath);
+                const cleanPath = (redirectPath === basePath + '/' || redirectPath === '/') 
+                    ? basePath + '/' 
+                    : redirectPath;
+                history.replaceState({ section: path }, '', cleanPath + queryString);
             }
             
             // Remove base path if present
@@ -6325,6 +6679,9 @@
             await renderRecruitment();
             await renderFooter();
             
+            // Initialize scroll to top button
+            setupScrollToTop();
+            
             // Set up routing
             window.addEventListener('popstate', handleRouteChange);
             
@@ -6385,5 +6742,12 @@
             Dołącz
         </a>
     </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" title="Przewiń do góry" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
 </body>
 </html>
