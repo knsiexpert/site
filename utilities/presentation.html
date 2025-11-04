@@ -12,6 +12,38 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <style>
       html, body, #root { height: 100%; margin: 0; overflow: hidden; }
+      
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        html, body, #root { overflow-x: hidden; }
+        
+        /* Smaller fonts for mobile */
+        .mobile-title { font-size: 1.75rem !important; line-height: 2rem !important; }
+        .mobile-text-xl { font-size: 1.125rem !important; line-height: 1.75rem !important; }
+        .mobile-text-lg { font-size: 1rem !important; line-height: 1.5rem !important; }
+        .mobile-text-base { font-size: 0.875rem !important; line-height: 1.25rem !important; }
+        
+        /* Smaller spacing */
+        .mobile-p-sm { padding: 0.5rem !important; }
+        .mobile-px-sm { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+        .mobile-py-sm { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+        .mobile-pl-sm { padding-left: 10px !important; }
+        .mobile-no-p-sm { padding: 0px !important; }
+        .mobile-gap-sm { gap: 0.75rem !important; }
+        .mobile-mb-sm { margin-bottom: 0.5rem !important; }
+        
+        /* Hide complex shadows on mobile for performance */
+        .mobile-hide-shadow { display: none !important; }
+        
+        /* Prevent horizontal scroll */
+        .mobile-overflow-x-hidden { overflow-x: hidden !important; }
+        
+        /* Adjust image sizes */
+        .mobile-img-max { max-height: 250px !important; }
+        
+        /* Better touch targets */
+        .mobile-touch-target { min-width: 44px !important; min-height: 44px !important; }
+      }
     </style>
   </head>
   <body class="h-full">
@@ -268,7 +300,7 @@
                     />
                     
                     {/* Gradient text */}
-                    <div className="text-5xl md:text-6xl font-black tracking-tight"
+                    <div className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mobile-text-xl"
                       style={{
                         backgroundImage: isDark 
                           ? 'linear-gradient(135deg, #ffffff 0%, #ff6b00 100%)'
@@ -298,16 +330,16 @@
             // Other bullets on first slide - NO bullet points, modern cards
             if (bullet !== slideData.motto && bullet !== '') {
               return (
-                <li key={bullet} className="my-4 list-none">
-                  <div className={`relative pl-6 py-3 border-l-2 border-orange-500/50 ${isDark ? 'bg-white/5' : 'bg-black/5'} rounded-r-lg`}>
+                <li key={bullet} className="my-3 md:my-4 list-none">
+                  <div className={`relative pl-4 md:pl-6 py-2 md:py-3 border-l-2 border-orange-500/50 ${isDark ? 'bg-white/5' : 'bg-black/5'} rounded-r-lg mobile-py-sm mobile-px-sm`}>
                     {/* Orange accent dot */}
                     <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/50" />
                     
                     {/* Text */}
-                    <span className={`font-medium text-2xl ${isDark ? 'text-gray-200' : 'text-gray-800'}`}
+                    <span className={`font-medium text-lg md:text-2xl ${isDark ? 'text-gray-200' : 'text-gray-800'} mobile-text-lg`}
                       style={{ letterSpacing: '-0.01em' }}
                     >
-                      {hasLink ? renderTextWithLinks(bullet, 'font-medium text-2xl', isDark) : bullet}
+                      {hasLink ? renderTextWithLinks(bullet, 'font-medium text-lg md:text-2xl mobile-text-lg', isDark) : bullet}
                     </span>
                   </div>
                 </li>
@@ -324,10 +356,10 @@
             return (
               <li 
                 key={bullet} 
-                className={`ml-12 ${isDark ? 'text-gray-300' : 'text-gray-700'} text-2xl ${baseTextStyle} font-normal`}
+                className={`ml-6 md:ml-12 ${isDark ? 'text-gray-300' : 'text-gray-700'} text-lg md:text-2xl ${baseTextStyle} font-normal mobile-text-lg`}
                 style={{ letterSpacing: '-0.01em' }}
               >
-                {hasLink ? renderTextWithLinks(bullet, `text-2xl ${baseTextStyle}`, isDark) : bullet}
+                {hasLink ? renderTextWithLinks(bullet, `text-lg md:text-2xl ${baseTextStyle} mobile-text-lg`, isDark) : bullet}
               </li>
             );
           }
@@ -338,15 +370,15 @@
           // Highlight achievements
           if (bullet.includes('miejsce') || bullet.includes('WINNER')) {
             return (
-              <li key={bullet} className="flex items-start gap-4">
-                <span className="mt-2 flex-shrink-0">
+              <li key={bullet} className="flex items-start gap-3 md:gap-4">
+                <span className="mt-1 md:mt-2 flex-shrink-0">
                   <Trophy className="text-orange-500" />
                 </span>
                 <span 
-                  className={`font-bold text-2xl ${baseTextStyle} ${isDark ? 'text-orange-300' : 'text-orange-600'}`}
+                  className={`font-bold text-lg md:text-2xl ${baseTextStyle} ${isDark ? 'text-orange-300' : 'text-orange-600'} mobile-text-lg`}
                   style={{ letterSpacing: '-0.01em' }}
                 >
-                  {hasLink ? renderTextWithLinks(bullet, `font-bold text-2xl ${baseTextStyle}`, isDark) : bullet}
+                  {hasLink ? renderTextWithLinks(bullet, `font-bold text-lg md:text-2xl ${baseTextStyle} mobile-text-lg`, isDark) : bullet}
                 </span>
               </li>
             );
@@ -354,15 +386,15 @@
           
           if (bullet.includes('Projekt:') || bullet.includes('projekt')) {
             return (
-              <li key={bullet} className="flex items-start gap-4">
-                <span className="mt-2 flex-shrink-0">
+              <li key={bullet} className="flex items-start gap-3 md:gap-4">
+                <span className="mt-1 md:mt-2 flex-shrink-0">
                   <Rocket className="text-blue-500" />
                 </span>
                 <span 
-                  className={`font-semibold text-2xl ${baseTextStyle} ${isDark ? 'text-blue-300' : 'text-blue-600'}`}
+                  className={`font-semibold text-lg md:text-2xl ${baseTextStyle} ${isDark ? 'text-blue-300' : 'text-blue-600'} mobile-text-lg`}
                   style={{ letterSpacing: '-0.01em' }}
                 >
-                  {hasLink ? renderTextWithLinks(bullet, `font-semibold text-2xl ${baseTextStyle}`, isDark) : bullet}
+                  {hasLink ? renderTextWithLinks(bullet, `font-semibold text-lg md:text-2xl ${baseTextStyle} mobile-text-lg`, isDark) : bullet}
                 </span>
               </li>
             );
@@ -370,13 +402,13 @@
           
           // Regular bullet
           return (
-            <li key={bullet} className="flex items-start gap-4">
-              <span className="mt-3 w-2.5 h-2.5 bg-orange-500 rounded-full flex-shrink-0"></span>
+            <li key={bullet} className="flex items-start gap-3 md:gap-4">
+              <span className="mt-2 md:mt-3 w-2 md:w-2.5 h-2 md:h-2.5 bg-orange-500 rounded-full flex-shrink-0"></span>
               <span 
-                className={`text-2xl ${baseTextStyle} font-medium`}
+                className={`text-lg md:text-2xl ${baseTextStyle} font-medium mobile-text-lg`}
                 style={{ letterSpacing: '-0.01em' }}
               >
-                {hasLink ? renderTextWithLinks(bullet, `text-2xl ${baseTextStyle} font-medium`, isDark) : bullet}
+                {hasLink ? renderTextWithLinks(bullet, `text-lg md:text-2xl ${baseTextStyle} font-medium mobile-text-lg`, isDark) : bullet}
               </span>
             </li>
           );
@@ -415,8 +447,8 @@
               />
             </div>
 
-            {/* Control buttons - left side */}
-            <div className="absolute top-6 left-6 flex gap-3 z-50">
+            {/* Control buttons - Desktop only - left side */}
+            <div className="hidden md:flex absolute top-6 left-6 gap-3 z-50">
               {/* Dark mode toggle */}
               <button
                 onClick={() => setDarkMode(!darkMode)}
@@ -440,31 +472,115 @@
                 <span className="text-2xl">{isPaused ? '▶️' : '⏸️'}</span>
               </button>
             </div>
+            
+            {/* Mobile control bar - All buttons in one row on the left */}
+            <div className="flex md:hidden absolute top-3 left-3 gap-1.5 z-50">
+              {/* Dark mode toggle */}
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className={`p-1.5 rounded-md ${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} backdrop-blur-sm border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} hover:scale-110 transition-all shadow-lg`}
+                aria-label="Przełącz tryb ciemny"
+              >
+                <span className="text-base">{isDarkMode ? '☀️' : '🌙'}</span>
+              </button>
+
+              {/* Pause/Play toggle */}
+              <button
+                onClick={() => setIsPaused(!isPaused)}
+                className={`p-1.5 rounded-md ${
+                  isPaused 
+                    ? 'bg-orange-500 text-white border-orange-500' 
+                    : `${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'}`
+                } backdrop-blur-sm border hover:scale-110 transition-all shadow-lg`}
+                aria-label={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
+                title={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
+              >
+                <span className="text-base">{isPaused ? '▶️' : '⏸️'}</span>
+              </button>
+              
+              {/* Reset to first slide button */}
+              <button
+                onClick={() => {
+                  if (currentSlide !== 0 && !isAnimating) {
+                    setIsAnimating(true);
+                    setTimeout(() => {
+                      setCurrentSlide(0);
+                      setIsAnimating(false);
+                      setProgress(0);
+                    }, 300);
+                  }
+                }}
+                disabled={currentSlide === 0}
+                className={`p-1.5 rounded-md ${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} backdrop-blur-sm border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} shadow-lg ${currentSlide === 0 ? 'opacity-30' : 'hover:scale-110'} transition-all`}
+                aria-label="Pierwszy slajd"
+                title="Przejdź do pierwszego slajdu"
+              >
+                <span className="text-base">⏮</span>
+              </button>
+              
+              {/* Previous button */}
+              <button
+                onClick={() => {
+                  if (currentSlide > 0 && !isAnimating) {
+                    setIsAnimating(true);
+                    setTimeout(() => {
+                      setCurrentSlide(currentSlide - 1);
+                      setIsAnimating(false);
+                      setProgress(0);
+                    }, 300);
+                  }
+                }}
+                disabled={currentSlide === 0}
+                className={`p-1.5 rounded-md ${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} backdrop-blur-sm border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} shadow-lg ${currentSlide === 0 ? 'opacity-30' : 'hover:scale-110'} transition-all`}
+                aria-label="Poprzedni slajd"
+              >
+                <span className="text-base">◀</span>
+              </button>
+              
+              {/* Next button */}
+              <button
+                onClick={() => {
+                  if (currentSlide < slides.length - 1 && !isAnimating) {
+                    setIsAnimating(true);
+                    setTimeout(() => {
+                      setCurrentSlide(currentSlide + 1);
+                      setIsAnimating(false);
+                      setProgress(0);
+                    }, 300);
+                  }
+                }}
+                disabled={currentSlide === slides.length - 1}
+                className={`p-1.5 rounded-md ${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} backdrop-blur-sm border ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'} shadow-lg ${currentSlide === slides.length - 1 ? 'opacity-30' : 'hover:scale-110'} transition-all`}
+                aria-label="Następny slajd"
+              >
+                <span className="text-base">▶</span>
+              </button>
+            </div>
 
             {/* Slide counter */}
-            <div className={`absolute top-6 right-6 ${isDarkMode ? 'text-white' : 'text-gray-900'} font-bold text-lg z-50`}>
+            <div className={`absolute top-3 md:top-6 right-3 md:right-6 ${isDarkMode ? 'text-white' : 'text-gray-900'} font-bold text-sm md:text-lg z-50 mobile-text-base`}>
               <span className="tracking-wider">
                 {String(currentSlide + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
               </span>
             </div>
 
             {/* Main content container */}
-            <div className="flex-1 flex flex-col relative z-10">
-              <div className="container mx-auto px-16 py-10 h-full flex flex-col">
+            <div className="flex-1 flex flex-col relative z-10 mt-14 md:mt-0">
+              <div className="container mx-auto px-4 md:px-16 py-4 md:py-10 h-full flex flex-col mobile-no-p-sm">
                 
                 {/* Header - Fixed position */}
-                <div className="flex-shrink-0 mb-6">
+                <div className="flex-shrink-0 mb-3 md:mb-6 mobile-pl-sm">
                   {/* Slide badge */}
-                  <div className="mb-4">
+                  <div className="mb-2 md:mb-4">
                     <span className="inline-block px-6 py-2.5 rounded-full text-sm font-black tracking-widest uppercase bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-xl">
                       SLAJD {currentSlideData.slide}
                     </span>
                   </div>
 
                   {/* Title - Fixed height for consistency */}
-                  <div className="h-32 flex items-start pt-2">
+                  <div className="h-16 md:h-32 flex items-start pt-1 md:pt-2 mobile-mb-sm">
                     <h1 
-                      className="text-5xl md:text-6xl font-black tracking-tight"
+                      className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mobile-title"
                       style={{
                         backgroundImage: isDarkMode 
                           ? 'linear-gradient(135deg, #ffffff 0%, #ff6b00 60%, #ffa500 100%)'
@@ -483,14 +599,14 @@
                   </div>
                 </div>
 
-                {/* Content area - Starts from top, scrollable with subtle fade */}
+                {/* Content area - Starts from top, scrollable */}
                 <div className="flex-1 relative">
                   {/* Scrollable content */}
                   <div 
-                    className="h-full pr-4 custom-scrollbar"
+                    className="absolute inset-0 pr-4 custom-scrollbar mobile-pl-sm mobile-overflow-x-hidden"
                   >
-                    <div className={`transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'} pb-6`}>
-                      <div className={`grid ${currentSlideData.image || currentSlideData.images ? 'grid-cols-2' : 'grid-cols-1'} gap-12`}>
+                    <div className={`transition-opacity duration-500 ${isAnimating ? 'opacity-0' : 'opacity-100'} pb-12 md:pb-6`}>
+                      <div className={`grid ${currentSlideData.image || currentSlideData.images ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1'} gap-6 md:gap-12 mobile-gap-sm`}>
                         
                         {/* Left column - Bullets */}
                         <div>
@@ -528,8 +644,8 @@
                                   return (
                                     <>
                                       <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 107, 0, 0.6) 100%)', transform: 'translate(0px, 20px) scale(1.15)', opacity: 0.8, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(255, 107, 0, 0.5), rgba(255, 140, 0, 0.3), rgba(0, 0, 0, 0.2))', left: '-15px', opacity: 0.7, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.4))', right: '-15px', opacity: 0.6, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(255, 107, 0, 0.5), rgba(255, 140, 0, 0.3), rgba(0, 0, 0, 0.2))', left: '-15px', opacity: 0.7, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.4))', right: '-15px', opacity: 0.6, zIndex: -1 }} />
                                     </>
                                   );
                                 }
@@ -539,8 +655,8 @@
                                   return (
                                     <>
                                       <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%)', transform: 'translate(-10px, 15px) scale(1.1)', opacity: 0.75, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'radial-gradient(ellipse at left, rgba(255, 140, 0, 0.6), rgba(255, 107, 0, 0.3))', left: '-20px', opacity: 0.8, zIndex: -1 }} />
-                                      <div className="absolute left-0 right-0 h-24 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(90deg, rgba(255, 107, 0, 0.4), transparent)', bottom: '-15px', opacity: 0.6, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'radial-gradient(ellipse at left, rgba(255, 140, 0, 0.6), rgba(255, 107, 0, 0.3))', left: '-20px', opacity: 0.8, zIndex: -1 }} />
+                                      <div className="absolute left-0 right-0 h-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(90deg, rgba(255, 107, 0, 0.4), transparent)', bottom: '-15px', opacity: 0.6, zIndex: -1 }} />
                                     </>
                                   );
                                 }
@@ -550,8 +666,8 @@
                                   return (
                                     <>
                                       <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(225deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 107, 0, 0.5) 100%)', transform: 'translate(10px, 15px) scale(1.1)', opacity: 0.7, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'radial-gradient(ellipse at right, rgba(0, 0, 0, 0.5), rgba(255, 107, 0, 0.3))', right: '-20px', opacity: 0.75, zIndex: -1 }} />
-                                      <div className="absolute left-0 right-0 h-20 blur-xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), rgba(0, 0, 0, 0.3))', top: '-10px', opacity: 0.5, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'radial-gradient(ellipse at right, rgba(0, 0, 0, 0.5), rgba(255, 107, 0, 0.3))', right: '-20px', opacity: 0.75, zIndex: -1 }} />
+                                      <div className="absolute left-0 right-0 h-20 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), rgba(0, 0, 0, 0.3))', top: '-10px', opacity: 0.5, zIndex: -1 }} />
                                     </>
                                   );
                                 }
@@ -560,14 +676,14 @@
                                 return (
                                   <>
                                     <div className="absolute inset-0 blur-3xl pointer-events-none transition-all duration-700" style={{ background: 'radial-gradient(ellipse at center, rgba(255, 107, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 80%)', transform: 'translate(0px, 18px) scale(1.2)', opacity: 0.7, zIndex: -1 }} />
-                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(255, 140, 0, 0.4), rgba(0, 0, 0, 0.2))', left: '-12px', opacity: 0.6, zIndex: -1 }} />
-                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.3))', right: '-12px', opacity: 0.6, zIndex: -1 }} />
+                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(255, 140, 0, 0.4), rgba(0, 0, 0, 0.2))', left: '-12px', opacity: 0.6, zIndex: -1 }} />
+                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.3))', right: '-12px', opacity: 0.6, zIndex: -1 }} />
                                   </>
                                 );
                               })()}
                               
                               {/* Image container with smooth transition */}
-                              <div className={`relative rounded-3xl overflow-hidden ${isDarkMode ? 'bg-gray-800/40' : 'bg-white/70'} p-3 backdrop-blur-sm transition-opacity duration-500`}
+                              <div className={`relative rounded-2xl md:rounded-3xl overflow-hidden ${isDarkMode ? 'bg-gray-800/40' : 'bg-white/70'} p-2 md:p-3 backdrop-blur-sm transition-opacity duration-500 mobile-p-sm`}
                                 style={{
                                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.08)'
                                 }}
@@ -576,7 +692,7 @@
                                   key={currentSlide}
                                   src={currentSlideData.image} 
                                   alt={currentSlideData.title}
-                                  className="w-auto h-auto max-w-full relative z-10 transition-opacity duration-500"
+                                  className="w-auto h-auto max-w-full relative z-10 transition-opacity duration-500 mobile-img-max"
                                   style={{ 
                                     maxHeight: '450px', 
                                     objectFit: 'contain'
@@ -676,14 +792,29 @@
                   </div>
                 </div>
 
-                {/* Bottom padding for navigation */}
-                <div className="flex-shrink-0 h-28"></div>
+                {/* Bottom padding for navigation - Desktop only */}
+                <div className="hidden md:block flex-shrink-0 h-28"></div>
               </div>
             </div>
 
-            {/* Navigation bar - Fixed bottom */}
-            <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
+            {/* Navigation bar - Fixed bottom - Desktop only */}
+            <div className="hidden md:block fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50">
               <div className={`flex items-center gap-6 px-10 py-5 ${isDarkMode ? 'bg-gray-800/95 border-gray-700/50' : 'bg-white/95 border-gray-200/50'} backdrop-blur-md rounded-3xl shadow-2xl border-2`}>
+                
+                {/* Reset to first button - Desktop */}
+                <button
+                  onClick={() => goToSlide(0)}
+                  disabled={currentSlide === 0}
+                  className={`p-4 rounded-xl transition-all duration-300 ${
+                    currentSlide === 0 
+                      ? 'opacity-20 cursor-not-allowed' 
+                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white hover:scale-110 active:scale-95`
+                  }`}
+                  aria-label="Pierwszy slajd"
+                  title="Przejdź do pierwszego slajdu"
+                >
+                  <span className="text-2xl">⏮</span>
+                </button>
                 
                 {/* Previous button */}
                 <button
@@ -698,8 +829,8 @@
                   <ChevronLeft className={isDarkMode ? 'text-white' : 'text-gray-900'} />
                 </button>
 
-                {/* Slide dots */}
-                <div className="flex items-center gap-2.5">
+                {/* Slide dots - Desktop only */}
+                <div className="hidden md:flex items-center gap-2.5">
                   {slides.map((_, index) => (
                     <button
                       key={index}
@@ -730,8 +861,8 @@
               </div>
             </div>
 
-            {/* Keyboard hints */}
-            <div className={`fixed bottom-4 right-6 ${isDarkMode ? 'text-gray-300 bg-gray-800/90 border-gray-700/50' : 'text-gray-700 bg-white/90 border-gray-200/50'} backdrop-blur-sm rounded-xl px-5 py-3 border-2 shadow-lg z-50`}>
+            {/* Keyboard hints - Desktop only */}
+            <div className={`hidden md:block fixed bottom-4 right-6 ${isDarkMode ? 'text-gray-300 bg-gray-800/90 border-gray-700/50' : 'text-gray-700 bg-white/90 border-gray-200/50'} backdrop-blur-sm rounded-xl px-5 py-3 border-2 shadow-lg z-50`}>
               <span className="flex items-center gap-3 font-semibold text-base">
                 <kbd className={`px-3 py-1.5 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded-lg font-mono font-bold shadow-sm`}>←</kbd>
                 <kbd className={`px-3 py-1.5 ${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded-lg font-mono font-bold shadow-sm`}>→</kbd>
