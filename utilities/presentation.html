@@ -457,20 +457,6 @@
               >
                 <span className="text-2xl">{isDarkMode ? '☀️' : '🌙'}</span>
               </button>
-
-              {/* Pause/Play toggle */}
-              <button
-                onClick={() => setIsPaused(!isPaused)}
-                className={`p-3 rounded-xl ${
-                  isPaused 
-                    ? 'bg-orange-500 text-white border-orange-500' 
-                    : `${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'}`
-                } backdrop-blur-sm border hover:scale-110 transition-all shadow-lg`}
-                aria-label={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
-                title={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
-              >
-                <span className="text-2xl">{isPaused ? '▶️' : '⏸️'}</span>
-              </button>
             </div>
             
             {/* Mobile control bar - All buttons in one row on the left */}
@@ -814,6 +800,20 @@
                   title="Przejdź do pierwszego slajdu"
                 >
                   <span className="text-2xl">⏮</span>
+                </button>
+                
+                {/* Pause/Play toggle - Desktop */}
+                <button
+                  onClick={() => setIsPaused(!isPaused)}
+                  className={`p-4 rounded-xl transition-all duration-300 ${
+                    isPaused 
+                      ? 'bg-orange-500 text-white hover:bg-orange-600' 
+                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white`
+                  } hover:scale-110 active:scale-95`}
+                  aria-label={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
+                  title={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
+                >
+                  <span className="text-2xl">{isPaused ? '▶️' : '⏸️'}</span>
                 </button>
                 
                 {/* Previous button */}
