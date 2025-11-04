@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="pl" class="h-full">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-xpert 2025 — Prezentacja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React & ReactDOM globals for Babel runtime JSX transform -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel standalone to compile the inlined JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+      html, body, #root { height: 100%; }
+      body { margin: 0; }
+    </style>
+  </head>
+  <body class="h-full">
+    <div id="root" class="h-full"></div>
+
+    <script type="text/babel" data-presets="react">
+      // Provide React hooks from the global React
+      const { useState, useEffect } = React;
+
+      // Minimal icon shims to satisfy the lucide-react usage in the component.
+      // These are simple spans with symbols; you can replace with real icons later.
+      const ChevronLeft = (props) => <span {...props}>◀</span>;
+const ChevronRight = (props) => <span {...props}>▶</span>;
+const Award = (props) => <span {...props}>🏅</span>;
+const Users = (props) => <span {...props}>👥</span>;
+const Code = (props) => <span {...props}>💻</span>;
+const Calendar = (props) => <span {...props}>📅</span>;
+const Globe = (props) => <span {...props}>🌐</span>;
+const Star = (props) => <span {...props}>⭐</span>;
+const Github = (props) => <span {...props}></span>;
+const Facebook = (props) => <span {...props}>📘</span>;
+const ExternalLink = (props) => <span {...props}>🔗</span>;
+const Trophy = (props) => <span {...props}>🏆</span>;
+const Rocket = (props) => <span {...props}>🚀</span>;
+const Target = (props) => <span {...props}>🎯</span>;
+const ArrowRight = (props) => <span {...props}>➜</span>;
+
+      // ---- Begin user component (imports removed) ----
+const ExpertPresentation = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [darkMode, setDarkMode] = useState(false);
+  const [presentationData, setPresentationData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Load presentation data from JSON file
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch('data/presentation2025.json');
+        if (!response.ok) {
+          throw new Error('Failed to load presentation data');
+        }
+        const data = await response.json();
+        setPresentationData(data);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error loading presentation:', err);
+        setError(err.message);
+        setIsLoading(false);
+      }
+    };
+    
+    loadData();
+  }, []);
+
+  // Progress timer - runs only when data is loaded
+  useEffect(() => {
+    if (!presentationData) return;
+    
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          return 0;
+        }
+        return prev + 0.5;
+      });
+    }, 50);
+    return () => clearInterval(timer);
+  }, [currentSlide, presentationData]);
+
+  // Auto-advance when progress reaches 100
+  useEffect(() => {
+    if (!presentationData) return;
+    
+    if (progress >= 100 && currentSlide < presentationData.slides.length - 1 && !isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentSlide(currentSlide + 1);
+        setIsAnimating(false);
+        setProgress(0);
+      }, 300);
+    }
+  }, [progress, currentSlide, isAnimating, presentationData]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    if (!presentationData) return;
+    
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowRight') {
+        // Next slide
+        if (currentSlide < presentationData.slides.length - 1 && !isAnimating) {
+          setIsAnimating(true);
+          setTimeout(() => {
+            setCurrentSlide(currentSlide + 1);
+            setIsAnimating(false);
+            setProgress(0);
+          }, 300);
+        }
+      }
+      if (e.key === 'ArrowLeft') {
+        // Previous slide
+        if (currentSlide > 0 && !isAnimating) {
+          setIsAnimating(true);
+          setTimeout(() => {
+            setCurrentSlide(currentSlide - 1);
+            setIsAnimating(false);
+            setProgress(0);
+          }, 300);
+        }
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentSlide, isAnimating, presentationData]);
+
+  // Show loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">Ładowanie prezentacji...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error || !presentationData) {
+    return (
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto p-8">
+          <div className="text-6xl mb-4">❌</div>
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+            Błąd ładowania prezentacji
+          </h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            {error || 'Nie udało się załadować danych prezentacji'}
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors"
+          >
+            Odśwież stronę
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  const slides = presentationData.slides;
+
+  const handleNext = () => {
+    if (currentSlide < slides.length - 1 && !isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentSlide(currentSlide + 1);
+        setIsAnimating(false);
+        setProgress(0);
+      }, 300);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentSlide > 0 && !isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentSlide(currentSlide - 1);
+        setIsAnimating(false);
+        setProgress(0);
+      }, 300);
+    }
+  };
+
+  const goToSlide = (index) => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentSlide(index);
+        setIsAnimating(false);
+        setProgress(0);
+      }, 300);
+    }
+  };
+
+  const renderBullet = (bullet, isDark) => {
+    if (bullet.startsWith('—')) {
+      return <li className={`ml-8 ${isDark ? 'text-gray-400' : 'text-gray-600'} text-base`}>{bullet}</li>;
+    }
+    if (bullet === '') {
+      return <div className="h-3"></div>;
+    }
+    
+    // Highlight important items with styled badges
+    if (bullet.includes('miejsce') || bullet.includes('WINNER')) {
+      return (
+        <li className="flex items-start gap-3">
+          <span className="mt-1 flex-shrink-0">
+            <Trophy className="w-5 h-5 text-orange-500" />
+          </span>
+          <span className={`font-semibold ${isDark ? 'text-orange-400' : 'text-orange-600'}`}>
+            {bullet}
+          </span>
+        </li>
+      );
+    }
+    
+    if (bullet.includes('Projekt:') || bullet.includes('projekt')) {
+      return (
+        <li className="flex items-start gap-3">
+          <span className="mt-1 flex-shrink-0">
+            <Rocket className="w-5 h-5 text-blue-500" />
+          </span>
+          <span className={`font-medium ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>
+            {bullet}
+          </span>
+        </li>
+      );
+    }
+    
+    // Regular bullet with custom style
+    return (
+      <li className="flex items-start gap-3">
+        <span className="mt-2 w-1.5 h-1.5 bg-orange-500 rounded-full flex-shrink-0"></span>
+        <span>{bullet}</span>
+      </li>
+    );
+  };
+
+  const currentSlideData = slides[currentSlide];
+  const isDarkMode = darkMode;
+
+  return (
+    <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'} transition-all duration-700 relative overflow-hidden`}>
+      {/* Subtle gradient background */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          background: isDarkMode 
+            ? `linear-gradient(135deg, #1c1b22 0%, #ff6b00 50%, #ffa500 100%)`
+            : `linear-gradient(135deg, #f3f3f7 0%, #ff6b00 30%, #ffa500 100%)`
+        }}
+      />
+      
+      {/* Geometric pattern overlay */}
+      <div 
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23${isDarkMode ? 'ffffff' : '000000'}' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}
+      />
+
+      {/* Progress bar */}
+      <div className="absolute top-0 left-0 right-0 h-0.5 bg-black/10">
+        <div 
+          className="h-full transition-all duration-100"
+          style={{ 
+            width: `${progress}%`,
+            background: 'linear-gradient(90deg, #ff6b00 0%, #ff8c00 50%, #ffa500 100%)'
+          }}
+        />
+      </div>
+
+      {/* Dark mode toggle */}
+      <button
+        onClick={() => setDarkMode(!darkMode)}
+        className="absolute top-6 left-6 p-3 rounded-xl bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 hover:scale-105 transition-all shadow-lg"
+        aria-label="Przełącz tryb ciemny"
+      >
+        <span className="text-xl">{isDarkMode ? '☀️' : '🌙'}</span>
+      </button>
+
+      {/* Slide counter */}
+      <div className={`absolute top-6 right-6 ${isDarkMode ? 'text-white' : 'text-gray-900'} font-semibold flex items-center gap-2`}>
+        <div className="flex gap-1">
+          {[...Array(5)].map((_, i) => (
+            <div 
+              key={i}
+              className={`h-1.5 transition-all duration-300 ${
+                i <= Math.floor(currentSlide / 4) 
+                  ? 'w-8 bg-orange-500' 
+                  : 'w-2 bg-gray-400/50'
+              }`}
+            />
+          ))}
+        </div>
+        <span className="text-sm ml-2 font-medium tracking-wide">
+          {String(currentSlide + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+        </span>
+      </div>
+
+      {/* Main content */}
+      <div className="container mx-auto px-8 py-16 min-h-screen flex flex-col justify-center relative z-10">
+        <div className={`transform transition-all duration-700 ${isAnimating ? 'scale-95 opacity-0' : 'scale-100 opacity-100'}`}>
+          {/* Slide number badge */}
+          <div className="mb-6">
+            <span className="inline-block px-4 py-1 rounded-full text-xs font-bold tracking-widest uppercase bg-orange-500 text-white">
+              Slajd {currentSlideData.slide}
+            </span>
+          </div>
+
+          {/* Title with gradient */}
+          <h1 className={`text-4xl md:text-6xl font-bold mb-10 leading-tight tracking-tight ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            <span 
+              className="inline-block"
+              style={{
+                background: isDarkMode 
+                  ? 'linear-gradient(135deg, #ffffff 0%, #ff6b00 50%, #ffa500 100%)'
+                  : 'linear-gradient(135deg, #1c1b22 0%, #ff6b00 50%, #ffa500 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+            >
+              {currentSlideData.title}
+            </span>
+          </h1>
+
+          {/* Content Grid */}
+          <div className={`grid ${currentSlideData.image || currentSlideData.images ? 'md:grid-cols-2' : 'grid-cols-1'} gap-12 items-center`}>
+            {/* Bullets */}
+            <div className="space-y-4">
+              <ul className={`text-lg space-y-3 ${isDarkMode ? 'text-gray-200' : 'text-gray-700'}`}>
+                {currentSlideData.bullets.map((bullet, index) => (
+                  <div
+                    key={index}
+                    className="transform transition-all duration-500"
+                    style={{
+                      animationDelay: `${index * 50}ms`,
+                      animation: 'fadeInUp 0.6s ease-out forwards'
+                    }}
+                  >
+                    {renderBullet(bullet, isDarkMode)}
+                  </div>
+                ))}
+              </ul>
+
+              {/* Video link if exists */}
+              {currentSlideData.video && (
+                <div className="mt-8">
+                  <a 
+                    href={currentSlideData.video}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white font-semibold rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                    Zobacz wideo
+                  </a>
+                </div>
+              )}
+            </div>
+
+            {/* Images with border styling from the website */}
+            {currentSlideData.image && (
+              <div className="flex justify-center">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl opacity-50 group-hover:opacity-75 blur transition duration-300"></div>
+                  <img 
+                    src={currentSlideData.image} 
+                    alt={currentSlideData.title}
+                    className="relative rounded-xl shadow-2xl max-w-full h-auto border-2 border-gray-900/10"
+                    style={{ maxHeight: '500px', objectFit: 'contain' }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {currentSlideData.images && (
+              <div className="space-y-6">
+                <div className="relative group">
+                  <div className="absolute -top-3 -left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">
+                    Przed
+                  </div>
+                  <div className="relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl opacity-30 blur"></div>
+                    <img 
+                      src={currentSlideData.images.old} 
+                      alt="Stara wersja"
+                      className="relative rounded-xl shadow-xl w-full h-auto border-2 border-gray-900/10 opacity-90 hover:opacity-100 transition-opacity duration-300"
+                      style={{ maxHeight: '240px', objectFit: 'contain' }}
+                    />
+                  </div>
+                </div>
+                <div className="relative group">
+                  <div className="absolute -top-3 -left-3 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide shadow-lg">
+                    Po
+                  </div>
+                  <div className="relative">
+                    <div className="absolute -inset-1 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl opacity-30 blur"></div>
+                    <img 
+                      src={currentSlideData.images.new} 
+                      alt="Nowa wersja"
+                      className="relative rounded-xl shadow-xl w-full h-auto border-2 border-gray-900/10"
+                      style={{ maxHeight: '240px', objectFit: 'contain' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation */}
+      <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex items-center gap-6 px-8 py-4 bg-white/90 dark:bg-gray-900/90 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200/50 dark:border-gray-700/50">
+        <button
+          onClick={handlePrev}
+          disabled={currentSlide === 0}
+          className={`p-3 rounded-xl transition-all ${
+            currentSlide === 0 
+              ? 'opacity-30 cursor-not-allowed' 
+              : 'hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110'
+          }`}
+        >
+          <ChevronLeft className={`w-5 h-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} />
+        </button>
+
+        {/* Slide dots */}
+        <div className="flex items-center gap-2 px-4">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`transition-all duration-300 rounded-full ${
+                index === currentSlide 
+                  ? 'w-10 h-2.5 bg-gradient-to-r from-orange-500 to-orange-600' 
+                  : 'w-2.5 h-2.5 bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <button
+          onClick={handleNext}
+          disabled={currentSlide === slides.length - 1}
+          className={`p-3 rounded-xl transition-all ${
+            currentSlide === slides.length - 1
+              ? 'opacity-30 cursor-not-allowed'
+              : 'hover:bg-gray-100 dark:hover:bg-gray-800 hover:scale-110'
+          }`}
+        >
+          <ChevronRight className={`w-5 h-5 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} />
+        </button>
+      </div>
+
+      {/* Keyboard hints with new style */}
+      <div className={`fixed bottom-4 right-4 text-xs ${isDarkMode ? 'text-gray-400' : 'text-gray-600'} bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-200/50 dark:border-gray-700/50`}>
+        <span className="flex items-center gap-2">
+          <kbd className="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs font-mono">←</kbd>
+          <kbd className="px-2 py-0.5 bg-gray-100 dark:bg-gray-800 rounded text-xs font-mono">→</kbd>
+          <span className="ml-1">nawigacja</span>
+        </span>
+      </div>
+
+      {/* Custom animations */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+        
+        @keyframes slideIn {
+          from {
+            transform: translateX(-30px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+        
+        /* Custom scrollbar for dark mode */
+        .dark::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        .dark::-webkit-scrollbar-track {
+          background: #1f2937;
+        }
+        
+        .dark::-webkit-scrollbar-thumb {
+          background: #4b5563;
+          border-radius: 4px;
+        }
+        
+        .dark::-webkit-scrollbar-thumb:hover {
+          background: #6b7280;
+        }
+      `}</style>
+    </div>
+  );
+};
+      // ---- End user component ----
+
+      // Mount the component
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<ExpertPresentation />);
+    </script>
+  </body>
+</html>
