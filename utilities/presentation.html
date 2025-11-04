@@ -55,7 +55,8 @@ const ExpertPresentation = () => {
     const loadData = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch('data/presentation2025.json');
+        const dataAddress =  window.location.href.includes("site") ? '/site/data/presentation2025.json' : 'data/presentation2025.json';
+        const response = await fetch(dataAddress);
         if (!response.ok) {
           throw new Error('Failed to load presentation data');
         }
