@@ -2939,9 +2939,9 @@
                 font-size: 11px;
             }
             
-            /* Gallery */
+            /* Gallery - 2 columns until 600px */
             .gallery-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
             }
             
@@ -4797,6 +4797,14 @@
             background: var(--black);
             color: var(--white);
             border-color: var(--black);
+        }
+        
+        /* Very small screens - 1 column gallery */
+        @media (max-width: 599px) {
+            .gallery-grid {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
         }
         
         /* Responsive mini meeting alert */
