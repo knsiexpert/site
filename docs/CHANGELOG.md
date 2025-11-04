@@ -322,7 +322,7 @@ System automatycznej zmiany kolorów elementów animacji `anim-designer.lottie` 
 ```html
 <dotlottie-player 
     id="heroAnimation"
-    src="data/anim-designer.lottie" 
+    src="data/assets/anim-designer.lottie" 
     background="transparent" 
     speed="1" 
     loop 
@@ -566,7 +566,7 @@ Przeprojektowanie layoutu hero section - dwie animacje Lottie umieszczone nad na
         <div class="hero-animations-row">
             <div class="hero-animation">
                 <dotlottie-player 
-                    src="data/anim-education.lottie" 
+                    src="data/assets/anim-education.lottie" 
                     background="transparent" 
                     speed="1" 
                     loop 
@@ -576,7 +576,7 @@ Przeprojektowanie layoutu hero section - dwie animacje Lottie umieszczone nad na
             <div class="hero-animation-spacer"></div>
             <div class="hero-animation">
                 <dotlottie-player 
-                    src="data/anim-designer.lottie" 
+                    src="data/assets/anim-designer.lottie" 
                     background="transparent" 
                     speed="1" 
                     loop 
@@ -715,7 +715,7 @@ Zmiana na bibliotekę `@dotlottie/player-component`, która jest dedykowana do o
 <!-- Teraz -->
 <div class="hero-animation">
     <dotlottie-player 
-        src="data/anim-education.lottie" 
+        src="data/assets/anim-education.lottie" 
         background="transparent" 
         speed="1" 
         loop 
@@ -749,7 +749,7 @@ function initLottieAnimation() {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: 'data/anim-education.lottie'
+        path: 'data/assets/anim-education.lottie'
     });
 }
 
@@ -761,7 +761,7 @@ function initLottieAnimation() {
 
 | Atrybut | Wartość | Opis |
 |---------|---------|------|
-| `src` | `data/anim-education.lottie` | Ścieżka do pliku |
+| `src` | `data/assets/anim-education.lottie` | Ścieżka do pliku |
 | `background` | `transparent` | Przezroczyste tło |
 | `speed` | `1` | Prędkość animacji (1 = normalna) |
 | `loop` | - | Zapętlenie animacji |
@@ -785,7 +785,7 @@ function initLottieAnimation() {
 ```html
 <!-- Inne opcje dotlottie-player -->
 <dotlottie-player 
-    src="data/anim-designer.lottie" 
+    src="data/assets/anim-designer.lottie" 
     background="transparent"
     speed="1.5"                    <!-- Szybsza animacja -->
     direction="1"                  <!-- 1 = do przodu, -1 = do tyłu -->
@@ -888,7 +888,7 @@ function initLottieAnimation() {
         renderer: 'svg',
         loop: true,
         autoplay: true,
-        path: 'data/anim-education.lottie'
+        path: 'data/assets/anim-education.lottie'
     });
 }
 
@@ -913,7 +913,7 @@ lottie.loadAnimation({
     renderer: 'svg',           // Renderer SVG (najlepsza jakość)
     loop: true,                // Zapętlenie animacji
     autoplay: true,            // Automatyczne uruchomienie
-    path: 'data/anim-education.lottie'  // Ścieżka do pliku
+    path: 'data/assets/anim-education.lottie'  // Ścieżka do pliku
 });
 ```
 
@@ -987,7 +987,7 @@ lottie.loadAnimation({
 **Jak zmienić animację:**
 ```javascript
 // W initLottieAnimation() zmień ścieżkę:
-path: 'data/anim-designer.lottie'  // Zamiast anim-education.lottie
+path: 'data/assets/anim-designer.lottie'  // Zamiast anim-education.lottie
 ```
 
 **Możliwe rozszerzenia:**
@@ -2299,7 +2299,7 @@ activityContent.innerHTML = `
 Logo wyświetlało się jako mała kropka zamiast pełnego symbolu E-XPERT.
 
 **Rozwiązanie:**
-Użyto poprawnego SVG z pliku `data/e-xpert-symbol.svg`.
+Użyto poprawnego SVG z pliku `data/assets/e-xpert-symbol.svg`.
 
 **Zmiany w `navigation.json`:**
 ```json
