@@ -1,0 +1,204 @@
+{
+  "presentation_title": "E-xpert 2023",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "E-xpert — Spotkanie rekrutacyjne",
+      "bullets": [
+        "Koło Naukowe Systemów Informatycznych E-xpert"
+      ],
+      "image": "https://i.imgur.com/zVvMz48.png"
+    },
+    {
+      "slide": 2,
+      "title": "Organizacja",
+      "bullets": [
+        "Nazwa: Koło Naukowe Systemów Informatycznych E-xpert",
+        "Adres: e-xpert.pl , www.facebook.com/knsiexpert",
+        "Liczba uczestników (2023 rok): 20 osób",
+        "Kluczowe obszary działań:",
+        "— Uczestnictwo w konkursach informatycznych (AIS)",
+        "— Organizacja inicjatyw (warsztaty, konferencje — 2021 Ready, set, learn)",
+        "— Realizacja projektów informatycznych (Strona koła)",
+        "— Realizacja i publikacja wyników badań"
+      ]
+    },
+    {
+      "slide": 3,
+      "title": "Działania 2008–2010",
+      "bullets": [
+        "1. Szereg warsztatów z zakresu programowania",
+        "2. Aplikacja do zarządzania planami — wersja webowa"
+      ],
+      "image": "https://i.imgur.com/guKufsg.png"
+    },
+    {
+      "slide": 4,
+      "title": "Działania 2010–2014",
+      "bullets": [
+        "1. Szereg warsztatów z zakresu programowania",
+        "2. Aplikacja do zarządzania planami — rozwinięcie aplikacji webowej",
+        "3. 5 finalistów ogólnopolskiego konkursu Microsoft IT Academy:",
+        "— Cezary Ołtuszyk — 2011 rok IV miejsce w kategorii IT Challenge"
+      ],
+      "image": "https://i.imgur.com/jcs1QwP.png"
+    },
+    {
+      "slide": 5,
+      "title": "Działania 2014–2015 (1/2)",
+      "bullets": [
+        "1. Profil koła na Facebook-u (www.facebook.com/knsiexpert)",
+        "2. Przeprojektowanie witryny koła (www.e-xpert.pl)",
+        "3. Aktualizacja witryny z planami (www.e-xpert.pl)"
+      ],
+      "image": "https://i.imgur.com/f8O7tJO.png"
+    },
+    {
+      "slide": 6,
+      "title": "Działania 2014–2015 (2/2)",
+      "bullets": [
+        "5. Artykuł w Monografii WZ UG w ramach konferencji ICIM 2015 —",
+        "Assessment of the Scrum Approach for the Realization of Mobile Application Development Projects not Consistent with Scrum Assumptions",
+        "6. Rozpoczęcie współpracy z firmą Madkom (warsztaty ze Scrum, oferty pracy)",
+        "7. Współorganizacja konferencji Project management",
+        "8. AIS Student Chapters Annual Competition — Projekt SafeWatch",
+        "— https://e-xpert.pl/?p=614",
+        "— http://www.tvn24.pl/pomorze,42/potrzebujesz-pomocy-uderz-w-zegarek-aplikacja-gdanskich-studentow,543630.html"
+      ]
+    },
+    {
+      "slide": 7,
+      "title": "Działania 2015–2016 (1/2)",
+      "bullets": [
+        "1. III miejsce — „AIS Student Chapter 2016”, kategoria „IBM Bright ICT Bluemix Competition”, 1–3.04.2016, Indiana University, USA — projekt Cyberwatch",
+        "— Opracowanie rozszerzenia dla przeglądarek monitorującego i blokującego treści naruszające bezpieczeństwo oraz zasady kultury i komunikacji społecznej.",
+        "2. Wyróżnienie projektu Cyberwatch jako najefektywniej stosującego IBM Bluemix — „AIS Student Chapter 2016” (IBM Bright ICT Bluemix Competition)",
+        "— http://aib.ug.edu.pl/pl/miedzynarodowy-sukces-studentow-aib/",
+        "3. Wyróżnienie projektu Unity (monitorowanie opinii o wskazanej osobie) — najbardziej innowacyjne użycie IBM Bluemix"
+      ]
+    },
+    {
+      "slide": 8,
+      "title": "Działania 2015–2016 (2/2)",
+      "bullets": [
+        "4. Uzyskanie numeru Patent Pending dla wynalazku:",
+        "„Sposób bezprzewodowego wzywania pomocy w stanie zagrożenia bezpieczeństwa” (projekt SafeWatch)",
+        "— Dyskretne wzywanie pomocy gestami, integracja smartwatch + smartphone",
+        "5. 2015–2016 BEST NEW AIS STUDENT CHAPTER WINNER",
+        "6. I miejsce w konkursie Kół Naukowych (70-lecie SONE)"
+      ],
+      "image": "https://i.imgur.com/1ccj7Fc.png"
+    },
+    {
+      "slide": 9,
+      "title": "Działania 2017–2018",
+      "bullets": [
+        "1. Zorganizowanie warsztatów z biblioteki React.js",
+        "2. III miejsce — AIS Student Chapters Annual Competition, kategoria „Software Innovation Challenge” — projekt „Intelligent baby monitor system”, 13.04.2018",
+        "3. Różne wydarzenia (www.e-xpert.pl/?p=S39)"
+      ],
+      "image": "https://i.imgur.com/HI7oV6H.png"
+    },
+    {
+      "slide": 10,
+      "title": "Działania 2018–2019",
+      "bullets": [
+        "1. III miejsce — AIS Student Chapter, „Software Innovation Challenge”, Filadelfia, USA",
+        "— Zespół: Krzysztof Orłowski, Adam Ostrowski, Hubert Kołcz",
+        "— Projekt: „Apollo. Save food, save world”"
+      ],
+      "image": "https://i.imgur.com/YdzIUdH.png"
+    },
+    {
+      "slide": 11,
+      "title": "Działania 2019–2020",
+      "bullets": [
+        "1. I miejsce — AIS Student Chapter Annual Competition, „Software Innovation Challenge”, Illinois State University, USA",
+        "— Zespół: Michał Kwapiński (AiB), Artur Boniecki, Piotr Miękus",
+        "— Projekt: „Way For Life (W4L)” — idea: komunikat/ściszenie urządzeń przy przejeździe pojazdu uprzywilejowanego",
+        "2. I miejsce — „STARTUJ DO START'UP'u” (Interizon)",
+        "— Zespół: Hubert Kołcz, Mateusz Kusiak, Mateusz Łukasiński, Damian Jaszewski, Weronika Jóźwiak, Piotr Chodoła",
+        "— Projekt: THINKr — HELP ME WITH…"
+      ]
+    },
+    {
+      "slide": 12,
+      "title": "Działania 2020–2021 (wydarzenia)",
+      "bullets": [
+        "1. Duże wydarzenie szkoleniowe wraz z innymi kołami — marzec–czerwiec 2021",
+        "— Sieć szkoleń: umiejętności miękkie (np. jak znaleźć pracę podczas pandemii) i twarde (programowanie)",
+        "— Koła: KNMI, Lider, NKL"
+      ],
+      "image": "https://i.imgur.com/qVQ1fxG.png"
+    },
+    {
+      "slide": 13,
+      "title": "Działania 2020–2021 (aktywności)",
+      "bullets": [
+        "2. Zawody „wewnętrzne” w szachy — styczeń–luty 2021",
+        "— Akcja antystresowa podczas sesji",
+        "3. Zespół TALK_TO — AIS Student Chapters Annual Competition (styczeń–marzec 2021)",
+        "— II miejsce w AIS Showcase Competition",
+        "— Projekt: aplikacja ułatwiająca wyjście z izolacji, darmowy/anonimowy czat, wspólne spotkania i warsztaty",
+        "— https://drive.google.com/file/d/1_TE5obT9ytlhPjRKMdo2MEfbf4dWJe_E/view?usp=sharing"
+      ],
+      "image": "https://i.imgur.com/L4sBL4t.png"
+    },
+    {
+      "slide": 14,
+      "title": "TALK_TO — prezentacja wideo",
+      "bullets": [
+        "Materiał wideo projektu TALK_TO (AIS Showcase)"
+      ],
+      "image": "https://i.imgur.com/xAxOums.png",
+      "video": "https://drive.google.com/file/d/1_TE5obT9ytlhPjRKMdo2MEfbf4dWJe_E/view?usp=sharing"
+    },
+    {
+      "slide": 15,
+      "title": "Social Monitor — materiał wideo",
+      "bullets": [
+        "Prezentacja projektu Social Monitor (finały AIS)"
+      ],
+      "image": "https://i.imgur.com/IwlPLiX.png",
+      "video": "https://www.youtube.com/watch?v=Cd-PX0nxRP8"
+    },
+    {
+      "slide": 16,
+      "title": "Witryna Koła — aktualizacja",
+      "bullets": [
+        "Aktualizacja witryny Koła (odświeżenie layoutu/treści)"
+      ],
+      "images": {
+        "old": "https://i.imgur.com/l9Bl3x5.png",
+        "new": "https://i.imgur.com/YdFdSsb.jpeg"
+      }
+    },
+    {
+      "slide": 17,
+      "title": "Organizacja — Prezesi KNSI E-xpert (2008–2022)",
+      "bullets": [
+        "Magdalena Osińska",
+        "Justyna Krotoszyńska",
+        "Weronika Jóźwiak",
+        "Jakub Sarnowski",
+        "Hubert Kołcz",
+        "Agata Ziółkowska",
+        "Adam Ostrowski",
+        "Kamil Wojewski",
+        "Daniel Golicki",
+        "Adam Mikulski"
+      ]
+    },
+    {
+      "slide": 18,
+      "title": "Organizacja — linki i zapisy",
+      "bullets": [
+        "Projekty: https://e-xpert.pl/ais-sc-ug/",
+        "Statut: https://e-xpert.pl/statut/",
+        "Kolejne spotkanie: Należy ustalić termin",
+        "Zapisy członków koła: https://bit.ly/48hf6I1"
+      ],
+      "image": "https://i.imgur.com/AT0Cd6z.png"
+    }
+  ]
+}
