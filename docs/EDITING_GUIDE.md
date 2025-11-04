@@ -1,8 +1,14 @@
 # Przewodnik edycji treści
 
+## 🎯 Punkt wyjścia - Katalog `data/`
+
+**Wszystkie treści strony znajdują się w plikach JSON w katalogu `data/`.**
+
+To jest jedyne miejsce, które musisz edytować, aby zmienić zawartość strony. Nie edytuj pliku `index.html` - jest on tylko silnikiem renderującym dane z JSON!
+
 ## Jak edytować zawartość strony
 
-Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy plik odpowiada jednej stronie.
+Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy plik odpowiada jednej sekcji strony.
 
 ## Pliki danych
 

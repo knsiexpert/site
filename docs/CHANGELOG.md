@@ -1,5 +1,158 @@
 # Changelog
 
+## [3.33.0] - 2025-01-05
+
+### 🎯 Interactive Team Member Highlighting & Modern Scroll Button
+
+#### Nowe funkcje interaktywne
+
+**Dodano:**
+
+1. **Podświetlanie członków zespołu przez URL**
+   - Parametr `?member=slug` w URL sekcji team
+   - Automatyczne podświetlenie kafelka członka kolorem akcentowym
+   - Pulsująca animacja glow na podświetlonym kafelku
+   - Auto-scroll do podświetlonego członka
+   - Klikalne kafelki - aktualizacja URL i podświetlenie
+
+2. **Ultra-nowoczesny przycisk scroll to top (2025 design)**
+   - Gradient background z efektem glassmorphism
+   - Animacja bounceIn z rotacją przy wejściu
+   - Floating glow effect - pulsujące podświetlenie
+   - Hover z tilt effect (-5° rotacji)
+   - SVG ikona strzałki z animacją
+   - Naprawiona logika show/hide - przycisk pojawia się ponownie
+   - Debouncing dla lepszej wydajności
+
+3. **Zachowanie parametrów URL przy redirect z 404**
+   - Parametry query string zachowywane przez 404.html
+   - Poprawna obsługa przekierowań z parametrami
+   - Pełna funkcjonalność deep linking
+
+**Implementacja:**
+
+**CSS - Podświetlanie członków:**
+```css
+.member-tag.highlighted {
+    background: var(--accent);
+    color: var(--white);
+    transform: scale(1.05);
+    box-shadow: 0 0 30px rgba(var(--accent-rgb), 0.6);
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.team-board p.highlighted {
+    color: var(--accent);
+    font-weight: 700;
+    padding-left: 20px;
+}
+
+.team-board p.highlighted::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+```
+
+**CSS - Modern Scroll Button:**
+```css
+.scroll-to-top {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 
+        0 8px 32px rgba(var(--accent-rgb), 0.35),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translateY(40px) rotate(-15deg);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05) translateY(-5px) rotate(5deg);
+    }
+    100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+    }
+}
+```
+
+**JavaScript - Member highlighting:**
+```javascript
+function nameToSlug(name) {
+    return name.toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/ł/g, 'l')
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-');
+}
+
+// Highlight member based on URL parameter
+const urlParams = new URLSearchParams(window.location.search);
+const highlightMember = urlParams.get('member');
+
+if (highlightMember && memberSlug === highlightMember) {
+    element.classList.add('highlighted');
+    setTimeout(() => {
+        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+}
+```
+
+**JavaScript - Fixed scroll button:**
+```javascript
+function setupScrollToTop() {
+    let scrollTimeout;
+    
+    function handleScroll() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            const shouldShow = window.pageYOffset > 300;
+            if (shouldShow && !isVisible) {
+                btn.classList.add('show');
+                isVisible = true;
+            } else if (!shouldShow && isVisible) {
+                btn.classList.add('hide');
+                isVisible = false;
+            }
+        }, 50);
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+}
+```
+
+**Użycie:**
+
+```
+# Podświetlenie członka
+https://site.com/team?member=natalia-piankowska
+https://site.com/team?member=maciej-szuwarowski
+
+# Generowanie slug'a
+"Natalia Piankowska" → "natalia-piankowska"
+"Maciej Jankowski-Tomków" → "maciej-jankowski-tomkow"
+```
+
+**Efekty:**
+- ✨ Kafelek świeci się pomarańczowym kolorem
+- 💫 Pulsująca animacja glow (2s loop)
+- 📍 Auto-scroll do podświetlonego członka
+- 🔗 Klikalne kafelki aktualizują URL
+- 🔝 Przycisk scroll działa ponownie po powrocie na dół
+- 🎨 Ultra-nowoczesny design przycisku z gradientem
+- 🎭 Hover effects: tilt, scale, glow
+- ⚡ Smooth animations z elastic bounce
+
 ## [3.31.1] - 2025-01-02
 
 ### 🦶 Complete Dark Mode with Footer
