@@ -10,6 +10,7 @@
         // show the correct section
         
         const path = window.location.pathname;
+        const search = window.location.search;
         
         // Detect base path automatically
         // For GitHub Pages: /site/, for localhost: /
@@ -18,9 +19,10 @@
         // Check if we're not already on index.html
         const isIndex = path === basePath + '/' || path === basePath + '/index.html';
         
-        // Redirect to index.html, preserving the path
+        // Redirect to index.html, preserving the path and query parameters
         if (!isIndex) {
-            window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(path));
+            const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
+            window.location.replace(redirectUrl);
         }
     </script>
 </head>
