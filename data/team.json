@@ -338,7 +338,158 @@
           "Adam Mikulski",
           "Marcin Sułek"
         ]
-      }
+      },
+      {
+        "year": "2006/07",
+        "board": [
+          "Michał Sujkowski – prezes",
+          "Michał Fikus – wiceprezes",
+          "Wojtek Pacynko – wiceprezes"
+        ],
+        "members": [
+          "Michał Sujkowski",
+          "Michał Fikus",
+          "Wojtek Pacynko"
+        ]
+      },
+      {
+        "year": "2005/06",
+        "board": [
+          "Bartłomiej Gałek – prezes",
+          "Dominika Turzyńska – wiceprezes",
+          "Piotr Kondratowicz – wiceprezes"
+        ],
+        "members": [
+          "Bartłomiej Gałek",
+          "Dominika Turzyńska",
+          "Piotr Kondratowicz"
+        ]
+      },
+      {
+        "year": "2004/05",
+        "board": [
+          "Maciej Blajer – prezes",
+          "Bartłomiej Gałek – wiceprezes",
+          "Piotr Kondratowicz – webmaster"
+        ],
+        "members": [
+          "Maciej Blajer",
+          "Bartłomiej Gałek",
+          "Piotr Kondratowicz"
+        ]
+      },
+      {
+        "year": "2003/04",
+        "board": [
+          "Michał Harasimiuk – prezes zarządu",
+          "Bartłomiej Gałek – wiceprezes zarządu",
+          "Maciej Blajer – webmaster"
+        ],
+        "members": [
+          "Michał Harasimiuk",
+          "Bartłomiej Gałek",
+          "Maciej Blajer",
+          "Mariusz Grela",
+          "Mateusz Horak",
+          "Piotr Kondratowicz",
+          "Grzegorz Krzyżankowski",
+          "Wojciech Kusz",
+          "Sebastian Kwapisz",
+          "Piotr Mielcarek",
+          "Grzegorz Panowicz",
+          "Krzysztof Patyna",
+          "Radosław Rozestwiński",
+          "Jarosław Szponarski",
+          "Dominika Turzyńska",
+          "Karol Łopaciński",
+          "Barbara Żuk"
+        ]
+      },
+      {
+        "year": "2002/03",
+        "board": [],
+        "members": [
+          "Piotr Cieżyński",
+          "Andrzej Gierasimiuk",
+          "Piotr Jakimiak",
+          "Maciej Kaczor",
+          "Michał Karzyński",
+          "Jakub Kola",
+          "Grzegorz Kwaczyński",
+          "Maciej Ossowski",
+          "Grzegorz Pachocki",
+          "Aleksander Pałasz",
+          "Arkadiusz Pierzchalski",
+          "Piotr Serbiński",
+          "Marek Stawiasz",
+          "Tomasz Szot",
+          "Krystian Wiśniewski",
+          "Grzegorz Zieliński",
+          "Daniel Zwara",
+          "Krzysztof Łapiński"
+        ]
+      },
+      {
+        "year": "2001/02",
+        "board": [
+          "Ernest Syska – prezes",
+          "Grzegorz Brzeziński – wiceprezes ds technologii",
+          "Michał Filip Kowalik – wiceprezes ds finansów",
+          "Tomasz Florczak – wiceprezes ds public relations",
+          "Jakub Krysztofiak – wiceprezes ds badań i rozwoju"
+        ],
+        "members": [
+          "Dejan Acimovic",
+          "Tomek Cichocki",
+          "Wojtek Czernous",
+          "Łukasz Czyżewski",
+          "Dariusz Falkiewicz",
+          "Tomasz Gacoń",
+          "Łukasz Gałązka",
+          "Basia Gelińska",
+          "Wojciech Golly",
+          "Jurand Grabowski",
+          "Hubert Grzymała",
+          "Grzegorz Górniak",
+          "Rafał Ignatowicz",
+          "Bartosz Janowicz",
+          "Gosia Jereczek",
+          "Piotr Kamiński",
+          "Marcin Kazieczko",
+          "Marcin Kierdelewicz",
+          "Paweł Kosmolski",
+          "Marcin Krawczyk",
+          "Marcin Krella",
+          "Magda Kubska",
+          "Łukasz Kulczykowski",
+          "Andrzej Lichnerowicz",
+          "Jacek Maślankowski",
+          "Radosław Olszewicz",
+          "Jarosław Ozga",
+          "Marek Ozimina",
+          "Wojtek Piasek",
+          "Rafał Połoński",
+          "Karol Połubiński",
+          "Adam Przybyłek",
+          "Tomasz Rejman",
+          "Jarosław Romanowski",
+          "Krystyna Romańczyk",
+          "Radosław Rybak",
+          "Piotr Rzepka",
+          "Marcin Sobiak",
+          "Krzysztof Sobolewski",
+          "Tomasz Sperczak",
+          "Tomasz Spyrczak",
+          "Ernest Syska",
+          "Łukasz Toczyski",
+          "Justyna Wachułka",
+          "Dawid Wójcicki",
+          "Krzysztof Wojciechowski",
+          "Bartosz Węsierski",
+          "Łukasz Zacharski",
+          "Szymon Łażewski"
+        ]
+      }      
     ]
   }
 }
