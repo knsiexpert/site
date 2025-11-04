@@ -3,19 +3,21 @@
   "slides": [
     {
       "slide": 1,
-      "title": "E-xpert — Spotkanie rekrutacyjne 2024/25",
+      "title": "E-xpert — Spotkanie rekrutacyjne 2025/26",
       "bullets": [
         "Koło Naukowe Systemów Informatycznych E-xpert",
         "IT dla ludzi"
       ],
-      "image": "https://i.imgur.com/zVvMz48.png"
+      "image": "https://i.imgur.com/UXDXYqJ.jpeg",
+      "motto": "IT dla ludzi",
+      "tagline": "KNSI E-xpert"
     },
     {
       "slide": 2,
       "title": "Organizacja",
       "bullets": [
         "Nazwa: Koło Naukowe Systemów Informatycznych E-xpert",
-        "Strona: knsiexpert.github.io/site (GitHub Pages, Open Source)",
+        "Strona: https://knsiexpert.github.io/site",
         "Facebook: www.facebook.com/knsiexpert",
         "Liczba uczestników (2024/25): ~24 członków aktywnych",
         "50+ osób alumni",
@@ -25,7 +27,8 @@
         "— Organizacja warsztatów i szkoleń",
         "— Realizacja projektów dla UG i społeczeństwa",
         "— Publikacje badań i artykuły o działalności"
-      ]
+      ],
+      "image": "https://i.imgur.com/yxzoI6D.png"
     },
     {
       "slide": 3,
@@ -47,14 +50,14 @@
         "3. 5 finalistów ogólnopolskiego konkursu Microsoft IT Academy:",
         "— Cezary Ołtuszyk — 2011 rok IV miejsce w kategorii IT Challenge"
       ],
-      "image": "https://i.imgur.com/jcs1QwP.png"
+      "image": "https://i.imgur.com/dPTYUzW.jpeg"
     },
     {
       "slide": 5,
       "title": "Działania 2014–2015 (1/2)",
       "bullets": [
-        "1. Profil koła na Facebook-u (www.facebook.com/knsiexpert)",
-        "2. Przeprojektowanie witryny koła (www.e-xpert.pl)",
+        "1. Profil na Facebook-u ( www.facebook.com/knsiexpert )",
+        "2. Przeprojektowanie witryny koła ( www.e-xpert.pl )",
         "3. Aplikacja mobileWZR — plan zajęć WZiE UG na Androida",
         "— Używana od 2014 roku do dziś"
       ],
@@ -71,7 +74,8 @@
         "— III miejsce w konkursie AIS",
         "— Dyskretne wzywanie pomocy gestem (smartwatch + smartphone)",
         "— Patent Pending dla wynalazku"
-      ]
+      ],
+      "image": "https://i.imgur.com/sinO2M0.png"
     },
     {
       "slide": 7,
@@ -120,7 +124,8 @@
         "— Komunikat/ściszenie urządzeń przy przejeździe pojazdu uprzywilejowanego",
         "2. I miejsce — STARTUJ DO START'UP'u (Interizon)",
         "— Projekt: THINKr — HELP ME WITH…"
-      ]
+      ],
+      "image": "https://i.imgur.com/QAChA3p.png"
     },
     {
       "slide": 11,
@@ -158,7 +163,7 @@
         "— Wtyczka do przeglądarek"
       ],
       "image": "https://i.imgur.com/LTmBfuX.png",
-      "video": "https://www.youtube.com/watch?v=Cd-PX0nxRP8"
+      "video": "https://drive.google.com/file/d/1gSl6Y_t3esnm4J9JLc2LJcVEVinOzJg1/view?usp=sharing"
     },
     {
       "slide": 14,
@@ -174,7 +179,7 @@
       ],
       "images": {
         "old": "https://i.imgur.com/l9Bl3x5.png",
-        "new": "https://i.imgur.com/YdFdSsb.jpeg"
+        "new": "https://i.imgur.com/Y6ig40w.png"
       }
     },
     {
@@ -209,9 +214,13 @@
         "Przewodniczący: Maciej Szuwarowski",
         "Wiceprzewodniczący: Stanisław Malec",
         "",
-        "Skład koła (2024/25): 24 członków aktywnych",
-        "",
-        "Prezesi KNSI E-xpert (2008–2022)",
+        "Skład koła (2024/25): 24 członków aktywnych"
+      ]
+    },
+    {
+      "slide": 18,
+      "title": "Prezesi KNSI E-xpert (2008–2023)",
+      "bullets": [
         "Magdalena Osińska",
         "Justyna Krotoszyńska",
         "Weronika Jóźwiak",
@@ -225,7 +234,7 @@
       ]
     },
     {
-      "slide": 18,
+      "slide": 19,
       "title": "Co robimy?",
       "bullets": [
         "Udział w konkursach (AIS Student Chapter, Imagine Cup)",
@@ -237,7 +246,7 @@
       ]
     },
     {
-      "slide": 19,
+      "slide": 20,
       "title": "Co zyskujesz dołączając?",
       "bullets": [
         "Praktyczne doświadczenie w projektach IT",
@@ -251,7 +260,7 @@
       ]
     },
     {
-      "slide": 20,
+      "slide": 21,
       "title": "Organizacja — linki i zapisy",
       "bullets": [
         "Strona: https://knsiexpert.github.io/site/",
