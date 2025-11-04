@@ -407,8 +407,13 @@
       },
       {
         "year": "2002/03",
-        "board": [],
+        "board": [
+          "Ernest Syska – prezes",
+          "Grzegorz Brzeziński – wiceprezes ds technologii"
+        ],
         "members": [
+          "Ernest Syska",
+          "Grzegorz Brzeziński",
           "Piotr Cieżyński",
           "Andrzej Gierasimiuk",
           "Piotr Jakimiak",
@@ -439,6 +444,10 @@
           "Jakub Krysztofiak – wiceprezes ds badań i rozwoju"
         ],
         "members": [
+          "Michał Filip Kowalik",
+          "Tomasz Florczak",
+          "Jakub Krysztofiak",
+          "Grzegorz Brzeziński",
           "Dejan Acimovic",
           "Tomek Cichocki",
           "Wojtek Czernous",
@@ -479,7 +488,6 @@
           "Marcin Sobiak",
           "Krzysztof Sobolewski",
           "Tomasz Sperczak",
-          "Tomasz Spyrczak",
           "Ernest Syska",
           "Łukasz Toczyski",
           "Justyna Wachułka",
