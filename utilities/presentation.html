@@ -1,4 +1,19 @@
 <!doctype html>
+<!--
+  🎨 E-xpert Prezentacja 2025 - Multi-Theme Support
+  
+  Dostępne motywy kolorystyczne (parametr URL):
+  - ?theme=orange   (domyślny - pomarańczowy)
+  - ?theme=green    (zielony)
+  - ?theme=blue     (niebieski)
+  - ?theme=purple   (fioletowy)
+  - ?theme=red      (czerwony)
+  
+  Przykład użycia:
+  utilities/presentation.html?theme=green
+  
+  Dane prezentacji: data/presentation2025.json
+-->
 <html lang="pl" class="h-full">
   <head>
     <meta charset="utf-8" />
@@ -52,6 +67,95 @@
     <script type="text/babel" data-presets="react">
       const { useState, useEffect } = React;
 
+      // Theme colors configuration
+      const THEME_COLORS = {
+        orange: {
+          name: 'Orange',
+          primary: '#ff6b00',
+          primaryLight: '#ff8c00',
+          primaryLighter: '#ffa500',
+          rgb: '255, 107, 0',
+          rgbLight: '255, 140, 0',
+          tailwind: {
+            from500: 'from-orange-500',
+            to600: 'to-orange-600',
+            to400: 'to-orange-400',
+            from400: 'from-orange-400',
+            bg500: 'bg-orange-500',
+            text500: 'text-orange-500',
+            border500: 'border-orange-500'
+          }
+        },
+        green: {
+          name: 'Green',
+          primary: '#10b981',
+          primaryLight: '#34d399',
+          primaryLighter: '#6ee7b7',
+          rgb: '16, 185, 129',
+          rgbLight: '52, 211, 153',
+          tailwind: {
+            from500: 'from-green-500',
+            to600: 'to-green-600',
+            to400: 'to-green-400',
+            from400: 'from-green-400',
+            bg500: 'bg-green-500',
+            text500: 'text-green-500',
+            border500: 'border-green-500'
+          }
+        },
+        blue: {
+          name: 'Blue',
+          primary: '#3b82f6',
+          primaryLight: '#60a5fa',
+          primaryLighter: '#93c5fd',
+          rgb: '59, 130, 246',
+          rgbLight: '96, 165, 250',
+          tailwind: {
+            from500: 'from-blue-500',
+            to600: 'to-blue-600',
+            to400: 'to-blue-400',
+            from400: 'from-blue-400',
+            bg500: 'bg-blue-500',
+            text500: 'text-blue-500',
+            border500: 'border-blue-500'
+          }
+        },
+        purple: {
+          name: 'Purple',
+          primary: '#a855f7',
+          primaryLight: '#c084fc',
+          primaryLighter: '#d8b4fe',
+          rgb: '168, 85, 247',
+          rgbLight: '192, 132, 252',
+          tailwind: {
+            from500: 'from-purple-500',
+            to600: 'to-purple-600',
+            to400: 'to-purple-400',
+            from400: 'from-purple-400',
+            bg500: 'bg-purple-500',
+            text500: 'text-purple-500',
+            border500: 'border-purple-500'
+          }
+        },
+        red: {
+          name: 'Red',
+          primary: '#ef4444',
+          primaryLight: '#f87171',
+          primaryLighter: '#fca5a5',
+          rgb: '239, 68, 68',
+          rgbLight: '248, 113, 113',
+          tailwind: {
+            from500: 'from-red-500',
+            to600: 'to-red-600',
+            to400: 'to-red-400',
+            from400: 'from-red-400',
+            bg500: 'bg-red-500',
+            text500: 'text-red-500',
+            border500: 'border-red-500'
+          }
+        }
+      };
+
       // Icon components
       const ChevronLeft = (props) => <span {...props} style={{fontSize: '24px'}}>◀</span>;
       const ChevronRight = (props) => <span {...props} style={{fontSize: '24px'}}>▶</span>;
@@ -60,6 +164,13 @@
       const ExternalLink = (props) => <span {...props} style={{fontSize: '20px'}}>🔗</span>;
 
       const ExpertPresentation = () => {
+        // Get theme from URL parameter
+        const getThemeFromURL = () => {
+          const params = new URLSearchParams(window.location.search);
+          const themeParam = params.get('theme');
+          return THEME_COLORS[themeParam] ? themeParam : 'orange';
+        };
+        
         const [currentSlide, setCurrentSlide] = useState(0);
         const [isAnimating, setIsAnimating] = useState(false);
         const [progress, setProgress] = useState(0);
@@ -68,6 +179,11 @@
         const [isLoading, setIsLoading] = useState(true);
         const [error, setError] = useState(null);
         const [isPaused, setIsPaused] = useState(false);
+        const [theme, setTheme] = useState(getThemeFromURL());
+        
+        // Theme colors - must be defined before usage
+        const themeColors = THEME_COLORS[theme];
+        const isDarkMode = darkMode;
 
         // Load presentation data from JSON file
         useEffect(() => {
@@ -84,6 +200,16 @@
               const data = await response.json();
               setPresentationData(data);
               setIsLoading(false);
+              
+              // Log available themes
+              console.log(`%c🎨 Prezentacja E-xpert 2025`, `color: ${themeColors.primary}; font-size: 20px; font-weight: bold;`);
+              console.log(`%cAktywny motyw: ${themeColors.name}`, `color: ${themeColors.primary}; font-size: 14px;`);
+              console.log(`%cDostępne motywy:`, `font-weight: bold;`);
+              console.log(`  ?theme=orange  (domyślny)`);
+              console.log(`  ?theme=green`);
+              console.log(`  ?theme=blue`);
+              console.log(`  ?theme=purple`);
+              console.log(`  ?theme=red`);
             } catch (err) {
               console.error('Error loading presentation:', err);
               setError(err.message);
@@ -92,7 +218,7 @@
           };
           
           loadData();
-        }, []);
+        }, [theme]);
 
         // Progress timer
         useEffect(() => {
@@ -126,6 +252,19 @@
           }
         }, [currentSlide]);
 
+        // Watch for URL changes (theme parameter)
+        useEffect(() => {
+          const handlePopState = () => {
+            const newTheme = getThemeFromURL();
+            if (newTheme !== theme) {
+              setTheme(newTheme);
+            }
+          };
+          
+          window.addEventListener('popstate', handlePopState);
+          return () => window.removeEventListener('popstate', handlePopState);
+        }, [theme]);
+        
         // Preload next image for smooth transition
         useEffect(() => {
           if (!presentationData || !presentationData.slides) return;
@@ -172,7 +311,7 @@
           return (
             <div className="min-h-screen bg-gray-50 flex items-center justify-center">
               <div className="text-center">
-                <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-orange-500 mx-auto mb-4"></div>
+                <div className={`animate-spin rounded-full h-16 w-16 border-b-4 ${themeColors.tailwind.border500} mx-auto mb-4`}></div>
                 <p className="text-gray-600 text-xl font-medium">Ładowanie prezentacji...</p>
               </div>
             </div>
@@ -189,7 +328,7 @@
                 <p className="text-gray-600 mb-4">{error || 'Nie udało się załadować danych'}</p>
                 <button
                   onClick={() => window.location.reload()}
-                  className="px-6 py-3 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors font-bold"
+                  className={`px-6 py-3 ${themeColors.tailwind.bg500} text-white rounded-lg hover:${themeColors.tailwind.bg500} transition-colors font-bold`}
                 >
                   Odśwież stronę
                 </button>
@@ -200,7 +339,6 @@
 
         const slides = presentationData.slides;
         const currentSlideData = slides[currentSlide];
-        const isDarkMode = darkMode;
 
         const handleNext = () => {
           if (currentSlide < slides.length - 1 && !isAnimating) {
@@ -252,7 +390,7 @@
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`underline hover:no-underline transition-all ${isDark ? 'text-orange-300 hover:text-orange-400' : 'text-orange-500 hover:text-orange-600'} cursor-pointer`}
+                  className={`underline hover:no-underline transition-all ${isDark ? `text-${theme}-300 hover:text-${theme}-400` : `text-${theme}-500 hover:text-${theme}-600`} cursor-pointer`}
                   style={{ letterSpacing: '-0.01em' }}
                   onClick={(e) => {
                     e.stopPropagation();
@@ -284,7 +422,7 @@
                     <div 
                       className="absolute inset-0 blur-2xl pointer-events-none"
                       style={{
-                        background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.4) 0%, rgba(0, 0, 0, 0.25) 100%)',
+                        background: `linear-gradient(135deg, rgba(${themeColors.rgb}, 0.4) 0%, rgba(0, 0, 0, 0.25) 100%)`,
                         transform: 'translate(0px, 8px) scale(1.08)',
                         opacity: 0.7,
                         zIndex: -1
@@ -293,7 +431,7 @@
                     <div 
                       className="absolute -left-4 top-0 bottom-0 w-20 blur-xl pointer-events-none"
                       style={{
-                        background: 'linear-gradient(180deg, rgba(255, 107, 0, 0.35), rgba(255, 140, 0, 0.2))',
+                        background: `linear-gradient(180deg, rgba(${themeColors.rgb}, 0.35), rgba(${themeColors.rgbLight}, 0.2))`,
                         opacity: 0.6,
                         zIndex: -1
                       }}
@@ -303,8 +441,8 @@
                     <div className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mobile-text-xl"
                       style={{
                         backgroundImage: isDark 
-                          ? 'linear-gradient(135deg, #ffffff 0%, #ff6b00 100%)'
-                          : 'linear-gradient(135deg, #000000 0%, #ff6b00 100%)',
+                          ? `linear-gradient(135deg, #ffffff 0%, ${themeColors.primary} 100%)`
+                          : `linear-gradient(135deg, #000000 0%, ${themeColors.primary} 100%)`,
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
@@ -316,8 +454,8 @@
                     
                     {/* Modern accent bars */}
                     <div className="mt-4 flex gap-2 items-center">
-                      <div className="h-1 w-20 bg-gradient-to-r from-orange-500 to-orange-400" />
-                      <div className="h-1 w-8 bg-gradient-to-r from-orange-400 to-transparent" />
+                      <div className={`h-1 w-20 bg-gradient-to-r ${themeColors.tailwind.from500} ${themeColors.tailwind.to400}`} />
+                      <div className={`h-1 w-8 bg-gradient-to-r ${themeColors.tailwind.from400} to-transparent`} />
                       <div className={`ml-2 text-xs font-bold tracking-widest uppercase ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                         {slideData.tagline || 'TAGLINE'}
                       </div>
@@ -331,9 +469,9 @@
             if (bullet !== slideData.motto && bullet !== '') {
               return (
                 <li key={bullet} className="my-3 md:my-4 list-none">
-                  <div className={`relative pl-4 md:pl-6 py-2 md:py-3 border-l-2 border-orange-500/50 ${isDark ? 'bg-white/5' : 'bg-black/5'} rounded-r-lg mobile-py-sm mobile-px-sm`}>
+                  <div className={`relative pl-4 md:pl-6 py-2 md:py-3 border-l-2 ${themeColors.tailwind.border500}/50 ${isDark ? 'bg-white/5' : 'bg-black/5'} rounded-r-lg mobile-py-sm mobile-px-sm`}>
                     {/* Orange accent dot */}
-                    <div className="absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/50" />
+                    <div className={`absolute -left-1.5 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-gradient-to-br ${themeColors.tailwind.from500} ${themeColors.tailwind.to600} shadow-lg shadow-${theme}-500/50`} />
                     
                     {/* Text */}
                     <span className={`font-medium text-lg md:text-2xl ${isDark ? 'text-gray-200' : 'text-gray-800'} mobile-text-lg`}
@@ -372,10 +510,10 @@
             return (
               <li key={bullet} className="flex items-start gap-3 md:gap-4">
                 <span className="mt-1 md:mt-2 flex-shrink-0">
-                  <Trophy className="text-orange-500" />
+                  <Trophy className={themeColors.tailwind.text500} />
                 </span>
                 <span 
-                  className={`font-bold text-lg md:text-2xl ${baseTextStyle} ${isDark ? 'text-orange-300' : 'text-orange-600'} mobile-text-lg`}
+                  className={`font-bold text-lg md:text-2xl ${baseTextStyle} ${isDark ? `text-${theme}-300` : `text-${theme}-600`} mobile-text-lg`}
                   style={{ letterSpacing: '-0.01em' }}
                 >
                   {hasLink ? renderTextWithLinks(bullet, `font-bold text-lg md:text-2xl ${baseTextStyle} mobile-text-lg`, isDark) : bullet}
@@ -403,7 +541,7 @@
           // Regular bullet
           return (
             <li key={bullet} className="flex items-start gap-3 md:gap-4">
-              <span className="mt-2 md:mt-3 w-2 md:w-2.5 h-2 md:h-2.5 bg-orange-500 rounded-full flex-shrink-0"></span>
+              <span className="mt-2 md:mt-3 w-2 md:w-2.5 h-2 md:h-2.5 {themeColors.tailwind.bg500} rounded-full flex-shrink-0"></span>
               <span 
                 className={`text-lg md:text-2xl ${baseTextStyle} font-medium mobile-text-lg`}
                 style={{ letterSpacing: '-0.01em' }}
@@ -421,8 +559,8 @@
               className="absolute inset-0 opacity-20"
               style={{
                 backgroundImage: isDarkMode 
-                  ? 'linear-gradient(135deg, #1c1b22 0%, #ff6b00 50%, #ffa500 100%)'
-                  : 'linear-gradient(135deg, #f3f3f7 0%, #ff6b00 30%, #ffa500 100%)'
+                  ? `linear-gradient(135deg, #1c1b22 0%, ${themeColors.primary} 50%, ${themeColors.primaryLighter} 100%)`
+                  : `linear-gradient(135deg, #f3f3f7 0%, ${themeColors.primary} 30%, ${themeColors.primaryLighter} 100%)`
               }}
             />
             
@@ -435,14 +573,14 @@
             />
 
             {/* Progress bar */}
-            <div className={`absolute top-0 left-0 right-0 h-1 ${isPaused ? 'bg-orange-500/20' : 'bg-black/10'} z-50 transition-colors duration-300`}>
+            <div className={`absolute top-0 left-0 right-0 h-1 ${isPaused ? `${themeColors.tailwind.bg500}/20` : 'bg-black/10'} z-50 transition-colors duration-300`}>
               <div 
                 className="h-full transition-all duration-100"
                 style={{ 
                   width: `${progress}%`,
                   backgroundImage: isPaused 
                     ? 'linear-gradient(90deg, #9ca3af 0%, #6b7280 50%, #4b5563 100%)'
-                    : 'linear-gradient(90deg, #ff6b00 0%, #ff8c00 50%, #ffa500 100%)'
+                    : `linear-gradient(90deg, ${themeColors.primary} 0%, ${themeColors.primaryLight} 50%, ${themeColors.primaryLighter} 100%)`
                 }}
               />
             </div>
@@ -475,7 +613,7 @@
                 onClick={() => setIsPaused(!isPaused)}
                 className={`p-1.5 rounded-md ${
                   isPaused 
-                    ? 'bg-orange-500 text-white border-orange-500' 
+                    ? '{`${themeColors.tailwind.bg500} text-white ${themeColors.tailwind.border500}`}' 
                     : `${isDarkMode ? 'bg-gray-800/90 text-white' : 'bg-white/90 text-gray-900'} ${isDarkMode ? 'border-gray-700/50' : 'border-gray-200/50'}`
                 } backdrop-blur-sm border hover:scale-110 transition-all shadow-lg`}
                 aria-label={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
@@ -558,7 +696,7 @@
                 <div className="flex-shrink-0 mb-3 md:mb-6 mobile-pl-sm">
                   {/* Slide badge */}
                   <div className="mb-2 md:mb-4">
-                    <span className="inline-block px-6 py-2.5 rounded-full text-sm font-black tracking-widest uppercase bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-xl">
+                    <span className={`inline-block px-6 py-2.5 rounded-full text-sm font-black tracking-widest uppercase bg-gradient-to-r ${themeColors.tailwind.from500} ${themeColors.tailwind.to600} text-white shadow-xl`}>
                       SLAJD {currentSlideData.slide}
                     </span>
                   </div>
@@ -569,8 +707,8 @@
                       className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight mobile-title"
                       style={{
                         backgroundImage: isDarkMode 
-                          ? 'linear-gradient(135deg, #ffffff 0%, #ff6b00 60%, #ffa500 100%)'
-                          : 'linear-gradient(135deg, #1c1b22 0%, #ff6b00 60%, #ffa500 100%)',
+                          ? `linear-gradient(135deg, #ffffff 0%, ${themeColors.primary} 60%, ${themeColors.primaryLighter} 100%)`
+                          : `linear-gradient(135deg, #1c1b22 0%, ${themeColors.primary} 60%, ${themeColors.primaryLighter} 100%)`,
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
@@ -607,7 +745,7 @@
                               href={currentSlideData.video}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="inline-flex items-center gap-4 px-10 py-5 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-xl font-bold rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 uppercase tracking-wide"
+                              className="inline-flex items-center gap-4 px-10 py-5 {`bg-gradient-to-r ${themeColors.tailwind.from500} ${themeColors.tailwind.to600}`} text-white text-xl font-bold rounded-xl {`hover:from-${theme}-600 hover:to-${theme}-700`} transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:scale-105 uppercase tracking-wide"
                               onClick={() => setIsPaused(true)}
                             >
                               <ExternalLink />
@@ -625,24 +763,24 @@
                               {(() => {
                                 const shadowVariant = currentSlide % 4;
                                 
-                                // Variant 0: Bottom-heavy (orange dominant)
+                                // Variant 0: Bottom-heavy (theme dominant)
                                 if (shadowVariant === 0) {
                                   return (
                                     <>
-                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 107, 0, 0.6) 100%)', transform: 'translate(0px, 20px) scale(1.15)', opacity: 0.8, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(255, 107, 0, 0.5), rgba(255, 140, 0, 0.3), rgba(0, 0, 0, 0.2))', left: '-15px', opacity: 0.7, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.4))', right: '-15px', opacity: 0.6, zIndex: -1 }} />
+                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: `linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(${themeColors.rgb}, 0.6) 100%)`, transform: 'translate(0px, 20px) scale(1.15)', opacity: 0.8, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(180deg, rgba(${themeColors.rgb}, 0.5), rgba(${themeColors.rgbLight}, 0.3), rgba(0, 0, 0, 0.2))`, left: '-15px', opacity: 0.7, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(${themeColors.rgb}, 0.4))`, right: '-15px', opacity: 0.6, zIndex: -1 }} />
                                     </>
                                   );
                                 }
                                 
-                                // Variant 1: Left-heavy (diagonal orange)
+                                // Variant 1: Left-heavy (diagonal theme)
                                 if (shadowVariant === 1) {
                                   return (
                                     <>
-                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(135deg, rgba(255, 107, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%)', transform: 'translate(-10px, 15px) scale(1.1)', opacity: 0.75, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'radial-gradient(ellipse at left, rgba(255, 140, 0, 0.6), rgba(255, 107, 0, 0.3))', left: '-20px', opacity: 0.8, zIndex: -1 }} />
-                                      <div className="absolute left-0 right-0 h-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(90deg, rgba(255, 107, 0, 0.4), transparent)', bottom: '-15px', opacity: 0.6, zIndex: -1 }} />
+                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: `linear-gradient(135deg, rgba(${themeColors.rgb}, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%)`, transform: 'translate(-10px, 15px) scale(1.1)', opacity: 0.75, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `radial-gradient(ellipse at left, rgba(${themeColors.rgbLight}, 0.6), rgba(${themeColors.rgb}, 0.3))`, left: '-20px', opacity: 0.8, zIndex: -1 }} />
+                                      <div className="absolute left-0 right-0 h-24 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(90deg, rgba(${themeColors.rgb}, 0.4), transparent)`, bottom: '-15px', opacity: 0.6, zIndex: -1 }} />
                                     </>
                                   );
                                 }
@@ -651,9 +789,9 @@
                                 if (shadowVariant === 2) {
                                   return (
                                     <>
-                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: 'linear-gradient(225deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 107, 0, 0.5) 100%)', transform: 'translate(10px, 15px) scale(1.1)', opacity: 0.7, zIndex: -1 }} />
-                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'radial-gradient(ellipse at right, rgba(0, 0, 0, 0.5), rgba(255, 107, 0, 0.3))', right: '-20px', opacity: 0.75, zIndex: -1 }} />
-                                      <div className="absolute left-0 right-0 h-20 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(90deg, transparent, rgba(255, 107, 0, 0.3), rgba(0, 0, 0, 0.3))', top: '-10px', opacity: 0.5, zIndex: -1 }} />
+                                      <div className="absolute inset-0 blur-2xl pointer-events-none transition-all duration-700" style={{ background: `linear-gradient(225deg, rgba(0, 0, 0, 0.5) 0%, rgba(${themeColors.rgb}, 0.5) 100%)`, transform: 'translate(10px, 15px) scale(1.1)', opacity: 0.7, zIndex: -1 }} />
+                                      <div className="absolute top-0 bottom-0 w-28 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `radial-gradient(ellipse at right, rgba(0, 0, 0, 0.5), rgba(${themeColors.rgb}, 0.3))`, right: '-20px', opacity: 0.75, zIndex: -1 }} />
+                                      <div className="absolute left-0 right-0 h-20 blur-xl pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(90deg, transparent, rgba(${themeColors.rgb}, 0.3), rgba(0, 0, 0, 0.3))`, top: '-10px', opacity: 0.5, zIndex: -1 }} />
                                     </>
                                   );
                                 }
@@ -661,9 +799,9 @@
                                 // Variant 3: Balanced (radial spread)
                                 return (
                                   <>
-                                    <div className="absolute inset-0 blur-3xl pointer-events-none transition-all duration-700" style={{ background: 'radial-gradient(ellipse at center, rgba(255, 107, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 80%)', transform: 'translate(0px, 18px) scale(1.2)', opacity: 0.7, zIndex: -1 }} />
-                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(255, 140, 0, 0.4), rgba(0, 0, 0, 0.2))', left: '-12px', opacity: 0.6, zIndex: -1 }} />
-                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.3))', right: '-12px', opacity: 0.6, zIndex: -1 }} />
+                                    <div className="absolute inset-0 blur-3xl pointer-events-none transition-all duration-700" style={{ background: `radial-gradient(ellipse at center, rgba(${themeColors.rgb}, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 80%)`, transform: 'translate(0px, 18px) scale(1.2)', opacity: 0.7, zIndex: -1 }} />
+                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(180deg, rgba(${themeColors.rgbLight}, 0.4), rgba(0, 0, 0, 0.2))`, left: '-12px', opacity: 0.6, zIndex: -1 }} />
+                                    <div className="absolute top-0 bottom-0 w-20 blur-lg pointer-events-none transition-all duration-700 mobile-hide-shadow" style={{ background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(${themeColors.rgb}, 0.3))`, right: '-12px', opacity: 0.6, zIndex: -1 }} />
                                   </>
                                 );
                               })()}
@@ -695,15 +833,15 @@
                           <div className="flex flex-col gap-8">
                             {/* BEFORE */}
                             <div className="relative">
-                              <div className="absolute -top-4 -left-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-4 py-2 text-sm font-black uppercase tracking-widest rounded-lg shadow-xl z-10">
+                              <div className={`absolute -top-4 -left-4 bg-gradient-to-r ${themeColors.tailwind.from500} ${themeColors.tailwind.to600} text-white px-4 py-2 text-sm font-black uppercase tracking-widest rounded-lg shadow-xl z-10`}>
                                 PRZED
                               </div>
                               <div className="relative">
-                                {/* Orange/Black shadows - "BEFORE" - stronger orange */}
+                                {/* Theme/Black shadows - "BEFORE" - stronger theme color */}
                                 <div 
                                   className="absolute inset-0 blur-lg pointer-events-none"
                                   style={{
-                                    background: 'radial-gradient(ellipse at center, rgba(255, 107, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 75%)',
+                                    background: `radial-gradient(ellipse at center, rgba(${themeColors.rgb}, 0.5) 0%, rgba(0, 0, 0, 0.3) 50%, transparent 75%)`,
                                     transform: 'translate(0px, 12px) scale(1.15)',
                                     opacity: 0.6,
                                     zIndex: -1
@@ -712,7 +850,7 @@
                                 <div 
                                   className="absolute top-0 bottom-0 w-16 blur-md pointer-events-none"
                                   style={{
-                                    background: 'linear-gradient(180deg, rgba(255, 107, 0, 0.4), rgba(0, 0, 0, 0.2))',
+                                    background: `linear-gradient(180deg, rgba(${themeColors.rgb}, 0.4), rgba(0, 0, 0, 0.2))`,
                                     left: '-10px',
                                     opacity: 0.5,
                                     zIndex: -1
@@ -738,11 +876,11 @@
                                 PO
                               </div>
                               <div className="relative">
-                                {/* Black/Orange shadows - "AFTER" - more black, less orange */}
+                                {/* Black/Theme shadows - "AFTER" - more black, less theme */}
                                 <div 
                                   className="absolute inset-0 blur-lg pointer-events-none"
                                   style={{
-                                    background: 'radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(255, 107, 0, 0.2) 50%, transparent 75%)',
+                                    background: `radial-gradient(ellipse at center, rgba(0, 0, 0, 0.4) 0%, rgba(${themeColors.rgb}, 0.2) 50%, transparent 75%)`,
                                     transform: 'translate(0px, 12px) scale(1.1)',
                                     opacity: 0.4,
                                     zIndex: -1
@@ -751,7 +889,7 @@
                                 <div 
                                   className="absolute top-0 bottom-0 w-16 blur-md pointer-events-none"
                                   style={{
-                                    background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(255, 107, 0, 0.15))',
+                                    background: `linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(${themeColors.rgb}, 0.15))`,
                                     left: '-10px',
                                     opacity: 0.3,
                                     zIndex: -1
@@ -794,7 +932,7 @@
                   className={`p-4 rounded-xl transition-all duration-300 ${
                     currentSlide === 0 
                       ? 'opacity-20 cursor-not-allowed' 
-                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white hover:scale-110 active:scale-95`
+                      : `${isDarkMode ? '{`hover:bg-${theme}-500`}' : '{`hover:bg-${theme}-500`}'} hover:text-white hover:scale-110 active:scale-95`
                   }`}
                   aria-label="Pierwszy slajd"
                   title="Przejdź do pierwszego slajdu"
@@ -807,8 +945,8 @@
                   onClick={() => setIsPaused(!isPaused)}
                   className={`p-4 rounded-xl transition-all duration-300 ${
                     isPaused 
-                      ? 'bg-orange-500 text-white hover:bg-orange-600' 
-                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white`
+                      ? `${themeColors.tailwind.bg500} text-white hover:bg-${theme}-600` 
+                      : `${isDarkMode ? `hover:bg-${theme}-500` : `hover:bg-${theme}-500`} hover:text-white`
                   } hover:scale-110 active:scale-95`}
                   aria-label={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
                   title={isPaused ? 'Wznów prezentację' : 'Zatrzymaj prezentację'}
@@ -823,7 +961,7 @@
                   className={`p-4 rounded-xl transition-all duration-300 ${
                     currentSlide === 0 
                       ? 'opacity-20 cursor-not-allowed' 
-                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white hover:scale-110 active:scale-95`
+                      : `${isDarkMode ? '{`hover:bg-${theme}-500`}' : '{`hover:bg-${theme}-500`}'} hover:text-white hover:scale-110 active:scale-95`
                   }`}
                 >
                   <ChevronLeft className={isDarkMode ? 'text-white' : 'text-gray-900'} />
@@ -837,8 +975,8 @@
                       onClick={() => goToSlide(index)}
                       className={`transition-all duration-300 rounded-full ${
                         index === currentSlide 
-                          ? 'w-12 h-4 bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg' 
-                          : `w-4 h-4 ${isDarkMode ? 'bg-gray-600' : 'bg-gray-300'} hover:bg-orange-400 hover:scale-125`
+                          ? `w-12 h-4 bg-gradient-to-r ${themeColors.tailwind.from500} ${themeColors.tailwind.to600} shadow-lg` 
+                          : `w-4 h-4 ${isDarkMode ? 'bg-gray-600' : 'bg-gray-300'} hover:bg-${theme}-400 hover:scale-125`
                       }`}
                       aria-label={`Przejdź do slajdu ${index + 1}`}
                       title={`Slajd ${index + 1}`}
@@ -853,7 +991,7 @@
                   className={`p-4 rounded-xl transition-all duration-300 ${
                     currentSlide === slides.length - 1
                       ? 'opacity-20 cursor-not-allowed'
-                      : `${isDarkMode ? 'hover:bg-orange-500' : 'hover:bg-orange-500'} hover:text-white hover:scale-110 active:scale-95`
+                      : `${isDarkMode ? '{`hover:bg-${theme}-500`}' : '{`hover:bg-${theme}-500`}'} hover:text-white hover:scale-110 active:scale-95`
                   }`}
                 >
                   <ChevronRight className={isDarkMode ? 'text-white' : 'text-gray-900'} />
@@ -903,14 +1041,14 @@
               }
               
               .custom-scrollbar::-webkit-scrollbar-thumb {
-                background-image: linear-gradient(135deg, #ff6b00, #ffa500);
+                background-image: linear-gradient(135deg, ${themeColors.primary}, ${themeColors.primaryLighter});
                 border-radius: 10px;
                 border: 2px solid transparent;
                 background-clip: padding-box;
               }
               
               .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                background-image: linear-gradient(135deg, #ff8c00, #ffb733);
+                background-image: linear-gradient(135deg, ${themeColors.primaryLight}, ${themeColors.primaryLighter});
                 background-clip: padding-box;
               }
               
