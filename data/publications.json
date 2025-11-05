@@ -1,0 +1,23 @@
+{
+  "title": "Publikacje",
+  "description": "Artykuły i aktualności związane z działalnością Koła Naukowego Systemów Informatycznych E-xpert.",
+  "subtitle": "Poznaj naszą działalność przez publikacje, relacje z wydarzeń i artykuły",
+  "markdownsPeek": {
+    "containerId": "publications-viewer",
+    "owner": "knsiexpert",
+    "repo": "blog",
+    "path": "news",
+    "branch": "main",
+    "theme": "light",
+    "token": "",
+    "disableStyles": false,
+    "loadFirstFileAutomatically": false,
+    "hideFilesOnRoute": true,
+    "basePath": "publications/full",
+    "reverseSortOrder": true,
+    "sortAlphabetically": true
+  },
+  "githubLink": "https://github.com/knsiexpert/blog",
+  "githubButtonText": "WSZYSTKIE PUBLIKACJE NA GITHUB"
+}
+

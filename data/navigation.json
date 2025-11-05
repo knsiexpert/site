@@ -18,6 +18,17 @@
       "visible": true
     },
     {
+      "id": "publications",
+      "title": "Publikacje",
+      "slug": "publikacje",
+      "href": "publications.json",
+      "icon": "📰",
+      "description": "Artykuły i aktualności związane z działalnością koła",
+      "keywords": ["publikacje", "blog", "artykuły", "aktualności", "news"],
+      "order": 2,
+      "visible": true
+    },
+    {
       "id": "projects",
       "title": "Projekty",
       "slug": "projekty",
@@ -25,7 +36,7 @@
       "icon": "💻",
       "description": "Projekty AIS SC - nasze realizacje i osiągnięcia",
       "keywords": ["projekty", "portfolio", "realizacje", "ais sc"],
-      "order": 2,
+      "order": 3,
       "visible": true
     },
     {
@@ -36,7 +47,7 @@
       "icon": "🎯",
       "description": "Cele i misja koła - co chcemy osiągnąć",
       "keywords": ["cele", "misja", "wizja", "osiągnięcia"],
-      "order": 3,
+      "order": 4,
       "visible": true
     },
     {
@@ -47,7 +58,7 @@
       "icon": "👥",
       "description": "Zarząd i członkowie koła naukowego",
       "keywords": ["zespół", "zarząd", "członkowie", "ludzie"],
-      "order": 4,
+      "order": 5,
       "visible": true
     },
     {
@@ -58,7 +69,7 @@
       "icon": "📷",
       "description": "Galeria zdjęć z działalności koła",
       "keywords": ["galeria", "zdjęcia", "fotografie", "wydarzenia"],
-      "order": 5,
+      "order": 6,
       "visible": true
     },
     {
@@ -69,7 +80,7 @@
       "icon": "📜",
       "description": "Statut koła naukowego - zasady działania",
       "keywords": ["statut", "regulamin", "zasady"],
-      "order": 6,
+      "order": 7,
       "visible": true
     },
     {
@@ -80,7 +91,7 @@
       "icon": "⚡",
       "description": "Działalność koła - spotkania, warsztaty, konkursy",
       "keywords": ["działalność", "wydarzenia", "spotkania"],
-      "order": 7,
+      "order": 8,
       "visible": true
     },
     {
@@ -91,7 +102,7 @@
       "icon": "🚀",
       "description": "Dołącz do E-XPERT - rekrutacja do koła naukowego",
       "keywords": ["rekrutacja", "dołącz", "aplikuj", "formularz"],
-      "order": 8,
+      "order": 9,
       "visible": true
     }
   ]

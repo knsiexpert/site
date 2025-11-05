@@ -1,33 +1,1400 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8">
-    <title>Redirecting...</title>
-    <script>
-        // GitHub Pages SPA redirect
-        // This script takes the current page path and redirects to index.html
-        // with the path as a query parameter that index.html will use to 
-        // show the correct section
-        
-        const path = window.location.pathname;
-        const search = window.location.search;
-        
-        // Detect base path automatically
-        // For GitHub Pages: /site/, for localhost: /
-        const basePath = path.includes('/site/') ? '/site' : '';
-        
-        // Check if we're not already on index.html
-        const isIndex = path === basePath + '/' || path === basePath + '/index.html';
-        
-        // Redirect to index.html, preserving the path and query parameters
-        if (!isIndex) {
-            const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
-            window.location.replace(redirectUrl);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publikacje - KNSI E-XPERT</title>
+    
+    <!-- DotLottie Player for .lottie files -->
+    <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </script>
+
+        :root {
+            --black: #1c1b22;
+            --white: #f3f3f7;
+            --gray: #808080;
+            --light-gray: #e8e8ed;
+            --accent: #ff6b00;
+            --accent-rgb: 255, 107, 0;
+            --accent-light: #ff8c00;
+            --accent-lighter: #ffa500;
+            --gradient-primary: linear-gradient(90deg, #1c1b22 0%, var(--accent) 50%, var(--accent-lighter) 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Helvetica Neue', 'Arial', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            color: var(--black);
+            background: var(--white);
+            overflow-x: hidden;
+            letter-spacing: -0.01em;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-weight: 400;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            color: var(--white);
+            background: var(--black);
+        }
+        
+        p {
+            cursor: default;
+        }
+        
+        /* Hide text selection styles */
+        ::selection {
+            background: transparent;
+            color: inherit;
+        }
+        
+        ::-moz-selection {
+            background: transparent;
+            color: inherit;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(243, 243, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 2px solid var(--black);
+            box-shadow: 0 2px 20px rgba(28, 27, 34, 0.05);
+        }
+
+        .dark-mode nav {
+            background: rgba(28, 27, 34, 0.95);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .logo svg {
+            height: 60px;
+            width: 60px;
+            animation: rotate3d 20s ease-in-out infinite;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid transparent;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(var(--white), var(--white)) padding-box,
+                        var(--gradient-hero) border-box;
+            box-shadow: 0 4px 20px rgba(var(--accent-rgb), 0.3),
+                        0 2px 10px rgba(255, 140, 0, 0.2);
+            color: var(--black);
+        }
+
+        .logo svg:hover {
+            animation-play-state: paused;
+            transform: scale(1.1) rotateY(180deg);
+            box-shadow: 0 6px 30px rgba(var(--accent-rgb), 0.5),
+                        0 3px 15px rgba(255, 140, 0, 0.3);
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            25% { transform: rotateY(180deg) rotateX(5deg); }
+            50% { transform: rotateY(360deg) rotateX(0deg); }
+            75% { transform: rotateY(180deg) rotateX(-5deg); }
+            100% { transform: rotateY(0deg) rotateX(0deg); }
+        }
+
+        @keyframes navGradientShift {
+            0%, 100% {
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
+            }
+        }
+
+        .dark-mode .logo svg {
+            color: var(--white);
+            background: linear-gradient(var(--black), var(--black)) padding-box,
+                        var(--gradient-hero) border-box;
+        }
+
+        .logo-text {
+            color: var(--black);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .dark-mode .logo-text {
+            color: var(--white);
+        }
+
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            background-size: 200% auto;
+            animation: navGradientShift 6s ease-in-out infinite;
+            opacity: 0.8;
+            transition: opacity 0.3s ease, height 0.3s ease;
+        }
+
+        .logo-text:hover::after {
+            opacity: 1;
+            height: 3px;
+        }
+
+        .back-link {
+            padding: 12px 24px;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            border: 2px solid var(--black);
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        .back-link:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(28, 27, 34, 0.15);
+        }
+
+        .dark-mode .back-link {
+            background: var(--white);
+            color: var(--black);
+            border-color: var(--white);
+        }
+
+        .dark-mode .back-link:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* Theme Switcher Buttons */
+        .theme-switcher {
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .theme-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 1.5px solid var(--white);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            background: var(--light-gray);
+            opacity: 0.6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-btn:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .theme-btn.active {
+            opacity: 1;
+            width: 14px;
+            height: 14px;
+            border-width: 2px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-btn[data-theme="orange"] {
+            background: #ff6b00;
+        }
+
+        .theme-btn[data-theme="blue"] {
+            background: #0066ff;
+        }
+
+        .theme-btn[data-theme="green"] {
+            background: #00cc66;
+        }
+
+        .theme-btn[data-theme="purple"] {
+            background: #9933ff;
+        }
+
+        .theme-btn[data-theme="red"] {
+            background: #ff3333;
+        }
+
+        .dark-mode-toggle {
+            background: transparent;
+            border: 1.5px solid var(--black);
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50%;
+            position: relative;
+            opacity: 0.6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-mode-toggle:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            border-color: var(--accent);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-mode .dark-mode-toggle {
+            border-color: var(--white);
+        }
+
+        .dark-mode .dark-mode-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        .dark-mode-icon {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            margin-top: 104px;
+            width: 100%;
+        }
+
+        #markdown-viewer-publications {
+            width: 100%;
+            min-height: calc(100vh - 104px - 400px);
+            margin-bottom: 100px;
+        }
+
+        /* Footer Animation */
+        .footer-animation {
+            position: relative;
+            top: -100px;
+            width: 100%;
+            height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0px;
+            z-index: 0;
+        }
+
+        .footer-animation dotlottie-player {
+            width: 550px;
+            height: 550px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 0 40px;
+            margin-top: -200px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .dark-mode footer {
+            background: #0f0e13;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h3 {
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            max-width: 400px;
+        }
+
+        .footer-section h4 {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            font-weight: 700;
+            opacity: 0.5;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            padding-top: 40px;
+            border-top: 2px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .footer-bottom p {
+            letter-spacing: 0.05em;
+        }
+
+        .footer-credits {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-credits a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-content {
+                padding: 20px;
+            }
+
+            .logo {
+                font-size: 14px;
+                gap: 15px;
+            }
+
+            .logo svg {
+                height: 40px;
+                width: 40px;
+            }
+
+            .back-link {
+                font-size: 10px;
+                padding: 10px 16px;
+                margin-right: 0;
+            }
+
+            .theme-switcher {
+                bottom: -6px;
+                gap: 10px;
+            }
+
+            .theme-btn {
+                width: 10px;
+                height: 10px;
+            }
+
+            .theme-btn.active {
+                width: 12px;
+                height: 12px;
+            }
+
+            .dark-mode-toggle {
+                width: 16px;
+                height: 16px;
+            }
+
+            .dark-mode-icon {
+                font-size: 9px;
+            }
+
+            main {
+                margin-top: 84px;
+            }
+
+            #markdown-viewer-publications {
+                min-height: calc(100vh - 84px - 300px);
+            }
+
+            .footer-animation {
+                height: 280px;
+                margin-top: 0px;
+            }
+
+            .footer-animation dotlottie-player {
+                width: 350px;
+                height: 350px;
+            }
+
+            footer {
+                padding: 60px 0 30px;
+                margin-top: -120px;
+            }
+
+            .footer-content {
+                padding: 0 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                margin-bottom: 50px;
+            }
+
+            .footer-brand h3 {
+                font-size: 22px;
+                margin-bottom: 18px;
+            }
+
+            .footer-brand p {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .footer-section h4 {
+                font-size: 10px;
+                margin-bottom: 18px;
+            }
+
+            .footer-links li {
+                margin-bottom: 10px;
+            }
+
+            .footer-links a {
+                font-size: 13px;
+            }
+
+            .footer-social {
+                gap: 12px;
+                margin-top: 15px;
+            }
+
+            .footer-social a {
+                width: 36px;
+                height: 36px;
+                font-size: 11px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+                padding-top: 30px;
+                font-size: 11px;
+            }
+
+            .scroll-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                border-radius: 14px;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* Custom light mode colors for MarkdownsPeek widget */
+        #markdown-viewer-publications {
+            background: #f3f3f7 !important;
+        }
+
+        #markdown-viewer-publications [class*="-mp-body"] h1:first-of-type {
+            display: none;
+        }
+
+        /* Override widget's default white background with our custom light color */
+        #markdown-viewer-publications [class*="mp-"],
+        #markdown-viewer-publications [class*="markdowns-peek"] {
+            background-color: #f3f3f7 !important;
+        }
+
+        #markdown-viewer-publications [class*="mp-container"],
+        #markdown-viewer-publications [class*="mp-body"],
+        #markdown-viewer-publications [class*="mp-content"],
+        #markdown-viewer-publications [class*="mp-article"],
+        #markdown-viewer-publications [class*="mp-files"],
+        #markdown-viewer-publications nav,
+        #markdown-viewer-publications aside {
+            background-color: #f3f3f7 !important;
+        }
+
+        /* Custom dark mode colors for MarkdownsPeek widget */
+        .dark-mode #markdown-viewer-publications {
+            background: #1c1b22 !important;
+        }
+
+        .dark-mode #markdown-viewer-publications * {
+            border-color: #3d3d45 !important;
+        }
+
+        /* Override widget's default black background with our custom dark color */
+        .dark-mode #markdown-viewer-publications [class*="mp-"],
+        .dark-mode #markdown-viewer-publications [class*="markdowns-peek"] {
+            background-color: #1c1b22 !important;
+        }
+
+        .dark-mode #markdown-viewer-publications [class*="mp-container"],
+        .dark-mode #markdown-viewer-publications [class*="mp-body"],
+        .dark-mode #markdown-viewer-publications [class*="mp-content"],
+        .dark-mode #markdown-viewer-publications [class*="mp-article"],
+        .dark-mode #markdown-viewer-publications [class*="mp-files"],
+        .dark-mode #markdown-viewer-publications nav,
+        .dark-mode #markdown-viewer-publications aside {
+            background-color: #1c1b22 !important;
+        }
+
+        /* Logo dark background */
+        .dark-mode .logo svg {
+            background: #252530;
+            border-color: #3d3d45;
+        }
+
+        /* Theme switcher buttons in dark mode */
+        .dark-mode .theme-btn {
+            background: rgba(37, 37, 48, 0.8);
+            border: 2px solid #3d3d45;
+        }
+
+        .dark-mode .theme-btn:hover,
+        .dark-mode .theme-btn.active {
+            border-color: var(--accent);
+            box-shadow: 0 0 12px rgba(var(--accent-rgb), 0.3);
+        }
+
+        .dark-mode .theme-btn[data-theme="orange"] {
+            background: #ff6b00;
+        }
+
+        .dark-mode .theme-btn[data-theme="blue"] {
+            background: #0066ff;
+        }
+
+        .dark-mode .theme-btn[data-theme="green"] {
+            background: #00cc66;
+        }
+
+        .dark-mode .theme-btn[data-theme="purple"] {
+            background: #9933ff;
+        }
+
+        .dark-mode .theme-btn[data-theme="red"] {
+            background: #ff3333;
+        }
+
+        .dark-mode .theme-btn.dark-mode-toggle {
+            border-color: #f3f3f7;
+        }
+
+        .dark-mode .theme-btn.dark-mode-toggle:hover {
+            border-color: var(--accent);
+        }
+
+        /* Footer animation dark background */
+        .dark-mode .footer-animation {
+            background: transparent;
+        }
+
+        /* Scroll to Top Button - Modern 2025 Design */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            color: var(--white);
+            border: none;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 998;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 
+                0 8px 32px rgba(var(--accent-rgb), 0.35),
+                0 4px 12px rgba(0, 0, 0, 0.15),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.1);
+            user-select: none;
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8) translateY(20px);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .scroll-to-top::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(135deg, var(--accent-lighter), var(--accent));
+            border-radius: 16px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1) translateY(-5px) rotate(-5deg);
+            box-shadow: 
+                0 12px 48px rgba(var(--accent-rgb), 0.5),
+                0 8px 24px rgba(0, 0, 0, 0.2),
+                inset 0 -2px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .scroll-to-top:hover::before {
+            opacity: 1;
+        }
+
+        .scroll-to-top:active {
+            transform: scale(0.95) translateY(-2px);
+            transition: all 0.1s ease;
+        }
+
+        .scroll-to-top svg {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+        }
+
+        .scroll-to-top:hover svg {
+            transform: translateY(-3px);
+        }
+
+        .scroll-to-top:active svg {
+            transform: translateY(-1px);
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1) translateY(0);
+            animation: bounceIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), floatGlow 3s ease-in-out infinite 1s;
+        }
+
+        .scroll-to-top.hide {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(0.8) translateY(20px);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3) translateY(40px) rotate(-15deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05) translateY(-5px) rotate(5deg);
+            }
+            70% {
+                transform: scale(0.95) translateY(2px) rotate(-2deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0) rotate(0deg);
+            }
+        }
+
+        @keyframes floatGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 8px 32px rgba(var(--accent-rgb), 0.35),
+                    0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+            50% {
+                box-shadow: 
+                    0 12px 40px rgba(var(--accent-rgb), 0.45),
+                    0 6px 16px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .dark-mode .scroll-to-top {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            box-shadow: 
+                0 8px 32px rgba(var(--accent-rgb), 0.4),
+                0 4px 12px rgba(0, 0, 0, 0.3),
+                inset 0 -2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .dark-mode .scroll-to-top::before {
+            background: linear-gradient(135deg, var(--accent-light), var(--accent-lighter));
+        }
+
+        .dark-mode .scroll-to-top:hover {
+            box-shadow: 
+                0 12px 48px rgba(var(--accent-rgb), 0.6),
+                0 8px 24px rgba(0, 0, 0, 0.4),
+                inset 0 -2px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark-mode {
+            nav {
+                background: rgba(28, 27, 34, 0.98);
+                border-bottom: 1px solid #3d3d45;
+            }
+        }
+
+    </style>
 </head>
 <body>
-    <p>Redirecting...</p>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <div class="logo" id="logo"></div>
+            <a href="#" class="back-link" id="backLink">← Wstecz do publikacji</a>
+        </div>
+        <div class="theme-switcher" id="themeSwitcher">
+            <!-- Theme buttons will be loaded dynamically -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div id="markdown-viewer-publications">
+            <div class="loading">Ładowanie publikacji...</div>
+        </div>
+    </main>
+
+    <!-- Footer Animation -->
+    <div class="footer-animation">
+        <dotlottie-player 
+            src="/data/assets/anim-education.lottie" 
+            background="transparent" 
+            speed="1" 
+            loop 
+            autoplay>
+        </dotlottie-player>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" id="footerContent">
+            <!-- Footer will be loaded dynamically -->
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="scroll-to-top" title="Przewiń do góry" aria-label="Scroll to top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <script>
+        // Detect base path automatically
+        const basePath = window.location.pathname.includes('/site/') ? '/site' : '';
+        
+        // Load JSON helper
+        async function loadJSON(filename) {
+            try {
+                const response = await fetch(`${basePath}/data/${filename}`);
+                if (!response.ok) throw new Error(`Failed to load ${filename}`);
+                return await response.json();
+            } catch (error) {
+                console.error(`Error loading ${filename}:`, error);
+                return null;
+            }
+        }
+
+        // Check if this is a publications widget route (publications/full/...)
+        function isPublicationsWidgetRoute() {
+            const path = window.location.pathname;
+            // Remove basePath to get clean route
+            const cleanPath = path.replace(basePath, '').replace(/^\/+/, '');
+            // Only load widget for publications/full/* routes
+            return cleanPath.startsWith('publications/full');
+        }
+
+        // Check if this is just /publications (without /full)
+        function isPublicationsIndexRoute() {
+            const path = window.location.pathname;
+            const cleanPath = path.replace(basePath, '').replace(/^\/+/, '');
+            // Match exactly "publications" or "publications/"
+            return cleanPath === 'publications' || cleanPath === 'publications/';
+        }
+
+        // Initialize logo
+        async function initLogo() {
+            const navData = await loadJSON('navigation.json');
+            if (!navData) return;
+
+            const logoContainer = document.getElementById('logo');
+            logoContainer.innerHTML = `
+                <a href="${basePath}/" style="display: flex; align-items: center; gap: 20px; text-decoration: none; color: inherit;">
+                    ${navData.site.logo_svg}
+                    <span class="logo-text">${navData.site.short_name.replace('E‑XPERT', '<strong>E‑XPERT</strong>')}</span>
+                </a>
+            `;
+
+            // Add theme switcher buttons
+            const themeSwitcher = document.getElementById('themeSwitcher');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            themeSwitcher.innerHTML = `
+                <button class="theme-btn" data-theme="orange" onclick="switchTheme('orange')" title="Pomarańczowy" aria-label="Motyw pomarańczowy"></button>
+                <button class="theme-btn" data-theme="blue" onclick="switchTheme('blue')" title="Niebieski" aria-label="Motyw niebieski"></button>
+                <button class="theme-btn" data-theme="green" onclick="switchTheme('green')" title="Zielony" aria-label="Motyw zielony"></button>
+                <button class="theme-btn" data-theme="purple" onclick="switchTheme('purple')" title="Fioletowy" aria-label="Motyw fioletowy"></button>
+                <button class="theme-btn" data-theme="red" onclick="switchTheme('red')" title="Czerwony" aria-label="Motyw czerwony"></button>
+                <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="${isDarkMode ? 'Tryb jasny' : 'Tryb ciemny'}" aria-label="Przełącz tryb">
+                    <span class="dark-mode-icon">${isDarkMode ? '☀️' : '🌙'}</span>
+                </button>
+            `;
+
+            // Update active theme button
+            updateActiveThemeButton();
+        }
+
+        // Initialize back link - goes to index.html publications view
+        function initBackLink() {
+            const backLink = document.getElementById('backLink');
+            backLink.href = `${basePath}/publications`;
+        }
+
+        // Load footer
+        async function loadFooter() {
+            const data = await loadJSON('footer.json');
+            if (!data) return;
+
+            const footer = document.getElementById('footerContent');
+            footer.innerHTML = `
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <h3>${data.brand.name}</h3>
+                        <p>${data.brand.description}</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.navigation.title}</h4>
+                        <ul class="footer-links">
+                            ${data.navigation.links.map(link => `
+                                <li><a href="${basePath}/${link.section}">${link.title}</a></li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.contact.title}</h4>
+                        <ul class="footer-links">
+                            ${data.contact.links.map(link => `
+                                <li>
+                                    <a href="${link.url}" ${link.external ? 'target="_blank" rel="noopener"' : ''}>
+                                        ${link.title}
+                                    </a>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>${data.social.title}</h4>
+                        <div class="footer-social">
+                            ${data.social.platforms.map(platform => `
+                                <a href="${platform.url}" target="_blank" rel="noopener">
+                                    ${platform.code}
+                                </a>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>${data.bottom.copyright}</p>
+                    <div class="footer-credits">
+                        ${data.bottom.credits.map(credit => `
+                            <a href="${credit.url}" ${credit.external ? 'target="_blank" rel="noopener"' : ''}>${credit.title}</a>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Load MarkdownsPeek library
+        let markdownsPeekLoaded = false;
+        let markdownsPeekLoading = false;
+        
+        function loadMarkdownsPeek() {
+            return new Promise((resolve, reject) => {
+                if (markdownsPeekLoaded) {
+                    resolve();
+                    return;
+                }
+                
+                if (markdownsPeekLoading) {
+                    const checkInterval = setInterval(() => {
+                        if (markdownsPeekLoaded) {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }
+                    }, 100);
+                    return;
+                }
+                
+                markdownsPeekLoading = true;
+                
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/markdowns-peek@latest/dist/markdowns-peek.js';
+                script.async = true;
+                
+                script.onload = () => {
+                    markdownsPeekLoaded = true;
+                    markdownsPeekLoading = false;
+                    resolve();
+                };
+                
+                script.onerror = () => {
+                    markdownsPeekLoading = false;
+                    reject(new Error('Failed to load MarkdownsPeek library'));
+                };
+                
+                document.head.appendChild(script);
+            });
+        }
+
+        // Theme System
+        const themes = {
+            orange: {
+                accent: '#ff6b00',
+                accentRgb: '255, 107, 0',
+                accentLight: '#ff8c00',
+                accentLighter: '#ffa500'
+            },
+            blue: {
+                accent: '#0066ff',
+                accentRgb: '0, 102, 255',
+                accentLight: '#3399ff',
+                accentLighter: '#66b3ff'
+            },
+            green: {
+                accent: '#00cc66',
+                accentRgb: '0, 204, 102',
+                accentLight: '#33dd88',
+                accentLighter: '#66eeaa'
+            },
+            purple: {
+                accent: '#9933ff',
+                accentRgb: '153, 51, 255',
+                accentLight: '#b366ff',
+                accentLighter: '#cc99ff'
+            },
+            red: {
+                accent: '#ff3333',
+                accentRgb: '255, 51, 51',
+                accentLight: '#ff6666',
+                accentLighter: '#ff9999'
+            }
+        };
+
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            if (!theme) return;
+            
+            const root = document.documentElement;
+            
+            // Apply color variables
+            root.style.setProperty('--accent', theme.accent);
+            root.style.setProperty('--accent-rgb', theme.accentRgb);
+            root.style.setProperty('--accent-light', theme.accentLight);
+            root.style.setProperty('--accent-lighter', theme.accentLighter);
+            
+            // Update gradients
+            root.style.setProperty('--gradient-primary', 
+                `linear-gradient(90deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-hero', 
+                `linear-gradient(135deg, #1c1b22 0%, ${theme.accent} 50%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text', 
+                `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-light', 
+                `linear-gradient(135deg, #1c1b22 0%, #1c1b22 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-text-dark', 
+                `linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, ${theme.accent} 60%, ${theme.accentLight} 80%, ${theme.accentLighter} 100%)`);
+            root.style.setProperty('--gradient-underline', 
+                `linear-gradient(90deg, ${theme.accent} 0%, ${theme.accentLight} 50%, ${theme.accentLighter} 100%)`);
+            
+            // Save theme to localStorage
+            localStorage.setItem('selectedTheme', themeName);
+            
+            console.log(`Theme changed to: ${themeName}`);
+        }
+
+        function initTheme() {
+            // Check URL parameter first
+            const urlParams = new URLSearchParams(window.location.search);
+            const themeParam = urlParams.get('theme');
+            
+            if (themeParam && themes[themeParam]) {
+                applyTheme(themeParam);
+                return;
+            }
+            
+            // Check localStorage
+            const savedTheme = localStorage.getItem('selectedTheme');
+            if (savedTheme && themes[savedTheme]) {
+                applyTheme(savedTheme);
+                return;
+            }
+            
+            // Default theme is already in CSS (orange)
+        }
+
+        function switchTheme(themeName) {
+            applyTheme(themeName);
+            updateActiveThemeButton();
+        }
+
+        function updateActiveThemeButton() {
+            const savedTheme = localStorage.getItem('selectedTheme') || 'orange';
+            document.querySelectorAll('.theme-btn[data-theme]').forEach(btn => {
+                if (btn.dataset.theme === savedTheme) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        // Dark Mode Management
+        function initDarkMode() {
+            // Check localStorage first
+            const savedDarkMode = localStorage.getItem('darkMode');
+            
+            if (savedDarkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                return;
+            }
+            
+            if (savedDarkMode === 'disabled') {
+                document.body.classList.remove('dark-mode');
+                return;
+            }
+            
+            // If no preference saved, check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save preference to localStorage
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.setItem('darkMode', 'disabled');
+            }
+            
+            // Update button icon
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            const icon = toggleBtn.querySelector('.dark-mode-icon');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            if (icon) {
+                icon.textContent = isDarkMode ? '☀️' : '🌙';
+                toggleBtn.title = isDarkMode ? 'Tryb jasny' : 'Tryb ciemny';
+            }
+            
+            console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
+            
+            // Update publications viewer theme
+            updatePublicationsTheme();
+        }
+
+        // Update publications viewer theme
+        async function updatePublicationsTheme() {
+            if (!window.MarkdownsPeek) return;
+            
+            // Re-initialize the viewer with new theme
+            const container = document.getElementById('markdown-viewer-publications');
+            if (container) {
+                container.innerHTML = `
+                    <div class="loading">Ładowanie publikacji...</div>
+                `;
+                
+                try {
+                    await initMarkdownsPeek();
+                    console.log('✅ Publications theme updated');
+                } catch (error) {
+                    console.error('❌ Failed to update publications theme:', error);
+                }
+            }
+        }
+
+        // Initialize MarkdownsPeek for publications
+        async function initMarkdownsPeek() {
+            const pubData = await loadJSON('publications.json');
+            if (!pubData) {
+                document.getElementById('markdown-viewer-publications').innerHTML = 
+                    '<div class="loading">Nie udało się załadować danych publikacji</div>';
+                return;
+            }
+
+            try {
+                await loadMarkdownsPeek();
+                
+                const config = pubData.markdownsPeek;
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                
+                // For 404 page, always use route mode and respect dark mode
+                const theme = isDarkMode ? 'dark' : 'light';
+                
+                new window.MarkdownsPeek({
+                    containerId: 'markdown-viewer-publications',
+                    owner: config.owner,
+                    repo: config.repo,
+                    path: config.path || '',
+                    branch: config.branch || 'main',
+                    theme: theme,
+                    token: config.token || '',
+                    disableStyles: config.disableStyles || false,
+                    loadFirstFileAutomatically: true,
+                    hideFilesOnRoute: true,  // Enable route mode
+                    basePath: config.basePath || 'publications/full',
+                    height: '100%',
+                    texts: {
+                        menu: 'MENU',
+                        files: 'PUBLIKACJE',
+                        loading: 'ŁADOWANIE...',
+                        selectFile: 'WYBIERZ PUBLIKACJĘ',
+                        error: 'BŁĄD: ',
+                        noFiles: 'BRAK PUBLIKACJI',
+                        minRead: 'MIN CZYTANIA',
+                        notFound: 'PUBLIKACJA NIE ZNALEZIONA'
+                    }
+                });
+                
+                console.log('✅ Publications viewer initialized in route mode');
+            } catch (error) {
+                console.error('❌ Failed to initialize publications viewer:', error);
+                document.getElementById('markdown-viewer-publications').innerHTML = 
+                    '<div class="loading">Nie udało się załadować widoku publikacji</div>';
+            }
+        }
+
+        // Update dark mode button icon
+        function updateDarkModeButton() {
+            const toggleBtn = document.querySelector('.dark-mode-toggle');
+            const icon = toggleBtn?.querySelector('.dark-mode-icon');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            
+            if (icon) {
+                icon.textContent = isDarkMode ? '☀️' : '🌙';
+                toggleBtn.title = isDarkMode ? 'Tryb jasny' : 'Tryb ciemny';
+            }
+        }
+
+        // Setup Scroll to Top Button
+        function setupScrollToTop() {
+            const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+            if (!scrollToTopBtn) return;
+            
+            let isVisible = false;
+            let scrollTimeout;
+            
+            // Show/hide button based on scroll position
+            function handleScroll() {
+                // Clear previous timeout
+                if (scrollTimeout) {
+                    clearTimeout(scrollTimeout);
+                }
+                
+                // Debounce scroll check for better performance
+                scrollTimeout = setTimeout(() => {
+                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+                    const shouldShow = scrollPosition > 300;
+                    
+                    if (shouldShow && !isVisible) {
+                        scrollToTopBtn.classList.add('show');
+                        scrollToTopBtn.classList.remove('hide');
+                        isVisible = true;
+                    } else if (!shouldShow && isVisible) {
+                        scrollToTopBtn.classList.add('hide');
+                        scrollToTopBtn.classList.remove('show');
+                        isVisible = false;
+                    }
+                }, 50);
+            }
+            
+            // Scroll to top when button is clicked
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                
+                // Add click animation
+                scrollToTopBtn.style.transform = 'scale(0.9) translateY(-2px)';
+                setTimeout(() => {
+                    scrollToTopBtn.style.transform = '';
+                }, 150);
+            });
+            
+            // Add scroll listener with passive flag for better performance
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Check on page load
+            setTimeout(handleScroll, 100);
+        }
+
+        // Main initialization
+        async function init() {
+            // Initialize theme and dark mode first
+            initTheme();
+            initDarkMode();
+            
+            // Check if this is /publications without /full - redirect to index with publications view
+            if (isPublicationsIndexRoute()) {
+                window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent('/publications'));
+                return;
+            }
+            
+            // Check if this is a publications widget route (publications/full/...)
+            if (isPublicationsWidgetRoute()) {
+                // This is a publications widget route - show the viewer
+                await initLogo();
+                initBackLink();
+                
+                // Update dark mode button icon
+                updateDarkModeButton();
+                
+                await loadFooter();
+                await initMarkdownsPeek();
+                
+                // Initialize scroll to top button
+                setupScrollToTop();
+            } else {
+                // Not a publications route - redirect to index.html
+                const path = window.location.pathname;
+                const search = window.location.search;
+                const isIndex = path === basePath + '/' || path === basePath + '/index.html';
+                
+                if (!isIndex) {
+                    const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
+                    window.location.replace(redirectUrl);
+                }
+            }
+        }
+
+        // Start initialization
+        init();
+    </script>
 </body>
 </html>
-
