@@ -32,39 +32,60 @@
     },
     {
       "slide": 3,
-      "title": "Historia — początki (2001-2012)",
+      "title": "Historia — początki (2001)",
       "bullets": [
-        "2001 — Założenie koła przy Katedrze Informatyki Ekonomicznej",
-        "2008-2010 — Pierwsze warsztaty programowania",
-        "2008-2010 — Aplikacja do zarządzania planami (wersja webowa)",
-        "2012 — Reaktywacja koła po przerwie"
+        "Styczeń 2001 — Założenie koła przy Katedrze Informatyki Ekonomicznej",
+        "Grupa studentów Wydziału Zarządzania UG pragnie rozwijać zastosowania informatyki w biznesie",
+        "Pierwsze projekty:",
+        "— Badanie rynku systemów IT w sektorze MŚP",
+        "— System optymalizacji kosztowej taryf GSM dla firm",
+        "— Internetowy system zarządzania projektami koła",
+        "Misja: łączenie wiedzy z praktyką"
       ],
-      "image": "https://i.imgur.com/guKufsg.png"
+      "image": "https://i.imgur.com/ZAuwVVU.png"
     },
     {
       "slide": 4,
-      "title": "Działania 2010–2014",
+      "title": "Historia — dojrzewanie (2003-2012)",
+      "bullets": [
+        "2003-2008 — Wyjście poza mury uczelni",
+        "Cykl seminariów z nowoczesnymi technologiami:",
+        "— Microsoft Polska: technologia .NET",
+        "— Atena: warsztaty praktyczne UML",
+        "— Stowarzyszenie PM Polska: zarządzanie projektami IT",
+        "Wielofunkcyjna platforma eStudent",
+        "Terminale informatyczne na Wydziale Zarządzania",
+        "2007 — Program IT-TEAM (współpraca z największymi firmami IT)",
+        "2012 — Reaktywacja koła"
+      ],
+      "image": "https://i.imgur.com/nNYxle1.png"
+    },
+    {
+      "slide": 5,
+      "title": "Działania 2012–2014",
       "bullets": [
         "1. Szereg warsztatów z zakresu programowania",
         "2. Aplikacja do zarządzania planami — rozwinięcie aplikacji webowej",
         "3. 5 finalistów ogólnopolskiego konkursu Microsoft IT Academy:",
         "— Cezary Ołtuszyk — 2011 rok IV miejsce w kategorii IT Challenge"
       ],
-      "image": "https://i.imgur.com/dPTYUzW.jpeg"
+      "image": "https://i.imgur.com/guKufsg.png"
     },
     {
-      "slide": 5,
+      "slide": 6,
       "title": "Działania 2014–2015 (1/2)",
       "bullets": [
         "1. Profil na Facebook-u ( www.facebook.com/knsiexpert )",
         "2. Przeprojektowanie witryny koła ( www.e-xpert.pl )",
+        "— Nowoczesny design dostosowany do urządzeń mobilnych",
+        "— System zarządzania treścią i projekty członków",
         "3. Aplikacja mobileWZR — plan zajęć WZiE UG na Androida",
-        "— Używana od 2014 roku do dziś"
+        "— Używana od 2014 roku do czasu.."
       ],
-      "image": "https://i.imgur.com/f8O7tJO.png"
+      "image": "https://i.imgur.com/dPTYUzW.jpeg"
     },
     {
-      "slide": 6,
+      "slide": 7,
       "title": "Działania 2014–2015 (2/2)",
       "bullets": [
         "4. Artykuł w Monografii WZ UG (ICIM 2015)",
@@ -78,7 +99,7 @@
       "image": "https://i.imgur.com/sinO2M0.png"
     },
     {
-      "slide": 7,
+      "slide": 8,
       "title": "Działania 2015–2016 — Przełom",
       "bullets": [
         "1. Dołączenie do AIS Student Chapters (2015)",
@@ -94,7 +115,7 @@
       "image": "https://i.imgur.com/1ccj7Fc.png"
     },
     {
-      "slide": 8,
+      "slide": 9,
       "title": "Działania 2017–2018",
       "bullets": [
         "1. Organizacja warsztatów z React.js",
@@ -105,7 +126,7 @@
       "image": "https://i.imgur.com/HI7oV6H.png"
     },
     {
-      "slide": 9,
+      "slide": 10,
       "title": "Działania 2018–2019",
       "bullets": [
         "III miejsce — AIS Student Chapter, Filadelfia, USA",
@@ -116,7 +137,7 @@
       "image": "https://i.imgur.com/YdzIUdH.png"
     },
     {
-      "slide": 10,
+      "slide": 11,
       "title": "Działania 2019–2020",
       "bullets": [
         "1. I miejsce — AIS Student Chapter (Illinois, USA)",
@@ -128,7 +149,7 @@
       "image": "https://i.imgur.com/QAChA3p.png"
     },
     {
-      "slide": 11,
+      "slide": 12,
       "title": "Działania 2020–2021 (wydarzenia)",
       "bullets": [
         "1. Duże wydarzenie szkoleniowe 'Ready, set, learn' (marzec-czerwiec 2021)",
@@ -140,7 +161,7 @@
       "image": "https://i.imgur.com/qVQ1fxG.png"
     },
     {
-      "slide": 12,
+      "slide": 13,
       "title": "Działania 2020–2021 (projekt TALK_TO)",
       "bullets": [
         "II miejsce w AIS Showcase Competition",
@@ -153,7 +174,7 @@
       "video": "https://drive.google.com/file/d/1_TE5obT9ytlhPjRKMdo2MEfbf4dWJe_E/view?usp=sharing"
     },
     {
-      "slide": 13,
+      "slide": 14,
       "title": "Działania 2021–2022 (SocialMonitor)",
       "bullets": [
         "Finaliści AIS Student Chapter 2022",
@@ -166,7 +187,7 @@
       "video": "https://drive.google.com/file/d/1gSl6Y_t3esnm4J9JLc2LJcVEVinOzJg1/view?usp=sharing"
     },
     {
-      "slide": 14,
+      "slide": 15,
       "title": "Działania 2023–2025 (modernizacja)",
       "bullets": [
         "1. Całkowita przebudowa strony internetowej koła",
@@ -183,7 +204,7 @@
       }
     },
     {
-      "slide": 15,
+      "slide": 16,
       "title": "Nasze kluczowe projekty",
       "bullets": [
         "SafeWatch — Dyskretne wezwanie pomocy gestem (III m. AIS, Patent)",
@@ -192,10 +213,11 @@
         "SocialMonitor — Ukrywa reakcje w social media (Finaliści AIS)",
         "Way For Life — Ściszenie przy pojazdach uprzywilejowanych (I m. AIS)",
         "Apollo — Ograniczanie marnowania żywności (III m. AIS)"
-      ]
+      ],
+      "image": "https://i.imgur.com/cPII6BT.png"
     },
     {
-      "slide": 16,
+      "slide": 17,
       "title": "Statystyki (2025)",
       "bullets": [
         "24+ lat działalności (od 2001)",
@@ -204,10 +226,11 @@
         "5 nagród międzynarodowych (AIS)",
         "Członek AIS SC od 2015",
         "Współpraca: UG, Madkom, Neoteric, Bright Inventions"
-      ]
+      ],
+      "image": "https://i.imgur.com/I3r2zHp.png"
     },
     {
-      "slide": 17,
+      "slide": 18,
       "title": "Obecny zarząd (2024/25)",
       "bullets": [
         "Opiekun koła: Mgr Piotr Porzuczek",
@@ -215,10 +238,11 @@
         "Wiceprzewodniczący: Stanisław Malec",
         "",
         "Skład koła (2024/25): 24 członków aktywnych"
-      ]
+      ],
+      "image": "https://i.imgur.com/vmXecNg.jpeg"
     },
     {
-      "slide": 18,
+      "slide": 19,
       "title": "Prezesi KNSI E-xpert (2008–2023)",
       "bullets": [
         "Magdalena Osińska",
@@ -230,11 +254,13 @@
         "Adam Ostrowski",
         "Kamil Wojewski",
         "Daniel Golicki",
-        "Adam Mikulski"
-      ]
+        "Adam Mikulski",
+        "Michał Wojtasik"
+      ],
+      "image": "https://i.imgur.com/mlKMgA8.png"
     },
     {
-      "slide": 19,
+      "slide": 20,
       "title": "Co robimy?",
       "bullets": [
         "Udział w konkursach (AIS Student Chapter, Imagine Cup)",
@@ -243,10 +269,11 @@
         "Współpraca z firmami IT (staże, praktyki)",
         "Badania i publikacje naukowe",
         "Komunikacja: Microsoft Teams, GitHub, Facebook"
-      ]
+      ],
+      "image": "https://i.imgur.com/4V8AYY6.png"
     },
     {
-      "slide": 20,
+      "slide": 21,
       "title": "Co zyskujesz dołączając?",
       "bullets": [
         "Praktyczne doświadczenie w projektach IT",
@@ -257,10 +284,11 @@
         "Rozwój portfolio projektowego",
         "Możliwość publikacji naukowych",
         "Społeczność i networking"
-      ]
+      ],
+      "image": "https://i.imgur.com/KYmjmcf.jpeg"
     },
     {
-      "slide": 21,
+      "slide": 22,
       "title": "Organizacja — linki i zapisy",
       "bullets": [
         "Strona: https://knsiexpert.github.io/site/",
