@@ -896,7 +896,7 @@
     <script>
         // Get base path (for GitHub Pages subdirectory support)
         function getBasePath() {
-            const path = window.location.pathname;
+        const path = window.location.pathname;
             // For GitHub Pages: /site/
             if (path.includes('/site/')) {
                 return '/site';
@@ -1409,12 +1409,12 @@
                 // Not a publications route - redirect to index.html
                 const path = window.location.pathname;
                 const search = window.location.search;
-                const isIndex = path === basePath + '/' || path === basePath + '/index.html';
-                
-                if (!isIndex) {
-                    const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
-                    window.location.replace(redirectUrl);
-                }
+        const isIndex = path === basePath + '/' || path === basePath + '/index.html';
+        
+        if (!isIndex) {
+            const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
+            window.location.replace(redirectUrl);
+        }
             }
         }
 

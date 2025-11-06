@@ -11,7 +11,7 @@
     "theme": "light",
     "token": "",
     "disableStyles": false,
-    "loadFirstFileAutomatically": true,
+    "loadFirstFileAutomatically": false,
     "hideFilesOnRoute": false,
     "basePath": "publications/full",
     "reverseSortOrder": true,

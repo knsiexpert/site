@@ -7744,14 +7744,34 @@
                     branch: config.branch || 'main',
                     theme: theme,
                     token: config.token || '',
-                    disableStyles: config.disableStyles || false,
-                    loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                disableStyles: config.disableStyles || false,
+                loadFirstFileAutomatically: true,  // Always try to load first file
                 hideFilesOnRoute: config.hideFilesOnRoute || true,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
                     sortAlphabetically: config.sortAlphabetically || false,
                     height: config.height || '600px'
                 });
+                
+                // Hack: Force first file to open after widget loads (fallback for slow connections)
+                setTimeout(() => {
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if a file is already loaded
+                    const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
+                                         container.querySelector('.active') ||
+                                         container.querySelector('[class*="selected"]');
+                    
+                    if (!hasLoadedFile) {
+                        // Find first file button and click it
+                        const firstFile = container.querySelector('button:not([class*="menu"]):not([class*="toggle"]), a[role="button"]');
+                        if (firstFile) {
+                            firstFile.click();
+                            console.log('📄 Fallback: Opened first file manually (home news)');
+                        }
+                    }
+                }, 3000);
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7842,7 +7862,7 @@
                 theme: theme,
                 token: config.token || '',
                 disableStyles: config.disableStyles || false,
-                loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                loadFirstFileAutomatically: true,  // Always try to load first file
                 hideFilesOnRoute: config.hideFilesOnRoute !== false,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
@@ -7859,6 +7879,26 @@
                     notFound: 'PUBLIKACJA NIE ZNALEZIONA'
                 }
             });
+            
+            // Hack: Force first file to open after widget loads (fallback for slow connections)
+            setTimeout(() => {
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
+                
+                // Check if a file is already loaded
+                const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
+                                     container.querySelector('.active') ||
+                                     container.querySelector('[class*="selected"]');
+                
+                if (!hasLoadedFile) {
+                    // Find first file button and click it
+                    const firstFile = container.querySelector('button:not([class*="menu"]):not([class*="toggle"]), a[role="button"]');
+                    if (firstFile) {
+                        firstFile.click();
+                        console.log('📄 Fallback: Opened first file manually (publications)');
+                    }
+                }
+            }, 3000);
         }
         
         // Update publications viewer theme (only on mobile)
