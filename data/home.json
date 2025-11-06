@@ -45,6 +45,14 @@
       "target": "_self"
     }
   },
+  "news": {
+    "title": "Aktualności",
+    "lead": "Najnowsze informacje o naszej działalności, wydarzeniach i osiągnięciach.",
+    "cta": {
+      "label": "Zobacz wszystkie publikacje",
+      "href": "publications"
+    }
+  },
   "highlights": {
     "title": "Nasze osiągnięcia",
     "lead": "Od ponad dwóch dekad tworzymy projekty, które zdobywają międzynarodowe wyróżnienia i realnie wpływają na życie użytkowników. Nasze rozwiązania łączą innowacyjność z praktycznym zastosowaniem, odpowiadając na współczesne wyzwania technologiczne i społeczne.",
@@ -186,5 +194,20 @@
   "footer": {
     "copyright": "© Koło Naukowe Systemów Informatycznych E‑XPERT",
     "social": []
+  },
+  "markdownsPeek": {
+    "containerId": "home-news-viewer",
+    "owner": "knsiexpert",
+    "repo": "blog",
+    "path": "news",
+    "branch": "main",
+    "theme": "light",
+    "token": "",
+    "disableStyles": false,
+    "loadFirstFileAutomatically": false,
+    "hideFilesOnRoute": true,
+    "reverseSortOrder": true,
+    "sortAlphabetically": true,
+    "height": "600px"
   }
 }

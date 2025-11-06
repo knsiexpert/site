@@ -423,7 +423,7 @@
         .hero-mini-carousel {
             width: 280px;
             height: 280px;
-            border-radius: 4px;
+            border-radius: 34px;
             overflow: hidden;
             border: 5px solid var(--accent);
             box-shadow: 
@@ -568,7 +568,7 @@
             content: '';
             position: absolute;
             inset: -2px;
-            border-radius: 4px;
+            border-radius: 34px;
             background: linear-gradient(45deg, transparent, rgba(var(--accent-rgb), 0.1), transparent);
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -2486,7 +2486,7 @@
                 display: block;
                 width: 260px;
                 height: 260px;
-                border-radius: 4px;
+                border-radius: 34px;
                 overflow: hidden;
                 border: 4px solid var(--accent);
                 box-shadow: 
@@ -2680,7 +2680,7 @@
                 display: block;
                 width: 210px;
                 height: 210px;
-                border-radius: 4px;
+                border-radius: 34px;
                 overflow: hidden;
                 border: 4px solid var(--accent);
                 box-shadow: 
@@ -2842,7 +2842,7 @@
             
             .hero-mini-carousel-mobile {
                 display: block;
-                border-radius: 4px;
+                border-radius: 34px;
                 overflow: hidden;
                 border: 3px solid var(--accent);
                 position: relative;
@@ -3256,7 +3256,7 @@
                 display: block;
                 width: 130px;
                 height: 130px;
-                border-radius: 4px;
+                border-radius: 34px;
                 overflow: hidden;
                 border: 3px solid var(--accent);
                 box-shadow: 
@@ -5880,6 +5880,476 @@
                 font-size: 11px;
             }
         }
+        
+        /* Home News Viewer Section - Industrial Style */
+        .home-news-viewer {
+            margin: 40px 0;
+            max-height: 600px;
+            overflow: hidden;
+            border: 3px solid var(--black);
+            background: var(--surface);
+            position: relative;
+            box-shadow: 0 6px 30px rgba(28, 27, 34, 0.08);
+            padding: 0;
+        }
+
+        .dark-mode .home-news-viewer {
+            background: var(--black);
+            border: 3px solid var(--white);
+        }
+
+        .dark-mode .home-news-viewer::before {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* Corner accent element */
+        .home-news-viewer::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--black);
+            border-top: none;
+            border-left: none;
+            z-index: -1;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .home-news-viewer::after {
+            border-color: var(--white);
+            background: var(--black);
+        }
+
+        /* Keep viewer content in original style but with controlled spacing */
+        .home-news-viewer > * {
+            background: transparent !important;
+        }
+        
+        /* Diagonal stripe at bottom - industrial accent */
+        .home-news-viewer > *:last-child::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--accent),
+                var(--accent) 8px,
+                transparent 8px,
+                transparent 16px
+            );
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
+        /* Publications Section */
+        .publications-viewer {
+            margin: 40px 0;
+        }
+        
+        .publications-viewer [class$="-lib-mp-container"],
+        .publications-viewer {
+            overflow: visible !important;
+        }
+
+        .publications-viewer [class*="-mp-body"] h1:first-of-type {
+            display: none;
+        }
+        
+        /* Override h2 styles in publications-viewer - make them visible and readable */
+        .publications-viewer h2 {
+            color: var(--black) !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+        }
+        
+        /* Remove gradient underline from h2 in publications-viewer */
+        .publications-viewer h2::after {
+            display: none !important;
+        }
+        
+        .dark-mode .publications-viewer h2 {
+            color: #f3f3f7 !important;
+        }
+        
+        /* Dark mode text colors for all content in publications-viewer */
+        .dark-mode .publications-viewer,
+        .dark-mode .publications-viewer p,
+        .dark-mode .publications-viewer li,
+        .dark-mode .publications-viewer span,
+        .dark-mode .publications-viewer div,
+        .dark-mode .publications-viewer h1,
+        .dark-mode .publications-viewer h2,
+        .dark-mode .publications-viewer h3,
+        .dark-mode .publications-viewer h4,
+        .dark-mode .publications-viewer h5,
+        .dark-mode .publications-viewer h6,
+        .dark-mode .publications-viewer td,
+        .dark-mode .publications-viewer th,
+        .dark-mode .publications-viewer a:not([class*="-lib-mp-article-link"]),
+        .dark-mode .publications-viewer strong,
+        .dark-mode .publications-viewer em {
+            color: #f3f3f7 !important;
+        }
+        
+        .publications-loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            gap: 20px;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid var(--light-gray);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .publications-loading p {
+            font-size: 16px;
+            color: var(--gray);
+        }
+        
+        .publications-error {
+            padding: 60px 40px;
+            text-align: center;
+            background: var(--light-gray);
+            border: 2px solid var(--black);
+            margin: 40px 0;
+        }
+        
+        .publications-error p:first-child {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .publications-error a {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .github-link-button {
+            display: none !important;
+        }
+        
+        /* Dark mode for publications */
+        .dark-mode .publications-loading p {
+            color: #d0d0d5;
+        }
+        
+        .dark-mode .loading-spinner {
+            border-color: #3d3d45;
+            border-top-color: var(--accent);
+        }
+        
+        .dark-mode .publications-error {
+            background: #252530;
+            border-color: #3d3d45;
+            color: #f3f3f7;
+        }
+        
+        
+        /* Scoped Markdowns-Peek Viewer Styles for Publications Page - Desktop Only */
+        @media (min-width: 769px) {
+            /* Ukryj element mp-progress - przeszkadza w układzie */
+            #publications .publications-viewer [class*="progress"],
+            #publications .publications-viewer mp-progress,
+            #publications .publications-viewer .mp-progress {
+                display: none !important;
+            }
+            
+            /* Główny kontener - odwrócona kolejność (panel po prawej) */
+            #publications .publications-viewer > div,
+            #publications .publications-viewer > div > div {
+                flex-direction: row-reverse !important;
+                overflow: visible !important;
+                max-width: 1400px !important;
+                margin: 0 auto !important;
+                justify-content: space-between !important;
+            }
+            
+            /* Usunięcie ograniczenia wysokości - viewer dostosowuje się do treści */
+            #publications .publications-viewer,
+            #publications .publications-viewer > *,
+            #publications .publications-viewer section,
+            #publications .publications-viewer article,
+            #publications .publications-viewer main {
+                height: auto !important;
+                min-height: 0 !important;
+                max-height: none !important;
+            }
+            
+            /* Przezroczyste tło dla wszystkich elementów viewera */
+            #publications .publications-viewer,
+            #publications .publications-viewer *:not(code):not(pre) {
+                background: transparent !important;
+                background-color: transparent !important;
+            }
+            
+            /* Obszar treści - brak overflow */
+            #publications .publications-viewer > div:last-child,
+            #publications .publications-viewer main,
+            #publications .publications-viewer article {
+                overflow: visible !important;
+                overflow-y: visible !important;
+            }
+            
+            /* Panel nawigacyjny z plikami PO PRAWEJ - FUTURYSTYCZNY FLOATING STYLE */
+            #publications .publications-viewer > div:first-child,
+            #publications .publications-viewer > div > div:first-child,
+            #publications .publications-viewer aside,
+            #publications .publications-viewer nav,
+            #publications .publications-viewer [role="navigation"],
+            #publications .publications-viewer [style*="width: 200"],
+            #publications .publications-viewer [style*="width: 250"],
+            #publications .publications-viewer [style*="flex: 0 0"],
+            #publications .publications-viewer div[style*="overflow-y"]:first-child {
+                max-width: 420px !important;
+                flex: 0 0 300px !important;
+                margin-right: 0 !important;
+                padding: 30px 0 !important;
+                border-radius: 4px !important;
+                background: rgba(255, 255, 255, 0.95) !important;
+                border: none !important;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                pointer-events: auto !important;
+                position: relative !important;
+                z-index: 10 !important;
+            }
+
+            #publications .publications-viewer [class$="-lib-mp-files"] {
+                box-shadow: 0 20px 60px rgba(28, 27, 34, 0.15), 0 8px 25px rgba(var(--accent-rgb), 0.1) !important;
+                max-height: 600px;
+                overflow-x: scroll !important;
+            }
+
+            /* Obszar treści - ograniczona szerokość jak reszta strony */
+            #publications .publications-viewer > div:last-child,
+            #publications .publications-viewer > div > div:last-child,
+            #publications .publications-viewer main,
+            #publications .publications-viewer [role="main"],
+            #publications .publications-viewer article {
+                flex: 0 1 auto !important;
+                width: auto !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                background: transparent !important;
+            }
+            
+            /* Treść markdown - spójny padding z resztą strony */
+            #publications .publications-viewer [class*="markdown"],
+            #publications .publications-viewer [class*="content"],
+            #publications .publications-viewer [class*="preview"] {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 20px 0 !important;
+                background: transparent !important;
+            }
+            
+            /* Zawijanie nazw plików - klikalne przyciski */
+            #publications .publications-viewer button,
+            #publications .publications-viewer a:not([class*="-lib-mp-article-link"]),
+            #publications .publications-viewer li,
+            #publications .publications-viewer [role="button"],
+            #publications .publications-viewer [class*="file"],
+            #publications .publications-viewer [class*="item"],
+            #publications .publications-viewer [class*="name"] {
+                white-space: normal !important;
+                word-wrap: break-word !important;
+                overflow-wrap: break-word !important;
+                word-break: break-word !important;
+                text-overflow: clip !important;
+                padding: 14px 24px !important;
+                line-height: 1.6 !important;
+                height: auto !important;
+                min-height: 48px !important;
+                border-radius: 12px !important;
+                transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+                border: none !important;
+                pointer-events: auto !important;
+                cursor: pointer !important;
+                position: relative !important;
+            }
+            
+            /* Hover na plikach */
+            #publications .publications-viewer button:hover,
+            #publications .publications-viewer a:not([class*="-lib-mp-article-link"]):hover,
+            #publications .publications-viewer [role="button"]:hover {
+                background: rgba(var(--accent-rgb), 0.08) !important;
+                transform: translateX(4px) !important;
+            }
+            
+            /* Aktywny plik */
+            #publications .publications-viewer button[aria-current="page"],
+            #publications .publications-viewer a:not([class*="-lib-mp-article-link"])[aria-current="page"],
+            #publications .publications-viewer .active {
+                background: rgba(var(--accent-rgb), 0.12) !important;
+                font-weight: 600 !important;
+            }
+            
+            /* Zapewnij że wszystkie teksty w sidebarie są widoczne */
+            #publications .publications-viewer > div:first-child *,
+            #publications .publications-viewer > div > div:first-child * {
+                text-overflow: clip !important;
+                white-space: normal !important;
+            }
+            
+            /* Custom scrollbar dla panelu nawigacyjnego */
+            #publications .publications-viewer > div:first-child::-webkit-scrollbar,
+            #publications .publications-viewer > div > div:first-child::-webkit-scrollbar {
+                width: 8px;
+            }
+            
+            #publications .publications-viewer > div:first-child::-webkit-scrollbar-track,
+            #publications .publications-viewer > div > div:first-child::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            #publications .publications-viewer > div:first-child::-webkit-scrollbar-thumb,
+            #publications .publications-viewer > div > div:first-child::-webkit-scrollbar-thumb {
+                background: rgba(28, 27, 34, 0.2);
+                border-radius: 34px;
+            }
+            
+            #publications .publications-viewer > div:first-child::-webkit-scrollbar-thumb:hover,
+            #publications .publications-viewer > div > div:first-child::-webkit-scrollbar-thumb:hover {
+                background: rgba(28, 27, 34, 0.3);
+            }
+            
+            /* Padding dla cieni - aby nie były obcinane */
+            #publications .publications-viewer > div:first-child > *,
+            #publications .publications-viewer > div > div:first-child > * {
+                margin: 0 8px;
+            }
+        }
+        
+        /* Dark mode - Desktop Only */
+        @media (min-width: 769px) {
+            /* Panel nawigacyjny w dark mode - FUTURYSTYCZNY STYL (po prawej) */
+            .dark-mode #publications .publications-viewer > div:first-child,
+            .dark-mode #publications .publications-viewer > div > div:first-child,
+            .dark-mode #publications .publications-viewer aside,
+            .dark-mode #publications .publications-viewer nav,
+            .dark-mode #publications .publications-viewer [role="navigation"],
+            .dark-mode #publications .publications-viewer div[style*="overflow-y"]:first-child {
+                background: rgba(28, 27, 34, 0.95) !important;
+                backdrop-filter: blur(20px) !important;
+                border: none !important;
+            }
+            
+            /* Hover na panelu w dark mode */
+            .dark-mode #publications .publications-viewer > div:first-child:hover,
+            .dark-mode #publications .publications-viewer > div > div:first-child:hover {
+                transform: translateY(-4px) !important;
+            }
+            
+            /* Przyciski plików w dark mode */
+            .dark-mode #publications .publications-viewer button,
+            .dark-mode #publications .publications-viewer a:not([class*="-lib-mp-article-link"]),
+            .dark-mode #publications .publications-viewer [role="button"] {
+                color: #f3f3f7 !important;
+            }
+            
+            /* Hover na plikach w dark mode */
+            .dark-mode #publications .publications-viewer button:hover,
+            .dark-mode #publications .publications-viewer a:not([class*="-lib-mp-article-link"]):hover,
+            .dark-mode #publications .publications-viewer [role="button"]:hover {
+                background: rgba(var(--accent-rgb), 0.15) !important;
+            }
+            
+            /* Aktywny plik w dark mode */
+            .dark-mode #publications .publications-viewer button[aria-current="page"],
+            .dark-mode #publications .publications-viewer a:not([class*="-lib-mp-article-link"])[aria-current="page"],
+            .dark-mode #publications .publications-viewer .active {
+                background: rgba(var(--accent-rgb), 0.2) !important;
+            }
+            
+            /* Jasne ikonki w trybie ciemnym */
+            .dark-mode #publications .publications-viewer svg,
+            .dark-mode #publications .publications-viewer svg *,
+            .dark-mode #publications .publications-viewer [class*="icon"],
+            .dark-mode #publications .publications-viewer [class*="icon"] *,
+            .dark-mode #publications .publications-viewer img[src*=".svg"] {
+                color: #f3f3f7 !important;
+                fill: #f3f3f7 !important;
+                stroke: #f3f3f7 !important;
+                filter: brightness(0) invert(1) !important;
+            }
+            
+            /* Przezroczyste tło dla całej reszty (poza panelem) w dark mode */
+            .dark-mode #publications .publications-viewer > div:last-child,
+            .dark-mode #publications .publications-viewer > div > div:last-child,
+            .dark-mode #publications .publications-viewer main,
+            .dark-mode #publications .publications-viewer article,
+            .dark-mode #publications .publications-viewer [class*="markdown"],
+            .dark-mode #publications .publications-viewer [class*="content"],
+            .dark-mode #publications .publications-viewer [class*="preview"] {
+                background: transparent !important;
+                background-color: transparent !important;
+            }
+            
+            /* Custom scrollbar w dark mode */
+            .dark-mode #publications .publications-viewer > div:first-child::-webkit-scrollbar-thumb,
+            .dark-mode #publications .publications-viewer > div > div:first-child::-webkit-scrollbar-thumb {
+                background: rgba(243, 243, 247, 0.2);
+            }
+            
+            .dark-mode #publications .publications-viewer > div:first-child::-webkit-scrollbar-thumb:hover,
+            .dark-mode #publications .publications-viewer > div > div:first-child::-webkit-scrollbar-thumb:hover {
+                background: rgba(243, 243, 247, 0.3);
+            }
+        }
+        
+        /* Responsive publications */
+        @media (max-width: 768px) {
+            .publications-viewer {
+                margin: 20px 0;
+            }
+            
+            /* Note: Widget uses its own dark mode on mobile via JavaScript theme switching */
+            /* Only style loading and error states for dark mode */
+        }
+
+        .home-news-viewer h2,
+        .home-news-viewer h2::after {
+            color: var(--black) !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+        }
+
+        .home-news-viewer [class$="-lib-mp-files"],
+        .home-news-viewer [class$="-lib-mp-menu-toggle"],
+        [class$="-lib-mp-files-overlay"] {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .home-news-viewer [class$="-lib-mp-content"] {
+                padding-top: 0px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -5955,6 +6425,13 @@
         </div>
     </section>
     
+    <!-- Publications Section -->
+    <section id="publications" class="section">
+        <div id="publicationsContent" class="container">
+            <!-- Content will be loaded dynamically -->
+        </div>
+    </section>
+
     <script>
         // Data cache
         let dataCache = {};
@@ -6111,6 +6588,24 @@
                             </div>
                         </div>
                     ` : ''}
+
+                    
+                    ${data.news && data.markdownsPeek ? `
+                        <h2>${data.news.title}</h2>
+                        <p style="font-size: 18px; margin-bottom: 60px; line-height: 1.8;">${data.news.lead}</p>
+                        
+                        <div id="${data.markdownsPeek.containerId}" class="home-news-viewer">
+                            <!-- MarkdownsPeek viewer will be loaded here -->
+                        </div>
+                        
+                        ${data.news.cta ? `
+                            <div style="text-align: center; margin-top: 20px; margin-bottom: 60px;">
+                                <a href="${data.news.cta.href}" 
+                                   onclick="event.preventDefault(); showSection('${data.news.cta.href}');"
+                                   class="cta-button">${data.news.cta.label}</a>
+                            </div>
+                        ` : ''}
+                    ` : ''}
                     
                     ${data.highlights ? `
                         <h2>${data.highlights.title}</h2>
@@ -6148,6 +6643,11 @@
                 initCarousel(data.us.interval || 5000);
                 // Initialize mini hero carousel
                 initHeroMiniCarousel(data.us.images, data.us.interval || 5000);
+            }
+            
+            // Initialize MarkdownsPeek widget if configured
+            if (data.markdownsPeek) {
+                await initHomeNewsViewer(data.markdownsPeek);
             }
             
             // Note: DotLottie player is a web component and works automatically
@@ -7162,6 +7662,223 @@
             openLightbox(imageUrl);
         }
         
+        // Load MarkdownsPeek library
+        let markdownsPeekLoaded = false;
+        let markdownsPeekLoading = false;
+        
+        function loadMarkdownsPeek() {
+            return new Promise((resolve, reject) => {
+                // Check if already loaded
+                if (markdownsPeekLoaded || (typeof window.MarkdownsPeek !== 'undefined')) {
+                    markdownsPeekLoaded = true;
+                    resolve();
+                    return;
+                }
+                
+                // Check if already loading
+                if (markdownsPeekLoading) {
+                    // Wait for loading to complete
+                    const checkInterval = setInterval(() => {
+                        if (markdownsPeekLoaded) {
+                            clearInterval(checkInterval);
+                            resolve();
+                        }
+                    }, 100);
+                    return;
+                }
+                
+                markdownsPeekLoading = true;
+                
+                // Load the script
+                const script = document.createElement('script');
+                script.src = 'https://unpkg.com/markdowns-peek@latest/dist/markdowns-peek.js';
+                script.async = true;
+                
+                script.onload = () => {
+                    markdownsPeekLoaded = true;
+                    markdownsPeekLoading = false;
+                    console.log('✅ MarkdownsPeek library loaded successfully');
+                    resolve();
+                };
+                
+                script.onerror = () => {
+                    markdownsPeekLoading = false;
+                    console.error('❌ Failed to load MarkdownsPeek library');
+                    reject(new Error('Failed to load MarkdownsPeek library'));
+                };
+                
+                document.head.appendChild(script);
+            });
+        }
+        
+        // Render Publications Section
+        // Store home news config globally for re-initialization
+        let homeNewsConfig = null;
+        let homeNewsInstance = null;
+        
+        // Initialize Home News Viewer
+        async function initHomeNewsViewer(config) {
+            if (!config) return;
+            
+            homeNewsConfig = config;
+            
+            try {
+                await loadMarkdownsPeek();
+                
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                const theme = isDarkMode ? 'dark' : 'light';
+                
+                homeNewsInstance = new window.MarkdownsPeek({
+                    containerId: config.containerId,
+                    owner: config.owner,
+                    repo: config.repo,
+                    path: config.path || '',
+                    branch: config.branch || 'main',
+                    theme: theme,
+                    token: config.token || '',
+                    disableStyles: config.disableStyles || false,
+                    loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                    hideFilesOnRoute: config.hideFilesOnRoute || true,
+                    basePath: config.basePath || '',
+                    reverseSortOrder: config.reverseSortOrder || false,
+                    sortAlphabetically: config.sortAlphabetically || false,
+                    height: config.height || '600px'
+                });
+                
+                console.log('✅ Home news viewer initialized');
+            } catch (error) {
+                console.error('❌ Failed to initialize home news viewer:', error);
+            }
+        }
+        
+        // Update home news viewer theme
+        async function updateHomeNewsTheme() {
+            if (!homeNewsConfig) return;
+            
+            const container = document.getElementById(homeNewsConfig.containerId);
+            if (!container) return;
+            
+            // Re-initialize with new theme
+            try {
+                await initHomeNewsViewer(homeNewsConfig);
+                console.log('✅ Home news theme updated');
+            } catch (error) {
+                console.error('❌ Failed to update home news theme:', error);
+            }
+        }
+        
+        // Store publications config globally for re-initialization
+        let publicationsConfig = null;
+        let publicationsInstance = null;
+        
+        async function renderPublications() {
+            const data = await loadJSON('publications.json');
+            if (!data) return;
+            
+            // Store config globally
+            publicationsConfig = data;
+            
+            const publicationsContent = document.getElementById('publicationsContent');
+            
+            // Render header and GitHub link
+            publicationsContent.innerHTML = `
+                <h2>"${data.title.toUpperCase()}"</h2>
+                ${data.subtitle ? `
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 40px; opacity: 0.9; max-width: 900px;">
+                    ${data.subtitle}
+                </p>
+                ` : ''}
+                
+                <div id="${data.markdownsPeek.containerId}" class="publications-viewer">
+                    <div class="publications-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Ładowanie publikacji...</p>
+                    </div>
+                </div>
+            `;
+            
+            // Load and initialize MarkdownsPeek library
+            try {
+                await loadMarkdownsPeek();
+                await initPublicationsViewer();
+                console.log('✅ Publications viewer initialized successfully');
+            } catch (error) {
+                console.error('❌ Failed to initialize publications viewer:', error);
+                document.getElementById(data.markdownsPeek.containerId).innerHTML = `
+                    <div class="publications-error">
+                        <p>❌ Nie udało się załadować publikacji</p>
+                        <p style="font-size: 14px; opacity: 0.7;">Spróbuj odświeżyć stronę lub odwiedź <a href="${data.githubLink}" target="_blank" rel="noopener">repozytorium GitHub</a></p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Initialize or re-initialize publications viewer
+        async function initPublicationsViewer() {
+            if (!publicationsConfig) return;
+            
+            const config = publicationsConfig.markdownsPeek;
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            const isMobile = window.innerWidth <= 768;
+            
+            // On desktop, always use light theme (we have custom dark mode styles)
+            // On mobile, use the actual dark/light theme from the widget
+            const theme = isMobile ? (isDarkMode ? 'dark' : 'light') : (config.theme || 'light');
+            
+            publicationsInstance = new window.MarkdownsPeek({
+                containerId: config.containerId,
+                owner: config.owner,
+                repo: config.repo,
+                path: config.path || '',
+                branch: config.branch || 'main',
+                theme: theme,
+                token: config.token || '',
+                disableStyles: config.disableStyles || false,
+                loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                hideFilesOnRoute: config.hideFilesOnRoute !== false,
+                basePath: config.basePath || 'publications/full',
+                reverseSortOrder: config.reverseSortOrder || false,
+                sortAlphabetically: config.sortAlphabetically || false,
+                height: config.height || 'auto',
+                texts: {
+                    menu: 'MENU',
+                    files: 'PUBLIKACJE',
+                    loading: 'ŁADOWANIE...',
+                    selectFile: 'WYBIERZ PUBLIKACJĘ',
+                    error: 'BŁĄD: ',
+                    noFiles: 'BRAK PUBLIKACJI',
+                    minRead: 'MIN CZYTANIA',
+                    notFound: 'PUBLIKACJA NIE ZNALEZIONA'
+                }
+            });
+        }
+        
+        // Update publications viewer theme (only on mobile)
+        async function updatePublicationsTheme() {
+            const isMobile = window.innerWidth <= 768;
+            
+            // Only update on mobile
+            if (!isMobile || !publicationsConfig) return;
+            
+            // Re-initialize the viewer with new theme
+            const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
+            if (container) {
+                container.innerHTML = `
+                    <div class="publications-loading">
+                        <div class="loading-spinner"></div>
+                        <p>Ładowanie publikacji...</p>
+                    </div>
+                `;
+                
+                try {
+                    await initPublicationsViewer();
+                    console.log('✅ Publications theme updated');
+                } catch (error) {
+                    console.error('❌ Failed to update publications theme:', error);
+                }
+            }
+        }
+        
         // Setup Mini Meeting Alert
         function setupMiniMeetingAlert(meetingData) {
             const miniAlert = document.getElementById('miniMeetingAlert');
@@ -7586,8 +8303,10 @@
             
             if (scrollTop > lastScrollTop && scrollTop > 100) {
                 nav.style.transform = 'translateY(-100%)';
+                nav.style.boxShadow = 'none';  // Remove shadow when hiding
             } else {
                 nav.style.transform = 'translateY(0)';
+                nav.style.boxShadow = '';  // Restore default shadow
             }
             
             lastScrollTop = scrollTop;
@@ -7721,6 +8440,12 @@
             }
             
             console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
+            
+            // Update home news viewer theme
+            updateHomeNewsTheme();
+            
+            // Update publications viewer theme (only on mobile)
+            updatePublicationsTheme();
         }
         
         // Switch theme and update UI (for theme buttons)
@@ -7728,6 +8453,7 @@
             applyTheme(themeName);
             updateActiveThemeButton();
             updateAnimationColors();
+            // Note: Color theme doesn't affect dark/light mode of widgets
         }
         
         // Update animation colors based on current theme using CSS filter
@@ -7831,6 +8557,7 @@
             await renderActivity();
             await renderConstitution();
             await renderRecruitment();
+            await renderPublications();
             await renderFooter();
             
             // Initialize scroll to top button

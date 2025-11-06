@@ -47,6 +47,7 @@ data/
 ├── activity.json      # Działalność i historia
 ├── constitution.json  # Statut koła
 ├── recruitment.json   # Rekrutacja
+├── publications.json  # Publikacje i blog (markdowns-peek)
 └── footer.json        # Stopka (kontakt, social media)
 ```
 
@@ -135,6 +136,7 @@ Pełna instrukcja: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**
 - 🎠 **Karuzela zdjęć** - automatyczna, z manualną kontrolą
 - 🔝 **Scroll to top** - nowoczesny przycisk przewijania do góry
 - 👥 **Podświetlanie członków** - `team?member=jan-kowalski`
+- 📰 **Sekcja publikacji** - blog i aktualności z [GitHub repo](https://github.com/knsiexpert/blog) przez markdowns-peek
 - 📊 **Dynamiczne dane** - wszystko zarządzane przez JSON
 - 🔗 **Czyste URL-e** - routing bez hashtag'ów
 - ⚡ **GitHub Actions** - automatyczny deployment

@@ -9,6 +9,7 @@
     "title": "Nawigacja",
     "links": [
       { "title": "Start", "section": "home" },
+      { "title": "Publikacje", "section": "publications" },
       { "title": "Projekty", "section": "projects" },
       { "title": "Cele i misja", "section": "goals" },
       { "title": "Zespół", "section": "team" },
