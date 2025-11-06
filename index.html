@@ -7745,7 +7745,7 @@
                     theme: theme,
                     token: config.token || '',
                 disableStyles: config.disableStyles || false,
-                loadFirstFileAutomatically: true,  // Always try to load first file
+                loadFirstFileAutomatically: false,
                 hideFilesOnRoute: config.hideFilesOnRoute || true,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
@@ -7888,7 +7888,7 @@
                 theme: theme,
                 token: config.token || '',
                 disableStyles: config.disableStyles || false,
-                loadFirstFileAutomatically: true,  // Always try to load first file
+                loadFirstFileAutomatically: false,
                 hideFilesOnRoute: config.hideFilesOnRoute !== false,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
