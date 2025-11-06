@@ -7753,51 +7753,53 @@
                     height: config.height || '600px'
                 });
                 
-            // Hack: Use MutationObserver to detect when files are loaded and click first one
-            const observer = new MutationObserver((mutations, obs) => {
+            // Aggressive hack: Poll for first file button and click it
+            let pollAttempts = 0;
+            const pollInterval = setInterval(() => {
+                pollAttempts++;
+                
                 const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Look for any button or link that looks like a file
-                const allButtons = Array.from(container.querySelectorAll('button, a'));
-                const fileButtons = allButtons.filter(btn => {
-                    const text = btn.textContent.trim();
-                    // Filter out menu, toggle buttons - look for markdown files
-                    return text && 
-                           !text.includes('MENU') && 
-                           !text.includes('FILES') &&
-                           !text.includes('PUBLIKACJE') &&
-                           text.length > 3;
-                });
-                
-                if (fileButtons.length > 0) {
-                    // Check if any file is already loaded
-                    const hasLoadedFile = container.querySelector('[aria-current="page"]') ||
-                                         container.textContent.includes('MIN CZYTANIA') ||
-                                         container.querySelector('[class*="article"]');
-                    
-                    if (!hasLoadedFile) {
-                        // Click first file button
-                        fileButtons[0].click();
-                        console.log('📄 Auto-clicked first file (home news):', fileButtons[0].textContent.trim());
-                    }
-                    
-                    // Stop observing once we've clicked
-                    obs.disconnect();
+                if (!container || pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    return;
                 }
-            });
-            
-            // Start observing
-            const container = document.getElementById(config.containerId);
-            if (container) {
-                observer.observe(container, {
-                    childList: true,
-                    subtree: true
-                });
                 
-                // Stop observing after 10 seconds
-                setTimeout(() => observer.disconnect(), 10000);
-            }
+                // Check if content is already loaded
+                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                  container.querySelector('article') ||
+                                  container.querySelector('[class*="article"]') ||
+                                  container.querySelector('h1, h2, h3');
+                
+                if (hasContent) {
+                    clearInterval(pollInterval);
+                    console.log('📄 Home news: File already loaded');
+                    return;
+                }
+                
+                // Find ALL clickable elements
+                const allClickables = container.querySelectorAll('*');
+                let firstFileButton = null;
+                
+                for (const elem of allClickables) {
+                    const tag = elem.tagName.toLowerCase();
+                    if ((tag === 'button' || tag === 'a') && elem.offsetParent !== null) {
+                        const text = elem.textContent.trim();
+                        // Look for file-like buttons (not empty, not menu words)
+                        if (text && 
+                            text.length > 3 && 
+                            !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA/i)) {
+                            firstFileButton = elem;
+                            break;
+                        }
+                    }
+                }
+                
+                if (firstFileButton) {
+                    clearInterval(pollInterval);
+                    console.log('📄 Clicking first file (home news):', firstFileButton.textContent.trim());
+                    firstFileButton.click();
+                }
+            }, 250); // Check every 250ms
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7812,12 +7814,34 @@
             const container = document.getElementById(homeNewsConfig.containerId);
             if (!container) return;
             
-            // Re-initialize with new theme
+            // Clear container completely and re-initialize from scratch
+            container.innerHTML = '';
+            
             try {
                 await initHomeNewsViewer(homeNewsConfig);
                 console.log('✅ Home news theme updated');
             } catch (error) {
                 console.error('❌ Failed to update home news theme:', error);
+            }
+        }
+        
+        // Reinitialize home news viewer on URL change
+        async function reinitHomeNewsViewer() {
+            if (!homeNewsConfig) return;
+            
+            const container = document.getElementById(homeNewsConfig.containerId);
+            if (!container) return;
+            
+            console.log('🔄 Reinitializing home news viewer...');
+            
+            // Clear container completely
+            container.innerHTML = '';
+            
+            try {
+                await initHomeNewsViewer(homeNewsConfig);
+                console.log('✅ Home news viewer reinitialized');
+            } catch (error) {
+                console.error('❌ Failed to reinitialize home news viewer:', error);
             }
         }
         
@@ -7906,51 +7930,53 @@
                 }
             });
             
-            // Hack: Use MutationObserver to detect when files are loaded and click first one
-            const observer = new MutationObserver((mutations, obs) => {
+            // Aggressive hack: Poll for first file button and click it
+            let pollAttempts = 0;
+            const pollInterval = setInterval(() => {
+                pollAttempts++;
+                
                 const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Look for any button or link that looks like a file
-                const allButtons = Array.from(container.querySelectorAll('button, a'));
-                const fileButtons = allButtons.filter(btn => {
-                    const text = btn.textContent.trim();
-                    // Filter out menu, toggle buttons - look for markdown files
-                    return text && 
-                           !text.includes('MENU') && 
-                           !text.includes('FILES') &&
-                           !text.includes('PUBLIKACJE') &&
-                           text.length > 3;
-                });
-                
-                if (fileButtons.length > 0) {
-                    // Check if any file is already loaded
-                    const hasLoadedFile = container.querySelector('[aria-current="page"]') ||
-                                         container.textContent.includes('MIN CZYTANIA') ||
-                                         container.querySelector('[class*="article"]');
-                    
-                    if (!hasLoadedFile) {
-                        // Click first file button
-                        fileButtons[0].click();
-                        console.log('📄 Auto-clicked first file (publications):', fileButtons[0].textContent.trim());
-                    }
-                    
-                    // Stop observing once we've clicked
-                    obs.disconnect();
+                if (!container || pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    return;
                 }
-            });
-            
-            // Start observing
-            const container = document.getElementById(config.containerId);
-            if (container) {
-                observer.observe(container, {
-                    childList: true,
-                    subtree: true
-                });
                 
-                // Stop observing after 10 seconds
-                setTimeout(() => observer.disconnect(), 10000);
-            }
+                // Check if content is already loaded
+                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                  container.querySelector('article') ||
+                                  container.querySelector('[class*="article"]') ||
+                                  container.querySelector('h1, h2, h3');
+                
+                if (hasContent) {
+                    clearInterval(pollInterval);
+                    console.log('📄 Publications: File already loaded');
+                    return;
+                }
+                
+                // Find ALL clickable elements
+                const allClickables = container.querySelectorAll('*');
+                let firstFileButton = null;
+                
+                for (const elem of allClickables) {
+                    const tag = elem.tagName.toLowerCase();
+                    if ((tag === 'button' || tag === 'a') && elem.offsetParent !== null) {
+                        const text = elem.textContent.trim();
+                        // Look for file-like buttons (not empty, not menu words)
+                        if (text && 
+                            text.length > 3 && 
+                            !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA/i)) {
+                            firstFileButton = elem;
+                            break;
+                        }
+                    }
+                }
+                
+                if (firstFileButton) {
+                    clearInterval(pollInterval);
+                    console.log('📄 Clicking first file (publications):', firstFileButton.textContent.trim());
+                    firstFileButton.click();
+                }
+            }, 250); // Check every 250ms
         }
         
         // Update publications viewer theme (only on mobile)
@@ -7963,12 +7989,8 @@
             // Re-initialize the viewer with new theme
             const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
             if (container) {
-                container.innerHTML = `
-                    <div class="publications-loading">
-                        <div class="loading-spinner"></div>
-                        <p>Ładowanie publikacji...</p>
-                    </div>
-                `;
+                // Clear container completely
+                container.innerHTML = '';
                 
                 try {
                     await initPublicationsViewer();
@@ -7976,6 +7998,26 @@
                 } catch (error) {
                     console.error('❌ Failed to update publications theme:', error);
                 }
+            }
+        }
+        
+        // Reinitialize publications viewer on URL change
+        async function reinitPublicationsViewer() {
+            if (!publicationsConfig) return;
+            
+            const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
+            if (!container) return;
+            
+            console.log('🔄 Reinitializing publications viewer...');
+            
+            // Clear container completely
+            container.innerHTML = '';
+            
+            try {
+                await initPublicationsViewer();
+                console.log('✅ Publications viewer reinitialized');
+            } catch (error) {
+                console.error('❌ Failed to reinitialize publications viewer:', error);
             }
         }
         
@@ -8269,8 +8311,21 @@
             return '';
         }
         
+        // Handle viewer reinitialization on section change
+        async function handleViewerReinit(sectionId) {
+            // Reinit home news when showing home
+            if (sectionId === 'home') {
+                await reinitHomeNewsViewer();
+            }
+            
+            // Reinit publications when showing publications
+            if (sectionId === 'publications') {
+                await reinitPublicationsViewer();
+            }
+        }
+        
         // Show section
-        function showSection(sectionId, addToHistory = true) {
+        async function showSection(sectionId, addToHistory = true) {
             const basePath = getBasePath();
             let newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
             
@@ -8323,6 +8378,9 @@
                 setTimeout(() => updateAnimationColors(), 100);
             }
             
+            // Reinitialize viewers when navigating to their sections
+            setTimeout(() => handleViewerReinit(sectionId), 100);
+            
             // Update mini meeting alert visibility when changing sections
             if (window.updateMiniMeetingAlert) {
                 setTimeout(() => window.updateMiniMeetingAlert(), 100);
@@ -8352,7 +8410,7 @@
         }
         
         // Handle route change
-        function handleRouteChange() {
+        async function handleRouteChange() {
             const basePath = getBasePath();
             let path = window.location.pathname;
             let queryString = window.location.search;
@@ -8387,7 +8445,7 @@
             // Default to home if empty
             const sectionId = path || 'home';
             
-            showSection(sectionId, false);
+            await showSection(sectionId, false);
         }
         
         function toggleMenu() {
