@@ -7941,9 +7941,16 @@
             // Render header and GitHub link
             publicationsContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
+                
                 ${data.subtitle ? `
-                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 40px; opacity: 0.9; max-width: 900px;">
+                <h3 style="font-size: 20px; font-weight: 600; letter-spacing: 0.02em; margin-bottom: 30px; color: var(--accent); opacity: 0.95;">
                     ${data.subtitle}
+                </h3>
+                ` : ''}
+                
+                ${data.description ? `
+                <p style="font-size: 16px; line-height: 1.8; margin-bottom: 60px; opacity: 0.9; max-width: 1000px;">
+                    ${data.description}
                 </p>
                 ` : ''}
                 
