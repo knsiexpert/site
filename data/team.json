@@ -9,12 +9,12 @@
     },
     "former_supervisors": [
       {
-        "name": "Prof. dr hab. Jerzy Auksztol",
-        "period": "2001-2010"
-      },
-      {
         "name": "Prof. dr hab. Michał Kuciapski",
         "period": "2010-2020"
+      },
+      {
+        "name": "Prof. dr hab. Jerzy Auksztol",
+        "period": "2001-2010"
       }
     ],
     "years": [
