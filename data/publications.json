@@ -12,7 +12,7 @@
     "token": "",
     "disableStyles": false,
     "loadFirstFileAutomatically": false,
-    "hideFilesOnRoute": true,
+    "hideFilesOnRoute": false,
     "basePath": "publications/full",
     "reverseSortOrder": true,
     "sortAlphabetically": true

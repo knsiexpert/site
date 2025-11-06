@@ -875,14 +875,8 @@
     </main>
 
     <!-- Footer Animation -->
-    <div class="footer-animation">
-        <dotlottie-player 
-            src="/data/assets/anim-education.lottie" 
-            background="transparent" 
-            speed="1" 
-            loop 
-            autoplay>
-        </dotlottie-player>
+    <div class="footer-animation" id="footerAnimation">
+        <!-- Lottie player will be loaded dynamically with correct path -->
     </div>
 
     <!-- Footer -->
@@ -981,6 +975,22 @@
             backLink.href = `${basePath}/publications`;
         }
 
+        // Initialize footer animation with correct path
+        function initFooterAnimation() {
+            const footerAnimation = document.getElementById('footerAnimation');
+            const animPath = basePath + '/data/assets/anim-education.lottie';
+            
+            footerAnimation.innerHTML = `
+                <dotlottie-player 
+                    src="${animPath}" 
+                    background="transparent" 
+                    speed="1" 
+                    loop 
+                    autoplay>
+                </dotlottie-player>
+            `;
+        }
+
         // Load footer
         async function loadFooter() {
             const data = await loadJSON('footer.json');
@@ -998,7 +1008,7 @@
                         <h4>${data.navigation.title}</h4>
                         <ul class="footer-links">
                             ${data.navigation.links.map(link => `
-                                <li><a href="${basePath}/${link.section}">${link.title}</a></li>
+                                <li><a href="${basePath}/#${link.section}">${link.title}</a></li>
                             `).join('')}
                         </ul>
                     </div>
@@ -1376,7 +1386,7 @@
             
             // Check if this is /publications without /full - redirect to index with publications view
             if (isPublicationsIndexRoute()) {
-                window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent('/publications'));
+                window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(basePath + '/publications'));
                 return;
             }
             
@@ -1385,6 +1395,7 @@
                 // This is a publications widget route - show the viewer
                 await initLogo();
                 initBackLink();
+                initFooterAnimation();
                 
                 // Update dark mode button icon
                 updateDarkModeButton();
