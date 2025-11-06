@@ -1,5 +1,5 @@
 {
-  "presentation_title": "🪄 E-XPERT i Zakon Kodujących Umysłów",
+  "presentation_title": "🪄 E-XPERT i Stowarzyszenie Kodujących Umysłów",
   "slides": [
     {
       "slide": 1,
@@ -10,15 +10,15 @@
       ],
       "image": "https://i.imgur.com/xr2uTN4.png",
       "motto": "🪄 KNSI E-XPERT i ...",
-      "tagline": "Zakon Kodujących Umysłów"
+      "tagline": "magia technologii"
     },
     {
       "slide": 2,
-      "title": "Początek Zakonu (2001)",
+      "title": "Początek (2001)",
       "bullets": [
         "Opowieść o studentach, którzy połączyli informatykę, pasję i wyobraźnię.",
         "O miejscu, gdzie kod staje się zaklęciem, a nauka — przygodą.",
-        "To jest historia E-XPERT — Zakonu Kodujących Umysłów.",
+        "To jest historia E-XPERT — Stowarzyszenia Kodujących Umysłów.",
         "Styczeń 2001 — zimowe niebo nad Gdańskiem pełne pomysłów.",
         "Grupa studentów Wydziału Zarządzania UG postanawia połączyć informatykę z biznesem.",
         "Tak narodziło się Koło Naukowe Systemów Informatycznych E-XPERT.",
@@ -104,7 +104,7 @@
     },
     {
       "slide": 10,
-      "title": "Mistrzowie i opiekunowie Zakonu",
+      "title": "Mistrzowie i opiekunowie",
       "bullets": [
         "Prof. Jerzy Auksztol — pierwszy mentor, alchemik wiedzy.",
         "Prof. Michał Kuciapski — opiekun do 2021, przewodnik naukowy.",
@@ -118,7 +118,7 @@
       "title": "E-XPERT dziś (2025)",
       "bullets": [
         "24 lata historii, dziesiątki projektów i laureatów konkursów AIS.",
-        "Koło współpracuje z firmami jak MadKom i Neoteric.",
+        "Koło współpracuje z firmami",
         "Tworzy oprogramowanie, prowadzi badania i inspiruje kolejne pokolenia.",
         "W serwerowni E-XPERT wciąż słychać kliknięcie – znak, że magia kodu żyje."
       ],
