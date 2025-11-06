@@ -5881,6 +5881,75 @@
             }
         }
         
+        /* Home News Viewer Section - Industrial Style */
+        .home-news-viewer {
+            margin: 40px 0;
+            max-height: 600px;
+            overflow: hidden;
+            border: 3px solid var(--black);
+            background: var(--surface);
+            position: relative;
+            box-shadow: 0 6px 30px rgba(28, 27, 34, 0.08);
+            padding: 0;
+        }
+
+        .dark-mode .home-news-viewer {
+            background: var(--black);
+            border: 3px solid var(--white);
+        }
+
+        .dark-mode .home-news-viewer::before {
+            background: var(--black);
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* Corner accent element */
+        .home-news-viewer::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: -12px;
+            width: 80px;
+            height: 80px;
+            border: 3px solid var(--black);
+            border-top: none;
+            border-left: none;
+            z-index: -1;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .home-news-viewer::after {
+            border-color: var(--white);
+            background: var(--black);
+        }
+
+        /* Keep viewer content in original style but with controlled spacing */
+        .home-news-viewer > * {
+            background: transparent !important;
+        }
+        
+        /* Diagonal stripe at bottom - industrial accent */
+        .home-news-viewer > *:last-child::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--accent),
+                var(--accent) 8px,
+                transparent 8px,
+                transparent 16px
+            );
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.4;
+        }
+
         /* Publications Section */
         .publications-viewer {
             margin: 40px 0;
@@ -6068,9 +6137,9 @@
                 z-index: 10 !important;
             }
 
-            [class$="-lib-mp-files"] {
+            #publications .publications-viewer [class$="-lib-mp-files"] {
                 box-shadow: 0 20px 60px rgba(28, 27, 34, 0.15), 0 8px 25px rgba(var(--accent-rgb), 0.1) !important;
-                max-height: 400px;
+                max-height: 600px;
                 overflow-x: scroll !important;
             }
 
@@ -6261,10 +6330,29 @@
             /* Only style loading and error states for dark mode */
         }
 
-        
+        .home-news-viewer h2,
+        .home-news-viewer h2::after {
+            color: var(--black) !important;
+            background: none !important;
+            -webkit-background-clip: initial !important;
+            -webkit-text-fill-color: initial !important;
+            background-clip: initial !important;
+        }
 
+        .home-news-viewer [class$="-lib-mp-files"],
+        .home-news-viewer [class$="-lib-mp-menu-toggle"],
         [class$="-lib-mp-files-overlay"] {
             display: none !important;
+        }
+
+        .home-news-viewer [class$="-lib-mp-content"] {
+            background: var(--black);
+        }
+
+        @media (max-width: 768px) {
+            .home-news-viewer [class$="-lib-mp-content"] {
+                padding-top: 0px;
+            }
         }
     </style>
 </head>
@@ -6504,6 +6592,24 @@
                             </div>
                         </div>
                     ` : ''}
+
+                    
+                    ${data.news && data.markdownsPeek ? `
+                        <h2>${data.news.title}</h2>
+                        <p style="font-size: 18px; margin-bottom: 60px; line-height: 1.8;">${data.news.lead}</p>
+                        
+                        <div id="${data.markdownsPeek.containerId}" class="home-news-viewer">
+                            <!-- MarkdownsPeek viewer will be loaded here -->
+                        </div>
+                        
+                        ${data.news.cta ? `
+                            <div style="text-align: center; margin-top: 20px; margin-bottom: 60px;">
+                                <a href="${data.news.cta.href}" 
+                                   onclick="event.preventDefault(); showSection('${data.news.cta.href}');"
+                                   class="cta-button">${data.news.cta.label}</a>
+                            </div>
+                        ` : ''}
+                    ` : ''}
                     
                     ${data.highlights ? `
                         <h2>${data.highlights.title}</h2>
@@ -6541,6 +6647,11 @@
                 initCarousel(data.us.interval || 5000);
                 // Initialize mini hero carousel
                 initHeroMiniCarousel(data.us.images, data.us.interval || 5000);
+            }
+            
+            // Initialize MarkdownsPeek widget if configured
+            if (data.markdownsPeek) {
+                await initHomeNewsViewer(data.markdownsPeek);
             }
             
             // Note: DotLottie player is a web component and works automatically
@@ -7605,6 +7716,61 @@
         }
         
         // Render Publications Section
+        // Store home news config globally for re-initialization
+        let homeNewsConfig = null;
+        let homeNewsInstance = null;
+        
+        // Initialize Home News Viewer
+        async function initHomeNewsViewer(config) {
+            if (!config) return;
+            
+            homeNewsConfig = config;
+            
+            try {
+                await loadMarkdownsPeek();
+                
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                const theme = isDarkMode ? 'dark' : 'light';
+                
+                homeNewsInstance = new window.MarkdownsPeek({
+                    containerId: config.containerId,
+                    owner: config.owner,
+                    repo: config.repo,
+                    path: config.path || '',
+                    branch: config.branch || 'main',
+                    theme: theme,
+                    token: config.token || '',
+                    disableStyles: config.disableStyles || false,
+                    loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                    hideFilesOnRoute: config.hideFilesOnRoute || true,
+                    basePath: config.basePath || '',
+                    reverseSortOrder: config.reverseSortOrder || false,
+                    sortAlphabetically: config.sortAlphabetically || false,
+                    height: config.height || '600px'
+                });
+                
+                console.log('✅ Home news viewer initialized');
+            } catch (error) {
+                console.error('❌ Failed to initialize home news viewer:', error);
+            }
+        }
+        
+        // Update home news viewer theme
+        async function updateHomeNewsTheme() {
+            if (!homeNewsConfig) return;
+            
+            const container = document.getElementById(homeNewsConfig.containerId);
+            if (!container) return;
+            
+            // Re-initialize with new theme
+            try {
+                await initHomeNewsViewer(homeNewsConfig);
+                console.log('✅ Home news theme updated');
+            } catch (error) {
+                console.error('❌ Failed to update home news theme:', error);
+            }
+        }
+        
         // Store publications config globally for re-initialization
         let publicationsConfig = null;
         let publicationsInstance = null;
@@ -8279,6 +8445,9 @@
             
             console.log('Dark mode:', isDarkMode ? 'enabled' : 'disabled');
             
+            // Update home news viewer theme
+            updateHomeNewsTheme();
+            
             // Update publications viewer theme (only on mobile)
             updatePublicationsTheme();
         }
@@ -8288,6 +8457,7 @@
             applyTheme(themeName);
             updateActiveThemeButton();
             updateAnimationColors();
+            // Note: Color theme doesn't affect dark/light mode of widgets
         }
         
         // Update animation colors based on current theme using CSS filter
