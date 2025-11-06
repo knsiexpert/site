@@ -3171,6 +3171,26 @@
                 max-height: 500px;
                 padding: 20px 16px;
                 border-bottom: 1px solid var(--black);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Custom scrollbar for mobile menu */
+            .nav-links::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            .nav-links::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(28, 27, 34, 0.3);
+                border-radius: 3px;
+            }
+            
+            .dark-mode .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(243, 243, 247, 0.3);
             }
             
             .dark-mode .nav-links {
@@ -7744,8 +7764,8 @@
                     branch: config.branch || 'main',
                     theme: theme,
                     token: config.token || '',
-                    disableStyles: config.disableStyles || false,
-                    loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                disableStyles: config.disableStyles || false,
+                loadFirstFileAutomatically: false,
                 hideFilesOnRoute: config.hideFilesOnRoute || true,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
@@ -7753,10 +7773,121 @@
                     height: config.height || '600px'
                 });
                 
+            // Hack: Click first file using specific selector (with mobile support)
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Home news: timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Home news: already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#home-news-viewer aside > div:nth-child(2) > div:first-child',
+                        '#home-news-viewer [role="button"]',
+                        '#home-news-viewer aside button:not([class*="menu"])',
+                        '#home-news-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (home news):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
+                
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
                 console.error('❌ Failed to initialize home news viewer:', error);
             }
+        }
+        
+        // Click first file in home news viewer
+        function clickFirstFileHomeNews() {
+            const config = homeNewsConfig;
+            if (!config) return;
+            
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Home news (theme change): timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Home news (theme change): already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#home-news-viewer aside > div:nth-child(2) > div:first-child',
+                        '#home-news-viewer [role="button"]',
+                        '#home-news-viewer aside button:not([class*="menu"])',
+                        '#home-news-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (home news theme change):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
         }
         
         // Update home news viewer theme
@@ -7766,10 +7897,15 @@
             const container = document.getElementById(homeNewsConfig.containerId);
             if (!container) return;
             
-            // Re-initialize with new theme
+            // Clear container completely and re-initialize from scratch
+            container.innerHTML = '';
+            
             try {
                 await initHomeNewsViewer(homeNewsConfig);
                 console.log('✅ Home news theme updated');
+                
+                // Trigger auto-click after reinit
+                clickFirstFileHomeNews();
             } catch (error) {
                 console.error('❌ Failed to update home news theme:', error);
             }
@@ -7842,7 +7978,7 @@
                 theme: theme,
                 token: config.token || '',
                 disableStyles: config.disableStyles || false,
-                loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
+                loadFirstFileAutomatically: false,
                 hideFilesOnRoute: config.hideFilesOnRoute !== false,
                 basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
@@ -7859,28 +7995,135 @@
                     notFound: 'PUBLIKACJA NIE ZNALEZIONA'
                 }
             });
+            
+            // Hack: Click first file using specific selector (with mobile support)
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Publications: timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Publications: already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#publications-viewer aside > div:nth-child(2) > div:first-child',
+                        '#publications-viewer [role="button"]',
+                        '#publications-viewer aside button:not([class*="menu"])',
+                        '#publications-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (publications):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
         }
         
-        // Update publications viewer theme (only on mobile)
-        async function updatePublicationsTheme() {
-            const isMobile = window.innerWidth <= 768;
+        // Click first file in publications viewer
+        function clickFirstFilePublications() {
+            const config = publicationsConfig?.markdownsPeek;
+            if (!config) return;
             
-            // Only update on mobile
-            if (!isMobile || !publicationsConfig) return;
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Publications (theme change): timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Publications (theme change): already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#publications-viewer aside > div:nth-child(2) > div:first-child',
+                        '#publications-viewer [role="button"]',
+                        '#publications-viewer aside button:not([class*="menu"])',
+                        '#publications-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (publications theme change):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
+        }
+        
+        // Update publications viewer theme
+        async function updatePublicationsTheme() {
+            if (!publicationsConfig) return;
             
             // Re-initialize the viewer with new theme
             const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
             if (container) {
-                container.innerHTML = `
-                    <div class="publications-loading">
-                        <div class="loading-spinner"></div>
-                        <p>Ładowanie publikacji...</p>
-                    </div>
-                `;
+                // Clear container completely
+                container.innerHTML = '';
                 
                 try {
                     await initPublicationsViewer();
                     console.log('✅ Publications theme updated');
+                    
+                    // Trigger auto-click after reinit
+                    clickFirstFilePublications();
                 } catch (error) {
                     console.error('❌ Failed to update publications theme:', error);
                 }
@@ -8178,7 +8421,7 @@
         }
         
         // Show section
-        function showSection(sectionId, addToHistory = true) {
+        async function showSection(sectionId, addToHistory = true) {
             const basePath = getBasePath();
             let newPath = sectionId === 'home' ? basePath + '/' : basePath + '/' + sectionId;
             
@@ -8260,7 +8503,7 @@
         }
         
         // Handle route change
-        function handleRouteChange() {
+        async function handleRouteChange() {
             const basePath = getBasePath();
             let path = window.location.pathname;
             let queryString = window.location.search;
@@ -8295,7 +8538,7 @@
             // Default to home if empty
             const sectionId = path || 'home';
             
-            showSection(sectionId, false);
+            await showSection(sectionId, false);
         }
         
         function toggleMenu() {
