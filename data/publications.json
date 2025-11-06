@@ -1,7 +1,7 @@
 {
   "title": "Publikacje",
-  "description": "Artykuły i aktualności związane z działalnością Koła Naukowego Systemów Informatycznych E-xpert.",
-  "subtitle": "Poznaj naszą działalność przez publikacje, relacje z wydarzeń i artykuły",
+  "description": "Tutaj dzielimy się tym, co tworzymy, czego się uczymy i w czym uczestniczymy. Od relacji z międzynarodowych konkursów AIS i Imagine Cup, przez warsztaty technologiczne, po historie projektów, które zmieniły nasze spojrzenie na technologię. To miejsce, w którym teoria spotyka praktykę, kod zamienia się w opowieść, a każdy artykuł to fragment większej historii społeczności, która od ponad dwóch dekad łączy pasję do IT z działaniem. Zapraszamy do lektury – każdy tekst to okno na to, czym żyje E-XPERT.",
+  "subtitle": "Relacje, artykuły i historie z życia Koła",
   "markdownsPeek": {
     "containerId": "publications-viewer",
     "owner": "knsiexpert",
