@@ -7753,47 +7753,51 @@
                     height: config.height || '600px'
                 });
                 
-            // Hack: Force first file to open after widget loads (fallback for slow connections)
-            const tryLoadFirstFile = (attempts = 0) => {
-                if (attempts > 10) return; // Max 10 attempts
+            // Hack: Use MutationObserver to detect when files are loaded and click first one
+            const observer = new MutationObserver((mutations, obs) => {
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
                 
-                setTimeout(() => {
-                    const container = document.getElementById(config.containerId);
-                    if (!container) {
-                        tryLoadFirstFile(attempts + 1);
-                        return;
-                    }
-                    
-                    // Check if a file is already loaded
-                    const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
-                                         container.querySelector('[class*="selected"]') ||
-                                         container.querySelector('[class*="active"]') ||
-                                         container.textContent.includes('MIN CZYTANIA');
+                // Look for any button or link that looks like a file
+                const allButtons = Array.from(container.querySelectorAll('button, a'));
+                const fileButtons = allButtons.filter(btn => {
+                    const text = btn.textContent.trim();
+                    // Filter out menu, toggle buttons - look for markdown files
+                    return text && 
+                           !text.includes('MENU') && 
+                           !text.includes('FILES') &&
+                           !text.includes('PUBLIKACJE') &&
+                           text.length > 3;
+                });
+                
+                if (fileButtons.length > 0) {
+                    // Check if any file is already loaded
+                    const hasLoadedFile = container.querySelector('[aria-current="page"]') ||
+                                         container.textContent.includes('MIN CZYTANIA') ||
+                                         container.querySelector('[class*="article"]');
                     
                     if (!hasLoadedFile) {
-                        // Try multiple selectors to find first file
-                        const firstFile = container.querySelector(
-                            'nav button:first-of-type, ' +
-                            'aside button:first-of-type, ' +
-                            '[class*="files"] button:first-of-type, ' +
-                            '[class*="file-list"] button:first-of-type, ' +
-                            '[class*="file-item"]:first-child, ' +
-                            'li:first-child button, ' +
-                            'li:first-child a'
-                        );
-                        
-                        if (firstFile) {
-                            firstFile.click();
-                            console.log('📄 Fallback: Opened first file manually (home news) - attempt', attempts + 1);
-                        } else {
-                            // Try again if button not found yet
-                            tryLoadFirstFile(attempts + 1);
-                        }
+                        // Click first file button
+                        fileButtons[0].click();
+                        console.log('📄 Auto-clicked first file (home news):', fileButtons[0].textContent.trim());
                     }
-                }, 500 + (attempts * 500)); // Increasing delays: 500ms, 1s, 1.5s, etc.
-            };
+                    
+                    // Stop observing once we've clicked
+                    obs.disconnect();
+                }
+            });
             
-            tryLoadFirstFile();
+            // Start observing
+            const container = document.getElementById(config.containerId);
+            if (container) {
+                observer.observe(container, {
+                    childList: true,
+                    subtree: true
+                });
+                
+                // Stop observing after 10 seconds
+                setTimeout(() => observer.disconnect(), 10000);
+            }
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7902,47 +7906,51 @@
                 }
             });
             
-            // Hack: Force first file to open after widget loads (fallback for slow connections)
-            const tryLoadFirstFile = (attempts = 0) => {
-                if (attempts > 10) return; // Max 10 attempts
+            // Hack: Use MutationObserver to detect when files are loaded and click first one
+            const observer = new MutationObserver((mutations, obs) => {
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
                 
-                setTimeout(() => {
-                    const container = document.getElementById(config.containerId);
-                    if (!container) {
-                        tryLoadFirstFile(attempts + 1);
-                        return;
-                    }
-                    
-                    // Check if a file is already loaded
-                    const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
-                                         container.querySelector('[class*="selected"]') ||
-                                         container.querySelector('[class*="active"]') ||
-                                         container.textContent.includes('MIN CZYTANIA');
+                // Look for any button or link that looks like a file
+                const allButtons = Array.from(container.querySelectorAll('button, a'));
+                const fileButtons = allButtons.filter(btn => {
+                    const text = btn.textContent.trim();
+                    // Filter out menu, toggle buttons - look for markdown files
+                    return text && 
+                           !text.includes('MENU') && 
+                           !text.includes('FILES') &&
+                           !text.includes('PUBLIKACJE') &&
+                           text.length > 3;
+                });
+                
+                if (fileButtons.length > 0) {
+                    // Check if any file is already loaded
+                    const hasLoadedFile = container.querySelector('[aria-current="page"]') ||
+                                         container.textContent.includes('MIN CZYTANIA') ||
+                                         container.querySelector('[class*="article"]');
                     
                     if (!hasLoadedFile) {
-                        // Try multiple selectors to find first file
-                        const firstFile = container.querySelector(
-                            'nav button:first-of-type, ' +
-                            'aside button:first-of-type, ' +
-                            '[class*="files"] button:first-of-type, ' +
-                            '[class*="file-list"] button:first-of-type, ' +
-                            '[class*="file-item"]:first-child, ' +
-                            'li:first-child button, ' +
-                            'li:first-child a'
-                        );
-                        
-                        if (firstFile) {
-                            firstFile.click();
-                            console.log('📄 Fallback: Opened first file manually (publications) - attempt', attempts + 1);
-                        } else {
-                            // Try again if button not found yet
-                            tryLoadFirstFile(attempts + 1);
-                        }
+                        // Click first file button
+                        fileButtons[0].click();
+                        console.log('📄 Auto-clicked first file (publications):', fileButtons[0].textContent.trim());
                     }
-                }, 500 + (attempts * 500)); // Increasing delays: 500ms, 1s, 1.5s, etc.
-            };
+                    
+                    // Stop observing once we've clicked
+                    obs.disconnect();
+                }
+            });
             
-            tryLoadFirstFile();
+            // Start observing
+            const container = document.getElementById(config.containerId);
+            if (container) {
+                observer.observe(container, {
+                    childList: true,
+                    subtree: true
+                });
+                
+                // Stop observing after 10 seconds
+                setTimeout(() => observer.disconnect(), 10000);
+            }
         }
         
         // Update publications viewer theme (only on mobile)
