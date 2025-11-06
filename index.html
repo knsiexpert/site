@@ -7110,6 +7110,22 @@
                     </div>
                 </div>
                 
+                ${data.content.former_supervisors && data.content.former_supervisors.length > 0 ? `
+                <div class="team-supervisor" style="margin-top: 20px;">
+                    <div class="supervisor-info">
+                        <span style="opacity: 0.7;">Poprzedni opiekunowie koła:</span>
+                        <div style="margin-top: 10px;">
+                            ${data.content.former_supervisors.map(former => `
+                                <div style="margin-left: 8px; margin-top: 8px;">
+                                    <strong style="font-size: 16px; color: var(--text);">${former.name}</strong>
+                                    <span style="opacity: 0.6; margin-left: 8px; font-size: 14px;">(${former.period})</span>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+                ` : ''}
+                
                 ${data.content.years.map(yearData => `
             <div class="team-year-section">
                         <h3>${yearData.year}</h3>

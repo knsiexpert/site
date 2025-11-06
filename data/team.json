@@ -7,6 +7,16 @@
       "role": "Opiekun koła",
       "website": "https://porzuczek.pl"
     },
+    "former_supervisors": [
+      {
+        "name": "Prof. dr hab. Jerzy Auksztol",
+        "period": "2002-2019"
+      },
+      {
+        "name": "Prof. dr hab. Michał Kuciapski",
+        "period": "2019-2024"
+      }
+    ],
     "years": [
       {
         "year": "2024/25",
