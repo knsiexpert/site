@@ -7786,17 +7786,18 @@
                 let firstFileButton = null;
                 
                 for (const btn of allButtons) {
-                    if (btn.offsetParent !== null) {
-                        const text = btn.textContent.trim();
-                        console.log('🔍 Checking button:', text);
-                        
-                        if (text && 
-                            text.length > 3 && 
-                            !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA/i)) {
-                            firstFileButton = btn;
-                            console.log('✅ Found first file button:', text);
-                            break;
-                        }
+                    const text = btn.textContent.trim();
+                    const isVisible = btn.offsetParent !== null;
+                    console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
+                    
+                    // Skip if text matches system buttons OR if button is hidden
+                    if (text && 
+                        text.length > 3 && 
+                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i) &&
+                        (isVisible || text.includes('.md'))) {  // Allow .md files even if hidden
+                        firstFileButton = btn;
+                        console.log('✅ Found first file button:', text);
+                        break;
                     }
                 }
                 
@@ -7972,17 +7973,18 @@
                 let firstFileButton = null;
                 
                 for (const btn of allButtons) {
-                    if (btn.offsetParent !== null) {
-                        const text = btn.textContent.trim();
-                        console.log('🔍 Checking button:', text);
-                        
-                        if (text && 
-                            text.length > 3 && 
-                            !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA/i)) {
-                            firstFileButton = btn;
-                            console.log('✅ Found first file button:', text);
-                            break;
-                        }
+                    const text = btn.textContent.trim();
+                    const isVisible = btn.offsetParent !== null;
+                    console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
+                    
+                    // Skip if text matches system buttons OR if button is hidden
+                    if (text && 
+                        text.length > 3 && 
+                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i) &&
+                        (isVisible || text.includes('.md'))) {  // Allow .md files even if hidden
+                        firstFileButton = btn;
+                        console.log('✅ Found first file button:', text);
+                        break;
                     }
                 }
                 
