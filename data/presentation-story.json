@@ -1,0 +1,140 @@
+{
+  "presentation_title": "🪄 E-XPERT i Zakon Kodujących Umysłów",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "E-XPERT i 25 lat historii",
+      "bullets": [
+        "Witaj w historii, która zaczęła się ponad dwie dekady temu...",
+        "🪄 KNSI E-XPERT i ..."
+      ],
+      "image": "https://i.imgur.com/xr2uTN4.png",
+      "motto": "🪄 KNSI E-XPERT i ...",
+      "tagline": "Zakon Kodujących Umysłów"
+    },
+    {
+      "slide": 2,
+      "title": "Początek Zakonu (2001)",
+      "bullets": [
+        "Opowieść o studentach, którzy połączyli informatykę, pasję i wyobraźnię.",
+        "O miejscu, gdzie kod staje się zaklęciem, a nauka — przygodą.",
+        "To jest historia E-XPERT — Zakonu Kodujących Umysłów.",
+        "Styczeń 2001 — zimowe niebo nad Gdańskiem pełne pomysłów.",
+        "Grupa studentów Wydziału Zarządzania UG postanawia połączyć informatykę z biznesem.",
+        "Tak narodziło się Koło Naukowe Systemów Informatycznych E-XPERT.",
+        "Ich motto: „Jeśli nie ma na to kursu – zbudujmy go sami.”"
+      ],
+      "image": "https://i.imgur.com/v6beGRK.png"
+    },
+    {
+      "slide": 3,
+      "title": "Pierwsze zaklęcia: narodziny projektów",
+      "bullets": [
+        "Czas modemów i kineskopowych monitorów.",
+        "Pierwsze badania: rynek IT i telekomunikacyjny.",
+        "Projekty: analiza systemów IT w MŚP, optymalizacja taryf GSM.",
+        "Powstaje wewnętrzny system zarządzania projektami — ‘Mapa Huncwotów’ dla programistów."
+      ],
+      "image": "https://i.imgur.com/hW7Ed05.png"
+    },
+    {
+      "slide": 4,
+      "title": "Lata dojrzewania (2003–2008)",
+      "bullets": [
+        "E-XPERT wychodzi poza uczelnię: seminaria z Microsoft, Ateną i PMP Polska.",
+        "Powstaje platforma eStudent — cyfrowy świat akademicki UG.",
+        "Uruchomione zostają terminale informatyczne i pierwsza nowoczesna witryna WZ.",
+        "Program IT-TEAM: współpraca z firmami IT i praktyczne projekty."
+      ],
+      "image": "https://i.imgur.com/BfQWKfQ.png"
+    },
+    {
+      "slide": 5,
+      "title": "Księgi wiedzy (2007)",
+      "bullets": [
+        "Szkolenia z programowania, baz danych i systemów IT.",
+        "Powstaje biblioteczka E-XPERT — repozytorium książek i czasopism branżowych.",
+        "Wiedza traktowana jak tomy zaklęć.",
+        "Pasja i wspólne finansowanie źródeł wiedzy przez członków."
+      ],
+      "image": "https://i.imgur.com/PXEFANd.png"
+    },
+    {
+      "slide": 6,
+      "title": "Czas ciszy i przebudzenie (2012)",
+      "bullets": [
+        "Po latach przerwy — 2012: nowe pokolenie studentów wskrzesza Koło.",
+        "Reaktywacja E-XPERT: świeża energia, nowa misja, powrót do tradycji.",
+        "Symboliczne zapalenie zielonego światła Σ — znak przebudzenia."
+      ],
+      "image": "https://i.imgur.com/kAutY5A.png"
+    },
+    {
+      "slide": 7,
+      "title": "Rozdział globalny: dołączenie do AIS (2015)",
+      "bullets": [
+        "2015 — E-XPERT staje się częścią AIS Student Chapters (University of Gdansk).",
+        "Wejście do globalnej sieci młodych magów technologii.",
+        "Projekt SafeWatch zdobywa III miejsce w AIS Competition.",
+        "Pierwszy patent — potwierdzenie, że magia kodu działa."
+      ],
+      "image": "https://i.imgur.com/dz4Rctl.png"
+    },
+    {
+      "slide": 8,
+      "title": "Era innowacji (2016–2020)",
+      "bullets": [
+        "Nowe projekty: CyberWatch, Unity, SNet, Eris, Apollo.",
+        "Projekty z realnym wpływem na świat — od bezpieczeństwa po ekologię.",
+        "E-XPERT trafia do finałów międzynarodowych konkursów AIS.",
+        "Koło staje się rozpoznawalnym ośrodkiem innowacji w Polsce."
+      ],
+      "image": "https://i.imgur.com/k4ALz3S.png"
+    },
+    {
+      "slide": 9,
+      "title": "Transformacja cyfrowa (2023–2025)",
+      "bullets": [
+        "Nowa strona E-XPERT — open source na GitHub Pages.",
+        "Pełna samodzielność technologiczna i współtworzenie przez członków.",
+        "Nowoczesny design, architektura repozytoriów i integracja z GitHubem.",
+        "Symbolem nowej ery staje się otwarty portal GitHuba."
+      ],
+      "image": "https://i.imgur.com/IOHdHKW.png"
+    },
+    {
+      "slide": 10,
+      "title": "Mistrzowie i opiekunowie Zakonu",
+      "bullets": [
+        "Prof. Jerzy Auksztol — pierwszy mentor, alchemik wiedzy.",
+        "Prof. Michał Kuciapski — opiekun do 2021, przewodnik naukowy.",
+        "Mgr Piotr Porzuczek — współczesny strażnik tradycji i innowacji.",
+        "Każdy z nich przekazywał dalej iskrę kodującego ducha."
+      ],
+      "image": "https://i.imgur.com/EdqVjTS.png"
+    },
+    {
+      "slide": 11,
+      "title": "E-XPERT dziś (2025)",
+      "bullets": [
+        "24 lata historii, dziesiątki projektów i laureatów konkursów AIS.",
+        "Koło współpracuje z firmami jak MadKom i Neoteric.",
+        "Tworzy oprogramowanie, prowadzi badania i inspiruje kolejne pokolenia.",
+        "W serwerowni E-XPERT wciąż słychać kliknięcie – znak, że magia kodu żyje."
+      ],
+      "image": "https://i.imgur.com/iga3G7M.png"
+    },
+    {
+      "slide": 12,
+      "title": "Epilog: magia, która nie gaśnie",
+      "bullets": [
+        "E-XPERT to więcej niż organizacja — to społeczność, tradycja i pasja.",
+        "Każdy nowy członek dopisuje swój rozdział do tej historii.",
+        "Bo gdy w nocy w Teamsie zapala się zielone kółko… magia kodu budzi się na nowo.",
+        "Dziękujemy, że jesteś częścią tej opowieści."
+      ],
+      "image": "https://i.imgur.com/KYmjmcf.jpeg",
+      "tagline": "Σ  — Symbolem wspólnoty, wiedzy i nieustającej ciekawości."
+    }
+  ]
+}
