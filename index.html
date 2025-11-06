@@ -7773,37 +7773,58 @@
                     height: config.height || '600px'
                 });
                 
-            // Hack: Click first file using specific selector
-            let pollAttempts = 0;
-            const pollInterval = setInterval(() => {
-                pollAttempts++;
-                
-                if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Check if content is already loaded
-                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article, h1, h2, h3');
-                
-                if (hasContent) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                // Desktop and mobile use same selector structure
-                const firstFile = container.querySelector('#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
-                
-                if (firstFile) {
-                    clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (home news)');
-                    firstFile.click();
-                }
-            }, 250);
+            // Hack: Click first file using specific selector (with mobile support)
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Home news: timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Home news: already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#home-news-viewer aside > div:nth-child(2) > div:first-child',
+                        '#home-news-viewer [role="button"]',
+                        '#home-news-viewer aside button:not([class*="menu"])',
+                        '#home-news-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (home news):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7816,36 +7837,57 @@
             const config = homeNewsConfig;
             if (!config) return;
             
-            let pollAttempts = 0;
-            const pollInterval = setInterval(() => {
-                pollAttempts++;
-                
-                if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Check if content is already loaded
-                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article, h1, h2, h3');
-                
-                if (hasContent) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                // Desktop and mobile use same selector structure
-                const firstFile = container.querySelector('#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
-                
-                if (firstFile) {
-                    clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (home news after theme change)');
-                    firstFile.click();
-                }
-            }, 250);
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Home news (theme change): timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Home news (theme change): already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#home-news-viewer aside > div:nth-child(2) > div:first-child',
+                        '#home-news-viewer [role="button"]',
+                        '#home-news-viewer aside button:not([class*="menu"])',
+                        '#home-news-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (home news theme change):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
         }
         
         // Update home news viewer theme
@@ -7954,37 +7996,58 @@
                 }
             });
             
-            // Hack: Click first file using specific selector
-            let pollAttempts = 0;
-            const pollInterval = setInterval(() => {
-                pollAttempts++;
-                
-                if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Check if content is already loaded
-                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article, h1, h2, h3');
-                
-                if (hasContent) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                // Desktop and mobile use same selector structure
-                const firstFile = container.querySelector('#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
-                
-                if (firstFile) {
-                    clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (publications)');
-                    firstFile.click();
-                }
-            }, 250);
+            // Hack: Click first file using specific selector (with mobile support)
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Publications: timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Publications: already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#publications-viewer aside > div:nth-child(2) > div:first-child',
+                        '#publications-viewer [role="button"]',
+                        '#publications-viewer aside button:not([class*="menu"])',
+                        '#publications-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (publications):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
         }
         
         // Click first file in publications viewer
@@ -7992,36 +8055,57 @@
             const config = publicationsConfig?.markdownsPeek;
             if (!config) return;
             
-            let pollAttempts = 0;
-            const pollInterval = setInterval(() => {
-                pollAttempts++;
-                
-                if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                const container = document.getElementById(config.containerId);
-                if (!container) return;
-                
-                // Check if content is already loaded
-                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article, h1, h2, h3');
-                
-                if (hasContent) {
-                    clearInterval(pollInterval);
-                    return;
-                }
-                
-                // Desktop and mobile use same selector structure
-                const firstFile = container.querySelector('#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
-                
-                if (firstFile) {
-                    clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (publications after theme change)');
-                    firstFile.click();
-                }
-            }, 250);
+            setTimeout(() => {
+                let pollAttempts = 0;
+                const pollInterval = setInterval(() => {
+                    pollAttempts++;
+                    
+                    if (pollAttempts > 60) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Publications (theme change): timeout');
+                        return;
+                    }
+                    
+                    const container = document.getElementById(config.containerId);
+                    if (!container) return;
+                    
+                    // Check if content is already loaded
+                    const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                      container.querySelector('article, h1, h2, h3');
+                    
+                    if (hasContent) {
+                        clearInterval(pollInterval);
+                        console.log('✅ Publications (theme change): already loaded');
+                        return;
+                    }
+                    
+                    // Try multiple selectors for compatibility
+                    const selectors = [
+                        '#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)',
+                        '#publications-viewer aside > div:nth-child(2) > div:first-child',
+                        '#publications-viewer [role="button"]',
+                        '#publications-viewer aside button:not([class*="menu"])',
+                        '#publications-viewer aside div[role="button"]'
+                    ];
+                    
+                    for (const selector of selectors) {
+                        const firstFile = container.querySelector(selector);
+                        if (firstFile && firstFile.textContent.trim().length > 3) {
+                            clearInterval(pollInterval);
+                            console.log('🎯 CLICKING (publications theme change):', selector, firstFile.textContent.trim());
+                            
+                            // Multiple click attempts for mobile
+                            firstFile.click();
+                            setTimeout(() => {
+                                const evt = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
+                                firstFile.dispatchEvent(evt);
+                            }, 50);
+                            
+                            return;
+                        }
+                    }
+                }, 300);
+            }, 500);
         }
         
         // Update publications viewer theme
