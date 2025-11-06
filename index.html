@@ -7094,7 +7094,7 @@
                 </p>
                 ` : ''}
                 
-                <div class="team-supervisor">
+                <div style="display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; margin-bottom: 30px;">
                     <div class="supervisor-info">
                         <span style="opacity: 0.7;">${supervisorRole}:</span>
                         ${supervisorWebsite ? `
@@ -7108,23 +7108,21 @@
                         <strong style="font-size: 18px; margin-left: 8px; color: var(--accent);">${supervisorName}</strong>
                         `}
                     </div>
-                </div>
-                
-                ${data.content.former_supervisors && data.content.former_supervisors.length > 0 ? `
-                <div class="team-supervisor" style="margin-top: 20px;">
+                    
+                    ${data.content.former_supervisors && data.content.former_supervisors.length > 0 ? `
                     <div class="supervisor-info">
                         <span style="opacity: 0.7;">Poprzedni opiekunowie koła:</span>
-                        <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-left: 8px;">
+                        <div style="display: inline-block; margin-left: 8px;">
                             ${data.content.former_supervisors.map(former => `
-                                <div>
+                                <span style="display: inline-block; margin-right: 24px;">
                                     <strong style="font-size: 16px; color: var(--text);">${former.name}</strong>
                                     <span style="opacity: 0.6; margin-left: 8px; font-size: 14px;">(${former.period})</span>
-                                </div>
+                                </span>
                             `).join('')}
                         </div>
                     </div>
+                    ` : ''}
                 </div>
-                ` : ''}
                 
                 ${data.content.years.map(yearData => `
             <div class="team-year-section">
