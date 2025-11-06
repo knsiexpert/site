@@ -1008,7 +1008,7 @@
                         <h4>${data.navigation.title}</h4>
                         <ul class="footer-links">
                             ${data.navigation.links.map(link => `
-                                <li><a href="${basePath}/${link.section}">${link.title}</a></li>
+                                <li><a href="${basePath}/#${link.section}">${link.title}</a></li>
                             `).join('')}
                         </ul>
                     </div>
@@ -1386,7 +1386,7 @@
             
             // Check if this is /publications without /full - redirect to index with publications view
             if (isPublicationsIndexRoute()) {
-                window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent('/publications'));
+                window.location.replace(basePath + '/index.html?redirect=' + encodeURIComponent(basePath + '/publications'));
                 return;
             }
             
