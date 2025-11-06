@@ -7743,7 +7743,7 @@
                     disableStyles: config.disableStyles || false,
                     loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
                     hideFilesOnRoute: config.hideFilesOnRoute || true,
-                    basePath: config.basePath || '',
+                    basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
                     reverseSortOrder: config.reverseSortOrder || false,
                     sortAlphabetically: config.sortAlphabetically || false,
                     height: config.height || '600px'
@@ -7840,7 +7840,7 @@
                 disableStyles: config.disableStyles || false,
                 loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
                 hideFilesOnRoute: config.hideFilesOnRoute !== false,
-                basePath: config.basePath || 'publications/full',
+                basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
                 sortAlphabetically: config.sortAlphabetically || false,
                 height: config.height || 'auto',
