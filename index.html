@@ -8519,6 +8519,14 @@
                 }
             }
             
+            // Trigger auto-click hacks for viewers after section change
+            if (sectionId === 'home') {
+                setTimeout(() => clickFirstFileHomeNews(), 500);
+            }
+            if (sectionId === 'publications') {
+                setTimeout(() => clickFirstFilePublications(), 500);
+            }
+            
             // Scroll to top (unless we're highlighting a team member)
             if (!skipScrollToTop) {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
