@@ -7811,6 +7811,43 @@
             }
         }
         
+        // Click first file in home news viewer
+        function clickFirstFileHomeNews() {
+            const config = homeNewsConfig;
+            if (!config) return;
+            
+            let pollAttempts = 0;
+            const pollInterval = setInterval(() => {
+                pollAttempts++;
+                
+                if (pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    return;
+                }
+                
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
+                
+                // Check if content is already loaded
+                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                  container.querySelector('article, h1, h2, h3');
+                
+                if (hasContent) {
+                    clearInterval(pollInterval);
+                    return;
+                }
+                
+                // Desktop and mobile use same selector structure
+                const firstFile = container.querySelector('#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
+                
+                if (firstFile) {
+                    clearInterval(pollInterval);
+                    console.log('🎯 CLICKING first file (home news after theme change)');
+                    firstFile.click();
+                }
+            }, 250);
+        }
+        
         // Update home news viewer theme
         async function updateHomeNewsTheme() {
             if (!homeNewsConfig) return;
@@ -7824,6 +7861,9 @@
             try {
                 await initHomeNewsViewer(homeNewsConfig);
                 console.log('✅ Home news theme updated');
+                
+                // Trigger auto-click after reinit
+                clickFirstFileHomeNews();
             } catch (error) {
                 console.error('❌ Failed to update home news theme:', error);
             }
@@ -7947,8 +7987,46 @@
             }, 250);
         }
         
-        // Update publications viewer theme (only on mobile)
+        // Click first file in publications viewer
+        function clickFirstFilePublications() {
+            const config = publicationsConfig?.markdownsPeek;
+            if (!config) return;
+            
+            let pollAttempts = 0;
+            const pollInterval = setInterval(() => {
+                pollAttempts++;
+                
+                if (pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    return;
+                }
+                
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
+                
+                // Check if content is already loaded
+                const hasContent = container.textContent.includes('MIN CZYTANIA') ||
+                                  container.querySelector('article, h1, h2, h3');
+                
+                if (hasContent) {
+                    clearInterval(pollInterval);
+                    return;
+                }
+                
+                // Desktop and mobile use same selector structure
+                const firstFile = container.querySelector('#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
+                
+                if (firstFile) {
+                    clearInterval(pollInterval);
+                    console.log('🎯 CLICKING first file (publications after theme change)');
+                    firstFile.click();
+                }
+            }, 250);
+        }
+        
+        // Update publications viewer theme
         async function updatePublicationsTheme() {
+            if (!publicationsConfig) return;
             
             // Re-initialize the viewer with new theme
             const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
@@ -7959,6 +8037,9 @@
                 try {
                     await initPublicationsViewer();
                     console.log('✅ Publications theme updated');
+                    
+                    // Trigger auto-click after reinit
+                    clickFirstFilePublications();
                 } catch (error) {
                     console.error('❌ Failed to update publications theme:', error);
                 }
