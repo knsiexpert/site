@@ -7742,9 +7742,9 @@
                     token: config.token || '',
                     disableStyles: config.disableStyles || false,
                     loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
-                    hideFilesOnRoute: config.hideFilesOnRoute || true,
-                    basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
-                    reverseSortOrder: config.reverseSortOrder || false,
+                hideFilesOnRoute: config.hideFilesOnRoute || true,
+                basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
+                reverseSortOrder: config.reverseSortOrder || false,
                     sortAlphabetically: config.sortAlphabetically || false,
                     height: config.height || '600px'
                 });
@@ -7840,7 +7840,7 @@
                 disableStyles: config.disableStyles || false,
                 loadFirstFileAutomatically: config.loadFirstFileAutomatically !== false,
                 hideFilesOnRoute: config.hideFilesOnRoute !== false,
-                basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
+                basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                 reverseSortOrder: config.reverseSortOrder || false,
                 sortAlphabetically: config.sortAlphabetically || false,
                 height: config.height || 'auto',

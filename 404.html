@@ -1279,7 +1279,7 @@
                     disableStyles: config.disableStyles || false,
                     loadFirstFileAutomatically: true,
                     hideFilesOnRoute: true,  // Enable route mode
-                    basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
+                    basePath: (getBasePath() ? getBasePath().replace(/^\//, '') + '/' : '') + (config.basePath || 'publications/full'),
                     reverseSortOrder: true,
                     sortAlphabetically: true,
                     height: '100%',
