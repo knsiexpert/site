@@ -12,7 +12,7 @@
   Przykład użycia:
   utilities/presentation.html?theme=green
   
-  Dane prezentacji: data/presentation2025.json
+  Dane prezentacji: data/presentation-recruitment-2025.json
 -->
 <html lang="pl" class="h-full">
   <head>
@@ -191,8 +191,8 @@
             try {
               setIsLoading(true);
               const dataAddress = window.location.href.includes("site") 
-                ? '../data/presentation2025.json' 
-                : '/data/presentation2025.json';
+                ? '../data/presentation-recruitment-2025.json' 
+                : '/data/presentation-recruitment-2025.json';
               const response = await fetch(dataAddress);
               if (!response.ok) {
                 throw new Error('Failed to load presentation data');

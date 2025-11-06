@@ -6199,16 +6199,18 @@
                 overflow-wrap: break-word !important;
                 word-break: break-word !important;
                 text-overflow: clip !important;
-                padding: 14px 24px !important;
                 line-height: 1.6 !important;
                 height: auto !important;
-                min-height: 48px !important;
                 border-radius: 12px !important;
                 transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
                 border: none !important;
                 pointer-events: auto !important;
                 cursor: pointer !important;
                 position: relative !important;
+            }
+
+            #publications .publications-viewer [class*="-lib-mp-file"] {
+                padding: 14px 24px !important;
             }
             
             /* Hover na plikach */
@@ -8515,6 +8517,14 @@
                     setTimeout(() => renderTeam(), 100);
                     skipScrollToTop = true; // Let renderTeam handle scrolling to highlighted member
                 }
+            }
+            
+            // Trigger auto-click hacks for viewers after section change
+            if (sectionId === 'home') {
+                setTimeout(() => clickFirstFileHomeNews(), 500);
+            }
+            if (sectionId === 'publications') {
+                setTimeout(() => clickFirstFilePublications(), 500);
             }
             
             // Scroll to top (unless we're highlighting a team member)
