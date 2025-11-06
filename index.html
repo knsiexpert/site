@@ -7779,9 +7779,18 @@
                     return;
                 }
                 
-                // Find ALL clickable elements
+                // Wait for files to load from GitHub API (more than just MENU button)
                 const allButtons = Array.from(container.querySelectorAll('button, a'));
                 console.log(`🔍 Found ${allButtons.length} buttons/links (attempt ${pollAttempts})`);
+                
+                // Need at least 2 buttons (MENU + files)
+                if (allButtons.length < 2) {
+                    if (pollAttempts > 40) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Gave up - files not loaded from GitHub API');
+                    }
+                    return;
+                }
                 
                 let firstFileButton = null;
                 
@@ -7790,11 +7799,10 @@
                     const isVisible = btn.offsetParent !== null;
                     console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
                     
-                    // Skip if text matches system buttons OR if button is hidden
+                    // Find first non-system button
                     if (text && 
                         text.length > 3 && 
-                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i) &&
-                        (isVisible || text.includes('.md'))) {  // Allow .md files even if hidden
+                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i)) {
                         firstFileButton = btn;
                         console.log('✅ Found first file button:', text);
                         break;
@@ -7805,9 +7813,6 @@
                     clearInterval(pollInterval);
                     console.log('🎯 CLICKING first file (home news):', firstFileButton.textContent.trim());
                     firstFileButton.click();
-                } else if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    console.log('❌ Gave up after 40 attempts');
                 }
             }, 250); // Check every 250ms
                 
@@ -7966,9 +7971,18 @@
                     return;
                 }
                 
-                // Find ALL clickable elements
+                // Wait for files to load from GitHub API (more than just MENU button)
                 const allButtons = Array.from(container.querySelectorAll('button, a'));
                 console.log(`🔍 Found ${allButtons.length} buttons/links (attempt ${pollAttempts})`);
+                
+                // Need at least 2 buttons (MENU + files)
+                if (allButtons.length < 2) {
+                    if (pollAttempts > 40) {
+                        clearInterval(pollInterval);
+                        console.log('❌ Gave up - files not loaded from GitHub API');
+                    }
+                    return;
+                }
                 
                 let firstFileButton = null;
                 
@@ -7977,11 +7991,10 @@
                     const isVisible = btn.offsetParent !== null;
                     console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
                     
-                    // Skip if text matches system buttons OR if button is hidden
+                    // Find first non-system button
                     if (text && 
                         text.length > 3 && 
-                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i) &&
-                        (isVisible || text.includes('.md'))) {  // Allow .md files even if hidden
+                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i)) {
                         firstFileButton = btn;
                         console.log('✅ Found first file button:', text);
                         break;
@@ -7992,9 +8005,6 @@
                     clearInterval(pollInterval);
                     console.log('🎯 CLICKING first file (publications):', firstFileButton.textContent.trim());
                     firstFileButton.click();
-                } else if (pollAttempts > 40) {
-                    clearInterval(pollInterval);
-                    console.log('❌ Gave up after 40 attempts');
                 }
             }, 250); // Check every 250ms
         }
