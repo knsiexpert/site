@@ -3171,6 +3171,26 @@
                 max-height: 500px;
                 padding: 20px 16px;
                 border-bottom: 1px solid var(--black);
+                overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            /* Custom scrollbar for mobile menu */
+            .nav-links::-webkit-scrollbar {
+                width: 6px;
+            }
+            
+            .nav-links::-webkit-scrollbar-track {
+                background: transparent;
+            }
+            
+            .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(28, 27, 34, 0.3);
+                border-radius: 3px;
+            }
+            
+            .dark-mode .nav-links::-webkit-scrollbar-thumb {
+                background: rgba(243, 243, 247, 0.3);
             }
             
             .dark-mode .nav-links {
@@ -7760,7 +7780,6 @@
                 
                 if (pollAttempts > 40) {
                     clearInterval(pollInterval);
-                    console.log('❌ Home news: Gave up after 40 attempts');
                     return;
                 }
                 
@@ -7776,8 +7795,8 @@
                     return;
                 }
                 
-                // Try specific selector first
-                const firstFile = container.querySelector('#' + config.containerId + ' > div > aside > div:nth-child(2) > div:nth-child(1)');
+                // Desktop and mobile use same selector structure
+                const firstFile = container.querySelector('#home-news-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
                 
                 if (firstFile) {
                     clearInterval(pollInterval);
@@ -7807,26 +7826,6 @@
                 console.log('✅ Home news theme updated');
             } catch (error) {
                 console.error('❌ Failed to update home news theme:', error);
-            }
-        }
-        
-        // Reinitialize home news viewer on URL change
-        async function reinitHomeNewsViewer() {
-            if (!homeNewsConfig) return;
-            
-            const container = document.getElementById(homeNewsConfig.containerId);
-            if (!container) return;
-            
-            console.log('🔄 Reinitializing home news viewer...');
-            
-            // Clear container completely
-            container.innerHTML = '';
-            
-            try {
-                await initHomeNewsViewer(homeNewsConfig);
-                console.log('✅ Home news viewer reinitialized');
-            } catch (error) {
-                console.error('❌ Failed to reinitialize home news viewer:', error);
             }
         }
         
@@ -7922,7 +7921,6 @@
                 
                 if (pollAttempts > 40) {
                     clearInterval(pollInterval);
-                    console.log('❌ Publications: Gave up after 40 attempts');
                     return;
                 }
                 
@@ -7938,8 +7936,8 @@
                     return;
                 }
                 
-                // Try specific selector first
-                const firstFile = container.querySelector('#' + config.containerId + ' > div > aside > div:nth-child(2) > div:nth-child(1)');
+                // Desktop and mobile use same selector structure
+                const firstFile = container.querySelector('#publications-viewer > div > aside > div:nth-child(2) > div:nth-child(1)');
                 
                 if (firstFile) {
                     clearInterval(pollInterval);
@@ -7964,26 +7962,6 @@
                 } catch (error) {
                     console.error('❌ Failed to update publications theme:', error);
                 }
-            }
-        }
-        
-        // Reinitialize publications viewer on URL change
-        async function reinitPublicationsViewer() {
-            if (!publicationsConfig) return;
-            
-            const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
-            if (!container) return;
-            
-            console.log('🔄 Reinitializing publications viewer...');
-            
-            // Clear container completely
-            container.innerHTML = '';
-            
-            try {
-                await initPublicationsViewer();
-                console.log('✅ Publications viewer reinitialized');
-            } catch (error) {
-                console.error('❌ Failed to reinitialize publications viewer:', error);
             }
         }
         
@@ -8277,19 +8255,6 @@
             return '';
         }
         
-        // Handle viewer reinitialization on section change
-        async function handleViewerReinit(sectionId) {
-            // Reinit home news when showing home
-            if (sectionId === 'home') {
-                await reinitHomeNewsViewer();
-            }
-            
-            // Reinit publications when showing publications
-            if (sectionId === 'publications') {
-                await reinitPublicationsViewer();
-            }
-        }
-        
         // Show section
         async function showSection(sectionId, addToHistory = true) {
             const basePath = getBasePath();
@@ -8343,9 +8308,6 @@
             if (sectionId === 'home' || sectionId === 'recruitment') {
                 setTimeout(() => updateAnimationColors(), 100);
             }
-            
-            // Reinitialize viewers when navigating to their sections
-            setTimeout(() => handleViewerReinit(sectionId), 100);
             
             // Update mini meeting alert visibility when changing sections
             if (window.updateMiniMeetingAlert) {
