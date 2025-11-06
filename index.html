@@ -7753,68 +7753,38 @@
                     height: config.height || '600px'
                 });
                 
-            // Aggressive hack: Poll for first file button and click it
+            // Hack: Click first file using specific selector
             let pollAttempts = 0;
-            console.log('🔍 Starting file auto-loader for home news...');
-            
             const pollInterval = setInterval(() => {
                 pollAttempts++;
                 
-                const container = document.getElementById(config.containerId);
-                if (!container) {
-                    console.log('❌ Container not found, attempt:', pollAttempts);
-                    if (pollAttempts > 40) clearInterval(pollInterval);
+                if (pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    console.log('❌ Home news: Gave up after 40 attempts');
                     return;
                 }
+                
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
                 
                 // Check if content is already loaded
                 const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article') ||
-                                  container.querySelector('[class*="article"]') ||
-                                  container.querySelector('h1, h2, h3');
+                                  container.querySelector('article, h1, h2, h3');
                 
                 if (hasContent) {
                     clearInterval(pollInterval);
-                    console.log('✅ Home news: File already loaded');
                     return;
                 }
                 
-                // Wait for files to load from GitHub API (more than just MENU button)
-                const allButtons = Array.from(container.querySelectorAll('button, a'));
-                console.log(`🔍 Found ${allButtons.length} buttons/links (attempt ${pollAttempts})`);
+                // Try specific selector first
+                const firstFile = container.querySelector('#' + config.containerId + ' > div > aside > div:nth-child(2) > div:nth-child(1)');
                 
-                // Need at least 2 buttons (MENU + files)
-                if (allButtons.length < 2) {
-                    if (pollAttempts > 40) {
-                        clearInterval(pollInterval);
-                        console.log('❌ Gave up - files not loaded from GitHub API');
-                    }
-                    return;
-                }
-                
-                let firstFileButton = null;
-                
-                for (const btn of allButtons) {
-                    const text = btn.textContent.trim();
-                    const isVisible = btn.offsetParent !== null;
-                    console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
-                    
-                    // Find first non-system button
-                    if (text && 
-                        text.length > 3 && 
-                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i)) {
-                        firstFileButton = btn;
-                        console.log('✅ Found first file button:', text);
-                        break;
-                    }
-                }
-                
-                if (firstFileButton) {
+                if (firstFile) {
                     clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (home news):', firstFileButton.textContent.trim());
-                    firstFileButton.click();
+                    console.log('🎯 CLICKING first file (home news)');
+                    firstFile.click();
                 }
-            }, 250); // Check every 250ms
+            }, 250);
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7945,68 +7915,38 @@
                 }
             });
             
-            // Aggressive hack: Poll for first file button and click it
+            // Hack: Click first file using specific selector
             let pollAttempts = 0;
-            console.log('🔍 Starting file auto-loader for publications...');
-            
             const pollInterval = setInterval(() => {
                 pollAttempts++;
                 
-                const container = document.getElementById(config.containerId);
-                if (!container) {
-                    console.log('❌ Container not found, attempt:', pollAttempts);
-                    if (pollAttempts > 40) clearInterval(pollInterval);
+                if (pollAttempts > 40) {
+                    clearInterval(pollInterval);
+                    console.log('❌ Publications: Gave up after 40 attempts');
                     return;
                 }
+                
+                const container = document.getElementById(config.containerId);
+                if (!container) return;
                 
                 // Check if content is already loaded
                 const hasContent = container.textContent.includes('MIN CZYTANIA') ||
-                                  container.querySelector('article') ||
-                                  container.querySelector('[class*="article"]') ||
-                                  container.querySelector('h1, h2, h3');
+                                  container.querySelector('article, h1, h2, h3');
                 
                 if (hasContent) {
                     clearInterval(pollInterval);
-                    console.log('✅ Publications: File already loaded');
                     return;
                 }
                 
-                // Wait for files to load from GitHub API (more than just MENU button)
-                const allButtons = Array.from(container.querySelectorAll('button, a'));
-                console.log(`🔍 Found ${allButtons.length} buttons/links (attempt ${pollAttempts})`);
+                // Try specific selector first
+                const firstFile = container.querySelector('#' + config.containerId + ' > div > aside > div:nth-child(2) > div:nth-child(1)');
                 
-                // Need at least 2 buttons (MENU + files)
-                if (allButtons.length < 2) {
-                    if (pollAttempts > 40) {
-                        clearInterval(pollInterval);
-                        console.log('❌ Gave up - files not loaded from GitHub API');
-                    }
-                    return;
-                }
-                
-                let firstFileButton = null;
-                
-                for (const btn of allButtons) {
-                    const text = btn.textContent.trim();
-                    const isVisible = btn.offsetParent !== null;
-                    console.log(`🔍 Button: "${text}" (visible: ${isVisible})`);
-                    
-                    // Find first non-system button
-                    if (text && 
-                        text.length > 3 && 
-                        !text.match(/MENU|FILES|PUBLIKACJE|ŁADOWANIE|MIN READ|CZYTANIA|WYBIERZ/i)) {
-                        firstFileButton = btn;
-                        console.log('✅ Found first file button:', text);
-                        break;
-                    }
-                }
-                
-                if (firstFileButton) {
+                if (firstFile) {
                     clearInterval(pollInterval);
-                    console.log('🎯 CLICKING first file (publications):', firstFileButton.textContent.trim());
-                    firstFileButton.click();
+                    console.log('🎯 CLICKING first file (publications)');
+                    firstFile.click();
                 }
-            }, 250); // Check every 250ms
+            }, 250);
         }
         
         // Update publications viewer theme (only on mobile)
