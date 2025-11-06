@@ -7753,25 +7753,47 @@
                     height: config.height || '600px'
                 });
                 
-                // Hack: Force first file to open after widget loads (fallback for slow connections)
+            // Hack: Force first file to open after widget loads (fallback for slow connections)
+            const tryLoadFirstFile = (attempts = 0) => {
+                if (attempts > 10) return; // Max 10 attempts
+                
                 setTimeout(() => {
                     const container = document.getElementById(config.containerId);
-                    if (!container) return;
+                    if (!container) {
+                        tryLoadFirstFile(attempts + 1);
+                        return;
+                    }
                     
                     // Check if a file is already loaded
                     const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
-                                         container.querySelector('.active') ||
-                                         container.querySelector('[class*="selected"]');
+                                         container.querySelector('[class*="selected"]') ||
+                                         container.querySelector('[class*="active"]') ||
+                                         container.textContent.includes('MIN CZYTANIA');
                     
                     if (!hasLoadedFile) {
-                        // Find first file button and click it
-                        const firstFile = container.querySelector('button:not([class*="menu"]):not([class*="toggle"]), a[role="button"]');
+                        // Try multiple selectors to find first file
+                        const firstFile = container.querySelector(
+                            'nav button:first-of-type, ' +
+                            'aside button:first-of-type, ' +
+                            '[class*="files"] button:first-of-type, ' +
+                            '[class*="file-list"] button:first-of-type, ' +
+                            '[class*="file-item"]:first-child, ' +
+                            'li:first-child button, ' +
+                            'li:first-child a'
+                        );
+                        
                         if (firstFile) {
                             firstFile.click();
-                            console.log('📄 Fallback: Opened first file manually (home news)');
+                            console.log('📄 Fallback: Opened first file manually (home news) - attempt', attempts + 1);
+                        } else {
+                            // Try again if button not found yet
+                            tryLoadFirstFile(attempts + 1);
                         }
                     }
-                }, 3000);
+                }, 500 + (attempts * 500)); // Increasing delays: 500ms, 1s, 1.5s, etc.
+            };
+            
+            tryLoadFirstFile();
                 
                 console.log('✅ Home news viewer initialized');
             } catch (error) {
@@ -7881,24 +7903,46 @@
             });
             
             // Hack: Force first file to open after widget loads (fallback for slow connections)
-            setTimeout(() => {
-                const container = document.getElementById(config.containerId);
-                if (!container) return;
+            const tryLoadFirstFile = (attempts = 0) => {
+                if (attempts > 10) return; // Max 10 attempts
                 
-                // Check if a file is already loaded
-                const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
-                                     container.querySelector('.active') ||
-                                     container.querySelector('[class*="selected"]');
-                
-                if (!hasLoadedFile) {
-                    // Find first file button and click it
-                    const firstFile = container.querySelector('button:not([class*="menu"]):not([class*="toggle"]), a[role="button"]');
-                    if (firstFile) {
-                        firstFile.click();
-                        console.log('📄 Fallback: Opened first file manually (publications)');
+                setTimeout(() => {
+                    const container = document.getElementById(config.containerId);
+                    if (!container) {
+                        tryLoadFirstFile(attempts + 1);
+                        return;
                     }
-                }
-            }, 3000);
+                    
+                    // Check if a file is already loaded
+                    const hasLoadedFile = container.querySelector('[aria-current="page"]') || 
+                                         container.querySelector('[class*="selected"]') ||
+                                         container.querySelector('[class*="active"]') ||
+                                         container.textContent.includes('MIN CZYTANIA');
+                    
+                    if (!hasLoadedFile) {
+                        // Try multiple selectors to find first file
+                        const firstFile = container.querySelector(
+                            'nav button:first-of-type, ' +
+                            'aside button:first-of-type, ' +
+                            '[class*="files"] button:first-of-type, ' +
+                            '[class*="file-list"] button:first-of-type, ' +
+                            '[class*="file-item"]:first-child, ' +
+                            'li:first-child button, ' +
+                            'li:first-child a'
+                        );
+                        
+                        if (firstFile) {
+                            firstFile.click();
+                            console.log('📄 Fallback: Opened first file manually (publications) - attempt', attempts + 1);
+                        } else {
+                            // Try again if button not found yet
+                            tryLoadFirstFile(attempts + 1);
+                        }
+                    }
+                }, 500 + (attempts * 500)); // Increasing delays: 500ms, 1s, 1.5s, etc.
+            };
+            
+            tryLoadFirstFile();
         }
         
         // Update publications viewer theme (only on mobile)
