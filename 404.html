@@ -900,8 +900,18 @@
     </button>
 
     <script>
+        // Get base path (for GitHub Pages subdirectory support)
+        function getBasePath() {
+            const path = window.location.pathname;
+            // For GitHub Pages: /site/
+            if (path.includes('/site/')) {
+                return '/site';
+            }
+            return '';
+        }
+        
         // Detect base path automatically
-        const basePath = window.location.pathname.includes('/site/') ? '/site' : '';
+        const basePath = getBasePath();
         
         // Load JSON helper
         async function loadJSON(filename) {
@@ -918,8 +928,9 @@
         // Check if this is a publications widget route (publications/full/...)
         function isPublicationsWidgetRoute() {
             const path = window.location.pathname;
+            const base = getBasePath();
             // Remove basePath to get clean route
-            const cleanPath = path.replace(basePath, '').replace(/^\/+/, '');
+            const cleanPath = path.replace(base, '').replace(/^\/+/, '');
             // Only load widget for publications/full/* routes
             return cleanPath.startsWith('publications/full');
         }
@@ -927,7 +938,8 @@
         // Check if this is just /publications (without /full)
         function isPublicationsIndexRoute() {
             const path = window.location.pathname;
-            const cleanPath = path.replace(basePath, '').replace(/^\/+/, '');
+            const base = getBasePath();
+            const cleanPath = path.replace(base, '').replace(/^\/+/, '');
             // Match exactly "publications" or "publications/"
             return cleanPath === 'publications' || cleanPath === 'publications/';
         }
@@ -1267,7 +1279,7 @@
                     disableStyles: config.disableStyles || false,
                     loadFirstFileAutomatically: true,
                     hideFilesOnRoute: true,  // Enable route mode
-                    basePath: config.basePath || 'publications/full',
+                    basePath: (getBasePath() ? getBasePath() + '/' : '') + (config.basePath || 'publications/full'),
                     reverseSortOrder: true,
                     sortAlphabetically: true,
                     height: '100%',
