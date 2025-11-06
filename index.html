@@ -8011,10 +8011,6 @@
         
         // Update publications viewer theme (only on mobile)
         async function updatePublicationsTheme() {
-            const isMobile = window.innerWidth <= 768;
-            
-            // Only update on mobile
-            if (!isMobile || !publicationsConfig) return;
             
             // Re-initialize the viewer with new theme
             const container = document.getElementById(publicationsConfig.markdownsPeek.containerId);
