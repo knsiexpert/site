@@ -12,6 +12,21 @@
     <!-- DotLottie Player for .lottie files -->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
     
+    <!-- Early Dark Mode Detection (before page renders) -->
+    <script>
+        (function() {
+            const savedDarkMode = localStorage.getItem('darkMode');
+            if (savedDarkMode === 'enabled' || 
+                (savedDarkMode !== 'disabled' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark-mode');
+                // Also add to body if it exists (for early execution)
+                if (document.body) {
+                    document.body.classList.add('dark-mode');
+                }
+            }
+        })();
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -386,6 +401,199 @@
         .hero-animation dotlottie-player {
             width: 100%;
             height: 100%;
+        }
+        
+        .error-404-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+            min-height: 200px;
+            margin-top: 250px;
+            margin-bottom: 100px;
+            padding: 60px 20px;
+            transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .error-404-container {
+                min-height: 200px;
+                margin-top: 80px;
+                margin-bottom: 50px;
+            }
+        }
+        
+        .error-404-container.active {
+            display: flex;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loading-screen:not(.hidden) ~ nav,
+        .loading-screen:not(.hidden) ~ main,
+        .loading-screen:not(.hidden) ~ .footer-animation,
+        .loading-screen:not(.hidden) ~ footer {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loading-logo {
+            font-size: 48px;
+            font-weight: 900;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            letter-spacing: -2px;
+        }
+        
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(var(--accent-rgb), 0.1);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 16px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .loading-screen,
+        html.dark-mode .loading-screen {
+            background: #1c1b22;
+        }
+        
+        body.dark-mode .loading-logo,
+        html.dark-mode .loading-logo {
+            background: linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        body.dark-mode .loading-text,
+        html.dark-mode .loading-text {
+            color: #a0a0a0;
+        }
+        
+        body.dark-mode .loading-spinner,
+        html.dark-mode .loading-spinner {
+            border-color: rgba(var(--accent-rgb), 0.2);
+            border-top-color: var(--accent);
+        }
+        
+        .error-404-text {
+            font-size: 180px;
+            font-weight: 900;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1;
+            letter-spacing: -8px;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+        }
+        
+        .error-404-message {
+            font-size: 24px;
+            color: var(--gray);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .error-404-button {
+            background: var(--accent);
+            color: var(--white);
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+        
+        .error-404-button:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(var(--accent-rgb), 0.3);
+        }
+        
+        body.dark-mode .error-404-container,
+        html.dark-mode .error-404-container {
+            background: #1c1b22;
+        }
+        
+        body.dark-mode .error-404-text,
+        html.dark-mode .error-404-text {
+            background: linear-gradient(135deg, #f3f3f7 0%, #f3f3f7 40%, var(--accent) 60%, var(--accent-light) 80%, var(--accent-lighter) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        body.dark-mode .error-404-message,
+        html.dark-mode .error-404-message {
+            color: #a0a0a0;
+        }
+        
+        body.dark-mode .error-404-button,
+        html.dark-mode .error-404-button {
+            background: var(--accent);
+            color: #f3f3f7;
+        }
+        
+        body.dark-mode .error-404-button:hover,
+        html.dark-mode .error-404-button:hover {
+            background: var(--accent-light);
+        }
+        
+        @media (max-width: 768px) {
+            .error-404-text {
+                font-size: 120px;
+                letter-spacing: -5px;
+            }
+            
+            .error-404-message {
+                font-size: 18px;
+                padding: 0 20px;
+            }
         }
         
         .hero {
@@ -6365,6 +6573,15 @@
             background-clip: initial !important;
         }
 
+        .dark-mode .home-news-viewer h2,
+        .home-news-viewer h2::after {
+            color: var(--white) !important;
+        }
+
+        .home-news-viewer h2::after {
+            display: none !important;
+        }
+
         .home-news-viewer [class$="-lib-mp-files"],
         .home-news-viewer [class$="-lib-mp-menu-toggle"],
         [class$="-lib-mp-files-overlay"] {
@@ -6461,6 +6678,15 @@
             <!-- Content will be loaded dynamically -->
         </div>
     </section>
+    
+    <!-- 404 Error Container -->
+    <div id="error404Container" class="error-404-container">
+        <div class="error-404-text">404</div>
+        <div class="error-404-message">Nie znaleziono strony</div>
+        <a href="#" onclick="event.preventDefault(); navigateToHome();" class="error-404-button">
+            Wróć do strony głównej
+        </a>
+    </div>
 
     <script>
         // Data cache
@@ -8470,6 +8696,12 @@
             const selectedSection = document.getElementById(sectionId);
             if (selectedSection) {
                 selectedSection.classList.add('active');
+                // Hide 404 error if it was visible
+                document.getElementById('error404Container').classList.remove('active');
+            } else {
+                // Section not found - show 404 error
+                document.getElementById('error404Container').classList.add('active');
+                return; // Don't proceed with other updates
             }
             
             // Close mobile menu if open
@@ -8538,11 +8770,16 @@
             const basePath = getBasePath();
             let path = window.location.pathname;
             let queryString = window.location.search;
+            let isRedirect = false;
             
             // Check for redirect parameter from 404.html
             const urlParams = new URLSearchParams(window.location.search);
             const redirect = urlParams.get('redirect');
             if (redirect) {
+                isRedirect = true;
+                // Show loading screen during redirect
+                showLoadingScreen();
+                
                 // Split path and query string from redirect parameter
                 const [redirectPath, redirectQuery] = redirect.includes('?') 
                     ? [redirect.split('?')[0], '?' + redirect.split('?')[1]]
@@ -8570,6 +8807,30 @@
             const sectionId = path || 'home';
             
             await showSection(sectionId, false);
+            
+            // Hide loading screen after content is loaded
+            if (isRedirect) {
+                // Small delay for smooth transition
+                setTimeout(() => hideLoadingScreen(), 300);
+            }
+        }
+        
+        function showLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.remove('hidden');
+            }
+        }
+        
+        function hideLoadingScreen() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.classList.add('hidden');
+            }
+        }
+        
+        function navigateToHome() {
+            showSection('home', true);
         }
         
         function toggleMenu() {
@@ -8682,27 +8943,37 @@
         
         // Dark Mode Management
         function initDarkMode() {
+            // Sync dark-mode class from html to body (set by early script)
+            if (document.documentElement.classList.contains('dark-mode')) {
+                document.body.classList.add('dark-mode');
+                return;
+            }
+            
             // Check localStorage first
             const savedDarkMode = localStorage.getItem('darkMode');
             
             if (savedDarkMode === 'enabled') {
                 document.body.classList.add('dark-mode');
+                document.documentElement.classList.add('dark-mode');
                 return;
             }
             
             if (savedDarkMode === 'disabled') {
                 document.body.classList.remove('dark-mode');
+                document.documentElement.classList.remove('dark-mode');
                 return;
             }
             
             // If no preference saved, check system preference
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 document.body.classList.add('dark-mode');
+                document.documentElement.classList.add('dark-mode');
             }
         }
         
         function toggleDarkMode() {
             document.body.classList.toggle('dark-mode');
+            document.documentElement.classList.toggle('dark-mode');
             
             // Save preference to localStorage
             if (document.body.classList.contains('dark-mode')) {
@@ -8849,12 +9120,27 @@
             window.addEventListener('popstate', handleRouteChange);
             
             // Handle initial route
-            handleRouteChange();
+            await handleRouteChange();
+            
+            // Hide loading screen if not redirecting
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirect = urlParams.get('redirect');
+            if (!redirect) {
+                // Small delay to ensure smooth rendering
+                setTimeout(() => hideLoadingScreen(), 200);
+            }
         }
         
         // Load data when page loads
         document.addEventListener('DOMContentLoaded', init);
     </script>
+    
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-logo">KNSI E-XPERT</div>
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Ładowanie...</div>
+    </div>
     
     <!-- Footer Animation -->
     <div class="footer-animation">
