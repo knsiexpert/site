@@ -6399,7 +6399,6 @@
             #publications .publications-viewer a:not([class*="-lib-mp-article-link"]),
             #publications .publications-viewer li,
             #publications .publications-viewer [role="button"],
-            #publications .publications-viewer [class*="file"],
             #publications .publications-viewer [class*="item"],
             #publications .publications-viewer [class*="name"] {
                 white-space: normal !important;
@@ -6590,6 +6589,14 @@
 
         .home-news-viewer [class$="-lib-mp-content"] {
             background: var(--black);
+        }
+
+        @media (min-width: 768px) {
+            .publications-viewer aside[class*="-lib-mp-files"],
+            #publications .publications-viewer aside {
+                position: sticky !important;
+                top: 135px !important;
+            }
         }
 
         @media (max-width: 768px) {
