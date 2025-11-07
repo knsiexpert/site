@@ -6356,7 +6356,7 @@
                 flex: 0 0 300px !important;
                 margin-right: 0 !important;
                 padding: 30px 0 !important;
-                border-radius: 4px !important;
+                border-radius: 8px !important;
                 background: rgba(255, 255, 255, 0.95) !important;
                 border: none !important;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
@@ -6399,7 +6399,6 @@
             #publications .publications-viewer a:not([class*="-lib-mp-article-link"]),
             #publications .publications-viewer li,
             #publications .publications-viewer [role="button"],
-            #publications .publications-viewer [class*="file"],
             #publications .publications-viewer [class*="item"],
             #publications .publications-viewer [class*="name"] {
                 white-space: normal !important;
@@ -6590,6 +6589,14 @@
 
         .home-news-viewer [class$="-lib-mp-content"] {
             background: var(--black);
+        }
+
+        @media (min-width: 768px) {
+            .publications-viewer aside[class*="-lib-mp-files"],
+            #publications .publications-viewer aside {
+                position: sticky !important;
+                top: 135px !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -8015,6 +8022,32 @@
                     height: config.height || '600px'
                 });
                 
+            // Add event listener for manual article clicks - scroll to top after 1 second
+            setTimeout(() => {
+                const container = document.getElementById(config.containerId);
+                if (container) {
+                    container.addEventListener('click', (e) => {
+                        // Only handle trusted (real user) clicks, not programmatic ones
+                        if (!e.isTrusted) return;
+                        
+                        // Check if clicked element is an article in the panel (aside > div:nth-child(2) > div)
+                        const panel = e.target.closest('aside');
+                        if (panel) {
+                            const filesContainer = panel.querySelector(':scope > div:nth-child(2)');
+                            if (filesContainer && filesContainer.contains(e.target)) {
+                                const articleElement = e.target.closest('aside > div:nth-child(2) > div');
+                                if (articleElement && articleElement.parentElement === filesContainer) {
+                                    console.log('📜 Manual article click detected (home news), will scroll to top in 1 second');
+                                    setTimeout(() => {
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }, 100);
+                                }
+                            }
+                        }
+                    });
+                }
+            }, 100);
+                
             // Hack: Click first file using specific selector (with mobile support)
             setTimeout(() => {
                 let pollAttempts = 0;
@@ -8244,6 +8277,32 @@
                     notFound: 'PUBLIKACJA NIE ZNALEZIONA'
                 }
             });
+            
+            // Add event listener for manual article clicks - scroll to top after 1 second
+            setTimeout(() => {
+                const container = document.getElementById(config.containerId);
+                if (container) {
+                    container.addEventListener('click', (e) => {
+                        // Only handle trusted (real user) clicks, not programmatic ones
+                        if (!e.isTrusted) return;
+                        
+                        // Check if clicked element is an article in the panel (aside > div:nth-child(2) > div)
+                        const panel = e.target.closest('aside');
+                        if (panel) {
+                            const filesContainer = panel.querySelector(':scope > div:nth-child(2)');
+                            if (filesContainer && filesContainer.contains(e.target)) {
+                                const articleElement = e.target.closest('aside > div:nth-child(2) > div');
+                                if (articleElement && articleElement.parentElement === filesContainer) {
+                                    console.log('📜 Manual article click detected (publications), will scroll to top in 1 second');
+                                    setTimeout(() => {
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }, 100);
+                                }
+                            }
+                        }
+                    });
+                }
+            }, 100);
             
             // Hack: Click first file using specific selector (with mobile support)
             setTimeout(() => {

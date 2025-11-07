@@ -1429,12 +1429,12 @@
                 // Not a publications route - redirect to index.html
                 const path = window.location.pathname;
                 const search = window.location.search;
-        const isIndex = path === basePath + '/' || path === basePath + '/index.html';
-        
-        if (!isIndex) {
-            const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
-            window.location.replace(redirectUrl);
-        }
+                const isIndex = path === basePath + '/' || path === basePath + '/index.html';
+                
+                if (!isIndex) {
+                    const redirectUrl = basePath + '/index.html?redirect=' + encodeURIComponent(path + search);
+                    window.location.replace(redirectUrl);
+                }
             }
         }
 
