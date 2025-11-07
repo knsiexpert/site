@@ -409,9 +409,19 @@
             align-items: center;
             justify-content: center;
             background: var(--white);
-            min-height: calc(100vh - 80px);
+            min-height: 200px;
+            margin-top: 250px;
+            margin-bottom: 100px;
             padding: 60px 20px;
             transition: opacity 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .error-404-container {
+                min-height: 200px;
+                margin-top: 80px;
+                margin-bottom: 50px;
+            }
         }
         
         .error-404-container.active {
@@ -524,17 +534,6 @@
             text-align: center;
         }
         
-        .error-404-animation {
-            width: 400px;
-            height: 400px;
-            margin-top: 20px;
-        }
-        
-        .error-404-animation dotlottie-player {
-            width: 100%;
-            height: 100%;
-        }
-        
         .error-404-button {
             background: var(--accent);
             color: var(--white);
@@ -594,11 +593,6 @@
             .error-404-message {
                 font-size: 18px;
                 padding: 0 20px;
-            }
-            
-            .error-404-animation {
-                width: 300px;
-                height: 300px;
             }
         }
         
@@ -6579,6 +6573,15 @@
             background-clip: initial !important;
         }
 
+        .dark-mode .home-news-viewer h2,
+        .home-news-viewer h2::after {
+            color: var(--white) !important;
+        }
+
+        .home-news-viewer h2::after {
+            display: none !important;
+        }
+
         .home-news-viewer [class$="-lib-mp-files"],
         .home-news-viewer [class$="-lib-mp-menu-toggle"],
         [class$="-lib-mp-files-overlay"] {
@@ -6683,15 +6686,6 @@
         <a href="#" onclick="event.preventDefault(); navigateToHome();" class="error-404-button">
             Wróć do strony głównej
         </a>
-        <div class="error-404-animation">
-            <dotlottie-player 
-                src="data/assets/anim-education.lottie" 
-                background="transparent" 
-                speed="1" 
-                loop 
-                autoplay>
-            </dotlottie-player>
-        </div>
     </div>
 
     <script>
