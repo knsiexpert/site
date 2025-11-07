@@ -6,11 +6,11 @@
     <title>Publikacje - KNSI E-XPERT</title>
     
     <!-- Open Graph / Social Media -->
-    <meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png" id="og-image">
+    <meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png?var=rand" id="og-image">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
-    <meta name="twitter:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png" id="twitter-image">
+    <meta name="twitter:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png?var=rand" id="twitter-image">
     <meta name="twitter:card" content="summary_large_image">
     
     <!-- DotLottie Player for .lottie files -->
@@ -1398,7 +1398,7 @@
             const twitterImage = document.getElementById('twitter-image');
             if (ogImage && twitterImage) {
                 const origin = window.location.origin;
-                const imageUrl = origin + basePath + '/data/assets/open-graph-image.png';
+                const imageUrl = origin + basePath + '/data/assets/open-graph-image.png?var=rand';
                 ogImage.setAttribute('content', imageUrl);
                 twitterImage.setAttribute('content', imageUrl);
             }
