@@ -1,52 +1,17 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <script>
-        // Dynamic OG Image - randomowe obrazki z cache busting
-        (function() {
-            const randomImage = Math.floor(Math.random() * 2) + 1; // 1 lub 2
-            const randomVersion = Math.floor(Math.random() * 1000000); // losowa liczba dla cache busting
-            const imageUrl = `https://knsiexpert.github.io/site/data/assets/open-graph-image-${randomImage}.png?v=${randomVersion}`;
-            
-            // Tworzenie meta tagów dynamicznie
-            const ogImage = document.createElement('meta');
-            ogImage.setAttribute('property', 'og:image');
-            ogImage.setAttribute('content', imageUrl);
-            ogImage.id = 'og-image';
-            
-            const ogImageWidth = document.createElement('meta');
-            ogImageWidth.setAttribute('property', 'og:image:width');
-            ogImageWidth.setAttribute('content', '1200');
-            
-            const ogImageHeight = document.createElement('meta');
-            ogImageHeight.setAttribute('property', 'og:image:height');
-            ogImageHeight.setAttribute('content', '630');
-            
-            const ogImageType = document.createElement('meta');
-            ogImageType.setAttribute('property', 'og:image:type');
-            ogImageType.setAttribute('content', 'image/png');
-            
-            const twitterImage = document.createElement('meta');
-            twitterImage.setAttribute('name', 'twitter:image');
-            twitterImage.setAttribute('content', imageUrl);
-            twitterImage.id = 'twitter-image';
-            
-            const twitterCard = document.createElement('meta');
-            twitterCard.setAttribute('name', 'twitter:card');
-            twitterCard.setAttribute('content', 'summary_large_image');
-            
-            // Dodawanie tagów do head
-            document.head.appendChild(ogImage);
-            document.head.appendChild(ogImageWidth);
-            document.head.appendChild(ogImageHeight);
-            document.head.appendChild(ogImageType);
-            document.head.appendChild(twitterImage);
-            document.head.appendChild(twitterCard);
-        })();
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Publikacje - KNSI E-XPERT</title>
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png?var=rand2" id="og-image">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:image" content="https://knsiexpert.github.io/site/data/assets/open-graph-image.png?var=rand2" id="twitter-image">
+    <meta name="twitter:card" content="summary_large_image">
     
     <!-- DotLottie Player for .lottie files -->
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
@@ -1427,7 +1392,16 @@
             initTheme();
             initDarkMode();
             
+            // Update Open Graph meta tags with full URL
             const basePath = getBasePath();
+            const ogImage = document.getElementById('og-image');
+            const twitterImage = document.getElementById('twitter-image');
+            if (ogImage && twitterImage) {
+                const origin = window.location.origin;
+                const imageUrl = origin + basePath + '/data/assets/open-graph-image.png?var=rand';
+                ogImage.setAttribute('content', imageUrl);
+                twitterImage.setAttribute('content', imageUrl);
+            }
             
             // Check if this is /publications without /full - redirect to index with publications view
             if (isPublicationsIndexRoute()) {
