@@ -8884,7 +8884,7 @@
             // Hide loading screen after content is loaded
             if (isRedirect) {
                 // Small delay for smooth transition
-                setTimeout(() => hideLoadingScreen(), 300);
+                setTimeout(() => hideLoadingScreen(), 25);
             }
         }
         
@@ -9200,7 +9200,7 @@
             const redirect = urlParams.get('redirect');
             if (!redirect) {
                 // Small delay to ensure smooth rendering
-                setTimeout(() => hideLoadingScreen(), 200);
+                setTimeout(() => hideLoadingScreen(), 25);
             }
         }
         
