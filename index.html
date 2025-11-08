@@ -8819,17 +8819,17 @@
                 const memberParam = urlParams.get('member');
                 if (memberParam) {
                     // Re-render team to highlight the member
-                    setTimeout(() => renderTeam(), 100);
+                    setTimeout(() => renderTeam(), 25);
                     skipScrollToTop = true; // Let renderTeam handle scrolling to highlighted member
                 }
             }
             
             // Trigger auto-click hacks for viewers after section change
             if (sectionId === 'home') {
-                setTimeout(() => clickFirstFileHomeNews(), 500);
+                setTimeout(() => clickFirstFileHomeNews(), 50);
             }
             if (sectionId === 'publications') {
-                setTimeout(() => clickFirstFilePublications(), 500);
+                setTimeout(() => clickFirstFilePublications(), 50);
             }
             
             // Scroll to top (unless we're highlighting a team member)
