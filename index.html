@@ -6976,7 +6976,7 @@
                 setTimeout(() => {
                     currentGroupIndex = 0;
                     slideToGroup(0, true);
-                }, 800); // Match transition duration
+                }, 50); // Match transition duration
             }
             
             // Reset autoplay timer
@@ -7945,7 +7945,7 @@
             }
             
             // Update animation colors after recruitment is rendered
-            setTimeout(() => updateAnimationColors(), 200);
+            setTimeout(() => updateAnimationColors(), 25);
         }
         
         // Open recruitment image in lightbox
@@ -8799,7 +8799,7 @@
             
             // Update animation colors when showing home or recruitment section
             if (sectionId === 'home' || sectionId === 'recruitment') {
-                setTimeout(() => updateAnimationColors(), 100);
+                setTimeout(() => updateAnimationColors(), 25);
             }
             
             // Update mini meeting alert visibility when changing sections
@@ -8819,17 +8819,17 @@
                 const memberParam = urlParams.get('member');
                 if (memberParam) {
                     // Re-render team to highlight the member
-                    setTimeout(() => renderTeam(), 100);
+                    setTimeout(() => renderTeam(), 25);
                     skipScrollToTop = true; // Let renderTeam handle scrolling to highlighted member
                 }
             }
             
             // Trigger auto-click hacks for viewers after section change
             if (sectionId === 'home') {
-                setTimeout(() => clickFirstFileHomeNews(), 500);
+                setTimeout(() => clickFirstFileHomeNews(), 50);
             }
             if (sectionId === 'publications') {
-                setTimeout(() => clickFirstFilePublications(), 500);
+                setTimeout(() => clickFirstFilePublications(), 50);
             }
             
             // Scroll to top (unless we're highlighting a team member)
@@ -8884,7 +8884,7 @@
             // Hide loading screen after content is loaded
             if (isRedirect) {
                 // Small delay for smooth transition
-                setTimeout(() => hideLoadingScreen(), 300);
+                setTimeout(() => hideLoadingScreen(), 25);
             }
         }
         
@@ -9174,7 +9174,7 @@
             await renderHome();
             
             // Update animation colors after home is rendered (CSS filter - instant)
-            setTimeout(() => updateAnimationColors(), 200);
+            setTimeout(() => updateAnimationColors(), 25);
             
             await renderProjects();
             await renderGoals();
@@ -9200,7 +9200,7 @@
             const redirect = urlParams.get('redirect');
             if (!redirect) {
                 // Small delay to ensure smooth rendering
-                setTimeout(() => hideLoadingScreen(), 200);
+                setTimeout(() => hideLoadingScreen(), 25);
             }
         }
         
