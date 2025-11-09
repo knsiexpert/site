@@ -966,6 +966,31 @@
             z-index: 1;
         }
         
+        .stat-card-clickable {
+            cursor: pointer;
+        }
+        
+        .stat-card-clickable:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(var(--accent-rgb), 0.3);
+        }
+        
+        .stat-card-clickable::after {
+            content: '→';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            opacity: 0;
+            transition: opacity 0.3s, transform 0.3s;
+            color: var(--white);
+        }
+        
+        .stat-card-clickable:hover::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
         .stat-number {
             font-size: 64px;
             font-weight: 800;
@@ -3660,6 +3685,16 @@
             .stat-card:last-child,
             .stat-card:nth-last-child(2) {
                 border-bottom: none;
+            }
+            
+            .stat-card-clickable::after {
+                font-size: 20px;
+                bottom: 15px;
+                right: 15px;
+            }
+            
+            .stat-card-clickable:hover {
+                transform: translateY(-8px) scale(1.01);
             }
             
             .stat-number {
@@ -6784,13 +6819,23 @@
         <div class="container">
                     ${data.stats && data.stats.length > 0 ? `
                         <div class="stats-grid">
-                            ${data.stats.map(stat => `
-                                <div class="stat-card">
-                                    <div class="stat-number">${stat.number}</div>
-                                    <div class="stat-label">${stat.label}</div>
-                                    <div class="stat-sublabel">${stat.sublabel}</div>
-            </div>
-                            `).join('')}
+                            ${data.stats.map(stat => {
+                                // Determine which section to link to based on stat label
+                                let targetSection = '';
+                                if (stat.label.includes('Lat działalności') || stat.label.includes('Członków')) {
+                                    targetSection = 'team';
+                                } else if (stat.label.includes('Projektów') || stat.label.includes('Nagród')) {
+                                    targetSection = 'projects';
+                                }
+                                
+                                return `
+                                    <div class="stat-card ${targetSection ? 'stat-card-clickable' : ''}" ${targetSection ? `onclick="event.preventDefault(); showSection('${targetSection}');"` : ''}>
+                                        <div class="stat-number">${stat.number}</div>
+                                        <div class="stat-label">${stat.label}</div>
+                                        <div class="stat-sublabel">${stat.sublabel}</div>
+                                    </div>
+                                `;
+                            }).join('')}
                         </div>
                     ` : ''}
                     
