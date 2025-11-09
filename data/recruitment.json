@@ -2,13 +2,13 @@
   "title": "Rekrutacja",
   "form_url": "https://docs.google.com/forms/d/1T6YJLBix70wtn5a2HR4iMXKLijF_mlFsMpJxwRRs9iY/edit",
   "meeting": {
-    "show_meeting": false,
+    "show_meeting": true,
     "title": "Spotkanie Rekrutacyjne",
-    "date": "15 listopada 2025",
-    "time": "18:00",
+    "date": "20 listopada 2025",
+    "time": "19:00",
     "location": "Online (Microsoft Teams)",
     "description": "Zapraszamy na spotkanie rekrutacyjne! Poznasz zespół, dowiesz się więcej o projektach i będziesz mógł zadać pytania.",
-    "meeting_url": "https://teams.microsoft.com/l/channel/19%3A8f32f5b63583476daf375126ff6dd64e%40thread.tacv2/General?groupId=59f4cec0-3666-4da2-a950-c14c0aecb421&tenantId=2d9a5a9f-69b7-4940-a1a6-af55f35ba069"
+    "meeting_url": "https://teams.microsoft.com/l/meetup-join/19%3ameeting_MGZhYzRlZTctZTc3Ny00OTM3LTlmN2YtMjEwYjJkYjM1YjM1%40thread.v2/0?context=%7b%22Tid%22%3a%222d9a5a9f-69b7-4940-a1a6-af55f35ba069%22%2c%22Oid%22%3a%22191246c2-1988-4b61-9d72-d2844dea5a8d%22%7d"
   },
   "hero": {
     "headline": "Dołącz do E-XPERT",

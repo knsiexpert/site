@@ -1,5 +1,6 @@
 {
   "title": "Zespoły",
+  "total_unique_members": 225,
   "description": "Co roku organizujemy rekrutację, dzięki której odświeżamy skład koła, rozwijamy zespół i wybieramy nowy zarząd. To dzięki ciągłemu przypływowi nowych osób możemy realizować ambitne projekty i utrzymywać dynamikę rozwoju.",
   "content": {
     "supervisor": {
@@ -199,7 +200,9 @@
           "Michał Kwapiński",
           "Lizaveta Kochyna",
           "Marcin Wiśniewski",
-          "Elena Arbuzova"
+          "Elena Arbuzova",
+          "Artur Boniecki",
+          "Piotr Miękus"
         ],
         "guests": [
           "Artur Boniecki (Wydział Filologiczny, UG)",

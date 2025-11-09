@@ -1,6 +1,6 @@
 {
   "title": "Projekty",
-  "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła tworzyli rozwiązania społeczne, takie jak SafeWatch, CyberWatch, Unity, Your Guard i mobileWZR.",
+  "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła od lat regularnie reprezentują Uniwersytet Gdański w międzynarodowych finałach organizowanych w Stanach Zjednoczonych, zdobywając czołowe miejsca i zaszczytne wyróżnienia. W 2016 roku AIS Student Chapter University of Gdańsk otrzymało nagrodę \"2015-2016 Best New AIS Student Chapter Winner\" za wybitne osiągnięcia podczas pierwszych dwóch lat działalności. Studenci tworzyli innowacyjne rozwiązania IT, które zdobywały uznanie za kreatywność, wartość społeczną i zaawansowanie technologiczne — takie jak Way For Life, Apollo, IBMS, SNet, CyberWatch, Unity, SafeWatch i Your Guard.",
   "projects": [
     {
       "name": "Modernizacja Strony Internetowej Koła",
@@ -25,7 +25,7 @@
         "Hash-based Routing"
       ],
       "images": [
-        "https://i.imgur.com/RWEbA15.png"
+        "https://i.imgur.com/VxpS9Sf.png"
       ]
     },
     {
@@ -86,41 +86,163 @@
       ]
     },
     {
-      "name": "SocialMonitor",
-      "description": "Wtyczka SocialMonitor służy do ukrywania reakcji pod materiałami w mediach społecznościowych. Jej celem jest zniwelowanie skutków ubocznych korzystania z social mediów (presja społeczna, depresja, zaburzenia odżywiania). Dzięki temu użytkownicy mogą wyrażać opinie bez wpływu liczby polubień, a serduszka czy lajki są ukryte.",
+      "name": "SocialMonitor - Social Media Reaction Hiding Plugin",
+      "description": "Wtyczka przeglądarki ukrywająca liczby reakcji pod treściami w mediach społecznościowych. Jej celem jest ograniczenie negatywnych skutków ubocznych korzystania z social mediów — takich jak presja społeczna, depresja i zaburzenia odżywiania. Wtyczka pozwala użytkownikom wyrażać opinie bez wpływu liczby polubień, tworząc zdrowsze środowisko online. W 2022 roku projekt zakwalifikował się do finałów AIS Student Chapter Competition (Online) i otrzymał specjalne wyróżnienie za innowacyjność i wpływ społeczny.",
       "team": ["Justyna Krotoszyńska", "Kajetan Warmbier", "Kacper Jach"],
       "year": 2022,
+      "achievements": [
+        "Finał AIS Student Chapter Competition 2022 (Online)",
+        "Specjalne wyróżnienie za innowacyjność i wpływ społeczny"
+      ],
+      "technologies": [
+        "Browser Extension",
+        "Social Media Integration",
+        "User Interface Design"
+      ],
       "images": [
         "https://i.imgur.com/LTmBfuX.png"
       ]
     },
     {
+      "name": "Way For Life (W4L)",
+      "description": "System mobilny współpracujący ze wszystkimi służbami ratunkowymi, takimi jak policja, straż pożarna i pogotowie ratunkowe. Aplikacja automatycznie wstrzymuje bieżące źródło audio i powiadamia użytkownika, że w pobliżu znajdują się służby ratunkowe, prosząc o ustąpienie drogi. Zespół w składzie Michał Kwapiński (Wydział Zarządzania), Artur Boniecki i Piotr Miękus zajął I miejsce w kategorii Software Innovation Challenge podczas finału Association for Information Systems Student Chapters (26-28 marca 2020, Illinois State University, USA - online).",
+      "team": ["Michał Kwapiński", "Artur Boniecki", "Piotr Miękus"],
+      "year": 2020,
+      "achievements": [
+        "I miejsce w AIS Student Chapter Competition 2020",
+        "Kategoria: Software Innovation Challenge",
+        "Współpraca ze służbami ratunkowymi"
+      ],
+      "technologies": [
+        "Mobile Application",
+        "Emergency Services Integration",
+        "Audio Detection",
+        "Real-time Notifications"
+      ],
+      "images": [
+        "https://i.imgur.com/y4n6Y0l.png"
+      ]
+    },
+    {
+      "name": "Apollo",
+      "description": "Wieloplatformowa aplikacja mobilna umożliwiająca użytkownikom odnalezienie sklepów oferujących żywność z krótkim terminem przydatności do spożycia w obniżonych cenach. Rozwiązanie zostało zaprojektowane w celu zmniejszenia problemu marnotrawstwa żywności. Trzyosobowy zespół — Krzysztof Orłowski, Adam Ostrowski i Hubert Kołcz — z Wydziału Zarządzania zajął III miejsce w kategorii Software Innovation Challenge podczas finału Association for Information Systems Student Chapters (11-13 kwietnia 2019, Temple University, Philadelphia, USA).",
+      "team": ["Krzysztof Orłowski", "Adam Ostrowski", "Hubert Kołcz"],
+      "year": 2019,
+      "achievements": [
+        "III miejsce w AIS Student Chapter Competition 2019",
+        "Kategoria: Software Innovation Challenge",
+        "Innowacyjne podejście do problemu marnotrawstwa żywności"
+      ],
+      "technologies": [
+        "Cross-platform Mobile App",
+        "Geolocation Services",
+        "Real-time Data Integration",
+        "Store Partnership System"
+      ],
+      "images": [
+        "https://i.imgur.com/iG7jMVc.png",
+        "https://i.imgur.com/1m4xsrS.png"
+      ]
+    },
+    {
+      "name": "IBMS (Intelligent Baby Monitor System)",
+      "description": "Prototyp systemu inteligentnego monitora dla niemowląt, zbudowany przy użyciu języka Python, biblioteki OpenCV oraz platformy Raspberry Pi 3. Rozwiązanie umożliwia zdalne monitorowanie dziecka i jego otoczenia za pomocą kamery i czujników. System wysyła powiadomienia i ostrzeżenia do wieloplatformowej aplikacji mobilnej. Trzyosobowy zespół studentów z Wydziału Zarządzania — Krzysztof Orłowski, Adam Ostrowski i Paweł Stożyński — zajął III miejsce w konkursie Association for Information Systems Student Chapters w kategorii Software Innovation Challenge (12-14 kwietnia 2018, University of Texas, Dallas, USA).",
+      "team": ["Paweł Stożyński", "Adam Ostrowski", "Krzysztof Orłowski"],
+      "year": 2018,
+      "achievements": [
+        "III miejsce w AIS Student Chapter Competition 2018",
+        "Kategoria: Software Innovation Challenge",
+        "Innowacyjne wykorzystanie Raspberry Pi i OpenCV"
+      ],
+      "technologies": [
+        "Python",
+        "OpenCV",
+        "Raspberry Pi 3",
+        "Mobile Application",
+        "IoT Sensors",
+        "Real-time Monitoring"
+      ],
+      "images": [
+        "https://i.imgur.com/mmhPjQb.jpeg"
+      ]
+    },
+    {
+      "name": "SNet (Safe Internet)",
+      "description": "Łatwe w użyciu rozszerzenie przeglądarki zaprojektowane w celu ochrony użytkowników przed linkami oszustów i niebezpiecznymi stronami internetowymi. SNet sprawdza adresy URL w stosunku do stale aktualizowanej bazy danych, weryfikuje bezpieczeństwo SSL i ocenia potencjalny poziom zagrożenia. Baza niebezpiecznych stron jest budowana wspólnie na podstawie zgłoszeń użytkowników — nawet osoby bez wiedzy technicznej mogą zgłaszać podejrzane witryny. Projekt autorstwa Sebastiana Szymańskiego, Miłosza Waszewskiego i Adriana Świszcza otrzymał III miejsce w kategorii Software Innovation podczas finału AIS Student Chapters (Brigham Young University, 2017). Dodatkowo AIS Student Chapter University of Gdańsk otrzymało nagrodę Outstanding Fundraising Award.",
+      "team": ["Sebastian Szymański", "Miłosz Waszewski", "Adrian Świszcz"],
+      "year": 2017,
+      "achievements": [
+        "III miejsce w AIS Student Chapter Competition 2017",
+        "Kategoria: Software Innovation",
+        "Outstanding Fundraising Award dla AIS SC University of Gdańsk",
+        "Baza zagrożeń budowana przez społeczność"
+      ],
+      "technologies": [
+        "Browser Extension",
+        "SSL Verification",
+        "Database Management",
+        "Crowdsourced Security",
+        "URL Threat Analysis"
+      ],
+      "images": [
+        "https://i.imgur.com/HguEBvM.png",
+        "https://i.imgur.com/yHsPiXI.png"
+      ]
+    },
+    {
       "name": "CyberWatch",
-      "description": "System rozpoznawania aktów cyberprzemocy, takich jak hejt, stalking czy rozpowszechnianie fałszywych informacji. Rozszerzenie przeglądarkowe analizujące treści z użyciem IBM Watson i technologii REST. Projekt zdobył III miejsce w konkursie IBM Bright ICT (Indiana University, 2016) oraz wyróżnienie za efektywne wykorzystanie IBM Bluemix Cloud.",
+      "description": "System wykorzystywany do wykrywania aktów cyberprzemocy w Internecie, takich jak obraźliwe wiadomości, rozpowszechnianie fałszywych informacji, stalking i przymus. Rozszerzenie przeglądarki integruje nowoczesne technologie przetwarzania treści, takie jak IBM Watson, architekturę REST i Cloud computing. Pozwoliło to na stworzenie kompleksowego, wieloplatformowego rozwiązania dla aplikacji webowych, mobilnych i desktopowych. Zespół projektowy zakwalifikował się do finałów kategorii IBM Bright ICT organizowanej przez IBM we współpracy z AIS SC. Finał odbył się 1-3 kwietnia 2016 roku na Indiana University (USA). CyberWatch otrzymał III miejsce oraz specjalną nagrodę za najefektywniejsze wykorzystanie technologii IBM Bluemix Cloud.",
       "team": [
-        "Kamil Wojewski (lider)",
+        "Kamil Wojewski",
         "Damian Kisielewski",
         "Maciej Kwapiński",
         "Szymon Nagórski",
         "Hubert Kisielewski"
       ],
       "year": 2016,
+      "achievements": [
+        "III miejsce w AIS Student Chapter Competition 2016",
+        "Kategoria: IBM Bright ICT",
+        "Specjalna nagroda za efektywne wykorzystanie IBM Bluemix Cloud"
+      ],
+      "technologies": [
+        "IBM Watson",
+        "IBM Bluemix Cloud",
+        "REST Architecture",
+        "Browser Extension",
+        "Cloud Computing",
+        "Cross-platform Development"
+      ],
       "images": [
-        "https://i.imgur.com/g3PJzSY.png"
+        "https://i.imgur.com/plimNMa.png"
       ]
     },
     {
       "name": "Unity",
-      "description": "Aplikacja webowa autorstwa Piotra Małeckiego umożliwiająca monitorowanie opinii na temat osób i organizacji w Internecie. Analizuje stosunek opinii pozytywnych i negatywnych oraz trendy w czasie. Zintegrowana z IBM Bluemix i Alchemy API, zdobyła wyróżnienie za najbardziej innowacyjne zastosowanie chmury IBM w konkursie IBM Bright ICT.",
+      "description": "Aplikacja webowa przeszukująca Internet w poszukiwaniu pozytywnych i negatywnych opinii na temat osób i organizacji, umożliwiająca stałe monitorowanie reputacji i szybki kontakt z wydawcami treści w celu ich korekty. System integruje technologie IBM Bluemix Cloud i Alchemy API. Jury konkursu IBM Bright ICT doceniło Unity nagrodą za najbardziej innowacyjne wykorzystanie technologii IBM Cloud.",
       "team": ["Piotr Małecki"],
       "year": 2016,
-      "images": []
+      "achievements": [
+        "Nagroda za najbardziej innowacyjne wykorzystanie IBM Cloud",
+        "Finał AIS Student Chapter Competition 2016",
+        "Kategoria: IBM Bright ICT"
+      ],
+      "technologies": [
+        "IBM Bluemix Cloud",
+        "Alchemy API",
+        "Web Application",
+        "Sentiment Analysis",
+        "Reputation Monitoring"
+      ],
+      "images": [
+        "https://i.imgur.com/axyVzKe.png"
+      ]
     },
     {
       "name": "SafeWatch",
-      "description": "Innowacyjna aplikacja mobilna umożliwiająca wezwanie pomocy w sytuacji zagrożenia za pomocą gestów (np. trzykrotne stuknięcie w smartwatch). Dane o miejscu i czasie zdarzenia trafiają na serwer i mogą być udostępniane służbom. Projekt zdobył III miejsce w konkursie AIS Student Chapter Competition 2015 na University of Alabama.",
+      "description": "Innowacyjne rozwiązanie mobilne umożliwiające dyskretne wezwanie pomocy w sytuacjach awaryjnych. Aplikacja, stworzona dla smartfonów i smartwatchy, pozwala użytkownikowi zainicjować alert za pomocą predefiniowanych gestów (np. trzykrotne lekkie stuknięcie w urządzenie). System informuje wyznaczoną osobę kontaktową i przesyła dane takie jak lokalizacja i czas na serwer dostępny dla policji, znacząco skracając czas reakcji. Zespół SafeWatch zakwalifikował się do finałów konkursu Association for Information Systems Student Chapters odbywającego się na University of Alabama w 2015 roku. Podczas finałowej gali członkowie koła naukowego E-XPERT zaprezentowali swój prototyp, który spotkał się z wielkim entuzjazmem zarówno jury, jak i publiczności, ostatecznie zdobywając III miejsce w kategorii Information Systems That Serve Society.",
       "team": [
-        "Kamil Wojewski (lider)",
+        "Kamil Wojewski",
         "Damian Kisielewski",
         "Maciej Kwapiński",
         "Szymon Nagórski",
@@ -128,21 +250,37 @@
       ],
       "year": 2015,
       "achievements": [
-        "III miejsce w AIS Student Chapter 2015",
+        "III miejsce w AIS Student Chapter Competition 2015",
+        "Kategoria: Information Systems That Serve Society",
         "Patent Pending w Urzędzie Patentowym RP",
         "Prezentacje w TVN24, TVP, RMF FM, Radio Zet, Gazeta Wyborcza, Puls Biznesu"
       ],
+      "technologies": [
+        "Mobile Application",
+        "Smartwatch Integration",
+        "Gesture Recognition",
+        "Emergency Services Integration",
+        "Real-time Location Tracking"
+      ],
       "images": [
-        "https://i.imgur.com/sinO2M0.png",
-        "https://i.imgur.com/kv000A8.png",
-        "https://i.imgur.com/y0VcWnS.png"
+        "https://i.imgur.com/E1i8lfW.png",
+        "https://i.imgur.com/Ex2st4B.png"
       ]
     },
     {
       "name": "Your Guard",
-      "description": "System cyfrowej mapy przestępczości, pozwalający śledzić miejsca zagrożeń. Informuje o częstych rozbojach i przestępstwach, wskazując luki w patrolach i działaniach policji. Projekt zakwalifikowany do finału AIS Student Chapter Competition 2015 w kategorii IS That Serves Society.",
+      "description": "System cyfrowej mapy przestępczości, który śledzi obszary o częstych rozbojach lub przestępstwach. Zespół — Michał Karpiński, Tomasz Krakówka i Piotr Sankowski — zakwalifikował się w 2015 roku do finałów konkursu Association for Information Systems Student Chapters w kategorii Information Systems That Serve Society.",
       "team": ["Michał Karpiński", "Tomasz Krakówka", "Piotr Sankowski"],
       "year": 2015,
+      "achievements": [
+        "Finał AIS Student Chapter Competition 2015",
+        "Kategoria: Information Systems That Serve Society"
+      ],
+      "technologies": [
+        "Digital Crime Mapping",
+        "Data Visualization",
+        "Geolocation Services"
+      ],
       "images": []
     },
     {
