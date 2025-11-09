@@ -1,0 +1,178 @@
+{
+  "presentation_title": "🌍 Międzynarodowe sukcesy E-XPERT – AIS Student Chapters",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "AIS Student Chapters – University of Gdańsk",
+      "bullets": [
+        "Historia udziału E-XPERT UG w międzynarodowych finałach AIS Student Chapters.",
+        "Nagrody, wyróżnienia i globalny zasięg polskich studentów"
+      ],
+      "image": "https://i.imgur.com/Zj0PWmY.png",
+      "motto": "Nagrody, wyróżnienia i globalny zasięg polskich studentów",
+      "tagline": "OD PL do USA"
+    },
+    {
+      "slide": 2,
+      "title": "Wprowadzenie",
+      "bullets": [
+        "Od 2015 roku studenci Koła Naukowego Systemów Informatycznych E-XPERT z Uniwersytetu Gdańskiego biorą udział w międzynarodowych konkursach AIS Student Chapters.",
+        "To historia polskiej innowacji, pasji i kodu, który zdobywa uznanie w Stanach Zjednoczonych.",
+        "Od aplikacji ratujących życie po platformy Smart City – E-XPERT buduje mosty między technologią a społeczeństwem."
+      ],
+      "image": "https://i.imgur.com/mPuyPqm.png",
+      "motto": "Technologia w służbie idei",
+      "tagline": "AIS Student Chapters – University of Gdańsk"
+    },
+    {
+      "slide": 3,
+      "title": "2015 – SafeWatch",
+      "bullets": [
+        "Zespół: Kamil Wojewski, Damian Kisielewski, Maciej Kwapiński, Szymon Nagórski, Hubert Kisielewski.",
+        "Innowacyjna aplikacja mobilna umożliwiająca dyskretne wezwanie pomocy w sytuacjach zagrożenia.",
+        "Alarm można uruchomić trzema lekkimi stuknięciami w urządzenie.",
+        "System przesyła lokalizację i czas zdarzenia do służb, skracając czas reakcji.",
+        "III miejsce w kategorii *Information Systems That Serve Society* (University of Alabama)."
+      ],
+      "image": "https://i.imgur.com/E1i8lfW.png"
+    },
+    {
+      "slide": 4,
+      "title": "2015 – Your Guard",
+      "bullets": [
+        "Zespół: Michał Karpiński, Tomasz Krakówka, Piotr Sankowski.",
+        "System mapowania przestępczości wskazujący rejony o podwyższonym ryzyku.",
+        "Projekt zakwalifikowany do finałów AIS SC w kategorii *Information Systems That Serve Society*.",
+        "Pierwszy krok E-XPERT w stronę międzynarodowej sceny technologicznej."
+      ],
+      "image": "https://i.imgur.com/Ex2st4B.png"
+    },
+    {
+      "slide": 5,
+      "title": "2016 – CyberWatch",
+      "bullets": [
+        "Zespół: Kamil Wojewski, Damian Kisielewski, Maciej Kwapiński, Szymon Nagórski, Hubert Kisielewski.",
+        "System wykrywający cyberprzemoc w Internecie — analizuje treści, wykrywa nękanie i mowę nienawiści.",
+        "Zastosowano technologie IBM Watson, REST API i IBM Bluemix Cloud.",
+        "III miejsce w finale IBM Bright ICT (Indiana University) i nagroda za najbardziej efektywne użycie chmury IBM."
+      ],
+      "image": "https://i.imgur.com/plimNMa.png"
+    },
+    {
+      "slide": 6,
+      "title": "2016 – Unity",
+      "bullets": [
+        "Projekt: Piotr Małecki.",
+        "Aplikacja webowa analizująca opinie w Internecie o firmach i osobach.",
+        "Umożliwia monitorowanie reputacji i szybki kontakt z autorami treści.",
+        "Wyróżnienie w konkursie IBM Bright ICT za najbardziej innowacyjne wykorzystanie technologii chmurowych."
+      ],
+      "image": "https://i.imgur.com/axyVzKe.png"
+    },
+    {
+      "slide": 7,
+      "title": "2016 – Nagroda Best New AIS Student Chapter",
+      "bullets": [
+        "AIS Student Chapter Uniwersytetu Gdańskiego otrzymał tytuł *Best New AIS Student Chapter 2015–2016*.",
+        "Nagroda przyznana za wyjątkowe osiągnięcia w pierwszych latach działalności w strukturach AIS.",
+        "Uznanie dla polskich studentów za innowacyjność, organizację i międzynarodowe zaangażowanie.",
+        "To był symboliczny moment wejścia E-XPERT do globalnej społeczności AIS."
+      ],
+      "image": "https://i.imgur.com/lwupDYe.png"
+    },
+    {
+      "slide": 8,
+      "title": "2017 – SNet (Safe Internet)",
+      "bullets": [
+        "Zespół: Sebastian Szymański, Miłosz Waszewski, Adrian Świszcz.",
+        "Rozszerzenie przeglądarki chroniące przed oszustwami internetowymi i złośliwymi stronami.",
+        "Weryfikuje certyfikaty SSL i ocenia poziom zagrożenia.",
+        "Baza danych niebezpiecznych linków tworzona przez społeczność użytkowników.",
+        "III miejsce w kategorii *Software Innovation* (Brigham Young University).",
+        "Dodatkowo: nagroda *Outstanding Fundraising Award* dla AIS SC UG."
+      ],
+      "image": "https://i.imgur.com/HguEBvM.png"
+    },
+    {
+      "slide": 9,
+      "title": "2018 – IBMS (Intelligent Baby Monitor System)",
+      "bullets": [
+        "Zespół: Paweł Stożyński, Adam Ostrowski, Krzysztof Orłowski.",
+        "Prototyp inteligentnego monitora dziecka opartego na Raspberry Pi 3, Pythonie i OpenCV.",
+        "Monitoruje otoczenie dziecka i wysyła powiadomienia do aplikacji mobilnej.",
+        "III miejsce w kategorii *Software Innovation Challenge* (University of Texas, Dallas)."
+      ],
+      "image": "https://i.imgur.com/mmhPjQb.jpeg"
+    },
+    {
+      "slide": 10,
+      "title": "2019 – Apollo",
+      "bullets": [
+        "Zespół: Krzysztof Orłowski, Adam Ostrowski, Hubert Kołcz.",
+        "Aplikacja mobilna pomagająca znaleźć sklepy oferujące przecenioną żywność z krótkim terminem ważności.",
+        "Wspiera walkę z marnowaniem jedzenia i promuje zrównoważoną konsumpcję.",
+        "III miejsce w konkursie AIS SC (Temple University, Philadelphia)."
+      ],
+      "image": "https://i.imgur.com/iG7jMVc.png"
+    },
+    {
+      "slide": 11,
+      "title": "2020 – Way For Life (W4L)",
+      "bullets": [
+        "Zespół: Michał Kwapiński, Artur Boniecki, Piotr Miękus.",
+        "System mobilny współpracujący ze służbami ratunkowymi (policja, straż, pogotowie).",
+        "Automatycznie wstrzymuje dźwięk i ostrzega kierowców o zbliżającym się pojeździe uprzywilejowanym.",
+        "I miejsce w kategorii *Software Innovation Challenge* (Illinois State University)."
+      ],
+      "image": "https://i.imgur.com/y4n6Y0l.png"
+    },
+    {
+      "slide": 12,
+      "title": "2021 – Talk-to",
+      "bullets": [
+        "Zespół: Hubert Kołcz, Klara Dargacz, Irina Frolova.",
+        "Aplikacja dla osób z fobią społeczną i problemami w nawiązywaniu kontaktów.",
+        "Projekt w odpowiedzi na wycofanie społeczne pogłębione przez pandemię COVID-19.",
+        "II miejsce w *Showcase Competition* na pierwszej wirtualnej konferencji AIS 2021 (Illinois State University).",
+        "Jedyny nieamerykański zespół nagrodzony — 267 uczestników z 47 uniwersytetów i 4 krajów.",
+        "Prezentacja zawierała 8-minutowy film i prototyp aplikacji."
+      ],
+      "image": "https://i.imgur.com/u5E9kHY.png"
+    },
+    {
+      "slide": 13,
+      "title": "2022 – SocialMonitor",
+      "bullets": [
+        "Zespół: Justyna Krotoszyńska, Kajetan Warmbier, Kacper Jach.",
+        "Rozszerzenie przeglądarki ukrywające liczbę reakcji pod postami w mediach społecznościowych.",
+        "Projekt promuje zdrowe korzystanie z Internetu i przeciwdziała presji społecznej.",
+        "Wyróżnienie za innowację i wpływ społeczny w finałach AIS SC 2022 (online)."
+      ],
+      "image": "https://i.imgur.com/LTmBfuX.png"
+    },
+    {
+      "slide": 14,
+      "title": "2023 – UniGo: platforma komunikacji Smart City",
+      "bullets": [
+        "Zespół: Cornelis Puchowicz, Łukasz Pisarczyk, Piotr Jemielita.",
+        "Platforma łącząca studentów, uczelnie i programy stypendialne w ekosystemie inteligentnych miast.",
+        "Wykorzystuje sztuczną inteligencję (OpenAI) do dopasowywania kierunków studiów do zainteresowań użytkowników.",
+        "Projekt nominowany do finału AIS SC 2023 w Miami (Florida International University).",
+        "80% ankietowanych wyraziło chęć korzystania z tego rozwiązania."
+      ],
+      "image": "https://i.imgur.com/wmyUNGB.png"
+    },
+    {
+      "slide": 15,
+      "title": "Podsumowanie: dekada innowacji E-XPERT",
+      "bullets": [
+        "Od SafeWatch po UniGo – dziesięć lat obecności w międzynarodowych finałach AIS.",
+        "Projekty jak Way For Life, Talk-to, Apollo czy SocialMonitor łączą technologię z rzeczywistym wpływem społecznym.",
+        "Studenci E-XPERT pokazują, że polskie pomysły mogą inspirować świat.",
+        "Historia, która trwa — i wciąż się pisze."
+      ],
+      "image": "https://i.imgur.com/RxsREYs.png",
+      "tagline": "E-XPERT – polska innowacja w światowej lidze IT"
+    }
+  ]
+}
