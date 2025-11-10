@@ -128,6 +128,19 @@
     },
     {
       "slide": 12,
+      "title": "2021 – Talk-to",
+      "bullets": [
+        "Zespół: Hubert Kołcz, Klara Dargacz, Irina Frolova.",
+        "Aplikacja dla osób z fobią społeczną i problemami w nawiązywaniu kontaktów.",
+        "Projekt w odpowiedzi na wycofanie społeczne pogłębione przez pandemię COVID-19.",
+        "II miejsce w *Showcase Competition* na pierwszej wirtualnej konferencji AIS 2021 (Illinois State University).",
+        "Jedyny nieamerykański zespół nagrodzony — 267 uczestników z 47 uniwersytetów i 4 krajów.",
+        "Prezentacja zawierała 8-minutowy film i prototyp aplikacji."
+      ],
+      "image": "https://i.imgur.com/8pLKN34.png"
+    },
+    {
+      "slide": 13,
       "title": "2022 – SocialMonitor",
       "bullets": [
         "Zespół: Justyna Krotoszyńska, Kajetan Warmbier, Kacper Jach.",
@@ -138,7 +151,7 @@
       "image": "https://i.imgur.com/LTmBfuX.png"
     },
     {
-      "slide": 13,
+      "slide": 14,
       "title": "2023 – UniGo: platforma komunikacji Smart City",
       "bullets": [
         "Zespół: Cornelis Puchowicz, Łukasz Pisarczyk, Piotr Jemielita.",
@@ -150,11 +163,11 @@
       "image": "https://i.imgur.com/wmyUNGB.png"
     },
     {
-      "slide": 14,
+      "slide": 15,
       "title": "Podsumowanie: dekada innowacji E-XPERT",
       "bullets": [
         "Od SafeWatch po UniGo – dziesięć lat obecności w międzynarodowych finałach AIS.",
-        "Każdy projekt to połączenie technologii, pasji i społecznego zaangażowania.",
+        "Projekty jak Way For Life, Talk-to, Apollo czy SocialMonitor łączą technologię z rzeczywistym wpływem społecznym.",
         "Studenci E-XPERT pokazują, że polskie pomysły mogą inspirować świat.",
         "Historia, która trwa — i wciąż się pisze."
       ],

@@ -1,6 +1,6 @@
 {
   "title": "Projekty",
-  "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła od lat regularnie reprezentują Uniwersytet Gdański w międzynarodowych finałach organizowanych w Stanach Zjednoczonych, zdobywając czołowe miejsca i zaszczytne wyróżnienia. W 2016 roku AIS Student Chapter University of Gdańsk otrzymało nagrodę \"2015-2016 Best New AIS Student Chapter Winner\" za wybitne osiągnięcia podczas pierwszych dwóch lat działalności. Studenci tworzyli innowacyjne rozwiązania IT, które zdobywały uznanie za kreatywność, wartość społeczną i zaawansowanie technologiczne — takie jak Way For Life, Apollo, IBMS, SNet, CyberWatch, Unity, SafeWatch i Your Guard.",
+  "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła od lat regularnie reprezentują Uniwersytet Gdański w międzynarodowych finałach organizowanych w Stanach Zjednoczonych, zdobywając czołowe miejsca i zaszczytne wyróżnienia. W 2016 roku AIS Student Chapter University of Gdańsk otrzymało nagrodę \"2015-2016 Best New AIS Student Chapter Winner\" za wybitne osiągnięcia podczas pierwszych dwóch lat działalności. Studenci tworzyli innowacyjne rozwiązania IT, które zdobywały uznanie za kreatywność, wartość społeczną i zaawansowanie technologiczne — takie jak Way For Life, Talk-to, Apollo, IBMS, SNet, CyberWatch, Unity, SafeWatch i Your Guard.",
   "projects": [
     {
       "name": "Modernizacja Strony Internetowej Koła",
@@ -101,6 +101,39 @@
       ],
       "images": [
         "https://i.imgur.com/LTmBfuX.png"
+      ]
+    },
+    {
+      "name": "Talk-to",
+      "description": "Aplikacja mobilna skierowana do osób z problemami w nawiązywaniu kontaktów, skrajnie nieśmiałych oraz z fobią społeczną. Projekt powstał w odpowiedzi na problem wycofania społecznego, który pogłębiły obostrzenia pandemiczne. Talk-to ma angażować w życie społeczne młode osoby, które czują się wykluczone i boją się poprosić o wsparcie osoby najbliższe, a na bezpłatną pomoc psychologiczną muszą czekać długie miesiące. Praca konkursowa obejmowała 8-minutową prezentację wideo z wyreżyserowanym filmem przedstawiającym problem społeczny oraz wstępną wersję zaprojektowanej aplikacji. Zespół był jedynym nieamerykańskim zespołem nagrodzonym w ramach AIS Student Chapter Competition 2021. Projekt rozpoczęty w lipcu 2020 roku.",
+      "team": [
+        "Hubert Kołcz (współzałożyciel, koordynator i lider projektu, twórca architektury rozwiązania)",
+        "Klara Dargacz (współzałożycielka projektu, warstwa biznesowa i badania rynku)",
+        "Irina Frolova (oprawa wizualna aplikacji, nagranie promocyjne, wsparcie techniczne)"
+      ],
+      "year": 2021,
+      "achievements": [
+        "II miejsce w Showcase Competition na AIS 2021 Student Chapter Leadership Conference",
+        "Jedyny nieamerykański zespół nagrodzony w AIS Student Chapter Competition 2021",
+        "Najwyższy stopień konkurencyjności - największa liczba projektów uczestniczących",
+        "Konferencja wirtualna z 267 uczestnikami z 47 uniwersytetów i 4 krajów"
+      ],
+      "technologies": [
+        "Mobile Application",
+        "UI/UX Design",
+        "Video Production",
+        "Social Impact Technology",
+        "Mental Health Support"
+      ],
+      "images": [
+        "https://i.imgur.com/8pLKN34.png",
+        "https://i.imgur.com/u5E9kHY.png"
+      ],
+      "links": [
+        {
+          "title": "Artykuł UG: Studenci UG stworzyli aplikację dla osób z fobią społeczną",
+          "url": "https://ug.edu.pl/news/pl/1194/studenci-ug-stworzyli-aplikacje-dla-osob-z-fobia-spoleczna"
+        }
       ]
     },
     {
