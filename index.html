@@ -6486,8 +6486,8 @@
             }
             
             /* Zapewnij że wszystkie teksty w sidebarie są widoczne */
-            #publications .publications-viewer > div:first-child *,
-            #publications .publications-viewer > div > div:first-child * {
+            #publications .publications-viewer > div:first-child *:not(pre):not(code),
+            #publications .publications-viewer > div > div:first-child *:not(pre):not(code) {
                 text-overflow: clip !important;
                 white-space: normal !important;
             }

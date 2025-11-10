@@ -4,7 +4,7 @@
   "projects": [
     {
       "name": "Modernizacja Strony Internetowej Koła",
-      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT, mająca na celu stworzenie nowoczesnej, funkcjonalnej i łatwo zarządzalnej strony internetowej. Nowa witryna oferuje przejrzystą prezentację historii koła, osiągnięć członków w międzynarodowych konkursach oraz realizowanych projektów. Użytkownicy mogą szybko nawigować między sekcjami, przeglądać galerie projektów z lat 2015-2025, poznawać zespół i misję koła. Strona automatycznie aktualizuje treści, umożliwia bezpośrednie linkowanie do konkretnych sekcji i działa płynnie na wszystkich urządzeniach. Projekt poprawia dostępność informacji o kole, ułatwia rekrutację nowych członków i profesjonalnie prezentuje dorobek organizacji. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
       "team": [
         "Wspólny wysiłek zespołu 2024/25"
       ],
@@ -30,7 +30,7 @@
     },
     {
       "name": "Modernizacja konta Github",
-      "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT — migracja z WordPress na GitHub Pages z nowoczesnym, minimalistycznym designem. Porzucenie przestarzałego WordPressa na rzecz nowoczesnego, statycznego rozwiązania opartego o GitHub Pages. Nowa strona wykorzystuje dynamiczne ładowanie treści z plików JSON, hash routing dla bezpośredniego linkowania sekcji oraz zoptymalizowany układ responsywny. Projekt obejmował przeprojektowanie architektury informacji, implementację nowego systemu kolorystycznego (#1c1b22/#f3f3f7) oraz integrację logo SVG z przemyślaną typografią. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
+      "description": "Kompleksowa reorganizacja i uporządkowanie konta GitHub koła E-XPERT, mająca na celu poprawę przejrzystości, dostępności i profesjonalizmu cyfrowego repozytorium projektów. Projekt obejmował usunięcie przestarzałych repozytoriów, standaryzację nazewnictwa projektów oraz aktualizację dokumentacji dla kluczowych rozwiązań. Dzięki archiwizacji starszych projektów i wprowadzeniu spójnej struktury organizacyjnej, obecni i przyszli członkowie koła mogą łatwiej odnaleźć aktywne projekty, zrozumieć ich kontekst i historię oraz efektywniej zarządzać kodem źródłowym. Uporządkowane konto GitHub ułatwia współpracę, prezentację dorobku koła potencjalnym partnerom oraz onboarding nowych członków zespołu. Wspólny wysiłek zespołu 2023/24.",
       "team": [
         "Wspólny wysiłek zespołu 2023/24"
       ],
