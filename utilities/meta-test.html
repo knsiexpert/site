@@ -3,9 +3,38 @@
 <head>
 <title>Dynamic Meta tags</title>
 <script type='text/javascript'>
+	const ogImage2 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-2.jpg">';
+</script>
+<script type='text/javascript'>
+	const ogImage3 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-3.jpg">';
+</script>
+<script type='text/javascript'>
+	const ogImage4 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-4.jpg">';
+</script>
+<script type='text/javascript'>
+	const ogImage5 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-5.jpg">';
+</script>
+<script type='text/javascript'>
+	const ogImage6 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-6.jpg">';
+</script>
+<script type='text/javascript'>
+	const ogImage7 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-7.jpg">';
+</script>
+<script type='text/javascript'>
 	// Generate random number between 2 and 7
 	const randomImageNumber = Math.floor(Math.random() * 6) + 2;
-	const imageUrl = `https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-${randomImageNumber}.jpg`;
+	
+	// Select the appropriate og:image tag
+	let selectedOgImageTag;
+	if (randomImageNumber === 2) selectedOgImageTag = ogImage2;
+	else if (randomImageNumber === 3) selectedOgImageTag = ogImage3;
+	else if (randomImageNumber === 4) selectedOgImageTag = ogImage4;
+	else if (randomImageNumber === 5) selectedOgImageTag = ogImage5;
+	else if (randomImageNumber === 6) selectedOgImageTag = ogImage6;
+	else if (randomImageNumber === 7) selectedOgImageTag = ogImage7;
+	
+	// Insert og:image meta tag immediately
+	document.write(selectedOgImageTag);
 </script>
 </head>
 <body>
@@ -22,10 +51,14 @@
 
 <!-- dynamic meta tags -->
 	<script type='text/javascript'>
-		// Set image source immediately
+		// Extract image URL from selected og:image tag
+		const imageUrlMatch = selectedOgImageTag.match(/content="([^"]+)"/);
+		const imageUrl = imageUrlMatch ? imageUrlMatch[1] : '';
+		
+		// Set image source to match the selected OG image
 		document.getElementById('mainImage').src = imageUrl;
 
-		// Add meta tags as soon as DOM is loaded
+		// Add other meta tags when DOM is ready
 		document.addEventListener('DOMContentLoaded', function() {
 			// Get meta description from div.class1
 			const metaMainDescription = document.querySelector('div.class1').textContent;
@@ -40,12 +73,6 @@
 			metaURLTag.setAttribute('property', 'og:url');
 			metaURLTag.content = metaURL;
 			document.head.appendChild(metaURLTag);
-
-			// Set og:image with random number
-			const metaImageTag = document.createElement('meta');
-			metaImageTag.setAttribute('property', 'og:image');
-			metaImageTag.content = imageUrl;
-			document.head.appendChild(metaImageTag);
 
 			// Get title from first h1
 			const metaTitle = document.querySelector('h1').textContent;
