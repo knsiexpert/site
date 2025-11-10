@@ -2,39 +2,37 @@
 <html>
 <head>
 <title>Dynamic Meta tags</title>
+<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
 <script type='text/javascript'>
-	const ogImage2 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-2.jpg">';
+	const ogImage2 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-2.jpg';
 </script>
 <script type='text/javascript'>
-	const ogImage3 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-3.jpg">';
+	const ogImage3 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-3.jpg';
 </script>
 <script type='text/javascript'>
-	const ogImage4 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-4.jpg">';
+	const ogImage4 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-4.jpg';
 </script>
 <script type='text/javascript'>
-	const ogImage5 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-5.jpg">';
+	const ogImage5 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-5.jpg';
 </script>
 <script type='text/javascript'>
-	const ogImage6 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-6.jpg">';
+	const ogImage6 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-6.jpg';
 </script>
 <script type='text/javascript'>
-	const ogImage7 = '<meta property="og:image" content="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-7.jpg">';
+	const ogImage7 = 'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-7.jpg';
 </script>
 <script type='text/javascript'>
 	// Generate random number between 2 and 7
 	const randomImageNumber = Math.floor(Math.random() * 6) + 2;
 	
-	// Select the appropriate og:image tag
-	let selectedOgImageTag;
-	if (randomImageNumber === 2) selectedOgImageTag = ogImage2;
-	else if (randomImageNumber === 3) selectedOgImageTag = ogImage3;
-	else if (randomImageNumber === 4) selectedOgImageTag = ogImage4;
-	else if (randomImageNumber === 5) selectedOgImageTag = ogImage5;
-	else if (randomImageNumber === 6) selectedOgImageTag = ogImage6;
-	else if (randomImageNumber === 7) selectedOgImageTag = ogImage7;
-	
-	// Insert og:image meta tag immediately
-	document.write(selectedOgImageTag);
+	// Select the appropriate image URL
+	let selectedImageUrl;
+	if (randomImageNumber === 2) selectedImageUrl = ogImage2;
+	else if (randomImageNumber === 3) selectedImageUrl = ogImage3;
+	else if (randomImageNumber === 4) selectedImageUrl = ogImage4;
+	else if (randomImageNumber === 5) selectedImageUrl = ogImage5;
+	else if (randomImageNumber === 6) selectedImageUrl = ogImage6;
+	else if (randomImageNumber === 7) selectedImageUrl = ogImage7;
 </script>
 </head>
 <body>
@@ -46,47 +44,41 @@
 	</p>
 	</div>
 	<p>
-		<img class="class2" id="mainImage">
+		<img class="class2" src="">
 	</p>
 
 <!-- dynamic meta tags -->
 	<script type='text/javascript'>
-		// Extract image URL from selected og:image tag
-		const imageUrlMatch = selectedOgImageTag.match(/content="([^"]+)"/);
-		const imageUrl = imageUrlMatch ? imageUrlMatch[1] : '';
-		
-		// Set image source to match the selected OG image
-		document.getElementById('mainImage').src = imageUrl;
-
-		// Add other meta tags when DOM is ready
-		document.addEventListener('DOMContentLoaded', function() {
-			// Get meta description from div.class1
-			const metaMainDescription = document.querySelector('div.class1').textContent;
-			const metaDescriptionTag = document.createElement('meta');
-			metaDescriptionTag.name = 'description';
-			metaDescriptionTag.content = metaMainDescription;
-			document.head.appendChild(metaDescriptionTag);
-
-			// Get current URL
-			const metaURL = window.location.href;
-			const metaURLTag = document.createElement('meta');
-			metaURLTag.setAttribute('property', 'og:url');
-			metaURLTag.content = metaURL;
-			document.head.appendChild(metaURLTag);
-
-			// Get title from first h1
-			const metaTitle = document.querySelector('h1').textContent;
-			const metaTitleTag = document.createElement('meta');
-			metaTitleTag.setAttribute('property', 'og:title');
-			metaTitleTag.content = metaTitle;
-			document.head.appendChild(metaTitleTag);
-
-			// Get og:description from div.class1
-			const metaDescription = document.querySelector('div.class1').textContent;
-			const metaDescriptionOGTag = document.createElement('meta');
-			metaDescriptionOGTag.setAttribute('property', 'og:description');
-			metaDescriptionOGTag.content = metaDescription;
-			document.head.appendChild(metaDescriptionOGTag);
+		$('img.class2').attr('src', selectedImageUrl);
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var metaMainDescription = $('div.class1').text();
+			$('head').append( '<meta name="description" content="' +  metaMainDescription + '">' );
+		});
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var metaImage = $('img.class2').attr('src');
+			$('head').append( '<meta property="og:image" content="' +  metaImage + '">' );
+		});
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var metaURL = $(location).attr('href');
+			$('head').append( '<meta property="og:url" content="' +  metaURL + '">' );
+		});
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var metaTitle = $('h1:eq(0)').text();
+			$('head').append( '<meta property="og:title" content="' +  metaTitle + '">' );
+		});
+	</script>
+	<script type='text/javascript'>
+		$(document).ready(function(){
+			var metaDescription = $('div.class1').text();
+			$('head').append( '<meta property="og:description" content="' +  metaDescription + '">' );
 		});
 	</script>
 </body>
