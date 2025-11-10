@@ -2,7 +2,11 @@
 <html>
 <head>
 <title>Dynamic Meta tags</title>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+<script type='text/javascript'>
+	// Generate random number between 1 and 7
+	const randomImageNumber = Math.floor(Math.random() * 7) + 1;
+	const imageUrl = `https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-${randomImageNumber}.jpg`;
+</script>
 </head>
 <body>
 	<h1>Header1</h1>
@@ -13,38 +17,49 @@
 	</p>
 	</div>
 	<p>
-		<img class="class2" src="https://knsiexpert.github.io/site/data/assets/open-graph-image-3.png?v=dsf3453">
+		<img class="class2" id="mainImage">
 	</p>
 
 <!-- dynamic meta tags -->
 	<script type='text/javascript'>
-		$(document).ready(function(){
-			var metaMainDescription = $('div.class1').text();
-			$('head').append( '<meta name="description" content="' +  metaMainDescription + '">' );
-		});
-	</script>
-	<script type='text/javascript'>
-		$(document).ready(function(){
-			var metaURL = $(location).attr('href');
-			$('head').append( '<meta property="og:url" content="' +  metaURL + '">' );
-		});
-	</script>
-	<script type='text/javascript'>
-		$(document).ready(function(){
-			var metaImage = $('img.class2').attr('src');
-			$('head').append( '<meta property="og:image" content="' +  'https://knsiexpert.github.io/site/data/assets/open-graph-image-3.png?v=dsf3453' + '">' );
-		});
-	</script>
-	<script type='text/javascript'>
-		$(document).ready(function(){
-			var metaTitle = $('h1:eq(0)').text();
-			$('head').append( '<meta property="og:title" content="' +  metaTitle + '">' );
-		});
-	</script>
-	<script type='text/javascript'>
-		$(document).ready(function(){
-			var metaDescription = $('div.class1').text();
-			$('head').append( '<meta property="og:description" content="' +  metaDescription + '">' );
+		// Set image source immediately
+		document.getElementById('mainImage').src = imageUrl;
+
+		// Add meta tags as soon as DOM is loaded
+		document.addEventListener('DOMContentLoaded', function() {
+			// Get meta description from div.class1
+			const metaMainDescription = document.querySelector('div.class1').textContent;
+			const metaDescriptionTag = document.createElement('meta');
+			metaDescriptionTag.name = 'description';
+			metaDescriptionTag.content = metaMainDescription;
+			document.head.appendChild(metaDescriptionTag);
+
+			// Get current URL
+			const metaURL = window.location.href;
+			const metaURLTag = document.createElement('meta');
+			metaURLTag.setAttribute('property', 'og:url');
+			metaURLTag.content = metaURL;
+			document.head.appendChild(metaURLTag);
+
+			// Set og:image with random number
+			const metaImageTag = document.createElement('meta');
+			metaImageTag.setAttribute('property', 'og:image');
+			metaImageTag.content = imageUrl;
+			document.head.appendChild(metaImageTag);
+
+			// Get title from first h1
+			const metaTitle = document.querySelector('h1').textContent;
+			const metaTitleTag = document.createElement('meta');
+			metaTitleTag.setAttribute('property', 'og:title');
+			metaTitleTag.content = metaTitle;
+			document.head.appendChild(metaTitleTag);
+
+			// Get og:description from div.class1
+			const metaDescription = document.querySelector('div.class1').textContent;
+			const metaDescriptionOGTag = document.createElement('meta');
+			metaDescriptionOGTag.setAttribute('property', 'og:description');
+			metaDescriptionOGTag.content = metaDescription;
+			document.head.appendChild(metaDescriptionOGTag);
 		});
 	</script>
 </body>
