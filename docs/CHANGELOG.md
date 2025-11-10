@@ -2,6 +2,33 @@
 
 ## [Najnowsze zmiany] - 2025-01-10
 
+### 🚀 Optymalizacja UX - szybsze ładowanie strony głównej
+
+**Zmieniono:**
+
+1. **Pominięcie animacji loadera dla strony głównej**
+   - Strona główna (/ i /site) ładuje się teraz bez animacji loadera
+   - Loading screen pokazywany tylko dla innych sekcji podczas redirectu z 404.html
+   - Domyślnie loading screen jest ukryty w HTML
+   - Znacząco przyspiesza pierwsze wrażenie przy wejściu na stronę
+
+**Implementacja:**
+```javascript
+// Loading screen jest domyślnie ukryty w HTML
+<div id="loadingScreen" class="loading-screen hidden">
+
+// Sprawdzanie czy redirect prowadzi do home
+const cleanRedirectPath = redirectPath.replace(/^\/|\/$/g, '');
+const isHomeRedirect = !cleanRedirectPath || cleanRedirectPath === 'site' || cleanRedirectPath === 'home';
+
+// Pokazywanie loadera tylko dla innych sekcji
+if (!isHomeRedirect) {
+    showLoadingScreen();
+}
+```
+
+---
+
 ### 📚 Aktualizacja treści historycznych
 
 **Dodano:**
