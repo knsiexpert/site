@@ -1,5 +1,34 @@
 # Changelog
 
+## [Najnowsze zmiany] - 2025-01-10
+
+### 📚 Aktualizacja treści historycznych
+
+**Dodano:**
+
+1. **Projekt Talk-to (2021)**
+   - Dodano kompletny opis projektu Talk-to z 2021 roku
+   - II miejsce w Showcase Competition na AIS 2021 Student Chapter Leadership Conference
+   - Zespół: Hubert Kołcz, Klara Dargacz, Irina Frolova
+   - Aplikacja dla osób z fobią społeczną i problemami w nawiązywaniu kontaktów
+   - Link do artykułu UG: https://ug.edu.pl/news/pl/1194/studenci-ug-stworzyli-aplikacje-dla-osob-z-fobia-spoleczna
+   - Obrazki projektu: 2 zdjęcia z prezentacji
+
+2. **Prezentacja AIS - nowy slajd**
+   - Dodano slajd o projekcie Talk-to do `presentation-ais.json`
+   - Slajd umieszczony chronologicznie między Way For Life (2020) a SocialMonitor (2022)
+   - Przenumerowano kolejne slajdy (13-15)
+   - Zaktualizowano podsumowanie z wzmianką o Talk-to
+
+3. **Aktualizacja intro w projects.json**
+   - Dodano Talk-to do listy wyróżnionych projektów w tekście wprowadzającym
+
+**Poprawiono:**
+- Chronologiczne uporządkowanie projektów w bazie danych
+- Spójność numeracji slajdów w prezentacji AIS
+
+---
+
 ## [3.33.0] - 2025-01-05
 
 ### 🎯 Interactive Team Member Highlighting & Modern Scroll Button

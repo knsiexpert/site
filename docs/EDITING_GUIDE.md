@@ -91,10 +91,34 @@ Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy pl
     "description": "Opis projektu...",
     "team": ["Imię Nazwisko", "Imię Nazwisko"],
     "year": 2022,
-    "images": ["url"]
+    "achievements": [
+      "Osiągnięcie 1",
+      "Osiągnięcie 2"
+    ],
+    "technologies": [
+      "Technologia 1",
+      "Technologia 2"
+    ],
+    "images": ["url"],
+    "links": [
+      {
+        "title": "Tytuł linku",
+        "url": "https://example.com"
+      }
+    ]
   }
 ]
 ```
+
+**Pola projektu:**
+- `name` — nazwa projektu
+- `description` — szczegółowy opis projektu
+- `team` — tablica z nazwiskami członków zespołu
+- `year` — rok realizacji projektu
+- `achievements` — tablica osiągnięć (nagrody, wyróżnienia)
+- `technologies` — tablica użytych technologii
+- `images` — tablica URL-i do obrazków
+- `links` — (opcjonalne) tablica obiektów z dodatkowymi linkami (artykuły, strony projektu)
 
 ### 📄 goals.json - Cele i osiągnięcia
 
@@ -235,10 +259,24 @@ Wszystkie treści są przechowywane w plikach JSON w katalogu `data/`. Każdy pl
 ```json
 {
   "name": "Nazwa projektu",
-  "description": "Opis...",
+  "description": "Szczegółowy opis projektu...",
   "team": ["Członek 1", "Członek 2"],
   "year": 2024,
-  "images": []
+  "achievements": [
+    "Osiągnięcie 1",
+    "Osiągnięcie 2"
+  ],
+  "technologies": [
+    "Technologia 1",
+    "Technologia 2"
+  ],
+  "images": ["https://example.com/image.jpg"],
+  "links": [
+    {
+      "title": "Artykuł o projekcie",
+      "url": "https://example.com/article"
+    }
+  ]
 }
 ```
 
