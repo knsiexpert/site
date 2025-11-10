@@ -14,12 +14,18 @@ Witaj w dokumentacji strony KNSI E-XPERT!
 - `index.html` - Główny plik strony (HTML + CSS + JavaScript)
 
 ### Dane (katalog data/)
-- `home.json` - Strona główna, hero, highlights, nawigacja
+- `navigation.json` - Konfiguracja menu i metadane strony
+- `home.json` - Strona główna, hero, highlights
 - `projects.json` - Lista projektów AIS SC
 - `goals.json` - Zrealizowane cele (timeline)
 - `team.json` - Skład zespołu (z podziałem na lata)
+- `gallery.json` - Galeria zdjęć
 - `activity.json` - Działalność koła
 - `constitution.json` - Statut koła
+- `recruitment.json` - Informacje o rekrutacji
+- `publications.json` - Publikacje i blog
+- `footer.json` - Stopka i kontakt
+- `presentation-ais.json` - Prezentacja historii AIS SC
 
 ### Dokumentacja
 - `README.md` - Główny README projektu
@@ -74,9 +80,9 @@ A: Edytuj `data/team.json`, dodaj nowy rok lub członków do istniejącego roku.
 **Q: Jak dodać nową stronę?**
 A: 
 1. Utwórz nowy plik JSON w `data/`
-2. Dodaj link w `data/home.json` → `site.nav`
-3. Dodaj nową sekcję w `index.html`
-4. Stwórz funkcję renderującą w JavaScript
+2. Dodaj sekcję w `data/navigation.json` z odpowiednim `id`, `title`, `href` i `order`
+3. Strona automatycznie pojawi się w menu
+4. Upewnij się, że plik JSON ma poprawną strukturę
 
 **Q: Strona nie ładuje danych lokalnie?**
 A: Musisz użyć serwera HTTP (nie można otworzyć pliku bezpośrednio z systemu plików). Użyj: 
@@ -94,5 +100,5 @@ W razie pytań lub problemów:
 
 ---
 
-**Ostatnia aktualizacja:** 1 listopada 2025
+**Ostatnia aktualizacja:** 10 stycznia 2025
 

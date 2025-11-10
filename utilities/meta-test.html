@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>Dynamic Meta tags</title>
-<script type='text/javascript' src='http://code.jquery.com/jquery-1.8.2.js'></script>
+<script type='text/javascript' src='https://code.jquery.com/jquery-1.8.2.js'></script>
 </head>
 <body>
 	<h1>Header1</h1>
@@ -13,9 +13,13 @@
 	</p>
 	</div>
 	<p>
-		<img class="class2" src="https://knsiexpert.github.io/site/data/assets/open-graph-image-3.png?v=dsf3453">
+		<img class="class2" src="https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-4.jpg">
 	</p>
-
+<style>
+	.class2 {
+		visibility: hidden;
+	}
+</style>
 <!-- dynamic meta tags -->
 	<script type='text/javascript'>
 		$(document).ready(function(){
@@ -32,7 +36,7 @@
 	<script type='text/javascript'>
 		$(document).ready(function(){
 			var metaImage = $('img.class2').attr('src');
-			$('head').append( '<meta property="og:image" content="' +  'https://knsiexpert.github.io/site/data/assets/open-graph-image-3.png?v=dsf3453' + '">' );
+			$('head').append( '<meta property="og:image" content="' +  'https://knsiexpert.github.io/site/data/assets/og/open-graph-image-meta-test-2.jpg' + '">' );
 		});
 	</script>
 	<script type='text/javascript'>

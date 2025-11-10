@@ -1,7 +1,5 @@
 # KNSI E-XPERT Website
 
-**Wersja: 3.33.0** | Modern Interactive Features
-
 Oficjalna strona internetowa Koła Naukowego Systemów Informatycznych E-XPERT — nowoczesna, dynamiczna strona z profesjonalnym designem i pełnym trybem ciemnym.
 
 ## 📋 Szybki start
@@ -126,7 +124,7 @@ Pełna instrukcja: **[docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)**
 
 ## 🎨 Funkcje strony
 
-### ✨ Aktualne możliwości (v3.33.0)
+### ✨ Aktualne możliwości
 
 - 🎨 **5 motywów kolorystycznych** - orange, blue, green, purple, red
 - 🌙 **Tryb ciemny** - automatyczny lub manualny przełącznik
