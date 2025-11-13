@@ -1,0 +1,127 @@
+{
+  "presentation_title": "📅 Powstanie Hackathons Calendar – od doświadczenia do narzędzia",
+  "slides": [
+    {
+      "slide": 1,
+      "title": "Powstanie Hackathons Calendar",
+      "bullets": [
+        "Gdy doświadczenie rodzi pomysł"
+      ],
+      "image": "https://i.imgur.com/MkPrO2w.png",
+      "motto": "Gdy doświadczenie rodzi pomysł",
+      "tagline": "Od hackathonu do narzędzia"
+    },
+    {
+      "slide": 2,
+      "title": "AI Games 2022 – iskra, która zapaliła projekt",
+      "bullets": [
+        "Weekend 18–20 listopada 2022, Gdański Park Naukowo-Technologiczny.",
+        "Dwóch członków E-XPERT: Maciej Głowacki i Mateusz Kołacz w hackathonie AI Games.",
+        "Zespół „Pearl Divers” wybiera zadanie Trajectory Prediction.",
+        "Kod, dane, burze mózgów, joga i gry – intensywne 48 godzin doświadczeń."
+      ],
+      "image": "https://i.imgur.com/TXabJA4.png"
+    },
+    {
+      "slide": 3,
+      "title": "Problem, który wszyscy znamy",
+      "bullets": [
+        "Informacje o hackathonach porozrzucane po Facebooku, Discordzie, mailach i stronach.",
+        "Trudno znaleźć: gdzie? kiedy? jakie warunki? co zabrać?",
+        "A to tylko jeden hackathon – jak ogarnąć cały semestr?",
+        "Po powrocie z AI Games pada pytanie: „A może stworzymy narzędzie, które to rozwiąże?”"
+      ],
+      "image": "https://i.imgur.com/kY3jpuH.png"
+    },
+    {
+      "slide": 4,
+      "title": "Narodziny Hackathons Calendar",
+      "bullets": [
+        "Pomysł: jeden kalendarz hackathonów w jednym miejscu.",
+        "Nie setki zakładek i grup, tylko jedna strona z przejrzystym widokiem.",
+        "Widok kalendarza i lista wydarzeń – pod planowanie i szybkie przeglądanie.",
+        "Najważniejsze założenie: prostota i brak zbędnych barier."
+      ],
+      "image": "https://i.imgur.com/VQ8sU5b.png"
+    },
+    {
+      "slide": 5,
+      "title": "Open source, technologia i społeczność",
+      "bullets": [
+        "Projekt w modelu open source – kod dostępny dla wszystkich na GitHubie.",
+        "Frontend oparty o nowoczesny JavaScript, hosting na GitHub Pages.",
+        "JSON jako baza danych wydarzeń – łatwe dodawanie i wersjonowanie.",
+        "Każdy może dodać hackathon, zgłosić issue, zaproponować funkcję."
+      ],
+      "image": "https://i.imgur.com/t5klv5p.png"
+    },
+    {
+      "slide": 6,
+      "title": "Meetupy – coś więcej niż prezentacje",
+      "bullets": [
+        "Claude Code Meetup w Gdańsku pokazał, że wydarzenia o AI potrafią zaskoczyć.",
+        "Obok rozmów o agentach, kodzie i narzędziach pojawia się prawdziwe życie branży.",
+        "To miejsce, gdzie teoria z zajęć spotyka się z praktyką z firm."
+      ],
+      "image": "https://i.imgur.com/9Z1oJa2.png",
+      "motto": "Wydarzenia o AI potrafią zaskakiwać",
+      "tagline": "Nie tylko wiedza — społeczność"
+    },
+    {
+      "slide": 7,
+      "title": "Alumni E-XPERT wracają na meetupy",
+      "bullets": [
+        "Na meetupach pojawiają się byli członkowie E-XPERT – dziś doświadczeni specjaliści.",
+        "To żywy dowód, że aktywność w Kole przekłada się na karierę w IT.",
+        "Spotkania pozwalają zobaczyć ciągłość społeczności i realne ścieżki rozwoju."
+      ],
+      "image": "https://i.imgur.com/DAlFdah.jpeg",
+      "tagline": "Alumni wracają tam, gdzie wszystko się zaczęło"
+    },
+    {
+      "slide": 8,
+      "title": "Dlaczego warto chodzić na meetupy?",
+      "bullets": [
+        "To przedsmak środowiska, w którym działa E-XPERT i cała branża IT.",
+        "Poznajesz ludzi – nie tylko studentów, ale też praktyków i mentorów.",
+        "Budujesz sieć kontaktów, która zaprocentuje szybciej, niż myślisz.",
+        "Jeśli myślisz o dołączeniu do Koła – meetup to idealny pierwszy krok."
+      ],
+      "image": "https://i.imgur.com/1In18B9.jpeg"
+    },
+    {
+      "slide": 9,
+      "title": "Użyj Hackathons Calendar już dziś",
+      "bullets": [
+        "Odwiedź: https://knsiexpert.github.io/hackathons-calendar",
+        "Przejrzyj nadchodzące wydarzenia i zaplanuj swój kalendarz hackathonowy.",
+        "Zapisz się na wydarzenia, które Cię interesują.",
+        "Dodaj hackathony, o których wiesz – pomagasz całej społeczności."
+      ],
+      "image": "https://i.imgur.com/Ok72SPr.jpeg"
+    },
+    {
+      "slide": 10,
+      "title": "Jak dołączyć do projektu?",
+      "bullets": [
+        "Dodaj wydarzenie – edytujesz plik JSON i wysyłasz Pull Request.",
+        "Zgłoś błąd lub pomysł – tworzysz issue na GitHubie.",
+        "Popraw kod – skorzystaj z zadań oznaczonych „good first issue”.",
+        "Udostępnij link do aplikacji na grupach, w social media, na uczelni."
+      ],
+      "image": "https://i.imgur.com/Zqh1mou.jpeg"
+    },
+    {
+      "slide": 11,
+      "title": "Podziękowania i zaproszenie",
+      "bullets": [
+        "Dziękujemy osobom, które zainspirowały projekt i współtworzą Hackathons Calendar.",
+        "Dziękujemy organizatorom AI Games i społeczności meetupów AI w Gdańsku.",
+        "Największe podziękowanie należy się Tobie – za ciekawość i chęć działania.",
+        "Dołącz do projektu, przyjdź na meetup, zapisz się na hackathon. Widzimy się w kodzie! 🚀"
+      ],
+      "image": "https://i.imgur.com/AT0Cd6z.png",
+      "tagline": "Każdy wkład się liczy. Każdy hackathon ma znaczenie."
+    }
+  ]
+}

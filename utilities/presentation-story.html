@@ -206,8 +206,8 @@
             try {
               setIsLoading(true);
               const dataAddress = window.location.href.includes("site") 
-                ? '../data/presentation-story.json' 
-                : '/data/presentation-story.json';
+                ? '../data/presentations/presentation-story.json' 
+                : '/data/presentations/presentation-story.json';
               const response = await fetch(dataAddress);
               if (!response.ok) {
                 throw new Error('Failed to load presentation data');
