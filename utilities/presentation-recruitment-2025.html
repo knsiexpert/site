@@ -191,8 +191,8 @@
             try {
               setIsLoading(true);
               const dataAddress = window.location.href.includes("site") 
-                ? '../data/presentation-recruitment-2025.json' 
-                : '/data/presentation-recruitment-2025.json';
+                ? '../data/presentations/presentation-recruitment-2025.json' 
+                : '/data/presentations/presentation-recruitment-2025.json';
               const response = await fetch(dataAddress);
               if (!response.ok) {
                 throw new Error('Failed to load presentation data');
