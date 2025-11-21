@@ -7387,7 +7387,7 @@
                                 <span style="display: inline-block;">
                                     ${supervisor.website && supervisor.website.trim() !== '' ? `
                                     <a href="${supervisor.website}" 
-                                       target="_blank" 
+                                       ${supervisor.website.startsWith('mailto:') ? '' : 'target="_blank"'}
                                        class="supervisor-link-subtle"
                                        style="font-size: 18px; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease;">
                                         ${supervisor.name}
