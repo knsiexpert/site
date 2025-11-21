@@ -3124,6 +3124,16 @@
             .hero-text-cta {
                 display: block;
             }
+            
+            .footer-grid {
+                grid-template-columns: auto 1fr 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-brand {
+                max-width: 200px;
+                word-wrap: break-word;
+            }
         }
         
         @media (max-width: 899px) and (min-width: 841px) {
@@ -5371,9 +5381,17 @@
             gap: 10px;
         }
         
+        .supervisor-link-subtle {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+        
         .supervisor-link-subtle:hover {
-            border-bottom-color: var(--accent);
-            opacity: 0.8;
+            color: var(--accent) !important;
         }
         
         .recruitment-gallery {
@@ -5655,12 +5673,11 @@
         }
         
         .dark-mode .supervisor-link-subtle {
-            color: var(--accent);
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .dark-mode .supervisor-link-subtle:hover {
-            border-bottom-color: var(--white);
-            opacity: 1;
+            color: var(--accent) !important;
         }
         
         .dark-mode .recruitment-list li:hover,
@@ -7368,17 +7385,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             const highlightMember = urlParams.get('member');
             
-            // Handle both old (string) and new (object) supervisor format
-            const supervisorName = typeof data.content.supervisor === 'string' 
-                ? data.content.supervisor 
-                : data.content.supervisor.name;
-            const supervisorRole = typeof data.content.supervisor === 'object' 
-                ? data.content.supervisor.role 
-                : 'Opiekun koła';
-            const supervisorWebsite = typeof data.content.supervisor === 'object' 
-                ? data.content.supervisor.website 
-                : null;
-            
             teamContent.innerHTML = `
                 <h2>"${data.title.toUpperCase()}"</h2>
                 
@@ -7388,20 +7394,28 @@
                 </p>
                 ` : ''}
                 
-                <div style="display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: start; margin-bottom: 30px;">
+                <div style="display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px;">
+                    ${data.content.supervisors && data.content.supervisors.length > 0 ? `
                     <div class="supervisor-info">
-                        <span style="opacity: 0.7;">${supervisorRole}:</span>
-                        ${supervisorWebsite ? `
-                        <a href="${supervisorWebsite}" 
-                           target="_blank" 
-                           class="supervisor-link-subtle"
-                           style="font-size: 18px; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; margin-left: 8px;">
-                            ${supervisorName}
-                        </a>
-                        ` : `
-                        <strong style="font-size: 18px; margin-left: 8px; color: var(--accent);">${supervisorName}</strong>
-                        `}
+                        <span style="opacity: 0.7;">${data.content.supervisors.length > 1 ? 'Opiekunowie koła:' : data.content.supervisors[0].role || 'Opiekun koła'}:</span>
+                        <div style="display: inline-block; margin-left: 8px;">
+                            ${data.content.supervisors.map((supervisor, index) => `
+                                ${index > 0 ? '<span style="opacity: 0.4; margin: 0 12px;">|</span>' : ''}
+                                <span style="display: inline-block;">
+                                    ${supervisor.website && supervisor.website.trim() !== '' ? `
+                                    <a href="${supervisor.website}" 
+                                       ${supervisor.website.startsWith('mailto:') ? '' : 'target="_blank"'}
+                                       class="supervisor-link-subtle">
+                                        ${supervisor.name}
+                                    </a>
+                                    ` : `
+                                    <strong style="font-size: 18px; color: var(--text);">${supervisor.name}</strong>
+                                    `}
+                                </span>
+                            `).join('')}
+                        </div>
                     </div>
+                    ` : ''}
                     
                     ${data.content.former_supervisors && data.content.former_supervisors.length > 0 ? `
                     <div class="supervisor-info">
@@ -7409,7 +7423,7 @@
                         <div style="display: inline-block; margin-left: 8px;">
                             ${data.content.former_supervisors.map(former => `
                                 <span style="display: inline-block; margin-right: 24px;">
-                                    <strong style="font-size: 16px; color: var(--text);">${former.name}</strong>
+                                    <strong style="font-size: 16px; color: var(--text); opacity: 0.8;">${former.name}</strong>
                                     <span style="opacity: 0.6; margin-left: 8px; font-size: 14px;">(${former.period})</span>
                                 </span>
                             `).join('')}
