@@ -3125,10 +3125,14 @@
                 display: block;
             }
             
-            /* Footer grid - 1 column to prevent social links from being cut off */
+            /* Footer grid - limit first column width to prevent social links from being cut off */
             .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+                grid-template-columns: auto 1fr 1fr 1fr;
+                gap: 30px;
+            }
+            
+            .footer-brand {
+                max-width: 200px;
             }
         }
         
@@ -5377,6 +5381,15 @@
             gap: 10px;
         }
         
+        .supervisor-link-subtle {
+            font-size: 18px;
+            font-weight: 600;
+            color: rgba(0, 0, 0, 0.6);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+        
         .supervisor-link-subtle:hover {
             color: var(--accent) !important;
         }
@@ -7392,8 +7405,7 @@
                                     ${supervisor.website && supervisor.website.trim() !== '' ? `
                                     <a href="${supervisor.website}" 
                                        ${supervisor.website.startsWith('mailto:') ? '' : 'target="_blank"'}
-                                       class="supervisor-link-subtle"
-                                       style="font-size: 18px; font-weight: 600; color: rgba(0, 0, 0, 0.6); text-decoration: none; transition: color 0.2s ease; cursor: pointer;">
+                                       class="supervisor-link-subtle">
                                         ${supervisor.name}
                                     </a>
                                     ` : `
