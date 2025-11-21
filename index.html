@@ -5373,8 +5373,6 @@
         
         .supervisor-link-subtle:hover {
             color: var(--accent) !important;
-            border-bottom-color: var(--accent);
-            opacity: 0.8;
         }
         
         .recruitment-gallery {
@@ -5656,13 +5654,11 @@
         }
         
         .dark-mode .supervisor-link-subtle {
-            color: var(--white);
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .dark-mode .supervisor-link-subtle:hover {
             color: var(--accent) !important;
-            border-bottom-color: var(--white);
-            opacity: 1;
         }
         
         .dark-mode .recruitment-list li:hover,
@@ -7391,7 +7387,7 @@
                                     <a href="${supervisor.website}" 
                                        ${supervisor.website.startsWith('mailto:') ? '' : 'target="_blank"'}
                                        class="supervisor-link-subtle"
-                                       style="font-size: 18px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;">
+                                       style="font-size: 18px; font-weight: 600; color: rgba(0, 0, 0, 0.6); text-decoration: none; transition: color 0.2s ease; cursor: pointer;">
                                         ${supervisor.name}
                                     </a>
                                     ` : `
