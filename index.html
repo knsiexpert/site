@@ -5372,6 +5372,7 @@
         }
         
         .supervisor-link-subtle:hover {
+            color: var(--accent) !important;
             border-bottom-color: var(--accent);
             opacity: 0.8;
         }
@@ -5655,10 +5656,11 @@
         }
         
         .dark-mode .supervisor-link-subtle {
-            color: var(--accent);
+            color: var(--white);
         }
         
         .dark-mode .supervisor-link-subtle:hover {
+            color: var(--accent) !important;
             border-bottom-color: var(--white);
             opacity: 1;
         }
@@ -7389,7 +7391,7 @@
                                     <a href="${supervisor.website}" 
                                        ${supervisor.website.startsWith('mailto:') ? '' : 'target="_blank"'}
                                        class="supervisor-link-subtle"
-                                       style="font-size: 18px; font-weight: 600; color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease;">
+                                       style="font-size: 18px; font-weight: 600; color: var(--text); text-decoration: none; border-bottom: 1px solid transparent; transition: all 0.2s ease; cursor: pointer;">
                                         ${supervisor.name}
                                     </a>
                                     ` : `
