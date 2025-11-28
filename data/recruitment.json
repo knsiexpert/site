@@ -2,7 +2,7 @@
   "title": "Rekrutacja",
   "form_url": "https://docs.google.com/forms/d/1T6YJLBix70wtn5a2HR4iMXKLijF_mlFsMpJxwRRs9iY/edit",
   "meeting": {
-    "show_meeting": true,
+    "show_meeting": false,
     "title": "Spotkanie Rekrutacyjne",
     "date": "27 listopada 2025",
     "time": "19:00",
