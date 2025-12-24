@@ -228,7 +228,7 @@ Strona wymaga nowoczesnej przeglądarki z obsługą:
 
 ## 📄 Licencja
 
-© 2001–2025 Koło Naukowe Systemów Informatycznych E-XPERT  
+© 2001–2026 Koło Naukowe Systemów Informatycznych E-XPERT  
 Uniwersytet Gdański • Wydział Zarządzania
 
 ## 💡 Wsparcie

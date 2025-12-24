@@ -2,8 +2,8 @@
   "brand": {
     "name": "KOŁO NAUKOWE<br>SYSTEMÓW INFORMATYCZNYCH<br>E‑XPERT",
     "description": "Tworzymy rozwiązania IT, które zmieniają rzeczywistość. Od lat łączymy pasję do technologii z praktycznym działaniem.",
-    "year": "2025",
-    "established": ""
+    "year": "2026",
+    "established": "2001"
   },
   "navigation": {
     "title": "Nawigacja",
@@ -61,11 +61,16 @@
         "name": "Facebook",
         "code": "FB",
         "url": "https://facebook.com/knsiexpert"
+      },
+      {
+        "name": "LinkedIn",
+        "code": "LI",
+        "url": "https://www.linkedin.com/company/knsi-e-xpert"
       }
     ]
   },
   "bottom": {
-    "copyright": "© 2001–2025 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA",
+    "copyright": "© 2001–2026 KNSI E-XPERT • UNIWERSYTET GDAŃSKI • WYDZIAŁ ZARZĄDZANIA",
     "credits": [
       {
         "title": "OPEN SOURCE",

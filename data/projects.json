@@ -3,6 +3,38 @@
   "intro": "Koło Naukowe Systemów Informatycznych E-XPERT od 2015 roku przynależy do międzynarodowej organizacji Association for Information Systems Student Chapters (AIS SC), tworząc oddział AIS SC University of Gdansk. Członkowie koła od lat regularnie reprezentują Uniwersytet Gdański w międzynarodowych finałach organizowanych w Stanach Zjednoczonych, zdobywając czołowe miejsca i zaszczytne wyróżnienia. W 2016 roku AIS Student Chapter University of Gdańsk otrzymało nagrodę \"2015-2016 Best New AIS Student Chapter Winner\" za wybitne osiągnięcia podczas pierwszych dwóch lat działalności. Studenci tworzyli innowacyjne rozwiązania IT, które zdobywały uznanie za kreatywność, wartość społeczną i zaawansowanie technologiczne — takie jak Way For Life, Talk-to, Apollo, IBMS, SNet, CyberWatch, Unity, SafeWatch i Your Guard.",
   "projects": [
     {
+      "name": "Hackathons Calendar",
+      "description": "Interaktywny kalendarz hackathonów jako statyczna aplikacja Next.js z dwoma widokami: kalendarzem miesięcznym oraz listą. Umożliwia przeglądanie wydarzeń, sortowanie i filtrowanie według statusu, oferuje nowoczesny ciemny motyw z pomarańczowymi akcentami i działa responsywnie na wszystkich urządzeniach. Projekt jest zoptymalizowany pod szybkie działanie dzięki statycznemu eksportowi oraz posiada automatyczny deployment do GitHub Pages przez GitHub Actions. Dane hackathonów są przechowywane w pliku JSON (public/hackathons.json), co ułatwia aktualizacje bez backendu. Live demo: knsiexpert.github.io/hackathons-calendar. Repo: github.com/knsiexpert/hackathons-calendar.",
+      "team": [
+        "KNSI E-xpert"
+      ],
+      "year": 2026,
+      "achievements": [
+        "Dwa widoki: kalendarz miesięczny + lista",
+        "Filtrowanie i sortowanie hackathonów według statusu",
+        "Statyczny export i szybkie ładowanie aplikacji",
+        "Automatyczny deployment na GitHub Pages (GitHub Actions)",
+        "Konfiguracja basePath dla GitHub Pages (next.config.mjs)",
+        "Zarządzanie danymi wydarzeń przez public/hackathons.json"
+      ],
+      "technologies": [
+        "Next.js 14",
+        "React",
+        "TypeScript",
+        "Tailwind CSS 3",
+        "shadcn/ui",
+        "React Hook Form",
+        "date-fns",
+        "Lucide React",
+        "GitHub Pages",
+        "GitHub Actions",
+        "JSON Data Structure"
+      ],
+      "images": [
+        "https://i.imgur.com/MkPrO2w.png"
+      ]
+    },
+    {
       "name": "Modernizacja Strony Internetowej Koła",
       "description": "Kompleksowa modernizacja obecności cyfrowej koła E-XPERT, mająca na celu stworzenie nowoczesnej, funkcjonalnej i łatwo zarządzalnej strony internetowej. Nowa witryna oferuje przejrzystą prezentację historii koła, osiągnięć członków w międzynarodowych konkursach oraz realizowanych projektów. Użytkownicy mogą szybko nawigować między sekcjami, przeglądać galerie projektów z lat 2015-2025, poznawać zespół i misję koła. Strona automatycznie aktualizuje treści, umożliwia bezpośrednie linkowanie do konkretnych sekcji i działa płynnie na wszystkich urządzeniach. Projekt poprawia dostępność informacji o kole, ułatwia rekrutację nowych członków i profesjonalnie prezentuje dorobek organizacji. Wspólny wysiłek zespołów z lat 2023/24 i 2024/25.",
       "team": [
